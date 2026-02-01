@@ -1,0 +1,25 @@
+{
+  "name": "delivery-middleware",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Middleware for DYPSI delivery: WhatsApp webhook, OCR, routing, order parsing and catalog proxy.",
+  "main": "index.js",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "NODE_ENV=development nodemon --watch . --ext js,json --exec \"node ./api/kommo.js\"",
+    "start": "node ./api/kommo.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "form-data": "^4.0.0",
+    "dotenv": "^16.1.4",
+    "uuid": "^9.0.0",
+    "firebase-admin": "^11.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

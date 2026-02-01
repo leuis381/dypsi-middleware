@@ -1,0 +1,97 @@
+{
+  "palabras_pedido": [
+    "quiero", "dame", "agrega", "ordena", "pedido", "comprar", "necesito", "me das", "solicito", "trae", "mandame", "encárgame"
+  ],
+  "palabras_delivery": [
+    "delivery", "envío", "llevar", "enviar", "a domicilio", "mandar", "traer", "reparto", "motorizado", "en casa"
+  ],
+  "palabras_recojo": [
+    "recojo", "recoger", "voy", "paso", "pickup", "en local", "retiro", "llevaré yo"
+  ],
+  "palabras_carta": [
+    "carta", "menú", "menu", "ver carta", "ver menú", "enviar carta", "enviar menú", "catálogo", "catalogo", "lista de productos", "productos"
+  ],
+  "palabras_pago_yape": [
+    "yape", "plin", "transferencia yape", "transferencia plin", "pago móvil", "qr", "comprobante", "voucher", "imagen pago", "Joel Santos", "900146424"
+  ],
+  "palabras_pago_efectivo": [
+    "efectivo", "cash", "pago en efectivo", "con billete", "con monedas", "pago con", "cambio", "vuelto"
+  ],
+  "palabras_confirmacion": [
+    "sí", "si", "confirmo", "ok", "listo", "dale", "de acuerdo", "correcto", "acepto", "está bien"
+  ],
+  "palabras_cancelacion": [
+    "cancelar", "anular", "ya no", "no quiero", "quitar", "eliminar pedido", "borrar pedido"
+  ],
+  "palabras_reclamo": [
+    "reclamo", "queja", "mal servicio", "demora", "tarde", "no llegó", "no llega", "problema", "error", "equivocado", "pésimo", "malo"
+  ],
+  "palabras_agresivas": [
+    "insulto", "estúpido", "idiota", "perro", "pendejo", "mierda", "imbécil", "maldito", "agresivo", "grosero"
+  ],
+  "palabras_cambio": [
+    "cambiar", "modificar", "otro producto", "agregar extra", "quitar ingrediente", "modificar pedido", "ajustar"
+  ],
+  "palabras_fuera_carta": [
+    "producto especial", "no está en carta", "inventado", "personalizado", "fuera de menú", "no existe"
+  ],
+  "palabras_credito": [
+    "fiado", "crédito", "pago después", "sin pagar", "después pago", "me fías"
+  ],
+  "palabras_ubicacion": [
+    "ubicación", "mapa", "google maps", "dirección", "calle", "avenida", "jirón", "comparto ubicación", "enviar ubicación"
+  ],
+  "palabras_promociones": [
+    "promo", "promoción", "oferta", "descuento", "combo", "especial"
+  ],
+  "palabras_tiempo": [
+    "tiempo", "cuánto demora", "cuando llega", "minutos", "hora exacta", "ETA", "estimado"
+  ],
+  "reglas_negocio": {
+    "previo_pago": true,
+    "confirmacion_obligatoria": true,
+    "no_credito": true,
+    "no_ensalada": true,
+    "yape_cuenta": "Joel Santos — 900146424",
+    "comprobante_automatico": true,
+    "comprobante_estado_default": "Pendiente de verificación",
+    "acepta_multiples_comprobantes": true,
+    "acepta_pago_combinado": true
+  },
+  "escalado_humano": {
+    "prioridad": ["pago", "direccion", "alergia", "pedido_grande", "reclamo"],
+    "notificacion_interna": ["Slack", "Teams", "Email"],
+    "tags": ["requiere_humano", "pendiente_verificacion"]
+  },
+  "slas": {
+    "hot_lead": "15m",
+    "verificacion_pago": "10m",
+    "cocina": "45m",
+    "reparto": "30m",
+    "contacto_perdido": "30m"
+  },
+  "reintentos": {
+    "telefono": 2,
+    "ocr": 1,
+    "repartidor": 2
+  },
+  "cierre_conversacion": {
+    "confirmacion_entrega": "Cliente confirma entrega o 30m sin respuesta",
+    "reinicio_ciclo": "Si cliente escribe luego, inicia nuevo pedido",
+    "reclamos": "Derivar a humano; IA retoma control tras 30m"
+  },
+  "aprendizaje_cliente": {
+    "guardar_datos": ["nombre_cliente", "telefono", "direccion"],
+    "reutilizar_datos": true,
+    "preguntar_solo_delivery_o_recojo": true,
+    "actualizar_direccion_si_cliente_envia_nueva": true
+  },
+  "integraciones": {
+  "mapas_gratuitos": "calculo_distancia",
+  "ocr": "opcional",
+  "pos": "manual_humano",
+  "catalogo_whatsapp": true,
+  "google_sheets": true
+}
+
+}

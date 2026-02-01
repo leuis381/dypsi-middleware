@@ -1,0 +1,449 @@
+{
+  "meta": {
+    "version": "1.1",
+    "nombre": "Flujos DYPSI - Cerebro IA Definitivo (actualizado)",
+    "descripcion": "Flujos conversacionales, reglas, plantillas y acciones para la IA de pedidos DYPSI. Incluye cálculo de delivery por ubicación previa, verificación OCR de comprobantes (buscar monto y número de cuenta/operación), y lógica para confirmar pedido solo tras verificación de pago o pago en entrega. Envía bloque final a número humano configurado.",
+    "fecha_generado": "2026-01-31",
+    "numero_envio_pedidos": "+51906538844",
+    "cuenta_yape_mostrar_al_cliente": "900146424 (Joel Santos)"
+  },
+
+  "inicio": {
+    "descripcion": "Primer mensaje del cliente (texto, audio, imagen o ubicación).",
+    "triggers": ["mensaje_texto", "audio_recibido", "imagen_recibida", "ubicacion_recibida"],
+    "accion": ["registrar_conversacion", "extraer_numero_remitente", "detectar_intencion_inicial"],
+    "responder": "bienvenida",
+    "responder_texto": "Hola {NombreCliente}, gracias por escribir a DYPSI. ¿Delivery o recojo? Puedes escribir tu pedido, enviar audio, foto o compartir tu ubicación. Si quieres ver el menú escribe 'menu'.",
+    "notas_operativas": "Usar nombre del cliente si está disponible. No usar lenguaje técnico con el cliente. Registrar la hora y canal de entrada.",
+    "next_states": ["detectar_intencion", "audio_detectado", "imagen_detectada", "ubicacion_pedida"]
+  },
+
+  "audio_detectado": {
+    "descripcion": "El cliente envía un audio.",
+    "triggers": ["audio_recibido"],
+    "accion": ["transcribir_audio", "analizar_intencion_transcripcion", "registrar_archivo_audio"],
+    "responder": "audio_transcribiendo",
+    "responder_texto": "Recibí tu audio. Estoy transcribiendo y procesando tu pedido, un momento por favor...",
+    "fallbacks": ["error_transcripcion"],
+    "next_states": ["pedido_detectado", "detectar_intencion", "error"]
+  },
+
+  "pedido_detectado": {
+    "descripcion": "El cliente pide uno o varios productos (texto, transcripción o OCR).",
+    "triggers": ["intencion_pedido", "texto_con_items", "imagen_con_items"],
+    "accion": [
+      "aplicar_sinonimos_y_normalizar_items",
+      "extraer_cantidades_tamanos_extras",
+      "validar_promos_y_reglas",
+      "guardar_pedido_temporal",
+      "calcular_subtotales",
+      "calcular_delivery_a_ubicacion_previa_si_existe"
+    ],
+    "responder": "mensaje_a_pedido_inicial_con_delivery",
+    "responder_texto_template": "Detecté este pedido:\n{items_list}\nSubtotal: s/ {subtotal}\nHe calculado el delivery hasta la ubicación que tenemos registrada: s/ {delivery} (Regla: {tramo}).\nCosto estimado de reparto: s/ {reparto_estimado} (si aplica)\nTotal (pedido + delivery): s/ {total}\n¿Cómo desea pagar? (Efectivo / Yape / Plin). Si paga por Yape/Plin, puede enviar la captura del pago. Nuestra cuenta Yape: {cuenta_yape}. ¿Desea continuar?",
+    "ambiguedad_handling": {
+      "descripcion": "Si un ítem es ambiguo, preguntar una sola vez con opciones claras.",
+      "plantilla": "Detecté: \"{texto_detectado}\". ¿Se refiere a: 1) {opcion_a}; 2) {opcion_b}? Responda 1 o 2, por favor.",
+      "max_reintentos": 1,
+      "si_no_responde": "derivar_agente"
+    },
+    "validaciones_inmediatas": [
+      "verificar_formato_items",
+      "aplicar_reglas_combo",
+      "marcar_items_con_tag_solo_delivery"
+    ],
+    "next_states": ["solicitar_ubicacion", "pedido_resumen_provisional", "esperar_pago_o_confirmacion", "derivar_agente"]
+  },
+
+  "solicitar_ubicacion": {
+    "descripcion": "Se solicita ubicación para delivery cuando aplica o cuando la ubicación previa no existe o no es válida.",
+    "triggers": ["necesita_ubicacion", "pedido_con_delivery", "ubicacion_previa_invalida"],
+    "accion": ["solicitar_ubicacion_al_cliente", "esperar_ubicacion"],
+    "responder": "solicitar_ubicacion",
+    "responder_texto": "Por favor comparte tu ubicación o escribe tu dirección completa (calle, número, referencia, piso/departamento).",
+    "validaciones": [
+      "geocodificar_direccion",
+      "validar_zona_entrega_por_radio",
+      "calcular_distancia_google_maps",
+      "calcular_delivery_por_tramo"
+    ],
+    "fallbacks": ["ubicacion_no_valida", "derivar_agente_si_no_responde"],
+    "next_states": ["ubicacion_recibida", "error_ubicacion"]
+  },
+
+  "ubicacion_recibida": {
+    "descripcion": "Se recibe ubicación del cliente y se calcula delivery exacto.",
+    "triggers": ["ubicacion_recibida"],
+    "accion": ["validar_zona_entrega", "calcular_costo_envio_por_distancia", "asignar_tiempo_entrega"],
+    "responder_texto_template": "Ubicación recibida. El delivery hasta {direccion_corta} cuesta s/ {delivery}. Subtotal pedido: s/ {subtotal}. Total (pedido + delivery): s/ {total}. ¿Cómo desea pagar? (Efectivo / Yape / Plin). Nuestra cuenta Yape: {cuenta_yape}.",
+    "next_states": ["esperar_pago_o_confirmacion", "derivar_agente"]
+  },
+
+  "esperar_pago_o_confirmacion": {
+    "descripcion": "La IA espera que el cliente indique método de pago o envíe comprobante si eligió Yape/Plin.",
+    "triggers": ["cliente_indica_pago", "comprobante_recibido"],
+    "accion": ["registrar_metodo_pago", "si_yape_plin_iniciar_verificacion_ocr"],
+    "responder_texto": "Perfecto. Si eliges Yape o Plin, por favor envía la captura del pago que muestre el monto y número de operación. Verificaré y te confirmo. Si pagas en efectivo, indica con cuánto pagarás (ej. 'Pago con s/ 50').",
+    "next_states": ["verificar_pago_si_aplica", "pedido_modificacion", "derivar_agente"]
+  },
+
+  "verificar_pago_si_aplica": {
+    "descripcion": "Verificación automática de comprobante enviado por el cliente (OCR).",
+    "triggers": ["comprobante_recibido", "imagen_comprobante"],
+    "accion": [
+      "extraer_texto_ocr",
+      "buscar_monto_en_imagen",
+      "buscar_numero_cuenta_o_numero_operacion_en_imagen",
+      "comparar_monto_con_total",
+      "marcar_comprobante_verificado_si_coincide"
+    ],
+    "reglas_verificacion": {
+      "aceptar_si_monto_detectado_coincide": true,
+      "aceptar_si_numero_cuenta_detectado_coincide_con_cuenta_yape": true,
+      "confianza_minima_ocr": 0.75,
+      "si_confianza_baja_pedir_reenvio": true
+    },
+    "responder_texto_template": "He analizado la imagen. Monto detectado: s/ {monto_detectado}. Número/operación detectado: {numero_detectado}. Estado: {verificacion_estado}.",
+    "fallbacks": ["error_ocr", "pedir_reenvio_comprobante"],
+    "next_states": ["pedido_confirmado_si_pago_verificado", "esperar_pago_o_confirmacion", "derivar_agente"]
+  },
+
+  "pedido_confirmado_si_pago_verificado": {
+    "descripcion": "Si el comprobante está verificado (monto coincide o número de cuenta aparece en la imagen), continuar con confirmación final.",
+    "triggers": ["comprobante_verificado", "cliente_confirma_pago"],
+    "accion": [
+      "marcar_estado_pago_pagado",
+      "generar_id_orden",
+      "guardar_pedido_final",
+      "formatear_bloque_revision_humana",
+      "enviar_bloque_a_numero_externo",
+      "notificar_cliente_confirmacion"
+    ],
+    "responder": "confirmado_con_pago",
+    "responder_texto": "Pago verificado. ¿Confirmo el pedido y lo envío a cocina? Responda 'Sí' para confirmar.",
+    "next_states": ["pedido_confirmado"]
+  },
+
+  "pedido_confirmado": {
+    "descripcion": "Pedido confirmado por el cliente y validado por la IA (incluye verificación de pago si aplica).",
+    "accion": [
+      "validar_datos_obligatorios",
+      "generar_id_orden_si_no_existe",
+      "guardar_pedido_final",
+      "formatear_bloque_revision_humana",
+      "enviar_bloque_a_numero_externo",
+      "notificar_cliente_confirmacion"
+    ],
+    "responder": "confirmado",
+    "responder_texto": "Pedido confirmado. En breve lo envío a cocina y te doy el número de pedido.",
+    "condiciones_cierre": [
+      "cliente_respondio_Sí_a_confirmacion_final",
+      "nombre_valido",
+      "telefono_valido_E164",
+      "direccion_confirmada_o_coordenadas",
+      "metodo_pago_definido",
+      "si_pago_online: comprobante_verificado",
+      "no_asuntos_abiertos_ni_escalados"
+    ],
+    "bloque_revision_humana_plantilla": "ORDEN PARA REVISIÓN HUMANA\nID Orden: {DYPSI_ID}\nFecha/Hora: {YYYY-MM-DD HH:MM}\nCliente:\n  Nombre: {NombreCliente}\n  Teléfono: {Telefono}\nDirección de entrega:\n  Dirección confirmada: {Direccion}\n  Referencia: {Referencia}\n  Piso/Depto: {PisoDepto}\n  Coordenadas: {lat,lon}\n  Google Maps: {map_link}\nPedido:\n{items_detalle}\nResumen financiero:\n  Subtotal: s/ {subtotal}\n  Delivery (zona/distancia): s/ {delivery}  — Regla usada: {tramo}\n  Costo estimado de reparto: s/ {reparto_estimado}\n  Impuestos: s/ 0.00\n  Total a pagar: s/ {total}\nPago:\n  Método: {metodo_pago}\n  Estado: {estado_pago}\n  Monto recibido (si aplica): s/ {monto_recibido}\n  Vuelto a entregar (si aplica): s/ {vuelto}\n  Comprobante adjunto: {comprobante_si_no} — Archivo: {nombre_archivo}\nTiempos:\n  ETA calculado: {ETA_min} – {ETA_max} minutos\nLogística:\n  Distancia al cliente: {km}\n  Tarifa por km usada: s/ {tarifa_km}\nAcciones requeridas por humano:\n  1. Verificar pago y comprobante. Revisar pago antes de despachar.\n  2. Registrar la orden en el Punto de Venta.\n  3. Confirmar y enviar pedido a cocina (marcar prioridad y ETA).\n  4. Solicitar servicio de reparto si procede; coordinar y asumir costo.\n  5. Asignar repartidor y confirmar hora de salida.\nNotas y alertas:\n  - Comentarios del cliente: {comentarios}\n  - Inconsistencias detectadas: {inconsistencias}\n  - Requiere verificación humana: {requiere_verificacion}",
+    "enviar_a_numero": "+51906538844",
+    "notificacion_cliente_final": "Gracias por su pedido. Hemos confirmado todo y su orden está en proceso. Si necesita algo más, responda en este chat. Buen día.",
+    "next_states": ["pedido_enviado_externo", "derivar_agente_si_error"]
+  },
+
+  "error": {
+    "descripcion": "No se entiende el mensaje o falla técnica; manejo de errores y opciones para el cliente.",
+    "accion": ["registrar_error", "ofrecer_opciones", "derivar_agente_si_necesario"],
+    "responder": "error",
+    "responder_texto": "No entendí tu mensaje. ¿Puedes escribirlo de otra forma o pedir ayuda con 'ayuda'? Si prefieres, puedo transferir tu caso a un agente humano.",
+    "next_states": ["bienvenida", "derivar_agente"]
+  },
+
+  "acciones": {
+    "transcribir_audio": {
+      "descripcion": "Transcribir audio a texto; si la confianza es baja, pedir reenvío o derivar a humano.",
+      "soportes": ["ogg", "mp3", "wav", "m4a"],
+      "max_duracion_seg": 180,
+      "fallback": "error_transcripcion"
+    },
+    "extraer_texto_ocr": {
+      "descripcion": "Extraer texto de comprobantes o imágenes; si confianza alta, marcar comprobante verificado. Buscar monto y cualquier número que coincida con la cuenta Yape o número de operación.",
+      "soportes": ["jpg", "jpeg", "png", "webp"],
+      "max_size_mb": 10,
+      "criterios_verificacion": {
+        "confianza_minima": 0.75,
+        "campos_requeridos": ["monto"],
+        "buscar_numero_cuenta": true,
+        "aceptar_numero_en_cualquier_parte_de_imagen": true
+      },
+      "fallback": "error_ocr"
+    },
+    "calcular_delivery_a_ubicacion_previa_si_existe": {
+      "descripcion": "Si existe ubicación previa asociada al número del cliente, calcular distancia y delivery antes de pedir confirmación de pago.",
+      "pasos": ["recuperar_ubicacion_previa", "geocodificar_si_necesario", "calcular_distancia_google_maps", "aplicar_tramo_tarifa", "retornar_valores_delivery"]
+    },
+    "calcular_costo_envio_por_distancia": {
+      "descripcion": "Calcular costo de envío según tramos y distancia real (Google Maps).",
+      "tramos": [
+        { "hasta_km": 3, "costo": 3.00 },
+        { "hasta_km": 6, "costo": 6.00 },
+        { "hasta_km": 12, "costo": 10.00 }
+      ],
+      "pasos": ["obtener_distancia_km", "seleccionar_tramo", "calcular_costo"]
+    },
+    "aplicar_sinonimos_y_normalizar_items": {
+      "descripcion": "Mapear términos del cliente a IDs del menú usando sinonimos.json y reglas de normalización.",
+      "pasos": ["buscar_sinonimos", "mapear_ids", "resolver_ambiguedades"]
+    },
+    "validar_promos_y_reglas": {
+      "descripcion": "Aplicar reglas (promo jueves, combos, tags) y validar disponibilidad por día y canal.",
+      "reglas_incluidas": ["promo_jueves_2pizzas", "combo_burger_pepsi", "mostro_mostrito", "combo_6alitas_fettuccine"]
+    },
+    "guardar_pedido_temporal": {
+      "descripcion": "Guardar pedido en sesión temporal con ID temporal y estado 'pendiente_confirmacion'.",
+      "campos": ["items", "cantidades", "tamanos", "extras", "subtotal", "cliente_temp"]
+    },
+    "calcular_subtotales": {
+      "descripcion": "Calcular subtotal, aplicar descuentos/promos, calcular delivery según tramo y distancia.",
+      "accion": ["sumar_items", "aplicar_promos", "sumar_delivery"]
+    },
+    "verificar_pago_si_aplica": {
+      "descripcion": "Verificar comprobante Yape/Plin por OCR; si monto coincide marcar 'Pagado'. Si no, pedir reenvío o derivar.",
+      "reglas": [
+        "aceptar_si_monto_detectado_coincide_con_total",
+        "aceptar_si_numero_cuenta_detectado_coincide_con_cuenta_yape",
+        "si_borrosa_pedir_reenvio",
+        "si_pago_combinado_validar_montos_confirmados_por_cliente"
+      ]
+    },
+    "generar_id_orden": {
+      "descripcion": "Generar ID único con formato DYPSI-YYYYMMDD-HHMM-XXXX.",
+      "ejemplo": "DYPSI-20260131-0138-0001"
+    },
+    "formatear_bloque_revision_humana": {
+      "descripcion": "Construir bloque exacto para revisión humana usando plantilla Mensaje G y bloque final EXACTO.",
+      "salida": "texto_plano"
+    },
+    "enviar_bloque_a_numero_externo": {
+      "descripcion": "Enviar bloque final al número humano configurado; reintentar hasta N veces y registrar resultado.",
+      "parametros": { "numero": "+51906538844", "reintentos": 3, "timeout_seg": 10 },
+      "fallback": "derivar_agente_si_error_envio"
+    },
+    "notificar_cliente_confirmacion": {
+      "descripcion": "Notificar al cliente con el mensaje final solo si todas las condiciones de cierre se cumplen.",
+      "mensaje": "Gracias por su pedido. Hemos confirmado todo y su orden está en proceso. Si necesita algo más, responda en este chat. Buen día."
+    },
+    "derivar_agente": {
+      "descripcion": "Crear paquete de escalado y asignar a la cola o equipo correspondiente.",
+      "pasos": [
+        "generar_paquete_escalado",
+        "seleccionar_destinatario_por_regla",
+        "marcar_prioridad_y_tags",
+        "enviar_notificacion_humana_con_boton_tomar_caso",
+        "informar_cliente_asignacion"
+      ]
+    },
+    "generar_paquete_escalado": {
+      "descripcion": "Paquete con ID orden, fecha/hora, motivo, datos del cliente, dirección y coordenadas, ítems y precios, subtotal/delivery/total, estado de pago y comprobantes, últimas entradas y acciones intentadas.",
+      "destinatarios_por_motivo": {
+        "pagos": "finanzas",
+        "cocina": "cocina",
+        "logistica": "reparto",
+        "reclamos": "supervisor",
+        "default": "cola_general"
+      }
+    }
+  },
+
+  "reglas": [
+    {
+      "id": "promo_jueves_2pizzas",
+      "descripcion": "2 pizzas clásicas 8tj a S/29.90 solo los jueves y solo sabores clásicos.",
+      "condiciones": { "dia_semana": "jueves", "sabores_permitidos": ["pizza_americana", "pizza_pepperoni", "pizza_hawaiana", "pizza_mozzarella"] },
+      "accion": ["aplicar_precio_fijo", "marcar_promo", "validar_dia"]
+    },
+    {
+      "id": "combo_burger_pepsi",
+      "descripcion": "Burger clásica + Pepsi 355ml = S/11.00 (precio combo fijo).",
+      "condiciones": { "items": ["burger_clasica", "pepsi_355"] },
+      "accion": ["aplicar_precio_combo", "sobrescribir_precios_individuales"]
+    },
+    {
+      "id": "mostro_mostrito",
+      "descripcion": "Mostro / Mostrito combos fijos a S/11.00 (3 alitas + chaufa + papas + bebida 355ml).",
+      "condiciones": { "items": ["alitas_3", "arroz_chaufa", "papas", "pepsi_355|concordia_355"] },
+      "accion": ["aplicar_precio_combo"]
+    },
+    {
+      "id": "combo_6alitas_fettuccine",
+      "descripcion": "6 alitas + fettuccine Alfredo = S/24.00 (precio combo fijo).",
+      "condiciones": { "items": ["alitas_6", "fettuccine_alfredo"] },
+      "accion": ["aplicar_precio_combo"]
+    },
+    {
+      "id": "sin_ensalada_presentacion",
+      "descripcion": "Productos con tag 'sin_ensalada' deben presentarse sin mencionar ensalada en la descripción final.",
+      "accion": ["filtrar_texto_presentacion"]
+    },
+    {
+      "id": "solo_delivery",
+      "descripcion": "Productos con tag 'solo_delivery' solo disponibles para delivery; informar si el cliente solicita consumo en local.",
+      "accion": ["validar_canal_venta", "informar_cliente"]
+    },
+    {
+      "id": "validar_telefono_e164",
+      "descripcion": "Validar que el teléfono esté en formato E164 (ej. 9XXXXXXXX para Perú -> +519XXXXXXXX).",
+      "accion": ["validar_formato_telefono", "solicitar_correcion_si_invalido"]
+    },
+    {
+      "id": "geocodificar_direccion",
+      "descripcion": "Geocodificar dirección y obtener coordenadas; si no se puede localizar, derivar a humano.",
+      "accion": ["geocodificar", "validar_zona", "derivar_si_no_localiza"]
+    },
+    {
+      "id": "ocr_comprobante_verificacion",
+      "descripcion": "Ejecutar OCR en comprobantes; marcar verificado si la confianza es alta y el monto coincide con el total o si aparece el número de cuenta/operación en la imagen.",
+      "accion": ["ejecutar_ocr", "comparar_monto", "buscar_numero_cuenta", "marcar_pagado_si_coincide"]
+    }
+  ],
+
+  "templates": {
+    "mensaje_a_pedido_inicial": "Hola {NombreCliente}, gracias por escribir a DYPSI. ¿Delivery o recojo? Para confirmar su pedido necesito: 1) dirección completa y referencia (o comparta su ubicación); 2) método de pago (Efectivo / Yape / Plin); 3) si paga en efectivo, indique con cuánto pagará (ej. \"Pago con s/ 50\"). Confirmo que el tiempo estimado por producto es de 25–35 minutos. ¿Desea continuar?",
+    "mensaje_ambiguedad": "Detecté: \"{texto_detectado}\". ¿Se refiere a: 1) {OpcionA}; 2) {OpcionB}? Responda 1 o 2, por favor.",
+    "resumen_provisional": "Resumen provisional:\n{lista_items}\nSubtotal: s/ {subtotal}\nDelivery (zona/distancia): s/ {delivery}  — Regla usada: {tramo}\nCosto estimado de reparto: s/ {reparto_estimado}\nTotal: s/ {total}\n¿Cómo pagará? (Efectivo / Yape / Plin)",
+    "mensaje_efectivo": "Indique con cuánto pagará en efectivo (ej. \"Pago con s/ 100\") para calcular el vuelto.",
+    "mensaje_yape_plin": "Por favor envíe la captura del pago que muestre el monto y número de operación. Verificaré y le confirmo. Nota: el pago debe cubrir el total para confirmar el pedido. Nuestra cuenta Yape: {cuenta_yape}.",
+    "confirmacion_ubicacion": "Veo que su número está asociado a esta ubicación: {coordenadas_texto}. ¿Desea que entreguemos en esa misma dirección? (Responda Sí / No). Si responde No, envíe su dirección completa: calle, número, referencia, piso/departamento.",
+    "confirmacion_final_cliente": "Pedido confirmado ✅\nNombre: {NombreCliente}\nTeléfono: {Telefono}\nDirección de entrega: {Direccion} — Referencia: {Referencia}\nProductos:\n{items_lineas}\nSubtotal: s/ {subtotal}\nDelivery: s/ {delivery}\nCosto estimado de reparto: s/ {reparto_estimado}\nTotal: s/ {total}\nMétodo de pago: {metodo_pago}\nEstado de pago: {estado_pago}\nVuelto requerido: s/ {vuelto}\nETA estimado: {ETA_min} – {ETA_max} minutos\n¿Confirmo el pedido y lo envío a cocina? (Responda Sí para confirmar)",
+    "mensaje_cliente_asignado_agente": "Lamento el inconveniente. He asignado su caso a un agente humano; en breve le contactarán.",
+    "mensaje_cliente_cierre": "Gracias por su pedido. Hemos confirmado todo y su orden está en proceso. Si necesita algo más, responda en este chat. Buen día."
+  },
+
+  "escalado_y_paquetes": {
+    "gatillos_escalado": [
+      "comprobante_invalido",
+      "direccion_no_localizada",
+      "item_fuera_de_stock",
+      "pedido_grande_mayor_umbrales",
+      "cliente_solicita_gerente",
+      "solicita_reembolso",
+      "problema_repartidor",
+      "alergia_o_instruccion_compleja",
+      "incapacidad_resolver_tras_aclaracion"
+    ],
+    "paquete_escalado_campos": [
+      "id_orden",
+      "fecha_hora",
+      "motivo",
+      "datos_cliente",
+      "direccion_y_coordenadas",
+      "items_y_precios",
+      "subtotal_delivery_total",
+      "estado_pago_y_comprobantes",
+      "ultimas_entradas",
+      "acciones_intentadas",
+      "prioridad",
+      "tags"
+    ],
+    "seleccion_destinatario_por_regla": {
+      "pagos": "finanzas",
+      "cocina": "cocina",
+      "logistica": "reparto",
+      "reclamos": "supervisor",
+      "default": "cola_general"
+    },
+    "comunicacion_al_cliente_al_escalar": "Lamento el inconveniente. He asignado su caso a un agente humano; en breve le contactarán.",
+    "bloqueo_cierre_automatico": "Verdadero"
+  },
+
+  "validaciones_y_reglas_de_datos": {
+    "telefono": {
+      "formato_requerido": "E164",
+      "ejemplo_peru": "+519XXXXXXXX",
+      "accion_si_invalido": "solicitar_correcion"
+    },
+    "email": {
+      "validacion": "sintaxis",
+      "accion_si_invalido": "solicitar_confirmacion"
+    },
+    "direccion": {
+      "accion": ["geocodificar", "obtener_coordenadas", "validar_zona_entrega"],
+      "accion_si_no_localiza": "derivar_agente"
+    },
+    "comprobante": {
+      "accion": ["ejecutar_ocr", "extraer_monto", "buscar_numero_cuenta", "comparar_con_total"],
+      "criterio_verificado": "confianza_ocr >= 0.75 y (monto_coincide OR numero_cuenta_detectado)",
+      "accion_si_no_verificado": ["pedir_reenvio", "derivar_agente_si_reintentos_fallidos"]
+    },
+    "no_sobrescribir_datos_verificados": "La IA no sobrescribe datos verificados sin confirmación explícita del cliente.",
+    "consentimiento": "Solicitar consentimiento explícito para almacenar datos sensibles o compartir comprobantes con terceros."
+  },
+
+  "logs_metrica_y_sandbox": {
+    "logs_registrados": [
+      "texto_conversacion",
+      "hora_eventos",
+      "comprobantes",
+      "id_orden",
+      "ETA_calculado",
+      "tiempo_confirmacion",
+      "estado_pago",
+      "pedidos_escalados"
+    ],
+    "metricas": [
+      "tiempo_confirmacion_segundos",
+      "tasa_verificacion_pago",
+      "pedidos_escalados",
+      "tiempo_entre_confirmacion_y_registro_POS"
+    ],
+    "modo_sandbox": {
+      "descripcion": "Probar con 5 órdenes de ejemplo antes de producción.",
+      "casos_recomendados": [
+        "efectivo_con_vuelto",
+        "yape_correcto",
+        "yape_incorrecto",
+        "ubicacion_compartida",
+        "item_ambiguo"
+      ]
+    }
+  },
+
+  "manejo_multimedia": {
+    "audio": {
+      "soportes": ["ogg", "mp3", "wav", "m4a"],
+      "max_duracion_seg": 180,
+      "acciones": ["transcribir_audio", "detectar_intencion"],
+      "nota_al_cliente": "Si envía audio, la IA lo transcribirá y confirmará el pedido por texto."
+    },
+    "imagen": {
+      "soportes": ["jpg", "jpeg", "png", "webp"],
+      "max_size_mb": 10,
+      "acciones": ["extraer_texto_ocr", "detectar_comprobante"],
+      "nota_al_cliente": "Si envía captura de pago, la IA verificará el monto visible en la imagen y buscará el número/operación o la cuenta Yape en cualquier parte de la imagen."
+    },
+    "ubicacion": {
+      "formatos": ["geo:lat,long", "direccion_texto"],
+      "acciones": ["geocodificar", "calcular_distancia"],
+      "nota_al_cliente": "Compartir ubicación ayuda a calcular delivery y tiempo estimado."
+    }
+  },
+
+  "fallbacks": {
+    "error_transcripcion": {
+      "descripcion": "No se pudo transcribir el audio con confianza suficiente.",
+      "acciones": ["pedir_reenvio_audio", "ofrecer_escribir_texto", "derivar_agente_si_reintentos_fallidos"]
+    },
+    "error_ocr": {
+      "descripcion": "No se pudo extraer texto del comprobante o imagen.",
+      "acciones": ["pedir_imagen_mas_clara", "ofrecer_escribir_monto", "derivar_agente_si_reintentos_fallidos"]
+    },
+    "error_stock": {
+      "descripcion": "Falta stock de uno o más ítems.",
+      "acciones": ["informar_cliente_item_sin_stock", "sugerir_sustitutos", "derivar_agente_si_no_hay_sustituto"]
+    },
+    "derivar_agente_si_error_envio": {
+      "descripcion": "Error crítico al enviar bloque a número externo.",
+      "acciones": ["notificar_agente", "reintentar_envio", "marcar_pedido_para_revision"]
+    }
+  }
+}

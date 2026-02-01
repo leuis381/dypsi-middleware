@@ -1,0 +1,274 @@
+{
+  "categorias": [
+    {
+      "id": "entradas",
+      "nombre": "Entradas",
+      "productos": [
+        { "id": "pan_ajo_cheese", "nombre": "Pan al ajo cheese", "precio": 5.00, "descripcion": "5 unidades con mozzarella", "tags": ["sin_ensalada"] },
+        { "id": "pan_ajo_chorizo", "nombre": "Pan al ajo con chorizo", "precio": 8.00, "descripcion": "5 unidades con mozzarella y chorizo", "tags": ["sin_ensalada"] },
+        { "id": "pan_ajo_jamon", "nombre": "Pan al ajo con jamón", "precio": 8.00, "descripcion": "5 unidades con mozzarella y jamón", "tags": ["sin_ensalada"] },
+        { "id": "pan_ajo_salchicha", "nombre": "Pan al ajo con salchicha", "precio": 8.00, "descripcion": "5 unidades con mozzarella y salchicha", "tags": ["sin_ensalada"] },
+        { "id": "tequenos_mozzarella_6", "nombre": "Tequeños mozzarella 6und", "precio": 8.00, "descripcion": "6 unidades rellenas de mozzarella", "tags": ["sin_ensalada"] },
+        { "id": "tequenos_jamon_6", "nombre": "Tequeños jamón 6und", "precio": 10.00, "descripcion": "6 unidades rellenas de jamón", "tags": ["sin_ensalada"] },
+        { "id": "tequenos_pepperoni_6", "nombre": "Tequeños pepperoni 6und", "precio": 10.00, "descripcion": "6 unidades rellenas de pepperoni", "tags": ["sin_ensalada"] },
+        { "id": "tequenos_mozzarella_12", "nombre": "Tequeños mozzarella 12und", "precio": 15.00, "descripcion": "12 unidades rellenas de mozzarella", "tags": ["sin_ensalada"] },
+        { "id": "tequenos_jamon_12", "nombre": "Tequeños jamón 12und", "precio": 18.00, "descripcion": "12 unidades rellenas de jamón", "tags": ["sin_ensalada"] },
+        { "id": "tequenos_pepperoni_12", "nombre": "Tequeños pepperoni 12und", "precio": 18.00, "descripcion": "12 unidades rellenas de pepperoni", "tags": ["sin_ensalada"] }
+      ]
+    },
+    {
+      "id": "pizzas",
+      "nombre": "Pizzas",
+      "productos": [
+        { "id": "pizza_mozzarella", "nombre": "Pizza Mozzarella", "descripcion": "Base salsa de tomate y mozzarella", "variantes": { "pequena": 9.00, "mediana": 20.90, "familiar": 27.90 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_americana", "nombre": "Pizza Americana", "descripcion": "Jamón y pimiento", "variantes": { "pequena": 9.00, "mediana": 20.90, "familiar": 27.90 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_pepperoni", "nombre": "Pizza Pepperoni", "descripcion": "Pepperoni y pimiento", "variantes": { "pequena": 9.00, "mediana": 20.90, "familiar": 27.90 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_hawaiana", "nombre": "Pizza Hawaiana", "descripcion": "Jamón y piña", "variantes": { "pequena": 9.00, "mediana": 20.90, "familiar": 27.90 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_primavera", "nombre": "Pizza Primavera", "descripcion": "Jamón, tomate, aceitunas verdes, maíz, pimiento", "variantes": { "pequena": 13.00, "mediana": 28.00, "familiar": 39.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_fugazza", "nombre": "Pizza Fugazza", "descripcion": "Jamón, aceitunas verdes, cebolla, salsa blanca", "variantes": { "pequena": 13.00, "mediana": 28.00, "familiar": 39.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_continental", "nombre": "Pizza Continental", "descripcion": "Jamón, cebolla, champiñones, salsa blanca", "variantes": { "pequena": 13.00, "mediana": 28.00, "familiar": 39.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_salchipizzas", "nombre": "Pizza Salchipizzas", "descripcion": "Salchicha ahumada y papas", "variantes": { "pequena": 13.00, "mediana": 28.00, "familiar": 39.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_bacon", "nombre": "Pizza Bacon", "descripcion": "Jamón, tocino y pimiento", "variantes": { "pequena": 13.00, "mediana": 33.00, "familiar": 40.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_barbecue", "nombre": "Pizza Barbecue", "descripcion": "Pollo, salsa BBQ", "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_pizzacue_hawaiana", "nombre": "Pizza Pizzacue Hawaiana", "descripcion": "Pollo, piña, salsa BBQ", "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_pollo_saltado", "nombre": "Pizza Pollo Saltado", "descripcion": "Salsa de pollo saltado estilo peruano", "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_ratatouille", "nombre": "Pizza Ratatouille", "descripcion": "Jamón, tomate, zapallito, pimiento, tocino", "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_cordon_blue", "nombre": "Pizza Cordon Blue", "descripcion": "Jamón, pollo, champiñones, salsa blanca", "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_suprema", "nombre": "Pizza Suprema", "descripcion": "Jamón, carne, chorizo, tocino, cebolla, aceitunas, champiñón, pimiento", "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_vegetariana", "nombre": "Pizza Vegetariana", "descripcion": "Champiñón, tomate, cebolla, aceitunas verdes, pimiento", "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_bolonesa_clasica", "nombre": "Pizza Boloñesa Clásica", "descripcion": "Salsa boloñesa, albahaca, pimiento", "variantes": { "pequena": 13.00, "mediana": 33.00, "familiar": 40.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_bolonesa_especial", "nombre": "Pizza Boloñesa Especial", "descripcion": "Salsa boloñesa, jamón, albahaca, pimiento", "variantes": { "pequena": 14.00, "mediana": 35.00, "familiar": 43.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_super_meat", "nombre": "Pizza Super Meat", "descripcion": "Carne, cebolla, chorizo, tocino, pimiento", "variantes": { "pequena": 14.00, "mediana": 35.00, "familiar": 43.00 }, "tags": ["sin_ensalada"] },
+        { "id": "pizza_bolonesa_premium", "nombre": "Pizza Boloñesa Premium", "descripcion": "Salsa boloñesa, jamón, tocino, albahaca, pimiento", "variantes": { "pequena": 16.00, "mediana": 37.00, "familiar": 45.00 }, "tags": ["sin_ensalada"] }
+      ]
+    },
+    {
+      "id": "pastas",
+      "nombre": "Pastas",
+      "productos": [
+        { "id": "lasagna_mixta_450", "nombre": "Lasaña Mixta 450gr", "precio": 14.90, "descripcion": "Boloñesa + bechamel + jamón", "tags": ["sin_ensalada"] },
+        { "id": "lasagna_bolonesa_personal", "nombre": "Lasaña Boloñesa Personal", "precio": 14.90, "descripcion": "Boloñesa + jamón + mozzarella", "tags": ["sin_ensalada"] },
+        { "id": "lasagna_pollo_personal", "nombre": "Lasaña de Pollo Personal", "precio": 16.90, "descripcion": "Bechamel + pollo + champiñón", "tags": ["sin_ensalada"] },
+        { "id": "lasagna_personal_2_pan", "nombre": "Lasaña personal + 2 pan al ajo", "precio": 16.90, "descripcion": "Lasaña (mixta o boloñesa) + 2 pan al ajo", "tags": ["sin_ensalada"] },
+        { "id": "lasagna_1kg", "nombre": "Lasaña 1kg", "precio": 29.00, "descripcion": "1kg: Mixta / Pollo / Boloñesa (sabor único)", "tags": ["sin_ensalada"] },
+        { "id": "lasagna_1kg_5_pan", "nombre": "Lasaña 1kg + 5 pan al ajo", "precio": 31.90, "descripcion": "Lasaña 1kg (Mixta/Pollo/Boloñesa) + 5 pan al ajo", "tags": ["sin_ensalada"] },
+        { "id": "lasagna_con_alitas", "nombre": "Lasaña + 6 alitas", "precio": 28.00, "descripcion": "Lasaña personal acompañada de 6 alitas", "tags": ["sin_ensalada"] },
+        { "id": "fettuccine_alfredo", "nombre": "Fettuccine Alfredo", "precio": 17.00, "descripcion": "Fettuccine con salsa Alfredo", "tags": ["sin_ensalada"] },
+        { "id": "fettuccine_bolonesa", "nombre": "Fettuccine Boloñesa", "precio": 17.00, "descripcion": "Fettuccine con salsa boloñesa", "tags": ["sin_ensalada"] },
+        { "id": "fettuccine_pesto", "nombre": "Fettuccine Pesto", "precio": 17.00, "descripcion": "Fettuccine con salsa pesto", "tags": ["sin_ensalada"] },
+        { "id": "fettuccine_stroganoff", "nombre": "Fettuccine Stroganoff", "precio": 22.00, "descripcion": "Pollo + champiñón + cebolla en salsa stroganoff", "tags": ["sin_ensalada"] },
+        { "id": "fettuccine_alfredo_especial", "nombre": "Fettuccine Alfredo Especial", "precio": 20.00, "descripcion": "Fettuccine Alfredo con pollo y champiñón", "tags": ["sin_ensalada"] }
+      ]
+    },
+    {
+      "id": "alitas_crispy",
+      "nombre": "Alitas / Crispy / Chicharrón",
+      "productos": [
+        { "id": "alitas_broaster_3", "nombre": "Alitas broaster 3und", "precio": 11.00, "descripcion": "3 unidades broaster", "tags": ["sin_ensalada"] },
+        { "id": "alitas_broaster_4", "nombre": "Alitas broaster 4und", "precio": 14.00, "descripcion": "4 unidades broaster", "tags": ["sin_ensalada"] },
+        { "id": "alitas_6_variedades", "nombre": "Alitas 6und (broaster/BBQ/búfalo/maracuyá/acevichada)", "precio": 18.00, "descripcion": "6 unidades en la salsa a elección", "tags": ["sin_ensalada"] },
+        { "id": "alitas_broaster_12", "nombre": "Alitas broaster 12und", "precio": 32.00, "descripcion": "12 unidades broaster", "tags": ["sin_ensalada"] },
+        { "id": "alitas_broaster_12_pepsi", "nombre": "Alitas broaster 12und + Pepsi 1lt", "precio": 35.00, "descripcion": "12 alitas + Pepsi 1lt", "tags": ["sin_ensalada"] },
+        { "id": "alitas_broaster_24_pepsi", "nombre": "Alitas broaster 24und + Pepsi 1.5lt", "precio": 65.00, "descripcion": "24 alitas + Pepsi 1.5lt", "tags": ["sin_ensalada"] },
+        { "id": "crispy_2", "nombre": "Crispy 2 piezas", "precio": 19.90, "descripcion": "2 piezas crispy", "tags": ["sin_ensalada"] },
+        { "id": "crispy_3", "nombre": "Crispy 3 piezas", "precio": 22.90, "descripcion": "3 piezas crispy", "tags": ["sin_ensalada"] },
+        { "id": "crispy_4", "nombre": "Crispy 4 piezas", "precio": 25.90, "descripcion": "4 piezas crispy", "tags": ["sin_ensalada"] },
+        { "id": "crispy_5", "nombre": "Crispy 5 piezas", "precio": 28.90, "descripcion": "5 piezas crispy", "tags": ["sin_ensalada"] },
+        { "id": "crispy_4_pepsi", "nombre": "Crispy 4 piezas + Pepsi 1lt", "precio": 28.90, "descripcion": "4 piezas crispy + Pepsi 1lt", "tags": ["sin_ensalada"] },
+        { "id": "crispy_5_pepsi", "nombre": "Crispy 5 piezas + Pepsi 1lt", "precio": 31.90, "descripcion": "5 piezas crispy + Pepsi 1lt", "tags": ["sin_ensalada"] },
+        { "id": "chicharron_personal", "nombre": "Chicharrón personal", "precio": 18.00, "descripcion": "Porción personal de chicharrón", "tags": ["sin_ensalada"] },
+        { "id": "chicharron_acevichado_personal", "nombre": "Chicharrón acevichado personal", "precio": 22.00, "descripcion": "Chicharrón con salsa acevichada (personal)", "tags": ["sin_ensalada"] },
+        { "id": "chicharron_familiar", "nombre": "Chicharrón familiar", "precio": 31.00, "descripcion": "Porción familiar de chicharrón", "tags": ["sin_ensalada"] },
+        { "id": "chicharron_acevichado_familiar", "nombre": "Chicharrón acevichado familiar", "precio": 35.00, "descripcion": "Chicharrón acevichado (familiar)", "tags": ["sin_ensalada"] }
+      ]
+    },
+    {
+      "id": "hamburguesas",
+      "nombre": "Hamburguesas",
+      "productos": [
+        { "id": "burger_clasica", "nombre": "Hamburguesa Clásica (carne artesanal)", "precio": 10.00, "descripcion": "Carne artesanal; cremas y papas (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_cheese", "nombre": "Hamburguesa Cheese", "precio": 12.00, "descripcion": "Con queso (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_jamon", "nombre": "Hamburguesa Jamón", "precio": 12.00, "descripcion": "Con jamón (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_huevo", "nombre": "Hamburguesa Huevo", "precio": 12.00, "descripcion": "Con huevo (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_especial_jamon_queso", "nombre": "Especial jamón + queso", "precio": 14.00, "descripcion": "Jamón y queso (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_especial_huevo_queso", "nombre": "Especial huevo + queso", "precio": 14.00, "descripcion": "Huevo y queso (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_premium", "nombre": "Premium (jamón + queso + huevo)", "precio": 16.00, "descripcion": "Jamón, queso y huevo (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_acaramelizada", "nombre": "Acaramelizada (cebolla)", "precio": 15.00, "descripcion": "Cebolla acaramelizada (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_bacon", "nombre": "Bacon (tocino)", "precio": 16.00, "descripcion": "Con tocino (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_salchiburger", "nombre": "Salchiburger (salchicha ahumada)", "precio": 15.00, "descripcion": "Con salchicha ahumada (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_choriburger", "nombre": "Choriburger (chorizo)", "precio": 15.00, "descripcion": "Con chorizo (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_hawaiana", "nombre": "Hawaiana (piña)", "precio": 15.00, "descripcion": "Con piña (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_doble", "nombre": "Doble carne", "precio": 17.00, "descripcion": "Doble porción de carne (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_a_lo_pobre", "nombre": "A lo pobre (plátano)", "precio": 18.00, "descripcion": "Con plátano frito (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "burger_al_plato", "nombre": "Al plato (arroz chaufa + chorizo)", "precio": 18.00, "descripcion": "Servida al plato con arroz chaufa y chorizo (sin ensalada)", "tags": ["sin_ensalada"] }
+      ]
+    },
+    {
+      "id": "filete_choripan",
+      "nombre": "Filete & Choripán",
+      "productos": [
+        { "id": "filete_clasica", "nombre": "Filete hamburguesa Clásica", "precio": 10.00, "descripcion": "Ensalada + cremas + papas (sin ensalada en menú final)", "tags": ["sin_ensalada"] },
+        { "id": "filete_cheese", "nombre": "Filete hamburguesa Cheese", "precio": 12.00, "descripcion": "Con queso (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "filete_jamon", "nombre": "Filete hamburguesa Jamón", "precio": 12.00, "descripcion": "Con jamón (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "filete_huevo", "nombre": "Filete hamburguesa Huevo", "precio": 12.00, "descripcion": "Con huevo (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "filete_premium", "nombre": "Filete hamburguesa Premium", "precio": 16.00, "descripcion": "Versión premium con jamón, queso y huevo (sin ensalada)", "tags": ["sin_ensalada"] },
+        { "id": "choripan_clasico", "nombre": "Choripán clásico", "precio": 6.00, "descripcion": "Chorizo + papas nativas", "tags": ["sin_ensalada"] },
+        { "id": "choripan_cheese", "nombre": "Choripán cheese", "precio": 8.00, "descripcion": "Chorizo + queso + papas nativas", "tags": ["sin_ensalada"] },
+        { "id": "choripan_premium", "nombre": "Choripán premium", "precio": 11.00, "descripcion": "Chorizo + queso + jamón + huevo", "tags": ["sin_ensalada"] }
+      ]
+    },
+    {
+      "id": "salchipapas",
+      "nombre": "Salchipapas",
+      "productos": [
+        { "id": "salchipapa_clasica", "nombre": "Salchipapa clásica", "precio": 10.00, "descripcion": "Salchicha ahumada + papas nativas", "tags": ["sin_ensalada"] },
+        { "id": "salchimix", "nombre": "Salchimix", "precio": 11.00, "descripcion": "Salchicha ahumada + chorizo + otros ingredientes", "tags": ["sin_ensalada"] },
+        { "id": "salchichaufa", "nombre": "Salchichaufa", "precio": 11.00, "descripcion": "Salchicha ahumada + chaufa", "tags": ["sin_ensalada"] },
+        { "id": "salchicheese", "nombre": "Salchicheese", "precio": 14.00, "descripcion": "Mozzarella + crema casera", "tags": ["sin_ensalada"] },
+        { "id": "salchibacon", "nombre": "Salchibacon", "precio": 15.00, "descripcion": "Mozzarella + crema casera + tocino", "tags": ["sin_ensalada"] },
+        { "id": "salchibroaster", "nombre": "Salchibroaster", "precio": 18.00, "descripcion": "Incluye 3 piezas de alitas + cremas", "tags": ["sin_ensalada"] },
+        { "id": "salchipapa_a_lo_pobre", "nombre": "Salchipapa a lo pobre", "precio": 20.00, "descripcion": "Huevo + plátano frito", "tags": ["sin_ensalada"] }
+      ]
+    },
+    {
+      "id": "helados",
+      "nombre": "Helados",
+      "productos": [
+        { "id": "cono", "nombre": "Cono", "precio": 3.00, "descripcion": "Vainilla / Chocolate / Mitad y Mitad", "tags": [] },
+        { "id": "super_cono_mega_dypsi", "nombre": "Super Cono Mega Dypsi", "precio": 4.00, "descripcion": "Vainilla / Chocolate / Mitad y Mitad + toppings (fresa, maracuyá, manjar)", "tags": [] },
+        { "id": "sundae", "nombre": "Sundae", "precio": 4.00, "descripcion": "Fresa / Manjar / Chocolate", "tags": [] },
+        { "id": "dypsi_flurry", "nombre": "Dypsi Flurry", "precio": 5.00, "descripcion": "Oreo / Chinchin / Princesa / Vizio / Maní", "tags": [] }
+      ]
+    },
+    {
+      "id": "bebidas",
+      "nombre": "Bebidas",
+      "productos": [
+        { "id": "chicha_1lt", "nombre": "Chicha 1lt", "precio": 8.00, "descripcion": "Chicha 1 litro", "tags": ["solo_delivery"] },
+        { "id": "maracuya_1lt", "nombre": "Maracuyá 1lt", "precio": 8.00, "descripcion": "Maracuyá 1 litro", "tags": ["solo_delivery"] },
+        { "id": "chicha_personal", "nombre": "Chicha personal", "precio": 4.00, "descripcion": "Chicha personal", "tags": [] },
+        { "id": "maracuya_personal", "nombre": "Maracuyá personal", "precio": 4.00, "descripcion": "Maracuyá personal", "tags": [] },
+        { "id": "inca_kola_500", "nombre": "Inca Kola 500ml", "precio": 4.00, "descripcion": "Gaseosa Inca Kola 500ml", "tags": [] },
+        { "id": "coca_cola_500", "nombre": "Coca Cola 500ml", "precio": 4.00, "descripcion": "Coca Cola 500ml", "tags": [] },
+        { "id": "fanta_naranja_500", "nombre": "Fanta naranja 500ml", "precio": 3.50, "descripcion": "Fanta naranja 500ml", "tags": [] },
+        { "id": "fanta_inglesa_500", "nombre": "Fanta inglesa 500ml", "precio": 3.50, "descripcion": "Fanta inglesa 500ml", "tags": [] },
+        { "id": "sprite_500", "nombre": "Sprite 500ml", "precio": 3.50, "descripcion": "Sprite 500ml", "tags": [] },
+        { "id": "pepsi_355", "nombre": "Pepsi 355ml", "precio": 2.00, "descripcion": "Pepsi 355ml", "tags": [] },
+        { "id": "concordia_355", "nombre": "Concordia 355ml", "precio": 2.00, "descripcion": "Concordia 355ml", "tags": [] },
+        { "id": "guarana_450", "nombre": "Guaraná 450ml", "precio": 3.00, "descripcion": "Guaraná 450ml", "tags": [] },
+        { "id": "pepsi_1lt", "nombre": "Pepsi 1lt", "precio": 5.00, "descripcion": "Pepsi 1 litro", "tags": [] },
+        { "id": "pepsi_1_5lt", "nombre": "Pepsi 1.5lt", "precio": 6.50, "descripcion": "Pepsi 1.5 litro", "tags": [] },
+        { "id": "inca_kola_1_5lt", "nombre": "Inca Kola 1.5lt", "precio": 9.00, "descripcion": "Inca Kola 1.5 litro", "tags": [] },
+        { "id": "coca_cola_1_5lt", "nombre": "Coca Cola 1.5lt", "precio": 9.00, "descripcion": "Coca Cola 1.5 litro", "tags": [] },
+        { "id": "jugo_fresa", "nombre": "Jugo Fresa", "precio": 7.50, "descripcion": "Jugo natural de fresa", "tags": [] },
+        { "id": "jugo_papaya", "nombre": "Jugo Papaya", "precio": 7.50, "descripcion": "Jugo natural de papaya", "tags": [] },
+        { "id": "jugo_pina", "nombre": "Jugo Piña", "precio": 7.50, "descripcion": "Jugo natural de piña", "tags": [] },
+        { "id": "jugo_maracuya", "nombre": "Jugo Maracuyá", "precio": 7.50, "descripcion": "Jugo natural de maracuyá", "tags": [] },
+        { "id": "jugo_surtido", "nombre": "Jugo Surtido", "precio": 7.50, "descripcion": "Jugo surtido de frutas", "tags": [] },
+        { "id": "jugo_fresa_leche", "nombre": "Fresa con leche", "precio": 11.00, "descripcion": "Jugo de fresa con leche", "tags": [] },
+        { "id": "jugo_papaya_leche", "nombre": "Papaya con leche", "precio": 11.00, "descripcion": "Jugo de papaya con leche", "tags": [] },
+        { "id": "jugo_surtido_leche", "nombre": "Surtido con leche", "precio": 13.00, "descripcion": "Jugo surtido con leche", "tags": [] },
+        { "id": "cafe", "nombre": "Café", "precio": 4.00, "descripcion": "Café caliente", "tags": [] },
+        { "id": "cafe_con_leche", "nombre": "Café con leche", "precio": 6.00, "descripcion": "Café con leche", "tags": [] },
+        { "id": "infusiones", "nombre": "Infusiones", "precio": 3.00, "descripcion": "Té, manzanilla, anís y hierbaluisa", "tags": [] },
+        { "id": "agua_500", "nombre": "Agua San Carlos 500ml", "precio": 2.00, "descripcion": "Agua mineral 500ml", "tags": [] },
+        { "id": "agua_3lt", "nombre": "Agua San Carlos 3lt", "precio": 4.50, "descripcion": "Agua mineral 3 litros", "tags": ["solo_delivery"] }
+      ]
+    },
+    {
+      "id": "promos",
+      "nombre": "Promociones",
+      "productos": [
+        { "id": "promo_personal_pepsi_355", "nombre": "Pizza personal 4tj + Pepsi 355ml", "precio": 10.00, "descripcion": "Pizza personal (Americana/pepperoni/hawaiana/mozzarella) + Pepsi 355ml", "tags": ["promo"] },
+        { "id": "promo_personal_lasagna", "nombre": "Pizza personal 4tj + lasaña personal", "precio": 24.00, "descripcion": "Pizza personal + lasaña personal", "tags": ["promo"] },
+        { "id": "promo_duo_clasicas_8", "nombre": "Dúo pizzas clásicas 8tj", "precio": 35.90, "descripcion": "2 pizzas clásicas de 8 tajadas (Americana/pepperoni/hawaiana/mozzarella)", "tags": ["promo"] },
+        { "id": "promo_3_pizzas_8", "nombre": "3 pizzas clásicas 8tj", "precio": 52.90, "descripcion": "3 pizzas clásicas de 8 tajadas", "tags": ["promo"] },
+        { "id": "promo_clasica_8_lasagna_pepsi_1lt", "nombre": "Clásica 8tj + lasaña + Pepsi 1lt", "precio": 36.00, "descripcion": "Pizza clásica 8 tajadas + lasaña + Pepsi 1lt", "tags": ["promo"] },
+        { "id": "promo_familiar_12_pan_pepsi", "nombre": "Familiar 12tj (clásica) + pan al ajo + Pepsi 1.5lt", "precio": 30.90, "descripcion": "Pizza familiar 12 tajadas (clásica) + pan al ajo + Pepsi 1.5lt", "tags": ["promo"] },
+        { "id": "promo_personal_6_alitas", "nombre": "Pizza personal 4tj + 6 alitas", "precio": 24.00, "descripcion": "Pizza personal + 6 alitas", "tags": ["promo"] },
+        { "id": "promo_pizza_8_pan_pepsi_1lt", "nombre": "Pizza 8tj + pan al ajo + Pepsi 1lt", "precio": 22.90, "descripcion": "Pizza mediana + pan al ajo + Pepsi 1lt", "tags": ["promo"] },
+        { "id": "promo_duo_clasicas_pepsi_1_5", "nombre": "Dúo clásicas 8tj + Pepsi 1.5lt", "precio": 41.90, "descripcion": "2 pizzas clásicas 8 tajadas + Pepsi 1.5lt", "tags": ["promo"] },
+        { "id": "promo_clasica_8_6_alitas_pepsi_1lt", "nombre": "Clásica 8tj + 6 alitas + Pepsi 1lt", "precio": 37.00, "descripcion": "Pizza clásica 8 tajadas + 6 alitas + Pepsi 1lt", "tags": ["promo"] },
+        { "id": "promo_especial_8_pan_pepsi_1lt", "nombre": "Especial 8tj (1 sabor) + pan al ajo + Pepsi 1lt", "precio": 38.00, "descripcion": "Pizza especial 8 tajadas (1 sabor) + pan al ajo + Pepsi 1lt", "tags": ["promo"] },
+        { "id": "promo_familiar_especial_12_pan_pepsi_1_5", "nombre": "Familiar 12tj (especial, 1 sabor) + pan al ajo + Pepsi 1.5lt", "precio": 48.00, "descripcion": "Pizza familiar especial 12 tajadas + pan al ajo + Pepsi 1.5lt", "tags": ["promo"] }
+      ]
+    },
+    {
+      "id": "menu_especial",
+      "nombre": "Menú Especial",
+      "productos": [
+        { "id": "choripapa", "nombre": "Choripapa", "precio": 12.90, "descripcion": "Chorizo + papas nativas", "tags": ["promo"] },
+        { "id": "combo_burger_pepsi", "nombre": "Burger Clásica + Pepsi 355ml", "precio": 11.00, "descripcion": "Hamburguesa clásica de carne artesanal + Pepsi 355ml (precio combo aplicado)", "tags": ["promo"] },
+        { "id": "mostro", "nombre": "Mostro", "precio": 11.00, "descripcion": "3 alitas + chaufa + papas + Pepsi o Concordia 355ml", "tags": ["promo"] },
+        { "id": "mostrito", "nombre": "Mostrito", "precio": 11.00, "descripcion": "3 alitas + chaufa + papas + Pepsi o Concordia 355ml", "tags": ["promo"] },
+        { "id": "martes_barra_libre", "nombre": "Martes de Barra Libre", "precio": null, "descripcion": "Promoción especial solo los martes; gestión y condiciones manejadas por agente humano", "tags": ["promo_dia", "requiere_agente"] },
+        { "id": "combo_6alitas_fettuccine", "nombre": "6 Alitas + Fettuccine Alfredo", "precio": 24.00, "descripcion": "Combo de 6 alitas broaster + fettuccine Alfredo", "tags": ["promo"] },
+        { "id": "promo_2_pizzas_clasicas_jueves", "nombre": "2 Pizzas Clásicas 8tj (jueves)", "precio": 29.90, "descripcion": "Promoción válida solo los jueves en sabores clásicos", "tags": ["promo_dia"] },
+        { "id": "combo_fettuccine_lasagna", "nombre": "Fettuccine + Lasaña Mixta", "precio": 24.00, "descripcion": "Combo de fettuccine al gusto + lasaña mixta", "tags": ["promo"] }
+      ]
+    }
+  ],
+  "reglas": [
+    {
+      "id": "regla_combo_burger_pepsi",
+      "descripcion": "Aplicar precio combo para 'combo_burger_pepsi': precio fijo S/11.00 (sobrescribe suma individual).",
+      "productos_afectados": ["combo_burger_pepsi", "burger_clasica", "pepsi_355"],
+      "tipo": "precio_combo",
+      "condiciones": { "aplicable": "si se solicita exactamente Burger Clásica + Pepsi 355ml" }
+    },
+    {
+      "id": "regla_mostro_mostrito",
+      "descripcion": "Mostro y Mostrito: precio fijo S/11.00 por combo (3 alitas + chaufa + papas + Pepsi/Concordia 355ml).",
+      "productos_afectados": ["mostro", "mostrito"],
+      "tipo": "precio_combo",
+      "condiciones": { "aplicable": "si incluye bebida Pepsi 355ml o Concordia 355ml" }
+    },
+    {
+      "id": "regla_choripapa",
+      "descripcion": "Choripapa: precio S/12.90 (producto individual).",
+      "productos_afectados": ["choripapa"],
+      "tipo": "precio_fijo"
+    },
+    {
+      "id": "regla_combo_6alitas_fettuccine",
+      "descripcion": "Combo 6 alitas + Fettuccine Alfredo: precio fijo S/24.00.",
+      "productos_afectados": ["combo_6alitas_fettuccine"],
+      "tipo": "precio_combo"
+    },
+    {
+      "id": "regla_2_pizzas_jueves",
+      "descripcion": "Promo 'promo_2_pizzas_clasicas_jueves' válida solo los jueves; aplicar precio S/29.90 para 2 pizzas clásicas 8 tajadas (sabores clásicos únicamente).",
+      "productos_afectados": ["promo_2_pizzas_clasicas_jueves"],
+      "tipo": "promo_dia",
+      "condiciones": { "dia_semana": "jueves", "sabores_permitidos": ["pizza_americana", "pizza_pepperoni", "pizza_hawaiana", "pizza_mozzarella"] }
+    },
+    {
+      "id": "regla_martes_barra_libre",
+      "descripcion": "Martes de Barra Libre: promoción gestionada por agente humano; no automatizar condiciones ni cobros desde la IA.",
+      "productos_afectados": ["martes_barra_libre"],
+      "tipo": "requiere_agente",
+      "condiciones": { "dia_semana": "martes", "accion": "derivar_a_agente" }
+    },
+    {
+      "id": "regla_promos_general",
+      "descripcion": "Todas las entradas en 'promos' con tag 'promo' deben validar disponibilidad de sabores y stock antes de confirmar pedido.",
+      "productos_afectados": [],
+      "tipo": "validacion_stock",
+      "condiciones": { "aplicable_a_tags": ["promo"] }
+    },
+    {
+      "id": "regla_sin_ensalada",
+      "descripcion": "Tag 'sin_ensalada' indica que el producto no incluye ensalada en su preparación ni en la descripción final mostrada por la IA.",
+      "productos_afectados": [],
+      "tipo": "presentacion",
+      "condiciones": { "aplicable_a_tags": ["sin_ensalada"] }
+    },
+    {
+      "id": "regla_solo_delivery",
+      "descripcion": "Tag 'solo_delivery' indica que el producto está disponible únicamente para delivery; la IA debe informar si el usuario solicita consumo en local.",
+      "productos_afectados": [],
+      "tipo": "canal_venta",
+      "condiciones": { "aplicable_a_tags": ["solo_delivery"] }
+    }
+  ]
+}

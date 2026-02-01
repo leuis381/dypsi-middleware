@@ -1,0 +1,85 @@
+{
+  "bienvenida": "👋 ¡Hola! Bienvenido a Dypsi 🍕\nIndíqueme su pedido (producto, cantidad y si es delivery o recojo) y lo registro 😊",
+
+  "carta": "📖 Nuestra Carta Dypsi está disponible aquí: 🛒 wa.me/c/51906538844\nPor favor indíqueme qué desea pedir 😊",
+
+  "audio": "🎧 Hemos recibido su audio.\nPara procesar correctamente el pedido, envíelo por mensaje de texto 😊",
+
+  "error": "😅 No logré entender su mensaje.\nEjemplo: 2 pizzas hawaianas\nIndíqueme su pedido de forma clara, por favor 😊",
+
+  "error_reintento": "⚠️ Parece que hubo un error.\nPor favor intente nuevamente enviar su pedido en texto 😊",
+
+  "pedido_detectado": "✅ Pedido registrado:\n{{pedido}}\n📍 ¿Es delivery o recojo? Si es delivery, confirme su dirección 😊",
+
+  "direccion_faltante": "📍 Por favor indíqueme su dirección completa (calle, número, referencia) o comparta su ubicación de Google Maps 😊",
+
+  "direccion_confirmada": "📍 Dirección confirmada: {{direccion}}\nGracias, ahora calculemos el delivery 😊",
+
+  "delivery_calculado": "🚚 Delivery calculado: s/ {{delivery}} — regla usada: {{regla}}\nSubtotal: s/ {{subtotal}}\nTotal: s/ {{total}}\n¿Cómo desea pagar? (Efectivo / Yape / Plin) 😊",
+
+  "pago_efectivo": "💵 Indíqueme con cuánto pagará en efectivo (ej. 'Pago con s/ 50') para calcular el vuelto 😊",
+
+  "pago_yape": "💸 Realice el pago por Yape a nombre de Joel Santos: 900146424\nLuego envíe la imagen del comprobante 😊",
+
+  "comprobante_recibido": "📷 Comprobante recibido.\nEstamos verificando su pago 😊",
+
+  "comprobante_invalido": "⚠️ El comprobante no muestra el monto correcto.\nPor favor reenvíe la imagen o indique si complementará con efectivo 😊",
+
+  "confirmado": "🎉 Pedido confirmado ✅\nSubtotal: s/ {{subtotal}}\nDelivery: s/ {{delivery}}\nTotal: s/ {{total}}\nETA estimado: {{eta_min}}–{{eta_max}} minutos\nGracias por elegir Dypsi 🍕",
+
+  "en_cocina": "👨‍🍳 Su pedido está en preparación.\nLe avisaremos cuando esté listo para reparto 😊",
+
+  "en_reparto": "🛵 Su pedido está en camino con el repartidor {{repartidor_id}}.\nETA: {{eta_reparto}} minutos 😊",
+
+  "entregado": "✅ Pedido entregado.\n¡Gracias por su compra en Dypsi! 🍕\n¿Desea dejarnos un comentario? 😊",
+
+  "cancelado": "❌ Pedido cancelado.\nGracias por comunicarse con Dypsi 😊",
+
+  "contacto_perdido": "⌛ No recibimos respuesta en el tiempo indicado.\nSi desea continuar, puede iniciar un nuevo pedido 😊",
+
+  "reclamo": "🙏 Lamentamos el inconveniente.\nSu caso será derivado a un agente humano para revisión inmediata 😊",
+
+  "escalado_humano": "📢 Su caso requiere verificación humana.\nUn agente revisará su pedido y le dará seguimiento 😊",
+
+  "cliente_agresivo": "Entendemos su molestia 🙏.\nPara poder ayudarle necesitamos que nos indique su pedido de forma clara.\nTodo pedido requiere previo pago y confirmación 😊",
+
+  "cliente_exige_llamada": "📞 Por políticas de atención, los pedidos se registran únicamente por este chat.\nNo contamos con atención telefónica 😊",
+
+  "cliente_confuso_pago": "💸 Formas de pago:\nYape: 900146424 (Joel Santos)\nPlin: 900146424\nEfectivo: indique monto para el cambio\nTodo pedido requiere previo pago y confirmación 😊",
+
+  "cliente_fuera_carta": "Ese producto no está disponible actualmente.\nPuede elegir otro de nuestra carta oficial 🛒 wa.me/c/51906538844 😊",
+
+  "cliente_credito": "Por políticas de atención, no trabajamos con crédito ni fiado.\nTodo pedido es previo pago 😊",
+
+  "cliente_preguntas_repetitivas": "Ya le hemos indicado la información.\nPara continuar con su pedido necesitamos confirmación y previo pago 😊",
+
+  "promociones": "🎁 Las promociones vigentes están en nuestra carta oficial.\nPuede revisarlas aquí: 🛒 wa.me/c/51906538844 😊",
+
+  "tiempo_estimado": "⏱️ El tiempo estimado de entrega es de {{eta_min}}–{{eta_max}} minutos.\nGracias por su paciencia 😊",
+
+  "cierre_conversacion": "✅ Conversación cerrada.\nGracias por comunicarse con Dypsi 🍕",
+
+  "reintento_pago": "⚠️ No recibimos su comprobante.\nPor favor envíelo nuevamente para confirmar su pedido 😊",
+
+  "reintento_direccion": "⚠️ No logramos ubicar su dirección.\nPor favor envíe una referencia más clara o comparta su ubicación de Google Maps 😊",
+
+  "escalado_pago": "📢 Su pago requiere verificación humana.\nUn agente revisará su comprobante y le confirmará 😊",
+
+  "escalado_direccion": "📢 Su dirección requiere verificación humana.\nUn agente revisará la ubicación y le confirmará 😊",
+
+  "escalado_reclamo": "📢 Su reclamo será atendido por un agente humano.\nGracias por su paciencia 😊",
+
+  "apagado": "⏸️ La IA se ha detenido para que un agente humano intervenga.\nPor favor espere mientras revisamos su caso 🙏",
+
+  "encendido": "▶️ La IA vuelve a estar activa.\nPuede continuar con sus pedidos normalmente 😊",
+
+  "prevencion_error": "⚠️ Para evitar errores, confirme siempre su dirección y método de pago antes de finalizar 😊",
+
+  "confirmacion_final": "✅ Confirmación final:\nNombre: {{nombre_cliente}}\nTeléfono: {{telefono}}\nDirección: {{direccion}}\nProductos: {{pedido}}\nTotal: s/ {{total}}\nMétodo de pago: {{metodo_pago}}\nETA: {{eta_min}}–{{eta_max}} minutos\nResponda 'Sí' para confirmar 😊",
+
+  "escalado_agresivo": "📢 Debido a lenguaje ofensivo, la IA se ha detenido.\nUn agente humano continuará la atención 🙏",
+
+  "escalado_confusion": "📢 La conversación presenta inconsistencias.\nUn agente humano intervendrá para resolverlas 😊",
+
+  "retomar_control": "▶️ La IA retoma el control tras intervención humana.\nPuede continuar con sus pedidos normalmente 😊"
+}

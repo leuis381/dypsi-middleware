@@ -1,0 +1,8 @@
+[
+  { "max": 0.9, "precio": 3 },
+  { "max": 2, "precio": 4 },
+  { "max": 3, "precio": 5 },
+  { "max": 4, "precio": 6 },
+  { "max": 5, "precio": 7 },
+  { "max": 999, "precio": 8 }
+]
