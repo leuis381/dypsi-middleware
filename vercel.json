@@ -1,0 +1,34 @@
+{
+  "version": 2,
+  "env": {
+    "FIREBASE_PROJECT_ID": "@firebase_project_id",
+    "FIREBASE_CLIENT_EMAIL": "@firebase_client_email",
+    "FIREBASE_PRIVATE_KEY": "@firebase_private_key",
+    "KOMMO_API_KEY": "@kommo_api_key",
+    "GOOGLE_MAPS_API_KEY": "@google_maps_api_key",
+    "AGENT_WEBHOOK": "@agent_webhook",
+    "NODE_ENV": "production"
+  },
+  "functions": {
+    "api/kommo.js": {
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
+  "builds": [
+    {
+      "src": "api/kommo.js",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "api/kommo.js"
+    },
+    {
+      "src": "/(.*)",
+      "status": 404
+    }
+  ]
+}

@@ -19,7 +19,9 @@ import axios from "axios";
 import admin from "firebase-admin";
 import parseOrderText from "../lib/parse-order.js";
 import { readImage, readImageBuffer, extractMostLikelyTotal, validateReceiptAgainstOrder, parseWhatsAppCatalogSnippet } from "../lib/ocr.js";
-import { detectAddress, normalizeAddress } from "../lib/detect-address.js";
+import detectAddressModule from "../lib/detect-address.js";
+const { isAddress, normalizeAddress, extractAddressComponents } = detectAddressModule;
+const detectAddress = isAddress;
 import pricing from "../lib/zona-precios.js";
 import sessionStore from "../lib/session-store.js";
 import aiEngineModule from "../lib/ai-engine.js";
@@ -43,7 +45,7 @@ import {
 } from "../lib/utils.js";
 import { CONFIG } from "../lib/config.js";
 
-const { detectIntention, ConversationContext, generateSmartResponse, generateSuggestions, validateOrder, INTENTIONS } = aiEngineModule;
+const { detectIntention, ConversationContext, generateSmartResponse, generateSuggestions, validateOrder, INTENTIONS, findProductInMenu } = aiEngineModule;
 const { smartOCRAnalysis } = smartOcrModule;
 const { UserProfile } = userProfileModule;
 import fs from "fs";
@@ -116,7 +118,7 @@ if (!admin.apps.length && CONFIG.FIREBASE_PROJECT_ID) {
         privateKey: CONFIG.FIREBASE_PRIVATE_KEY,
       }),
     });
-    sessionStore.initFirebase(admin);
+      // sessionStore.initFirebase(admin);  // Not needed - session-store handles this
     logger.info('Firebase initialized successfully');
     metrics.record('firebase_init', 1, { status: 'success' });
   } catch (err) {
@@ -124,7 +126,7 @@ if (!admin.apps.length && CONFIG.FIREBASE_PROJECT_ID) {
     metrics.record('firebase_init', 1, { status: 'failed' });
   }
 } else {
-  sessionStore.initFirebase(admin);
+    // sessionStore.initFirebase(admin);  // Not needed in development
   logger.debug('Firebase already initialized or credentials missing');
 }
 
@@ -155,11 +157,11 @@ const getOrCreateContext = async (telefono, nombre) => {
     let context = session?.context;
     
     if (!context) {
-      context = new ConversationContext(telefono, nombre);
+      context = new ConversationContext({ userId: telefono, name: nombre });
       logger.debug('Created new conversation context', { telefono, nombre });
     } else {
       // Restaurar contexto desde sesión
-      context = Object.assign(new ConversationContext(telefono, nombre), context);
+      context = Object.assign(new ConversationContext({ userId: telefono, name: nombre }), context);
       logger.debug('Restored conversation context', { telefono, messagesCount: context.recentMessages?.length || 0 });
     }
     
@@ -181,7 +183,7 @@ const getOrCreateUserProfile = async (telefono, nombre) => {
     const session = await sessionStore.getSession(telefono);
     let profileData = session?.userProfile;
     
-    let profile = new UserProfile(telefono, nombre);
+    let profile = new UserProfile(telefono, { name: nombre });
     
     if (profileData) {
       // Restaurar perfil desde sesión
@@ -667,7 +669,7 @@ export default async function handler(req, res) {
           if (!detected) {
             logger.warn('No amount detected in receipt image', { telefono });
             metrics.record('ocr_no_amount', 1);
-            const reply = generateSmartResponse(context, "help_image_quality", userProfile);
+            const reply = generateSmartResponse("help_image_quality", context);
             return persistAndReply({ estado: "pago_verificacion" }, { reply });
           }
           
@@ -700,7 +702,7 @@ export default async function handler(req, res) {
               metrics.record('order_value', validation.detectedTotal);
               
               context.currentIntention = "ORDER_REPEAT";
-              const reply = generateSmartResponse(context, "payment_confirmed", userProfile, { amount: validation.detectedTotal });
+              const reply = generateSmartResponse("payment_confirmed", context, { amount: validation.detectedTotal });
               
               await sessionStore.saveSession(telefono, { estado: "pagado", pedido: { items: draft.items, pricing: calc }, pago: { method: "comprobante", amount: validation.detectedTotal, ocr: ocrResult } });
               await notifyAgent({ event: "order_paid", telefono, pedido: draft, amount: validation.detectedTotal });
@@ -715,13 +717,13 @@ export default async function handler(req, res) {
                 difference: Math.abs(detected - calc.total)
               });
               metrics.record('payment_mismatch', 1);
-              const reply = generateSmartResponse(context, "payment_mismatch", userProfile, { detected: detected, expected: calc.total });
+              const reply = generateSmartResponse("payment_mismatch", context, { detected: detected, expected: calc.total });
               return persistAndReply({ estado: "pago_verificacion", comprobante: { detected: detected, ocr: ocrResult, validation } }, { reply });
             }
           } else {
             logger.warn('Receipt received but no order found', { telefono, amount: detected });
             metrics.record('receipt_no_order', 1);
-            const reply = generateSmartResponse(context, "receipt_no_order", userProfile, { amount: detected });
+            const reply = generateSmartResponse("receipt_no_order", context, { amount: detected });
             return persistAndReply({ estado: "pago_verificacion", comprobante: { detected: detected, ocr: ocrResult } }, { reply });
           }
         } else if (smartAnalysis.imageType === "MENU" || smartAnalysis.imageType === "CATALOG_ITEM") {
@@ -741,13 +743,13 @@ export default async function handler(req, res) {
         logger.debug('Image processed with fallback handler', { telefono });
         const detected = extractMostLikelyTotal(ocrResult);
         await sessionStore.saveSession(telefono, { lastOCR: ocrResult, estado: "pago_verificacion" });
-        const reply = generateSmartResponse(context, "image_received", userProfile, { amount: detected });
+        const reply = generateSmartResponse("image_received", context, { amount: detected });
         return persistAndReply({}, { reply });
         
       } catch (err) {
         logger.error('OCR image error:', { telefono, error: err?.message || err, stack: err?.stack });
         metrics.record('ocr_error', 1, { source: 'url' });
-        const reply = generateSmartResponse(context, "help_image_quality", userProfile);
+        const reply = generateSmartResponse("help_image_quality", context);
         return persistAndReply({}, { reply });
       }
     }
@@ -840,14 +842,14 @@ export default async function handler(req, res) {
     // Manejar diferentes intenciones
     if (intention === INTENTIONS.GREETING || intention === INTENTIONS.SMALLTALK) {
       metrics.record('interaction', 1, { type: 'greeting' });
-      const reply = generateSmartResponse(context, "greeting", userProfile);
+      const reply = generateSmartResponse("greeting", context);
       return persistAndReply({}, { reply });
     }
 
     if (intention === INTENTIONS.HELP) {
       metrics.record('interaction', 1, { type: 'help' });
       const topCats = (menu.categorias || []).slice(0, 4).map(c => `• ${c.nombre} (${(c.productos||[]).length} items)`).join("\n");
-      const reply = generateSmartResponse(context, "menu_available", userProfile, { categories: topCats });
+      const reply = generateSmartResponse("menu_available", context, { categories: topCats });
       return persistAndReply({}, { reply });
     }
 
@@ -880,7 +882,7 @@ export default async function handler(req, res) {
                      `¿Confirmas y deseas pagar ahora?`;
         return persistAndReply({ estado: "pedido_confirmado" }, { reply });
       }
-      const reply = generateSmartResponse(context, "address_received", userProfile, { address: addrDetection.address });
+      const reply = generateSmartResponse("address_received", context, { address: addrDetection.address });
       return persistAndReply({ address: { address: addrDetection.address, components: addrDetection.components } }, { reply });
     }
 
@@ -915,7 +917,7 @@ export default async function handler(req, res) {
 
           const { address } = await sessionStore.getSession(telefono) || {};
           const itemsForCalc = parsed.items.map(it => {
-            const prod = pricing.findProductInMenu(menu, it.id);
+            const prod = findProductInMenu(menu, it.id);
             const unitPrice = prod ? pricing.applyVariantPrice(prod, it.variant) ?? prod.precio ?? null : it.price ?? it.priceHint ?? null;
             return { id: it.id, name: it.name, quantity: it.quantity, variant: it.variant, unitPrice, extras: it.extras || [] };
           });
@@ -925,7 +927,7 @@ export default async function handler(req, res) {
           if (validation.errors.length > 0) {
             logger.warn('Order validation failed', { telefono, errors: validation.errors });
             metrics.record('order_validation_failed', 1);
-            const reply = generateSmartResponse(context, "order_incomplete", userProfile, { errors: validation.errors });
+            const reply = generateSmartResponse("order_incomplete", context, { errors: validation.errors });
             return persistAndReply({ pedido_borrador: parsed }, { reply });
           }
 
@@ -995,7 +997,7 @@ export default async function handler(req, res) {
             metrics.record('order_value', amount);
             auditLog('payment_confirmed', telefono, { amount, method: 'manual', itemsCount: draft.items.length });
             
-            const reply = generateSmartResponse(context, "payment_confirmed", userProfile, { amount });
+            const reply = generateSmartResponse("payment_confirmed", context, { amount });
             await sessionStore.saveSession(telefono, { estado: "pagado", pedido: { items: draft.items, pricing: calc }, pago: { method: "manual", amount } });
             await notifyAgent({ event: "order_paid_manual", telefono, amount, pedido: draft });
             
@@ -1008,14 +1010,14 @@ export default async function handler(req, res) {
               difference: diff
             });
             metrics.record('payment_mismatch', 1);
-            const reply = generateSmartResponse(context, "payment_mismatch", userProfile, { detected: amount, expected: calc.total });
+            const reply = generateSmartResponse("payment_mismatch", context, { detected: amount, expected: calc.total });
             return persistAndReply({ estado: "pago_verificacion" }, { reply });
           }
         }
       } else {
         logger.warn('Payment attempted without order', { telefono });
         metrics.record('payment_no_order', 1);
-        const reply = generateSmartResponse(context, "no_order_found", userProfile);
+        const reply = generateSmartResponse("no_order_found", context);
         return persistAndReply({}, { reply });
       }
     }
@@ -1026,7 +1028,7 @@ export default async function handler(req, res) {
       const current = await sessionStore.getSession(telefono);
       if (!current?.pedido) {
         logger.debug('Status check without order', { telefono });
-        const reply = generateSmartResponse(context, "no_order_found", userProfile);
+        const reply = generateSmartResponse("no_order_found", context);
         return persistAndReply({}, { reply });
       }
       
@@ -1046,7 +1048,7 @@ export default async function handler(req, res) {
       };
       
       const replyConfig = replyMap[st] || { key: "unknown_status", data: { status: st } };
-      const reply = generateSmartResponse(context, replyConfig.key, userProfile, replyConfig.data);
+      const reply = generateSmartResponse(replyConfig.key, context, replyConfig.data);
       return persistAndReply({}, { reply });
     }
 
@@ -1059,7 +1061,7 @@ export default async function handler(req, res) {
         metrics.record('order_cancelled', 1);
         auditLog('order_cancelled', telefono, { estado: current.estado });
         
-        const reply = generateSmartResponse(context, "order_cancelled", userProfile);
+        const reply = generateSmartResponse("order_cancelled", context);
         await sessionStore.saveSession(telefono, { estado: "cancelado", cancelado: new Date() });
         
         // Notify agent (non-blocking - errors handled internally)
@@ -1070,7 +1072,7 @@ export default async function handler(req, res) {
         return persistAndReply({ estado: "cancelado" }, { reply });
       } else {
         logger.debug('Cancel attempted but not allowed', { telefono, estado: current?.estado });
-        const reply = generateSmartResponse(context, "cannot_cancel", userProfile);
+        const reply = generateSmartResponse("cannot_cancel", context);
         return persistAndReply({}, { reply });
       }
     }
@@ -1081,7 +1083,7 @@ export default async function handler(req, res) {
       logger.info('User feedback received', { telefono, type: intention });
       auditLog('user_feedback', telefono, { type: intention, isVIP: userProfile.isVIP() });
       
-      const reply = generateSmartResponse(context, intention === INTENTIONS.COMPLAINT ? "complaint_received" : "feedback_received", userProfile);
+      const reply = generateSmartResponse(intention === INTENTIONS.COMPLAINT ? "complaint_received" : "feedback_received", context);
       await notifyAgent({ event: "user_feedback", telefono, type: intention, message: mensaje, userProfile: { name: userProfile.name, vipStatus: userProfile.isVIP() } });
       return persistAndReply({}, { reply });
     }
@@ -1089,7 +1091,7 @@ export default async function handler(req, res) {
     // Fallback amigable
     logger.debug('Fallback response triggered', { telefono, intention });
     metrics.record('interaction', 1, { type: 'fallback' });
-    const reply = generateSmartResponse(context, "fallback", userProfile);
+    const reply = generateSmartResponse("fallback", context);
     return persistAndReply({}, { reply });
 
   } catch (err) {
