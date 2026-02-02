@@ -3,19 +3,31 @@
   "version": "0.0.1",
   "private": true,
   "type": "module",
+  "description": "DYPSI Restaurant Order Processing Middleware",
+  "main": "api/kommo.js",
+  "engines": {
+    "node": ">=18.0.0"
+  },
   "scripts": {
+    "dev": "NODE_ENV=development nodemon --watch . --ext js,json --exec \"node ./api/kommo.js\"",
+    "start": "node ./api/kommo.js",
     "validate-menu": "node ./scripts/check_menu.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix"
   },
   "dependencies": {
-    "axios": "^1.6.0",
+    "axios": "^1.6.8",
+    "dayjs": "^1.11.10",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
     "firebase-admin": "^12.0.0",
-    "form-data": "^4.0.0"
+    "form-data": "^4.0.0",
+    "protobufjs": "^7.2.5"
   },
   "devDependencies": {
+    "nodemon": "^3.0.1",
     "ajv": "^8.12.0",
     "ajv-formats": "^2.1.1",
-    "eslint": "^8.45.0"
+    "eslint": "^8.57.0"
   }
 }
