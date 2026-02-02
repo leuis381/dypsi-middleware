@@ -16,6 +16,9 @@ jobs:
   validate-and-lint:
     name: Validate Menu and Lint Code
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout code
