@@ -66,6 +66,11 @@ setInterval(() => {
 }, 5 * 60 * 1000);
 
 /* ---------- ENVIRONMENT VALIDATION ---------- */
+/**
+ * Validate required and optional environment variables at startup
+ * Logs warnings for missing variables and throws fatal error in production
+ * @throws {AppError} If required environment variables are missing in production
+ */
 const validateEnvironment = () => {
   const requiredVars = ['FIREBASE_PROJECT_ID', 'FIREBASE_CLIENT_EMAIL', 'FIREBASE_PRIVATE_KEY'];
   const missing = requiredVars.filter(v => !process.env[v]);
@@ -264,7 +269,8 @@ const buildOrderSummaryText = (orderDraft, pricingResult) => {
 };
 
 /**
- * Safe JSON parsing with fallback
+ * Safe JSON parsing with fallback - uses parseJSON from utils.js
+ * @deprecated Use parseJSON from utils.js directly
  * @param {string} s - JSON string to parse
  * @param {*} fallback - Fallback value if parsing fails
  * @returns {*} Parsed object or fallback
@@ -402,8 +408,8 @@ const calculateRouteAndFee = (storeCoords, destCoords, options = {}) => {
   const a = Math.sin(dLat/2)*Math.sin(dLat/2) + Math.cos(toRad(storeCoords.lat))*Math.cos(toRad(destCoords.lat))*Math.sin(dLon/2)*Math.sin(dLon/2);
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
   const km = R * c;
-  const base = Number(options.base || CONFIG.DELIVERY_BASE_FEE);
-  const perKm = Number(options.perKm || CONFIG.DELIVERY_PER_KM);
+  const base = Number(options.base ?? CONFIG.DELIVERY_BASE_FEE);
+  const perKm = Number(options.perKm ?? CONFIG.DELIVERY_PER_KM);
   const price = Math.max(base, Math.round((base + perKm * km) * 100) / 100);
   
   logger.debug('Calculated route using haversine', { distanceKm: km.toFixed(2), price });
@@ -583,13 +589,21 @@ export default async function handler(req, res) {
     });
 
     // Load session with timeout
-    const sessionTimeout = new Promise((_, reject) => 
-      setTimeout(() => reject(new AppError('Session load timeout', 504, 'TIMEOUT')), CONFIG.API_TIMEOUT_MS)
-    );
-    const session = await Promise.race([
-      sessionStore.getSession(telefono),
-      sessionTimeout
-    ]);
+    let sessionTimeoutId;
+    const sessionTimeout = new Promise((_, reject) => {
+      sessionTimeoutId = setTimeout(() => reject(new AppError('Session load timeout', 504, 'TIMEOUT')), CONFIG.API_TIMEOUT_MS);
+    });
+    
+    let session;
+    try {
+      session = await Promise.race([
+        sessionStore.getSession(telefono),
+        sessionTimeout
+      ]);
+    } finally {
+      // Clear timeout to prevent memory leak
+      if (sessionTimeoutId) clearTimeout(sessionTimeoutId);
+    }
     
     // Load AI context y user profile
     const context = await getOrCreateContext(telefono, nombre);
@@ -1047,7 +1061,12 @@ export default async function handler(req, res) {
         
         const reply = generateSmartResponse(context, "order_cancelled", userProfile);
         await sessionStore.saveSession(telefono, { estado: "cancelado", cancelado: new Date() });
-        await notifyAgent({ event: "order_cancelled", telefono, estado: current.estado });
+        
+        // Notify agent (non-blocking - errors handled internally)
+        notifyAgent({ event: "order_cancelled", telefono, estado: current.estado }).catch(err => {
+          logger.warn('Agent notification failed for cancellation', { telefono, error: err.message });
+        });
+        
         return persistAndReply({ estado: "cancelado" }, { reply });
       } else {
         logger.debug('Cancel attempted but not allowed', { telefono, estado: current?.estado });
