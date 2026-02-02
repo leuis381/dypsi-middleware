@@ -2,17 +2,52 @@
   "$schema": "http://json-schema.org/draft-07/schema#",
   "type": "object",
   "properties": {
-    "menu": {
+    "meta": {
+      "type": "object",
+      "properties": {
+        "version": { "type": "string" },
+        "store": { "type": "string" },
+        "currency": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["version", "store", "currency"]
+    },
+    "categorias": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "name": { "type": "string" },
-          "price": { "type": "number" }
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "descripcion": { "type": "string" },
+          "productos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": { "type": "string" },
+                "sku": { "type": "string" },
+                "nombre": { "type": "string" },
+                "precio": { "type": "number" },
+                "descripcion": { "type": "string" },
+                "variantes": { "type": ["array", "null"] },
+                "modificadores": { "type": "array" },
+                "tags": { "type": "array", "items": { "type": "string" } },
+                "stock": { "type": "number" },
+                "disponible": { "type": "boolean" },
+                "prep_time_min": { "type": "number" },
+                "calorias_kcal": { "type": "number" },
+                "alergenos": { "type": "array", "items": { "type": "string" } },
+                "imagenes": { "type": "array" },
+                "created_at": { "type": "string", "format": "date-time" }
+              },
+              "required": ["id", "sku", "nombre", "precio"]
+            }
+          }
         },
-        "required": ["name", "price"]
+        "required": ["id", "nombre", "productos"]
       }
     }
   },
-  "required": ["menu"]
+  "required": ["meta", "categorias"]
 }
