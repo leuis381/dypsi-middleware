@@ -1,0 +1,246 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://dypsi.com/schemas/menu.json",
+  "title": "DYPSI Menu Schema",
+  "description": "Schema for DYPSI restaurant menu catalog with products, variants, modifiers, and metadata",
+  "type": "object",
+  "required": ["meta", "categorias"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": {
+      "type": "object",
+      "required": ["version", "store", "currency"],
+      "additionalProperties": true,
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "Version date in YYYY-MM-DD format"
+        },
+        "store": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Store name"
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$",
+          "description": "Currency code (ISO 4217)"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes about the catalog"
+        }
+      }
+    },
+    "categorias": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "productos"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Unique category identifier"
+          },
+          "nombre": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Category name"
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "Category description"
+          },
+          "productos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/product"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "product": {
+      "type": "object",
+      "required": [
+        "id",
+        "sku",
+        "nombre",
+        "descripcion",
+        "variantes",
+        "modificadores",
+        "tags",
+        "stock",
+        "disponible",
+        "prep_time_min",
+        "calorias_kcal",
+        "alergenos",
+        "imagenes",
+        "created_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Unique product identifier"
+        },
+        "sku": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Stock Keeping Unit code"
+        },
+        "nombre": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Product name"
+        },
+        "descripcion": {
+          "type": "string",
+          "description": "Product description"
+        },
+        "variantes": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "minProperties": 1,
+              "patternProperties": {
+                "^.*$": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Price for this variant"
+                }
+              },
+              "additionalProperties": false
+            }
+          ],
+          "description": "Product variants with prices (e.g., sizes: pequena, mediana, familiar) or null if no variants"
+        },
+        "precio": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Base price (only for products without variantes)"
+        },
+        "modificadores": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "nombre", "precio"],
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "nombre": {
+                "type": "string",
+                "minLength": 1
+              },
+              "precio": {
+                "type": "number",
+                "minimum": 0
+              }
+            }
+          },
+          "description": "Available modifiers/add-ons for this product"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "Product tags for categorization and filtering"
+        },
+        "stock": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Estimated stock quantity"
+        },
+        "disponible": {
+          "type": "boolean",
+          "description": "Whether product is currently available"
+        },
+        "prep_time_min": {
+          "oneOf": [
+            {
+              "type": "integer",
+              "minimum": 0
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "description": "Preparation time in minutes"
+        },
+        "calorias_kcal": {
+          "oneOf": [
+            {
+              "type": "number",
+              "minimum": 0,
+              "description": "Calories for single-price products"
+            },
+            {
+              "type": "object",
+              "minProperties": 1,
+              "patternProperties": {
+                "^.*$": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Calories for this variant"
+                }
+              },
+              "additionalProperties": false,
+              "description": "Calories by variant for products with variantes"
+            }
+          ],
+          "description": "Calorie information: number for single-price, object for variants"
+        },
+        "alergenos": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "description": "List of allergens present in the product"
+        },
+        "imagenes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uri"
+          },
+          "description": "Product image URLs"
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time",
+          "description": "ISO 8601 UTC timestamp for product creation"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "variantes": {
+                "type": "null"
+              }
+            }
+          },
+          "then": {
+            "required": ["precio"]
+          }
+        }
+      ]
+    }
+  }
+}

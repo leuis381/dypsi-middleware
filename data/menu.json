@@ -15,19 +15,18 @@
           "id": "pan_ajo_cheese",
           "sku": "ENT-PAC-001",
           "nombre": "Pan al ajo cheese",
-          "precio": 5.00,
           "descripcion": "5 unidades con mozzarella; ideal para acompañar pizzas.",
           "variantes": null,
           "modificadores": [
             {
               "id": "extra_mozzarella",
               "nombre": "Extra mozzarella",
-              "precio": 1.50
+              "precio": 1.5
             },
             {
               "id": "salsa_aji",
               "nombre": "Salsa ají",
-              "precio": 0.50
+              "precio": 0.5
             }
           ],
           "tags": [
@@ -43,20 +42,20 @@
             "gluten"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 5
         },
         {
           "id": "pan_ajo_chorizo",
           "sku": "ENT-PAC-002",
           "nombre": "Pan al ajo con chorizo",
-          "precio": 8.00,
           "descripcion": "5 unidades con mozzarella y chorizo ahumado.",
           "variantes": null,
           "modificadores": [
             {
               "id": "extra_chorizo",
               "nombre": "Extra chorizo",
-              "precio": 2.00
+              "precio": 2
             }
           ],
           "tags": [
@@ -72,20 +71,20 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 8
         },
         {
           "id": "pan_ajo_jamon",
           "sku": "ENT-PAC-003",
           "nombre": "Pan al ajo con jamón",
-          "precio": 8.00,
           "descripcion": "5 unidades con mozzarella y jamón.",
           "variantes": null,
           "modificadores": [
             {
               "id": "extra_jamon",
               "nombre": "Extra jamón",
-              "precio": 2.00
+              "precio": 2
             }
           ],
           "tags": [
@@ -101,20 +100,20 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 8
         },
         {
           "id": "pan_ajo_salchicha",
           "sku": "ENT-PAC-004",
           "nombre": "Pan al ajo con salchicha",
-          "precio": 8.00,
           "descripcion": "5 unidades con mozzarella y salchicha ahumada.",
           "variantes": null,
           "modificadores": [
             {
               "id": "extra_salchicha",
               "nombre": "Extra salchicha",
-              "precio": 2.00
+              "precio": 2
             }
           ],
           "tags": [
@@ -129,20 +128,20 @@
             "gluten"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 8
         },
         {
           "id": "tequenos_mozzarella_6",
           "sku": "ENT-TEQ-006",
           "nombre": "Tequeños mozzarella 6und",
-          "precio": 8.00,
           "descripcion": "6 unidades rellenas de mozzarella; fritos al punto.",
           "variantes": null,
           "modificadores": [
             {
               "id": "salsa_aji_teq",
               "nombre": "Salsa ají para tequeños",
-              "precio": 0.50
+              "precio": 0.5
             }
           ],
           "tags": [
@@ -157,13 +156,13 @@
             "gluten"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 8
         },
         {
           "id": "tequenos_jamon_6",
           "sku": "ENT-TEQ-007",
           "nombre": "Tequeños jamón 6und",
-          "precio": 10.00,
           "descripcion": "6 unidades rellenas de jamón y queso.",
           "variantes": null,
           "modificadores": [],
@@ -180,13 +179,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 10
         },
         {
           "id": "tequenos_pepperoni_6",
           "sku": "ENT-TEQ-008",
           "nombre": "Tequeños pepperoni 6und",
-          "precio": 10.00,
           "descripcion": "6 unidades rellenas de pepperoni y queso.",
           "variantes": null,
           "modificadores": [],
@@ -203,13 +202,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 10
         },
         {
           "id": "tequenos_mozzarella_12",
           "sku": "ENT-TEQ-012",
           "nombre": "Tequeños mozzarella 12und",
-          "precio": 15.00,
           "descripcion": "12 unidades rellenas de mozzarella; para compartir.",
           "variantes": null,
           "modificadores": [],
@@ -226,13 +225,13 @@
             "gluten"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 15
         },
         {
           "id": "tequenos_jamon_12",
           "sku": "ENT-TEQ-013",
           "nombre": "Tequeños jamón 12und",
-          "precio": 18.00,
           "descripcion": "12 unidades rellenas de jamón y queso.",
           "variantes": null,
           "modificadores": [],
@@ -250,13 +249,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 18
         },
         {
           "id": "tequenos_pepperoni_12",
           "sku": "ENT-TEQ-014",
           "nombre": "Tequeños pepperoni 12und",
-          "precio": 18.00,
           "descripcion": "12 unidades rellenas de pepperoni y queso.",
           "variantes": null,
           "modificadores": [],
@@ -274,7 +273,8 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 18
         }
       ]
     },
@@ -289,25 +289,25 @@
           "nombre": "Pizza Mozzarella",
           "descripcion": "Base salsa de tomate y mozzarella.",
           "variantes": {
-            "pequena": 9.00,
-            "mediana": 20.90,
-            "familiar": 27.90
+            "pequena": 9,
+            "mediana": 20.9,
+            "familiar": 27.9
           },
           "modificadores": [
             {
               "id": "extra_mozzarella_pizza",
               "nombre": "Extra mozzarella",
-              "precio": 3.50
+              "precio": 3.5
             },
             {
               "id": "masa_integral",
               "nombre": "Masa integral",
-              "precio": 1.00
+              "precio": 1
             },
             {
               "id": "masa_sin_gluten",
               "nombre": "Masa sin gluten (limitada)",
-              "precio": 4.00
+              "precio": 4
             }
           ],
           "tags": [
@@ -335,9 +335,9 @@
           "nombre": "Pizza Americana",
           "descripcion": "Jamón y pimiento.",
           "variantes": {
-            "pequena": 9.00,
-            "mediana": 20.90,
-            "familiar": 27.90
+            "pequena": 9,
+            "mediana": 20.9,
+            "familiar": 27.9
           },
           "modificadores": [],
           "tags": [
@@ -364,15 +364,15 @@
           "nombre": "Pizza Pepperoni",
           "descripcion": "Pepperoni y pimiento.",
           "variantes": {
-            "pequena": 9.00,
-            "mediana": 20.90,
-            "familiar": 27.90
+            "pequena": 9,
+            "mediana": 20.9,
+            "familiar": 27.9
           },
           "modificadores": [
             {
               "id": "extra_pepperoni",
               "nombre": "Extra pepperoni",
-              "precio": 4.00
+              "precio": 4
             }
           ],
           "tags": [
@@ -400,15 +400,15 @@
           "nombre": "Pizza Hawaiana",
           "descripcion": "Jamón y piña.",
           "variantes": {
-            "pequena": 9.00,
-            "mediana": 20.90,
-            "familiar": 27.90
+            "pequena": 9,
+            "mediana": 20.9,
+            "familiar": 27.9
           },
           "modificadores": [
             {
               "id": "sin_pina",
               "nombre": "Sin piña",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -436,15 +436,15 @@
           "nombre": "Pizza Primavera",
           "descripcion": "Jamón, tomate, aceitunas verdes, maíz, pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 28.00,
-            "familiar": 39.00
+            "pequena": 13,
+            "mediana": 28,
+            "familiar": 39
           },
           "modificadores": [
             {
               "id": "extra_aceitunas",
               "nombre": "Extra aceitunas",
-              "precio": 1.50
+              "precio": 1.5
             }
           ],
           "tags": [
@@ -471,15 +471,15 @@
           "nombre": "Pizza Fugazza",
           "descripcion": "Fugazza con cebolla y salsa blanca.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 28.00,
-            "familiar": 39.00
+            "pequena": 13,
+            "mediana": 28,
+            "familiar": 39
           },
           "modificadores": [
             {
               "id": "sin_cebolla",
               "nombre": "Sin cebolla",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -507,9 +507,9 @@
           "nombre": "Pizza Continental",
           "descripcion": "Jamón, cebolla, champiñones, salsa blanca.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 28.00,
-            "familiar": 39.00
+            "pequena": 13,
+            "mediana": 28,
+            "familiar": 39
           },
           "modificadores": [],
           "tags": [
@@ -536,9 +536,9 @@
           "nombre": "Pizza Salchipizzas",
           "descripcion": "Salchicha ahumada y papas.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 28.00,
-            "familiar": 39.00
+            "pequena": 13,
+            "mediana": 28,
+            "familiar": 39
           },
           "modificadores": [],
           "tags": [
@@ -565,15 +565,15 @@
           "nombre": "Pizza Bacon",
           "descripcion": "Jamón, tocino y pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 33.00,
-            "familiar": 40.00
+            "pequena": 13,
+            "mediana": 33,
+            "familiar": 40
           },
           "modificadores": [
             {
               "id": "extra_tocino",
               "nombre": "Extra tocino",
-              "precio": 3.00
+              "precio": 3
             }
           ],
           "tags": [
@@ -601,15 +601,15 @@
           "nombre": "Pizza Barbecue",
           "descripcion": "Pollo y salsa BBQ.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13,
+            "mediana": 35,
+            "familiar": 42
           },
           "modificadores": [
             {
               "id": "extra_pollo",
               "nombre": "Extra pollo",
-              "precio": 4.00
+              "precio": 4
             }
           ],
           "tags": [
@@ -636,9 +636,9 @@
           "nombre": "Pizza Pizzacue Hawaiana",
           "descripcion": "Pollo, piña y salsa BBQ.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13,
+            "mediana": 35,
+            "familiar": 42
           },
           "modificadores": [],
           "tags": [
@@ -665,9 +665,9 @@
           "nombre": "Pizza Pollo Saltado",
           "descripcion": "Pollo saltado estilo peruano sobre base de pizza.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13,
+            "mediana": 35,
+            "familiar": 42
           },
           "modificadores": [],
           "tags": [
@@ -696,15 +696,15 @@
           "nombre": "Pizza Ratatouille",
           "descripcion": "Vegetales: zapallito, berenjena, tomate y pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13,
+            "mediana": 35,
+            "familiar": 42
           },
           "modificadores": [
             {
               "id": "sin_queso",
               "nombre": "Sin queso (vegano)",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -732,9 +732,9 @@
           "nombre": "Pizza Cordon Blue",
           "descripcion": "Jamón, pollo y salsa blanca.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13,
+            "mediana": 35,
+            "familiar": 42
           },
           "modificadores": [],
           "tags": [
@@ -762,15 +762,15 @@
           "nombre": "Pizza Suprema",
           "descripcion": "Con todo: jamón, carne, chorizo, tocino, cebolla, aceitunas, champiñón, pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13,
+            "mediana": 35,
+            "familiar": 42
           },
           "modificadores": [
             {
               "id": "sin_ingrediente",
               "nombre": "Quitar ingrediente",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -799,15 +799,15 @@
           "nombre": "Pizza Vegetariana",
           "descripcion": "Champiñón, tomate, cebolla, aceitunas verdes, pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13,
+            "mediana": 35,
+            "familiar": 42
           },
           "modificadores": [
             {
               "id": "sin_queso",
               "nombre": "Sin queso (vegano)",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -835,9 +835,9 @@
           "nombre": "Pizza Boloñesa Clásica",
           "descripcion": "Salsa boloñesa, albahaca y pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 33.00,
-            "familiar": 40.00
+            "pequena": 13,
+            "mediana": 33,
+            "familiar": 40
           },
           "modificadores": [],
           "tags": [
@@ -865,9 +865,9 @@
           "nombre": "Pizza Boloñesa Especial",
           "descripcion": "Salsa boloñesa con jamón y albahaca.",
           "variantes": {
-            "pequena": 14.00,
-            "mediana": 35.00,
-            "familiar": 43.00
+            "pequena": 14,
+            "mediana": 35,
+            "familiar": 43
           },
           "modificadores": [],
           "tags": [
@@ -895,15 +895,15 @@
           "nombre": "Pizza Super Meat",
           "descripcion": "Mezcla de carnes: carne, chorizo, tocino y más.",
           "variantes": {
-            "pequena": 14.00,
-            "mediana": 35.00,
-            "familiar": 43.00
+            "pequena": 14,
+            "mediana": 35,
+            "familiar": 43
           },
           "modificadores": [
             {
               "id": "extra_carne",
               "nombre": "Extra carne",
-              "precio": 5.00
+              "precio": 5
             }
           ],
           "tags": [
@@ -932,9 +932,9 @@
           "nombre": "Pizza Boloñesa Premium",
           "descripcion": "Boloñesa premium con tocino y albahaca.",
           "variantes": {
-            "pequena": 16.00,
-            "mediana": 37.00,
-            "familiar": 45.00
+            "pequena": 16,
+            "mediana": 37,
+            "familiar": 45
           },
           "modificadores": [],
           "tags": [
@@ -968,14 +968,13 @@
           "id": "lasagna_mixta_450",
           "sku": "PAS-LAS-001",
           "nombre": "Lasaña Mixta 450gr",
-          "precio": 14.90,
           "descripcion": "Boloñesa + bechamel + jamón; porción individual 450gr.",
           "variantes": null,
           "modificadores": [
             {
               "id": "agregar_pan",
               "nombre": "Agregar 2 pan al ajo",
-              "precio": 3.50
+              "precio": 3.5
             }
           ],
           "tags": [
@@ -990,13 +989,13 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 14.9
         },
         {
           "id": "lasagna_bolonesa_personal",
           "sku": "PAS-LAS-002",
           "nombre": "Lasaña Boloñesa Personal",
-          "precio": 14.90,
           "descripcion": "Lasaña personal con salsa boloñesa y mozzarella.",
           "variantes": null,
           "modificadores": [],
@@ -1012,13 +1011,13 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 14.9
         },
         {
           "id": "lasagna_pollo_personal",
           "sku": "PAS-LAS-003",
           "nombre": "Lasaña de Pollo Personal",
-          "precio": 16.90,
           "descripcion": "Bechamel con pollo y champiñón.",
           "variantes": null,
           "modificadores": [],
@@ -1035,13 +1034,13 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 16.9
         },
         {
           "id": "lasagna_personal_2_pan",
           "sku": "PAS-LAS-004",
           "nombre": "Lasaña personal + 2 pan al ajo",
-          "precio": 16.90,
           "descripcion": "Lasaña personal acompañada de 2 panes al ajo.",
           "variantes": null,
           "modificadores": [],
@@ -1058,20 +1057,20 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 16.9
         },
         {
           "id": "lasagna_1kg",
           "sku": "PAS-LAS-005",
           "nombre": "Lasaña 1kg",
-          "precio": 29.00,
           "descripcion": "Lasaña grande 1kg (mixta/pollo/boloñesa).",
           "variantes": null,
           "modificadores": [
             {
               "id": "agregar_5pan",
               "nombre": "Agregar 5 pan al ajo",
-              "precio": 5.00
+              "precio": 5
             }
           ],
           "tags": [
@@ -1087,13 +1086,13 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 29
         },
         {
           "id": "lasagna_1kg_5_pan",
           "sku": "PAS-LAS-006",
           "nombre": "Lasaña 1kg + 5 pan al ajo",
-          "precio": 31.90,
           "descripcion": "Lasaña 1kg con 5 panes al ajo incluidos.",
           "variantes": null,
           "modificadores": [],
@@ -1111,20 +1110,20 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 31.9
         },
         {
           "id": "lasagna_con_alitas",
           "sku": "PAS-LAS-007",
           "nombre": "Lasaña + 6 alitas",
-          "precio": 28.00,
           "descripcion": "Lasaña personal acompañada de 6 alitas a elección.",
           "variantes": null,
           "modificadores": [
             {
               "id": "salsa_alitas",
               "nombre": "Salsa para alitas",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -1141,20 +1140,20 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 28
         },
         {
           "id": "fettuccine_alfredo",
           "sku": "PAS-FET-008",
           "nombre": "Fettuccine Alfredo",
-          "precio": 17.00,
           "descripcion": "Fettuccine con salsa Alfredo cremosa.",
           "variantes": null,
           "modificadores": [
             {
               "id": "agregar_pollo",
               "nombre": "Agregar pollo",
-              "precio": 4.00
+              "precio": 4
             }
           ],
           "tags": [
@@ -1169,13 +1168,13 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 17
         },
         {
           "id": "fettuccine_bolonesa",
           "sku": "PAS-FET-009",
           "nombre": "Fettuccine Boloñesa",
-          "precio": 17.00,
           "descripcion": "Fettuccine con salsa boloñesa tradicional.",
           "variantes": null,
           "modificadores": [],
@@ -1190,20 +1189,20 @@
             "gluten"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 17
         },
         {
           "id": "fettuccine_pesto",
           "sku": "PAS-FET-010",
           "nombre": "Fettuccine Pesto",
-          "precio": 17.00,
           "descripcion": "Fettuccine con salsa pesto de albahaca.",
           "variantes": null,
           "modificadores": [
             {
               "id": "sin_piñones",
               "nombre": "Sin piñones",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -1219,13 +1218,13 @@
             "frutos_secos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 17
         },
         {
           "id": "fettuccine_stroganoff",
           "sku": "PAS-FET-011",
           "nombre": "Fettuccine Stroganoff",
-          "precio": 22.00,
           "descripcion": "Pollo con champiñón en salsa stroganoff sobre fettuccine.",
           "variantes": null,
           "modificadores": [],
@@ -1242,13 +1241,13 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 22
         },
         {
           "id": "fettuccine_alfredo_especial",
           "sku": "PAS-FET-012",
           "nombre": "Fettuccine Alfredo Especial",
-          "precio": 20.00,
           "descripcion": "Fettuccine Alfredo con pollo y champiñón.",
           "variantes": null,
           "modificadores": [],
@@ -1266,7 +1265,8 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 20
         }
       ]
     },
@@ -1279,19 +1279,18 @@
           "id": "alitas_broaster_3",
           "sku": "ALI-003",
           "nombre": "Alitas broaster 3und",
-          "precio": 11.00,
           "descripcion": "3 unidades broaster; salsa a elección.",
           "variantes": null,
           "modificadores": [
             {
               "id": "salsa_bbq",
               "nombre": "Salsa BBQ",
-              "precio": 0.00
+              "precio": 0
             },
             {
               "id": "salsa_picante",
               "nombre": "Salsa picante",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -1305,20 +1304,20 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 11
         },
         {
           "id": "alitas_broaster_4",
           "sku": "ALI-004",
           "nombre": "Alitas broaster 4und",
-          "precio": 14.00,
           "descripcion": "4 unidades broaster; salsa a elección.",
           "variantes": null,
           "modificadores": [
             {
               "id": "salsa_bbq_4",
               "nombre": "Salsa BBQ",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -1332,20 +1331,20 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 14
         },
         {
           "id": "alitas_6_variedades",
           "sku": "ALI-006",
           "nombre": "Alitas 6und (variedades)",
-          "precio": 18.00,
           "descripcion": "6 unidades en la salsa a elección (BBQ, búfalo, picante, maracuyá, acevichada).",
           "variantes": null,
           "modificadores": [
             {
               "id": "salsa_elegida",
               "nombre": "Elegir salsa",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -1359,20 +1358,20 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 18
         },
         {
           "id": "alitas_broaster_12",
           "sku": "ALI-012",
           "nombre": "Alitas broaster 12und",
-          "precio": 32.00,
           "descripcion": "12 unidades broaster; para compartir.",
           "variantes": null,
           "modificadores": [
             {
               "id": "pepsi_1lt_incluida",
               "nombre": "Pepsi 1lt incluida",
-              "precio": 3.00
+              "precio": 3
             }
           ],
           "tags": [
@@ -1387,13 +1386,13 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 32
         },
         {
           "id": "alitas_broaster_12_pepsi",
           "sku": "ALI-012P",
           "nombre": "Alitas broaster 12und + Pepsi 1lt",
-          "precio": 35.00,
           "descripcion": "12 alitas + Pepsi 1lt (combo).",
           "variantes": null,
           "modificadores": [],
@@ -1409,13 +1408,13 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 35
         },
         {
           "id": "alitas_broaster_24_pepsi",
           "sku": "ALI-024P",
           "nombre": "Alitas broaster 24und + Pepsi 1.5lt",
-          "precio": 65.00,
           "descripcion": "24 alitas + Pepsi 1.5lt (combo familiar).",
           "variantes": null,
           "modificadores": [],
@@ -1432,20 +1431,20 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 65
         },
         {
           "id": "crispy_2",
           "sku": "CRP-002",
           "nombre": "Crispy 2 piezas",
-          "precio": 19.90,
           "descripcion": "2 piezas crispy; crujientes por fuera y jugosas por dentro.",
           "variantes": null,
           "modificadores": [
             {
               "id": "salsa_crispy",
               "nombre": "Salsa a elección",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -1459,13 +1458,13 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 19.9
         },
         {
           "id": "crispy_3",
           "sku": "CRP-003",
           "nombre": "Crispy 3 piezas",
-          "precio": 22.90,
           "descripcion": "3 piezas crispy con guarnición.",
           "variantes": null,
           "modificadores": [],
@@ -1480,13 +1479,13 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 22.9
         },
         {
           "id": "crispy_4",
           "sku": "CRP-004",
           "nombre": "Crispy 4 piezas",
-          "precio": 25.90,
           "descripcion": "4 piezas crispy con papas.",
           "variantes": null,
           "modificadores": [],
@@ -1502,13 +1501,13 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 25.9
         },
         {
           "id": "crispy_5",
           "sku": "CRP-005",
           "nombre": "Crispy 5 piezas",
-          "precio": 28.90,
           "descripcion": "5 piezas crispy con papas y salsa.",
           "variantes": null,
           "modificadores": [],
@@ -1524,13 +1523,13 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 28.9
         },
         {
           "id": "crispy_4_pepsi",
           "sku": "CRP-004P",
           "nombre": "Crispy 4 piezas + Pepsi 1lt",
-          "precio": 28.90,
           "descripcion": "4 piezas crispy + Pepsi 1lt (combo).",
           "variantes": null,
           "modificadores": [],
@@ -1545,13 +1544,13 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 28.9
         },
         {
           "id": "crispy_5_pepsi",
           "sku": "CRP-005P",
           "nombre": "Crispy 5 piezas + Pepsi 1lt",
-          "precio": 31.90,
           "descripcion": "5 piezas crispy + Pepsi 1lt (combo).",
           "variantes": null,
           "modificadores": [],
@@ -1566,20 +1565,20 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 31.9
         },
         {
           "id": "chicharron_personal",
           "sku": "CHC-001",
           "nombre": "Chicharrón personal",
-          "precio": 18.00,
           "descripcion": "Porción personal de chicharrón crocante.",
           "variantes": null,
           "modificadores": [
             {
               "id": "acevichado",
               "nombre": "Acevichado",
-              "precio": 3.00
+              "precio": 3
             }
           ],
           "tags": [
@@ -1593,13 +1592,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 18
         },
         {
           "id": "chicharron_acevichado_personal",
           "sku": "CHC-002",
           "nombre": "Chicharrón acevichado personal",
-          "precio": 22.00,
           "descripcion": "Chicharrón con salsa acevichada (personal).",
           "variantes": null,
           "modificadores": [],
@@ -1615,13 +1614,13 @@
             "pescado"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 22
         },
         {
           "id": "chicharron_familiar",
           "sku": "CHC-003",
           "nombre": "Chicharrón familiar",
-          "precio": 31.00,
           "descripcion": "Porción familiar de chicharrón para compartir.",
           "variantes": null,
           "modificadores": [],
@@ -1636,13 +1635,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 31
         },
         {
           "id": "chicharron_acevichado_familiar",
           "sku": "CHC-004",
           "nombre": "Chicharrón acevichado familiar",
-          "precio": 35.00,
           "descripcion": "Chicharrón acevichado porción familiar.",
           "variantes": null,
           "modificadores": [],
@@ -1658,7 +1657,8 @@
             "pescado"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 35
         }
       ]
     },
@@ -1671,19 +1671,18 @@
           "id": "burger_clasica",
           "sku": "BUR-CL-001",
           "nombre": "Hamburguesa Clásica (carne artesanal)",
-          "precio": 10.00,
           "descripcion": "Carne artesanal; se sirve con papas.",
           "variantes": null,
           "modificadores": [
             {
               "id": "extra_papas",
               "nombre": "Extra papas",
-              "precio": 2.50
+              "precio": 2.5
             },
             {
               "id": "sin_pan",
               "nombre": "Sin pan (al plato)",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [
@@ -1698,20 +1697,20 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 10
         },
         {
           "id": "burger_cheese",
           "sku": "BUR-CH-002",
           "nombre": "Hamburguesa Cheese",
-          "precio": 12.00,
           "descripcion": "Con queso; opción doble queso disponible.",
           "variantes": null,
           "modificadores": [
             {
               "id": "doble_queso",
               "nombre": "Doble queso",
-              "precio": 2.00
+              "precio": 2
             }
           ],
           "tags": [
@@ -1726,13 +1725,13 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 12
         },
         {
           "id": "burger_jamon",
           "sku": "BUR-JAM-003",
           "nombre": "Hamburguesa Jamón",
-          "precio": 12.00,
           "descripcion": "Con jamón; sabor clásico.",
           "variantes": null,
           "modificadores": [],
@@ -1749,20 +1748,20 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 12
         },
         {
           "id": "burger_huevo",
           "sku": "BUR-HUE-004",
           "nombre": "Hamburguesa Huevo",
-          "precio": 12.00,
           "descripcion": "Con huevo frito; opción a lo pobre disponible.",
           "variantes": null,
           "modificadores": [
             {
               "id": "a_lo_pobre",
               "nombre": "A lo pobre (plátano + huevo)",
-              "precio": 2.50
+              "precio": 2.5
             }
           ],
           "tags": [
@@ -1778,13 +1777,13 @@
             "huevo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 12
         },
         {
           "id": "burger_especial_jamon_queso",
           "sku": "BUR-ESP-005",
           "nombre": "Especial jamón + queso",
-          "precio": 14.00,
           "descripcion": "Jamón y queso; versión especial.",
           "variantes": null,
           "modificadores": [],
@@ -1802,13 +1801,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 14
         },
         {
           "id": "burger_especial_huevo_queso",
           "sku": "BUR-ESP-006",
           "nombre": "Especial huevo + queso",
-          "precio": 14.00,
           "descripcion": "Huevo y queso; versión especial.",
           "variantes": null,
           "modificadores": [],
@@ -1826,20 +1825,20 @@
             "huevo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 14
         },
         {
           "id": "burger_premium",
           "sku": "BUR-PRM-007",
           "nombre": "Premium (jamón + queso + huevo)",
-          "precio": 16.00,
           "descripcion": "Versión premium con jamón, queso y huevo.",
           "variantes": null,
           "modificadores": [
             {
               "id": "extra_tocino",
               "nombre": "Extra tocino",
-              "precio": 3.00
+              "precio": 3
             }
           ],
           "tags": [
@@ -1857,13 +1856,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 16
         },
         {
           "id": "burger_acaramelizada",
           "sku": "BUR-ACR-008",
           "nombre": "Acaramelizada (cebolla)",
-          "precio": 15.00,
           "descripcion": "Hamburguesa con cebolla acaramelizada.",
           "variantes": null,
           "modificadores": [],
@@ -1879,13 +1878,13 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 15
         },
         {
           "id": "burger_bacon",
           "sku": "BUR-BAC-009",
           "nombre": "Bacon (tocino)",
-          "precio": 16.00,
           "descripcion": "Hamburguesa con tocino crujiente.",
           "variantes": null,
           "modificadores": [],
@@ -1902,13 +1901,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 16
         },
         {
           "id": "burger_salchiburger",
           "sku": "BUR-SAL-010",
           "nombre": "Salchiburger (salchicha ahumada)",
-          "precio": 15.00,
           "descripcion": "Hamburguesa con salchicha ahumada.",
           "variantes": null,
           "modificadores": [],
@@ -1925,13 +1924,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 15
         },
         {
           "id": "burger_choriburger",
           "sku": "BUR-CHR-011",
           "nombre": "Choriburger (chorizo)",
-          "precio": 15.00,
           "descripcion": "Hamburguesa con chorizo ahumado.",
           "variantes": null,
           "modificadores": [],
@@ -1948,13 +1947,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 15
         },
         {
           "id": "burger_hawaiana",
           "sku": "BUR-HAW-012",
           "nombre": "Hawaiana (piña)",
-          "precio": 15.00,
           "descripcion": "Hamburguesa con piña a la plancha.",
           "variantes": null,
           "modificadores": [],
@@ -1970,20 +1969,20 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 15
         },
         {
           "id": "burger_doble",
           "sku": "BUR-DBL-013",
           "nombre": "Doble carne",
-          "precio": 17.00,
           "descripcion": "Hamburguesa con doble porción de carne.",
           "variantes": null,
           "modificadores": [
             {
               "id": "extra_queso",
               "nombre": "Extra queso",
-              "precio": 1.50
+              "precio": 1.5
             }
           ],
           "tags": [
@@ -1998,13 +1997,13 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 17
         },
         {
           "id": "burger_a_lo_pobre",
           "sku": "BUR-PLT-014",
           "nombre": "A lo pobre (plátano)",
-          "precio": 18.00,
           "descripcion": "Hamburguesa con plátano frito y huevo.",
           "variantes": null,
           "modificadores": [],
@@ -2021,13 +2020,13 @@
             "huevo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 18
         },
         {
           "id": "burger_al_plato",
           "sku": "BUR-PLT-015",
           "nombre": "Al plato (arroz chaufa + chorizo)",
-          "precio": 18.00,
           "descripcion": "Hamburguesa servida al plato con arroz chaufa y chorizo.",
           "variantes": null,
           "modificadores": [],
@@ -2045,7 +2044,8 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 18
         }
       ]
     },
@@ -2058,7 +2058,6 @@
           "id": "filete_clasica",
           "sku": "FIL-CL-001",
           "nombre": "Filete hamburguesa Clásica",
-          "precio": 10.00,
           "descripcion": "Filete estilo hamburguesa clásica; incluye papas.",
           "variantes": null,
           "modificadores": [],
@@ -2074,20 +2073,20 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 10
         },
         {
           "id": "filete_cheese",
           "sku": "FIL-CH-002",
           "nombre": "Filete hamburguesa Cheese",
-          "precio": 12.00,
           "descripcion": "Filete con queso; opción doble queso.",
           "variantes": null,
           "modificadores": [
             {
               "id": "doble_queso_filete",
               "nombre": "Doble queso",
-              "precio": 2.00
+              "precio": 2
             }
           ],
           "tags": [
@@ -2102,13 +2101,13 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 12
         },
         {
           "id": "filete_jamon",
           "sku": "FIL-JAM-003",
           "nombre": "Filete hamburguesa Jamón",
-          "precio": 12.00,
           "descripcion": "Filete con jamón y papas.",
           "variantes": null,
           "modificadores": [],
@@ -2125,13 +2124,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 12
         },
         {
           "id": "filete_huevo",
           "sku": "FIL-HUE-004",
           "nombre": "Filete hamburguesa Huevo",
-          "precio": 12.00,
           "descripcion": "Filete con huevo frito.",
           "variantes": null,
           "modificadores": [],
@@ -2148,13 +2147,13 @@
             "huevo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 12
         },
         {
           "id": "filete_premium",
           "sku": "FIL-PRM-005",
           "nombre": "Filete hamburguesa Premium",
-          "precio": 16.00,
           "descripcion": "Versión premium con jamón, queso y huevo.",
           "variantes": null,
           "modificadores": [],
@@ -2172,20 +2171,20 @@
             "huevo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 16
         },
         {
           "id": "choripan_clasico",
           "sku": "CHR-001",
           "nombre": "Choripán clásico",
-          "precio": 6.00,
           "descripcion": "Chorizo en pan con papas nativas.",
           "variantes": null,
           "modificadores": [
             {
               "id": "extra_papas",
               "nombre": "Extra papas",
-              "precio": 2.00
+              "precio": 2
             }
           ],
           "tags": [
@@ -2200,13 +2199,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 6
         },
         {
           "id": "choripan_cheese",
           "sku": "CHR-002",
           "nombre": "Choripán cheese",
-          "precio": 8.00,
           "descripcion": "Chorizo con queso y papas nativas.",
           "variantes": null,
           "modificadores": [],
@@ -2223,13 +2222,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 8
         },
         {
           "id": "choripan_premium",
           "sku": "CHR-003",
           "nombre": "Choripán premium",
-          "precio": 11.00,
           "descripcion": "Chorizo con jamón, queso y huevo.",
           "variantes": null,
           "modificadores": [],
@@ -2248,7 +2247,8 @@
             "huevo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 11
         }
       ]
     },
@@ -2261,14 +2261,13 @@
           "id": "salchipapa_clasica",
           "sku": "SAL-001",
           "nombre": "Salchipapa clásica",
-          "precio": 10.00,
           "descripcion": "Salchicha ahumada + papas nativas.",
           "variantes": null,
           "modificadores": [
             {
               "id": "agregar_huevo",
               "nombre": "Agregar huevo",
-              "precio": 1.50
+              "precio": 1.5
             }
           ],
           "tags": [
@@ -2282,13 +2281,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 10
         },
         {
           "id": "salchimix",
           "sku": "SAL-002",
           "nombre": "Salchimix",
-          "precio": 11.00,
           "descripcion": "Salchicha ahumada + chorizo + otros ingredientes.",
           "variantes": null,
           "modificadores": [],
@@ -2303,13 +2302,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 11
         },
         {
           "id": "salchichaufa",
           "sku": "SAL-003",
           "nombre": "Salchichaufa",
-          "precio": 11.00,
           "descripcion": "Salchicha ahumada + chaufa (arroz frito).",
           "variantes": null,
           "modificadores": [],
@@ -2325,13 +2324,13 @@
             "soya"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 11
         },
         {
           "id": "salchicheese",
           "sku": "SAL-004",
           "nombre": "Salchicheese",
-          "precio": 14.00,
           "descripcion": "Salchipapa con mozzarella y crema casera.",
           "variantes": null,
           "modificadores": [],
@@ -2347,13 +2346,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 14
         },
         {
           "id": "salchibacon",
           "sku": "SAL-005",
           "nombre": "Salchibacon",
-          "precio": 15.00,
           "descripcion": "Salchipapa con tocino y mozzarella.",
           "variantes": null,
           "modificadores": [],
@@ -2369,13 +2368,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 15
         },
         {
           "id": "salchibroaster",
           "sku": "SAL-006",
           "nombre": "Salchibroaster",
-          "precio": 18.00,
           "descripcion": "Salchipapa con piezas broaster incluidas.",
           "variantes": null,
           "modificadores": [],
@@ -2391,13 +2390,13 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 18
         },
         {
           "id": "salchipapa_a_lo_pobre",
           "sku": "SAL-007",
           "nombre": "Salchipapa a lo pobre",
-          "precio": 20.00,
           "descripcion": "Con huevo y plátano frito.",
           "variantes": null,
           "modificadores": [],
@@ -2413,7 +2412,8 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 20
         }
       ]
     },
@@ -2426,23 +2426,22 @@
           "id": "cono",
           "sku": "ICE-001",
           "nombre": "Cono",
-          "precio": 3.00,
           "descripcion": "Vainilla / Chocolate / Mitad y Mitad.",
           "variantes": {
-            "vainilla": 3.00,
-            "chocolate": 3.00,
-            "mitad_mitad": 3.00
+            "vainilla": 3,
+            "chocolate": 3,
+            "mitad_mitad": 3
           },
           "modificadores": [
             {
               "id": "topping_fresa",
               "nombre": "Topping fresa",
-              "precio": 0.50
+              "precio": 0.5
             },
             {
               "id": "topping_chispas",
               "nombre": "Topping chispas",
-              "precio": 0.50
+              "precio": 0.5
             }
           ],
           "tags": [],
@@ -2460,14 +2459,13 @@
           "id": "super_cono_mega_dypsi",
           "sku": "ICE-002",
           "nombre": "Super Cono Mega Dypsi",
-          "precio": 4.00,
           "descripcion": "Cono grande con toppings y salsas.",
           "variantes": null,
           "modificadores": [
             {
               "id": "topping_manjar",
               "nombre": "Topping manjar",
-              "precio": 0.50
+              "precio": 0.5
             }
           ],
           "tags": [],
@@ -2479,20 +2477,20 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 4
         },
         {
           "id": "sundae",
           "sku": "ICE-003",
           "nombre": "Sundae",
-          "precio": 4.00,
           "descripcion": "Sundae con salsa y toppings.",
           "variantes": null,
           "modificadores": [
             {
               "id": "extra_topping",
               "nombre": "Extra topping",
-              "precio": 0.50
+              "precio": 0.5
             }
           ],
           "tags": [],
@@ -2504,20 +2502,20 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 4
         },
         {
           "id": "dypsi_flurry",
           "sku": "ICE-004",
           "nombre": "Dypsi Flurry",
-          "precio": 5.00,
           "descripcion": "Flurry con Oreo u otras galletas.",
           "variantes": null,
           "modificadores": [
             {
               "id": "sabor_oreo",
               "nombre": "Sabor Oreo",
-              "precio": 0.00
+              "precio": 0
             }
           ],
           "tags": [],
@@ -2530,7 +2528,8 @@
             "gluten"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 5
         }
       ]
     },
@@ -2543,8 +2542,9 @@
           "id": "chicha_1lt",
           "sku": "BEB-CH1-001",
           "nombre": "Chicha 1lt",
-          "precio": 8.00,
           "descripcion": "Chicha 1 litro",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "solo_delivery"
           ],
@@ -2554,14 +2554,16 @@
           "calorias_kcal": 200,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 8
         },
         {
           "id": "maracuya_1lt",
           "sku": "BEB-MA1-002",
           "nombre": "Maracuyá 1lt",
-          "precio": 8.00,
           "descripcion": "Maracuyá 1 litro",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "solo_delivery"
           ],
@@ -2571,14 +2573,16 @@
           "calorias_kcal": 180,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 8
         },
         {
           "id": "chicha_personal",
           "sku": "BEB-CHP-003",
           "nombre": "Chicha personal",
-          "precio": 4.00,
           "descripcion": "Chicha personal",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 50,
           "disponible": true,
@@ -2586,14 +2590,16 @@
           "calorias_kcal": 120,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 4
         },
         {
           "id": "maracuya_personal",
           "sku": "BEB-MAP-004",
           "nombre": "Maracuyá personal",
-          "precio": 4.00,
           "descripcion": "Maracuyá personal",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 50,
           "disponible": true,
@@ -2601,14 +2607,16 @@
           "calorias_kcal": 120,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 4
         },
         {
           "id": "inca_kola_500",
           "sku": "BEB-INK-005",
           "nombre": "Inca Kola 500ml",
-          "precio": 4.00,
           "descripcion": "Inca Kola 500ml",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 80,
           "disponible": true,
@@ -2616,14 +2624,16 @@
           "calorias_kcal": 210,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 4
         },
         {
           "id": "coca_cola_500",
           "sku": "BEB-COC-006",
           "nombre": "Coca Cola 500ml",
-          "precio": 4.00,
           "descripcion": "Coca Cola 500ml",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 80,
           "disponible": true,
@@ -2631,14 +2641,16 @@
           "calorias_kcal": 210,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 4
         },
         {
           "id": "fanta_naranja_500",
           "sku": "BEB-FAN-007",
           "nombre": "Fanta naranja 500ml",
-          "precio": 3.50,
           "descripcion": "Fanta naranja 500ml",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 60,
           "disponible": true,
@@ -2646,14 +2658,16 @@
           "calorias_kcal": 200,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 3.5
         },
         {
           "id": "fanta_inglesa_500",
           "sku": "BEB-FAN-008",
           "nombre": "Fanta inglesa 500ml",
-          "precio": 3.50,
           "descripcion": "Fanta inglesa 500ml",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 40,
           "disponible": true,
@@ -2661,14 +2675,16 @@
           "calorias_kcal": 200,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 3.5
         },
         {
           "id": "sprite_500",
           "sku": "BEB-SPR-009",
           "nombre": "Sprite 500ml",
-          "precio": 3.50,
           "descripcion": "Sprite 500ml",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 60,
           "disponible": true,
@@ -2676,14 +2692,16 @@
           "calorias_kcal": 200,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 3.5
         },
         {
           "id": "pepsi_355",
           "sku": "BEB-PEP-010",
           "nombre": "Pepsi 355ml",
-          "precio": 2.00,
           "descripcion": "Pepsi lata 355ml",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 120,
           "disponible": true,
@@ -2691,14 +2709,16 @@
           "calorias_kcal": 150,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 2
         },
         {
           "id": "concordia_355",
           "sku": "BEB-CON-011",
           "nombre": "Concordia 355ml",
-          "precio": 2.00,
           "descripcion": "Concordia lata 355ml",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 60,
           "disponible": true,
@@ -2706,14 +2726,16 @@
           "calorias_kcal": 150,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 2
         },
         {
           "id": "guarana_450",
           "sku": "BEB-GUA-012",
           "nombre": "Guaraná 450ml",
-          "precio": 3.00,
           "descripcion": "Guaraná 450ml",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 40,
           "disponible": true,
@@ -2721,14 +2743,16 @@
           "calorias_kcal": 170,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 3
         },
         {
           "id": "pepsi_1lt",
           "sku": "BEB-PEP-013",
           "nombre": "Pepsi 1lt",
-          "precio": 5.00,
           "descripcion": "Pepsi 1 litro",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 40,
           "disponible": true,
@@ -2736,14 +2760,16 @@
           "calorias_kcal": 420,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 5
         },
         {
           "id": "pepsi_1_5lt",
           "sku": "BEB-PEP-014",
           "nombre": "Pepsi 1.5lt",
-          "precio": 6.50,
           "descripcion": "Pepsi 1.5 litro",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 30,
           "disponible": true,
@@ -2751,14 +2777,16 @@
           "calorias_kcal": 630,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 6.5
         },
         {
           "id": "inca_kola_1_5lt",
           "sku": "BEB-INK-015",
           "nombre": "Inca Kola 1.5lt",
-          "precio": 9.00,
           "descripcion": "Inca Kola 1.5 litro",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 20,
           "disponible": true,
@@ -2766,14 +2794,16 @@
           "calorias_kcal": 700,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 9
         },
         {
           "id": "coca_cola_1_5lt",
           "sku": "BEB-COC-016",
           "nombre": "Coca Cola 1.5lt",
-          "precio": 9.00,
           "descripcion": "Coca Cola 1.5 litro",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 20,
           "disponible": true,
@@ -2781,14 +2811,16 @@
           "calorias_kcal": 700,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 9
         },
         {
           "id": "jugo_fresa",
           "sku": "BEB-JUG-017",
           "nombre": "Jugo Fresa",
-          "precio": 7.50,
           "descripcion": "Jugo natural de fresa",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 30,
           "disponible": true,
@@ -2796,14 +2828,16 @@
           "calorias_kcal": 160,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 7.5
         },
         {
           "id": "jugo_papaya",
           "sku": "BEB-JUG-018",
           "nombre": "Jugo Papaya",
-          "precio": 7.50,
           "descripcion": "Jugo natural de papaya",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 30,
           "disponible": true,
@@ -2811,14 +2845,16 @@
           "calorias_kcal": 160,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 7.5
         },
         {
           "id": "jugo_pina",
           "sku": "BEB-JUG-019",
           "nombre": "Jugo Piña",
-          "precio": 7.50,
           "descripcion": "Jugo natural de piña",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 30,
           "disponible": true,
@@ -2826,14 +2862,16 @@
           "calorias_kcal": 160,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 7.5
         },
         {
           "id": "jugo_maracuya",
           "sku": "BEB-JUG-020",
           "nombre": "Jugo Maracuyá",
-          "precio": 7.50,
           "descripcion": "Jugo natural de maracuyá",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 30,
           "disponible": true,
@@ -2841,14 +2879,16 @@
           "calorias_kcal": 160,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 7.5
         },
         {
           "id": "jugo_surtido",
           "sku": "BEB-JUG-021",
           "nombre": "Jugo Surtido",
-          "precio": 7.50,
           "descripcion": "Jugo mixto de frutas",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 30,
           "disponible": true,
@@ -2856,14 +2896,16 @@
           "calorias_kcal": 170,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 7.5
         },
         {
           "id": "jugo_fresa_leche",
           "sku": "BEB-JUG-022",
           "nombre": "Fresa con leche",
-          "precio": 11.00,
           "descripcion": "Jugo de fresa con leche",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 20,
           "disponible": true,
@@ -2873,14 +2915,16 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 11
         },
         {
           "id": "jugo_papaya_leche",
           "sku": "BEB-JUG-023",
           "nombre": "Papaya con leche",
-          "precio": 11.00,
           "descripcion": "Jugo de papaya con leche",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 20,
           "disponible": true,
@@ -2890,14 +2934,16 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 11
         },
         {
           "id": "jugo_surtido_leche",
           "sku": "BEB-JUG-024",
           "nombre": "Surtido con leche",
-          "precio": 13.00,
           "descripcion": "Jugo surtido con leche",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 15,
           "disponible": true,
@@ -2907,14 +2953,16 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13
         },
         {
           "id": "cafe",
           "sku": "BEB-CAF-025",
           "nombre": "Café",
-          "precio": 4.00,
           "descripcion": "Café caliente",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 100,
           "disponible": true,
@@ -2922,14 +2970,16 @@
           "calorias_kcal": 5,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 4
         },
         {
           "id": "cafe_con_leche",
           "sku": "BEB-CAF-026",
           "nombre": "Café con leche",
-          "precio": 6.00,
           "descripcion": "Café con leche",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 80,
           "disponible": true,
@@ -2939,14 +2989,16 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 6
         },
         {
           "id": "infusiones",
           "sku": "BEB-INF-027",
           "nombre": "Infusiones",
-          "precio": 3.00,
           "descripcion": "Té, manzanilla, anís y hierbaluisa",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 100,
           "disponible": true,
@@ -2954,14 +3006,16 @@
           "calorias_kcal": 0,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 3
         },
         {
           "id": "agua_500",
           "sku": "BEB-AGU-028",
           "nombre": "Agua San Carlos 500ml",
-          "precio": 2.00,
           "descripcion": "Agua mineral 500ml",
+          "variantes": null,
+          "modificadores": [],
           "tags": [],
           "stock": 120,
           "disponible": true,
@@ -2969,14 +3023,16 @@
           "calorias_kcal": 0,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 2
         },
         {
           "id": "agua_3lt",
           "sku": "BEB-AGU-029",
           "nombre": "Agua San Carlos 3lt",
-          "precio": 4.50,
           "descripcion": "Agua mineral 3 litros",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "solo_delivery"
           ],
@@ -2986,7 +3042,8 @@
           "calorias_kcal": 0,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 4.5
         }
       ]
     },
@@ -2999,231 +3056,267 @@
           "id": "promo_personal_pepsi_355",
           "sku": "PRM-001",
           "nombre": "Pizza personal 4tj + Pepsi 355ml",
-          "precio": 10.00,
           "descripcion": "Pizza personal (clásica) + Pepsi 355ml",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 50,
           "disponible": true,
           "prep_time_min": 15,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 10
         },
         {
           "id": "promo_personal_lasagna",
           "sku": "PRM-002",
           "nombre": "Pizza personal 4tj + lasaña personal",
-          "precio": 24.00,
           "descripcion": "Pizza personal + lasaña personal",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 30,
           "disponible": true,
           "prep_time_min": 25,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 24
         },
         {
           "id": "promo_duo_clasicas_8",
           "sku": "PRM-003",
           "nombre": "Dúo pizzas clásicas 8tj",
-          "precio": 35.90,
           "descripcion": "2 pizzas clásicas de 8 tajadas (sabores clásicos)",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 20,
           "disponible": true,
           "prep_time_min": 30,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 35.9
         },
         {
           "id": "promo_3_pizzas_8",
           "sku": "PRM-004",
           "nombre": "3 pizzas clásicas 8tj",
-          "precio": 52.90,
           "descripcion": "3 pizzas clásicas de 8 tajadas",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 10,
           "disponible": true,
           "prep_time_min": 40,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 52.9
         },
         {
           "id": "promo_clasica_8_lasagna_pepsi_1lt",
           "sku": "PRM-005",
           "nombre": "Clásica 8tj + lasaña + Pepsi 1lt",
-          "precio": 36.00,
           "descripcion": "Pizza clásica 8 tajadas + lasaña + Pepsi 1lt",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 12,
           "disponible": true,
           "prep_time_min": 40,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 36
         },
         {
           "id": "promo_familiar_12_pan_pepsi",
           "sku": "PRM-006",
           "nombre": "Familiar 12tj + pan + Pepsi 1.5lt",
-          "precio": 30.90,
           "descripcion": "Pizza familiar 12 tajadas + pan al ajo + Pepsi 1.5lt",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 8,
           "disponible": true,
           "prep_time_min": 45,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 30.9
         },
         {
           "id": "promo_personal_6_alitas",
           "sku": "PRM-007",
           "nombre": "Pizza personal 4tj + 6 alitas",
-          "precio": 24.00,
           "descripcion": "Pizza personal + 6 alitas",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 20,
           "disponible": true,
           "prep_time_min": 25,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos",
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 24
         },
         {
           "id": "promo_pizza_8_pan_pepsi_1lt",
           "sku": "PRM-008",
           "nombre": "Pizza 8tj + pan + Pepsi 1lt",
-          "precio": 22.90,
           "descripcion": "Pizza mediana + pan al ajo + Pepsi 1lt",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 18,
           "disponible": true,
           "prep_time_min": 30,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 22.9
         },
         {
           "id": "promo_duo_clasicas_pepsi_1_5",
           "sku": "PRM-009",
           "nombre": "Dúo clásicas + Pepsi 1.5lt",
-          "precio": 41.90,
           "descripcion": "2 pizzas clásicas 8 tajadas + Pepsi 1.5lt",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 12,
           "disponible": true,
           "prep_time_min": 35,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 41.9
         },
         {
           "id": "promo_clasica_8_6_alitas_pepsi_1lt",
           "sku": "PRM-010",
           "nombre": "Clásica 8 + 6 alitas + Pepsi 1lt",
-          "precio": 37.00,
           "descripcion": "Pizza clásica 8 tajadas + 6 alitas + Pepsi 1lt",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 10,
           "disponible": true,
           "prep_time_min": 40,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos",
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 37
         },
         {
           "id": "promo_especial_8_pan_pepsi_1lt",
           "sku": "PRM-011",
           "nombre": "Especial 8 + pan + Pepsi 1lt",
-          "precio": 38.00,
           "descripcion": "Pizza especial 8 tajadas + pan al ajo + Pepsi 1lt",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 8,
           "disponible": true,
           "prep_time_min": 40,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 38
         },
         {
           "id": "promo_familiar_especial_12_pan_pepsi_1_5",
           "sku": "PRM-012",
           "nombre": "Familiar especial 12 + pan + Pepsi 1.5lt",
-          "precio": 48.00,
           "descripcion": "Pizza familiar especial 12 tajadas + pan al ajo + Pepsi 1.5lt",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 6,
           "disponible": true,
           "prep_time_min": 50,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 48
         }
       ]
     },
@@ -3236,26 +3329,30 @@
           "id": "choripapa",
           "sku": "ESP-001",
           "nombre": "Choripapa",
-          "precio": 12.90,
           "descripcion": "Chorizo + papas nativas",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 20,
           "disponible": true,
           "prep_time_min": 12,
+          "calorias_kcal": 0,
           "alergenos": [
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 12.9
         },
         {
           "id": "combo_burger_pepsi",
           "sku": "ESP-002",
           "nombre": "Burger Clásica + Pepsi 355ml",
-          "precio": 11.00,
           "descripcion": "Combo: hamburguesa clásica + Pepsi 355ml (precio combo aplicado)",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo",
             "combo"
@@ -3263,55 +3360,64 @@
           "stock": 30,
           "disponible": true,
           "prep_time_min": 15,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 11
         },
         {
           "id": "mostro",
           "sku": "ESP-003",
           "nombre": "Mostro",
-          "precio": 11.00,
           "descripcion": "3 alitas + chaufa + papas + Pepsi/Concordia 355ml",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 25,
           "disponible": true,
           "prep_time_min": 20,
+          "calorias_kcal": 0,
           "alergenos": [
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 11
         },
         {
           "id": "mostrito",
           "sku": "ESP-004",
           "nombre": "Mostrito",
-          "precio": 11.00,
           "descripcion": "Versión pequeña del Mostro",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 25,
           "disponible": true,
           "prep_time_min": 18,
+          "calorias_kcal": 0,
           "alergenos": [
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 11
         },
         {
           "id": "martes_barra_libre",
           "sku": "ESP-005",
           "nombre": "Martes de Barra Libre",
-          "precio": null,
           "descripcion": "Promoción especial solo los martes; gestión por agente humano",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo_dia",
             "requiere_agente"
@@ -3319,193 +3425,80 @@
           "stock": 0,
           "disponible": false,
           "prep_time_min": null,
+          "calorias_kcal": 0,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 0
         },
         {
           "id": "combo_6alitas_fettuccine",
           "sku": "ESP-006",
           "nombre": "6 Alitas + Fettuccine Alfredo",
-          "precio": 24.00,
           "descripcion": "Combo: 6 alitas + fettuccine Alfredo",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 20,
           "disponible": true,
           "prep_time_min": 25,
+          "calorias_kcal": 0,
           "alergenos": [
             "pollo",
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 24
         },
         {
           "id": "promo_2_pizzas_clasicas_jueves",
           "sku": "ESP-007",
           "nombre": "2 Pizzas Clásicas 8tj (jueves)",
-          "precio": 29.90,
           "descripcion": "Promo válida solo los jueves en sabores clásicos",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo_dia"
           ],
           "stock": 10,
           "disponible": true,
           "prep_time_min": 35,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 29.9
         },
         {
           "id": "combo_fettuccine_lasagna",
           "sku": "ESP-008",
           "nombre": "Fettuccine + Lasaña Mixta",
-          "precio": 24.00,
           "descripcion": "Combo de fettuccine al gusto + lasaña mixta",
+          "variantes": null,
+          "modificadores": [],
           "tags": [
             "promo"
           ],
           "stock": 15,
           "disponible": true,
           "prep_time_min": 30,
+          "calorias_kcal": 0,
           "alergenos": [
             "gluten",
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 24
         }
       ]
-    }
-  ],
-  "reglas": [
-    {
-      "id": "regla_combo_burger_pepsi",
-      "descripcion": "Aplicar precio combo para 'combo_burger_pepsi': precio fijo S/11.00 (sobrescribe suma individual).",
-      "productos_afectados": [
-        "combo_burger_pepsi",
-        "burger_clasica",
-        "pepsi_355"
-      ],
-      "tipo": "precio_combo",
-      "condiciones": {
-        "aplicable": "si se solicita exactamente Burger Clásica + Pepsi 355ml"
-      }
-    },
-    {
-      "id": "regla_mostro_mostrito",
-      "descripcion": "Mostro y Mostrito: precio fijo S/11.00 por combo (3 alitas + chaufa + papas + Pepsi/Concordia 355ml).",
-      "productos_afectados": [
-        "mostro",
-        "mostrito"
-      ],
-      "tipo": "precio_combo",
-      "condiciones": {
-        "aplicable": "si incluye bebida Pepsi 355ml o Concordia 355ml"
-      }
-    },
-    {
-      "id": "regla_choripapa",
-      "descripcion": "Choripapa: precio S/12.90 (producto individual).",
-      "productos_afectados": [
-        "choripapa"
-      ],
-      "tipo": "precio_fijo"
-    },
-    {
-      "id": "regla_combo_6alitas_fettuccine",
-      "descripcion": "Combo 6 alitas + Fettuccine Alfredo: precio fijo S/24.00.",
-      "productos_afectados": [
-        "combo_6alitas_fettuccine"
-      ],
-      "tipo": "precio_combo"
-    },
-    {
-      "id": "regla_2_pizzas_jueves",
-      "descripcion": "Promo válida solo los jueves; aplicar precio S/29.90 para 2 pizzas clásicas 8 tajadas (sabores clásicos únicamente).",
-      "productos_afectados": [
-        "promo_2_pizzas_clasicas_jueves"
-      ],
-      "tipo": "promo_dia",
-      "condiciones": {
-        "dia_semana": "jueves",
-        "sabores_permitidos": [
-          "pizza_americana",
-          "pizza_pepperoni",
-          "pizza_hawaiana",
-          "pizza_mozzarella"
-        ]
-      }
-    },
-    {
-      "id": "regla_martes_barra_libre",
-      "descripcion": "Martes de Barra Libre: promoción gestionada por agente humano; no automatizar condiciones ni cobros desde la IA.",
-      "productos_afectados": [
-        "martes_barra_libre"
-      ],
-      "tipo": "requiere_agente",
-      "condiciones": {
-        "dia_semana": "martes",
-        "accion": "derivar_a_agente"
-      }
-    },
-    {
-      "id": "regla_promos_general",
-      "descripcion": "Todas las entradas en 'promos' con tag 'promo' deben validar disponibilidad de sabores y stock antes de confirmar pedido.",
-      "productos_afectados": [],
-      "tipo": "validacion_stock",
-      "condiciones": {
-        "aplicable_a_tags": [
-          "promo"
-        ]
-      }
-    },
-    {
-      "id": "regla_sin_ensalada",
-      "descripcion": "Tag 'sin_ensalada' indica que el producto no incluye ensalada en su preparación ni en la descripción final mostrada por la IA.",
-      "productos_afectados": [],
-      "tipo": "presentacion",
-      "condiciones": {
-        "aplicable_a_tags": [
-          "sin_ensalada"
-        ]
-      }
-    },
-    {
-      "id": "regla_solo_delivery",
-      "descripcion": "Tag 'solo_delivery' indica que el producto está disponible únicamente para delivery; la IA debe informar si el usuario solicita consumo en local.",
-      "productos_afectados": [],
-      "tipo": "canal_venta",
-      "condiciones": {
-        "aplicable_a_tags": [
-          "solo_delivery"
-        ]
-      }
-    },
-    {
-      "id": "regla_stock_minimo",
-      "descripcion": "Si stock < 3, marcar producto como 'disponible': false y notificar al agente.",
-      "productos_afectados": [],
-      "tipo": "stock_control",
-      "condiciones": {
-        "threshold": 3
-      }
-    },
-    {
-      "id": "regla_precio_redondeo",
-      "descripcion": "Redondear totales a 0.01 y mostrar impuestos por separado (IGV incluido si aplica).",
-      "productos_afectados": [],
-      "tipo": "precio",
-      "condiciones": {
-        "rounding": 0.01,
-        "tax_included": false
-      }
     }
   ]
 }
