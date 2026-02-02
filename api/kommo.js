@@ -8,7 +8,7 @@ import admin from "firebase-admin";
 import parseOrderText from "../lib/parse-order.js";
 import { readImage, readImageBuffer, extractMostLikelyTotal, validateReceiptAgainstOrder, parseWhatsAppCatalogSnippet } from "../lib/ocr.js";
 import { detectAddress, normalizeAddress } from "../lib/detect-address.js";
-import pricing from "../lib/zoma-precios.js";
+import pricing from "../lib/zona-precios.js";
 import sessionStore from "../lib/session-store.js";
 import fs from "fs";
 import path from "path";
