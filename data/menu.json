@@ -289,9 +289,9 @@
           "nombre": "Pizza Mozzarella",
           "descripcion": "Base salsa de tomate y mozzarella.",
           "variantes": {
-            "pequena": 9.00,
-            "mediana": 20.90,
-            "familiar": 27.90
+            "pequena": 9.0,
+            "mediana": 20.9,
+            "familiar": 27.9
           },
           "modificadores": [
             {
@@ -327,7 +327,8 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 9.00
         },
         {
           "id": "pizza_americana",
@@ -335,9 +336,9 @@
           "nombre": "Pizza Americana",
           "descripcion": "Jamón y pimiento.",
           "variantes": {
-            "pequena": 9.00,
-            "mediana": 20.90,
-            "familiar": 27.90
+            "pequena": 9.0,
+            "mediana": 20.9,
+            "familiar": 27.9
           },
           "modificadores": [],
           "tags": [
@@ -356,7 +357,8 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 9.00
         },
         {
           "id": "pizza_pepperoni",
@@ -364,9 +366,9 @@
           "nombre": "Pizza Pepperoni",
           "descripcion": "Pepperoni y pimiento.",
           "variantes": {
-            "pequena": 9.00,
-            "mediana": 20.90,
-            "familiar": 27.90
+            "pequena": 9.0,
+            "mediana": 20.9,
+            "familiar": 27.9
           },
           "modificadores": [
             {
@@ -392,7 +394,8 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 9.00
         },
         {
           "id": "pizza_hawaiana",
@@ -400,9 +403,9 @@
           "nombre": "Pizza Hawaiana",
           "descripcion": "Jamón y piña.",
           "variantes": {
-            "pequena": 9.00,
-            "mediana": 20.90,
-            "familiar": 27.90
+            "pequena": 9.0,
+            "mediana": 20.9,
+            "familiar": 27.9
           },
           "modificadores": [
             {
@@ -428,7 +431,8 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 9.00
         },
         {
           "id": "pizza_primavera",
@@ -436,9 +440,9 @@
           "nombre": "Pizza Primavera",
           "descripcion": "Jamón, tomate, aceitunas verdes, maíz, pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 28.00,
-            "familiar": 39.00
+            "pequena": 13.0,
+            "mediana": 28.0,
+            "familiar": 39.0
           },
           "modificadores": [
             {
@@ -463,7 +467,8 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_fugazza",
@@ -471,9 +476,9 @@
           "nombre": "Pizza Fugazza",
           "descripcion": "Fugazza con cebolla y salsa blanca.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 28.00,
-            "familiar": 39.00
+            "pequena": 13.0,
+            "mediana": 28.0,
+            "familiar": 39.0
           },
           "modificadores": [
             {
@@ -499,7 +504,8 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_continental",
@@ -507,9 +513,9 @@
           "nombre": "Pizza Continental",
           "descripcion": "Jamón, cebolla, champiñones, salsa blanca.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 28.00,
-            "familiar": 39.00
+            "pequena": 13.0,
+            "mediana": 28.0,
+            "familiar": 39.0
           },
           "modificadores": [],
           "tags": [
@@ -528,7 +534,8 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_salchipizzas",
@@ -536,9 +543,9 @@
           "nombre": "Pizza Salchipizzas",
           "descripcion": "Salchicha ahumada y papas.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 28.00,
-            "familiar": 39.00
+            "pequena": 13.0,
+            "mediana": 28.0,
+            "familiar": 39.0
           },
           "modificadores": [],
           "tags": [
@@ -557,7 +564,8 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_bacon",
@@ -565,9 +573,9 @@
           "nombre": "Pizza Bacon",
           "descripcion": "Jamón, tocino y pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 33.00,
-            "familiar": 40.00
+            "pequena": 13.0,
+            "mediana": 33.0,
+            "familiar": 40.0
           },
           "modificadores": [
             {
@@ -593,7 +601,8 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_barbecue",
@@ -601,9 +610,9 @@
           "nombre": "Pizza Barbecue",
           "descripcion": "Pollo y salsa BBQ.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13.0,
+            "mediana": 35.0,
+            "familiar": 42.0
           },
           "modificadores": [
             {
@@ -628,7 +637,8 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_pizzacue_hawaiana",
@@ -636,9 +646,9 @@
           "nombre": "Pizza Pizzacue Hawaiana",
           "descripcion": "Pollo, piña y salsa BBQ.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13.0,
+            "mediana": 35.0,
+            "familiar": 42.0
           },
           "modificadores": [],
           "tags": [
@@ -657,7 +667,8 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_pollo_saltado",
@@ -665,9 +676,9 @@
           "nombre": "Pizza Pollo Saltado",
           "descripcion": "Pollo saltado estilo peruano sobre base de pizza.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13.0,
+            "mediana": 35.0,
+            "familiar": 42.0
           },
           "modificadores": [],
           "tags": [
@@ -688,7 +699,8 @@
             "soya"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_ratatouille",
@@ -696,9 +708,9 @@
           "nombre": "Pizza Ratatouille",
           "descripcion": "Vegetales: zapallito, berenjena, tomate y pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13.0,
+            "mediana": 35.0,
+            "familiar": 42.0
           },
           "modificadores": [
             {
@@ -724,7 +736,8 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_cordon_blue",
@@ -732,9 +745,9 @@
           "nombre": "Pizza Cordon Blue",
           "descripcion": "Jamón, pollo y salsa blanca.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13.0,
+            "mediana": 35.0,
+            "familiar": 42.0
           },
           "modificadores": [],
           "tags": [
@@ -754,7 +767,8 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_suprema",
@@ -762,9 +776,9 @@
           "nombre": "Pizza Suprema",
           "descripcion": "Con todo: jamón, carne, chorizo, tocino, cebolla, aceitunas, champiñón, pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13.0,
+            "mediana": 35.0,
+            "familiar": 42.0
           },
           "modificadores": [
             {
@@ -791,7 +805,8 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_vegetariana",
@@ -799,9 +814,9 @@
           "nombre": "Pizza Vegetariana",
           "descripcion": "Champiñón, tomate, cebolla, aceitunas verdes, pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 35.00,
-            "familiar": 42.00
+            "pequena": 13.0,
+            "mediana": 35.0,
+            "familiar": 42.0
           },
           "modificadores": [
             {
@@ -827,7 +842,8 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_bolonesa_clasica",
@@ -835,9 +851,9 @@
           "nombre": "Pizza Boloñesa Clásica",
           "descripcion": "Salsa boloñesa, albahaca y pimiento.",
           "variantes": {
-            "pequena": 13.00,
-            "mediana": 33.00,
-            "familiar": 40.00
+            "pequena": 13.0,
+            "mediana": 33.0,
+            "familiar": 40.0
           },
           "modificadores": [],
           "tags": [
@@ -857,7 +873,8 @@
             "carne"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 13.00
         },
         {
           "id": "pizza_bolonesa_especial",
@@ -865,9 +882,9 @@
           "nombre": "Pizza Boloñesa Especial",
           "descripcion": "Salsa boloñesa con jamón y albahaca.",
           "variantes": {
-            "pequena": 14.00,
-            "mediana": 35.00,
-            "familiar": 43.00
+            "pequena": 14.0,
+            "mediana": 35.0,
+            "familiar": 43.0
           },
           "modificadores": [],
           "tags": [
@@ -887,7 +904,8 @@
             "carne"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 14.00
         },
         {
           "id": "pizza_super_meat",
@@ -895,9 +913,9 @@
           "nombre": "Pizza Super Meat",
           "descripcion": "Mezcla de carnes: carne, chorizo, tocino y más.",
           "variantes": {
-            "pequena": 14.00,
-            "mediana": 35.00,
-            "familiar": 43.00
+            "pequena": 14.0,
+            "mediana": 35.0,
+            "familiar": 43.0
           },
           "modificadores": [
             {
@@ -924,7 +942,8 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 14.00
         },
         {
           "id": "pizza_bolonesa_premium",
@@ -932,9 +951,9 @@
           "nombre": "Pizza Boloñesa Premium",
           "descripcion": "Boloñesa premium con tocino y albahaca.",
           "variantes": {
-            "pequena": 16.00,
-            "mediana": 37.00,
-            "familiar": 45.00
+            "pequena": 16.0,
+            "mediana": 37.0,
+            "familiar": 45.0
           },
           "modificadores": [],
           "tags": [
@@ -955,7 +974,8 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "precio": 16.00
         }
       ]
     },
@@ -2429,9 +2449,9 @@
           "precio": 3.00,
           "descripcion": "Vainilla / Chocolate / Mitad y Mitad.",
           "variantes": {
-            "vainilla": 3.00,
-            "chocolate": 3.00,
-            "mitad_mitad": 3.00
+            "vainilla": 3.0,
+            "chocolate": 3.0,
+            "mitad_mitad": 3.0
           },
           "modificadores": [
             {
@@ -2449,7 +2469,11 @@
           "stock": 100,
           "disponible": true,
           "prep_time_min": 2,
-          "calorias_kcal": 220,
+          "calorias_kcal": {
+            "vainilla": 220,
+            "chocolate": 220,
+            "mitad_mitad": 220
+          },
           "alergenos": [
             "lacteos"
           ],
@@ -2554,7 +2578,9 @@
           "calorias_kcal": 200,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "maracuya_1lt",
@@ -2571,7 +2597,9 @@
           "calorias_kcal": 180,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "chicha_personal",
@@ -2586,7 +2614,9 @@
           "calorias_kcal": 120,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "maracuya_personal",
@@ -2601,7 +2631,9 @@
           "calorias_kcal": 120,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "inca_kola_500",
@@ -2616,7 +2648,9 @@
           "calorias_kcal": 210,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "coca_cola_500",
@@ -2631,7 +2665,9 @@
           "calorias_kcal": 210,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "fanta_naranja_500",
@@ -2646,7 +2682,9 @@
           "calorias_kcal": 200,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "fanta_inglesa_500",
@@ -2661,7 +2699,9 @@
           "calorias_kcal": 200,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "sprite_500",
@@ -2676,7 +2716,9 @@
           "calorias_kcal": 200,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "pepsi_355",
@@ -2691,7 +2733,9 @@
           "calorias_kcal": 150,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "concordia_355",
@@ -2706,7 +2750,9 @@
           "calorias_kcal": 150,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "guarana_450",
@@ -2721,7 +2767,9 @@
           "calorias_kcal": 170,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "pepsi_1lt",
@@ -2736,7 +2784,9 @@
           "calorias_kcal": 420,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "pepsi_1_5lt",
@@ -2751,7 +2801,9 @@
           "calorias_kcal": 630,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "inca_kola_1_5lt",
@@ -2766,7 +2818,9 @@
           "calorias_kcal": 700,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "coca_cola_1_5lt",
@@ -2781,7 +2835,9 @@
           "calorias_kcal": 700,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "jugo_fresa",
@@ -2796,7 +2852,9 @@
           "calorias_kcal": 160,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "jugo_papaya",
@@ -2811,7 +2869,9 @@
           "calorias_kcal": 160,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "jugo_pina",
@@ -2826,7 +2886,9 @@
           "calorias_kcal": 160,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "jugo_maracuya",
@@ -2841,7 +2903,9 @@
           "calorias_kcal": 160,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "jugo_surtido",
@@ -2856,7 +2920,9 @@
           "calorias_kcal": 170,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "jugo_fresa_leche",
@@ -2873,7 +2939,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "jugo_papaya_leche",
@@ -2890,7 +2958,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "jugo_surtido_leche",
@@ -2907,7 +2977,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "cafe",
@@ -2922,7 +2994,9 @@
           "calorias_kcal": 5,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "cafe_con_leche",
@@ -2939,7 +3013,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "infusiones",
@@ -2954,7 +3030,9 @@
           "calorias_kcal": 0,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "agua_500",
@@ -2969,7 +3047,9 @@
           "calorias_kcal": 0,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "agua_3lt",
@@ -2986,7 +3066,9 @@
           "calorias_kcal": 0,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         }
       ]
     },
@@ -3012,7 +3094,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_personal_lasagna",
@@ -3031,7 +3115,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_duo_clasicas_8",
@@ -3050,7 +3136,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_3_pizzas_8",
@@ -3069,7 +3157,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_clasica_8_lasagna_pepsi_1lt",
@@ -3088,7 +3178,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_familiar_12_pan_pepsi",
@@ -3107,7 +3199,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_personal_6_alitas",
@@ -3127,7 +3221,9 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_pizza_8_pan_pepsi_1lt",
@@ -3146,7 +3242,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_duo_clasicas_pepsi_1_5",
@@ -3165,7 +3263,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_clasica_8_6_alitas_pepsi_1lt",
@@ -3185,7 +3285,9 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_especial_8_pan_pepsi_1lt",
@@ -3204,7 +3306,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_familiar_especial_12_pan_pepsi_1_5",
@@ -3223,7 +3327,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         }
       ]
     },
@@ -3248,7 +3354,9 @@
             "cerdo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "combo_burger_pepsi",
@@ -3268,7 +3376,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "mostro",
@@ -3286,7 +3396,9 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "mostrito",
@@ -3304,13 +3416,15 @@
             "pollo"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "martes_barra_libre",
           "sku": "ESP-005",
           "nombre": "Martes de Barra Libre",
-          "precio": null,
+          "precio": 0.00,
           "descripcion": "Promoción especial solo los martes; gestión por agente humano",
           "tags": [
             "promo_dia",
@@ -3321,7 +3435,9 @@
           "prep_time_min": null,
           "alergenos": [],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "combo_6alitas_fettuccine",
@@ -3341,7 +3457,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "promo_2_pizzas_clasicas_jueves",
@@ -3360,7 +3478,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         },
         {
           "id": "combo_fettuccine_lasagna",
@@ -3379,7 +3499,9 @@
             "lacteos"
           ],
           "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
+          "created_at": "2025-10-01T08:00:00Z",
+          "modificadores": [],
+          "variantes": null
         }
       ]
     }
