@@ -15,8 +15,15 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-      - name: Install dependencies
-        run: npm ci
+      - name: Install dependencies (use npm ci if lockfile exists)
+        run: |
+          if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then
+            echo "Lockfile found -> running npm ci"
+            npm ci
+          else
+            echo "No lockfile found -> running npm install"
+            npm install
+          fi
       - name: Validate menu.json
         run: npm run validate-menu
       - name: Lint JS
