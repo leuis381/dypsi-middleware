@@ -9,7 +9,8 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
-    "no-console": "off"
+    "no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
+    "no-console": "off",
+    "no-useless-escape": "warn"
   }
 }
