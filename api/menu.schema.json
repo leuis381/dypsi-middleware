@@ -1,0 +1,84 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DYPSI Menu Schema",
+  "type": "object",
+  "required": ["meta", "categorias"],
+  "additionalProperties": false,
+  "properties": {
+    "meta": { "type": "object" },
+    "categorias": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "nombre", "productos"],
+        "additionalProperties": false,
+        "properties": {
+          "id": { "type": "string" },
+          "nombre": { "type": "string" },
+          "descripcion": { "type": "string" },
+          "productos": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": ["id", "sku", "nombre", "disponible", "stock", "created_at"],
+              "additionalProperties": false,
+              "properties": {
+                "id": { "type": "string" },
+                "sku": { "type": "string" },
+                "nombre": { "type": "string" },
+                "descripcion": { "type": "string" },
+                "precio": { "type": ["number","null"], "multipleOf": 0.01 },
+                "variantes": {
+                  "oneOf": [
+                    { "type": "null" },
+                    {
+                      "type": "object",
+                      "minProperties": 1,
+                      "patternProperties": {
+                        "^[a-zA-Z0-9_\\-]+$": { "type": "number", "multipleOf": 0.01 }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "modificadores": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "required": ["id", "nombre", "precio"],
+                    "additionalProperties": false,
+                    "properties": {
+                      "id": { "type": "string" },
+                      "nombre": { "type": "string" },
+                      "precio": { "type": "number", "multipleOf": 0.01 }
+                    }
+                  }
+                },
+                "tags": { "type": "array", "items": { "type": "string" } },
+                "stock": { "type": "integer", "minimum": 0 },
+                "disponible": { "type": "boolean" },
+                "prep_time_min": { "type": ["integer","null"], "minimum": 0 },
+                "calorias_kcal": {
+                  "oneOf": [
+                    { "type": "number" },
+                    {
+                      "type": "object",
+                      "minProperties": 1,
+                      "patternProperties": {
+                        "^[a-zA-Z0-9_\\-]+$": { "type": "number" }
+                      },
+                      "additionalProperties": false
+                    }
+                  ]
+                },
+                "alergenos": { "type": "array", "items": { "type": "string" } },
+                "imagenes": { "type": "array", "items": { "type": "string" } },
+                "created_at": { "type": "string", "format": "date-time" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
