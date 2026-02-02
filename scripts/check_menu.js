@@ -45,10 +45,6 @@ function logSuccess(message) {
   log(`✓ ${message}`, colors.green);
 }
 
-// function logWarning(message) {
-//   log(`⚠ ${message}`, colors.yellow);
-// }
-
 function logInfo(message) {
   log(`ℹ ${message}`, colors.blue);
 }
@@ -162,7 +158,7 @@ function checkDuplicates(menu) {
 /**
  * Main validation function
  */
-async function main() {
+function main() {
   log(`${colors.bold}DYPSI Menu Validation${colors.reset}\n`);
 
   let hasErrors = false;

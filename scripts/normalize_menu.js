@@ -70,7 +70,7 @@ function normalizeMenu(menu) {
   return normalized;
 }
 
-async function main() {
+function main() {
   try {
     console.log('Loading menu.json...');
     const menu = JSON.parse(fs.readFileSync(MENU_PATH, 'utf8'));
