@@ -1,0 +1,429 @@
+{
+  "info": {
+    "_postman_id": "dypsi-middleware-collection",
+    "name": "DYPSI Middleware - Kommo Bot",
+    "description": "Colección de testing para el middleware de Kommo Bot en Vercel",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Verifica que el servicio esté activo y corriendo"
+      },
+      "response": []
+    },
+    {
+      "name": "2. Saludo Simple",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nombre\": \"Juan\",\n  \"telefono\": \"{{telefono}}\",\n  \"mensaje\": \"Hola\",\n  \"tipo\": \"text\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Envía un saludo simple para iniciar la conversación"
+      },
+      "response": []
+    },
+    {
+      "name": "3. Solicitar Menú",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"telefono\": \"{{telefono}}\",\n  \"mensaje\": \"menu\",\n  \"tipo\": \"text\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Solicita el catálogo de productos disponibles"
+      },
+      "response": []
+    },
+    {
+      "name": "4. Crear Pedido - Pizza",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"telefono\": \"{{telefono}}\",\n  \"mensaje\": \"2 pizzas hawaiana, 1 coca cola grande, 1 postre\",\n  \"tipo\": \"text\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Crea un pedido con múltiples items. El sistema debe devolver un resumen del pedido con precios"
+      },
+      "response": []
+    },
+    {
+      "name": "5. Confirmar Pedido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"telefono\": \"{{telefono}}\",\n  \"mensaje\": \"si, confirmo\",\n  \"tipo\": \"text\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Confirma el pedido borrador y pasa al siguiente paso (ubicación/dirección)"
+      },
+      "response": []
+    },
+    {
+      "name": "6. Enviar Ubicación GPS",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"telefono\": \"{{telefono}}\",\n  \"tipo\": \"location\",\n  \"ubicacion\": {\n    \"lat\": -12.0464,\n    \"lon\": -77.0428\n  }\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Envía coordenadas GPS para confirmar la dirección de entrega. Devuelve dirección normalizada y confirma el pedido."
+      },
+      "response": []
+    },
+    {
+      "name": "7. Enviar Comprobante (URL)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"telefono\": \"{{telefono}}\",\n  \"tipo\": \"image\",\n  \"imagen\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Cat03.jpg/1200px-Cat03.jpg\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Envía una imagen por URL para OCR. El sistema intenta leer el monto y validarlo contra el pedido"
+      },
+      "response": []
+    },
+    {
+      "name": "8. Enviar Comprobante (Base64)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"telefono\": \"{{telefono}}\",\n  \"tipo\": \"image_buffer\",\n  \"imageBase64\": \"iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Envía una imagen en formato base64. El sistema intenta leer el comprobante y validarlo"
+      },
+      "response": []
+    },
+    {
+      "name": "9. Consultar Estado del Pedido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"telefono\": \"{{telefono}}\",\n  \"mensaje\": \"¿dónde está mi pedido?\",\n  \"tipo\": \"text\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Consulta el estado actual del pedido del usuario. Devuelve el estado (en preparación, en reparto, etc.)"
+      },
+      "response": []
+    },
+    {
+      "name": "10. Solicitar Ayuda",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"telefono\": \"{{telefono}}\",\n  \"mensaje\": \"ayuda\",\n  \"tipo\": \"text\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Solicita información de ayuda. Devuelve opciones disponibles"
+      },
+      "response": []
+    },
+    {
+      "name": "11. Cancelar Pedido",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"telefono\": \"{{telefono}}\",\n  \"mensaje\": \"cancelar pedido\",\n  \"tipo\": \"text\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Intenta cancelar el pedido actual del usuario"
+      },
+      "response": []
+    },
+    {
+      "name": "12. Error - Sin Teléfono",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"mensaje\": \"hola\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Prueba error 400 - debe retornar error porque no se proporcionó teléfono"
+      },
+      "response": []
+    },
+    {
+      "name": "13. Error - Método No Permitido",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Prueba error 405 - debe retornar error porque DELETE no está permitido"
+      },
+      "response": []
+    },
+    {
+      "name": "14. Búsqueda en Catálogo",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"telefono\": \"{{telefono}}\",\n  \"mensaje\": \"¿tienen pizzas?\",\n  \"tipo\": \"text\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Busca productos en el catálogo que coincidan con la query"
+      },
+      "response": []
+    },
+    {
+      "name": "15. Modificar Cantidad",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"telefono\": \"{{telefono}}\",\n  \"mensaje\": \"quiero 5 pizzas más\",\n  \"tipo\": \"text\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/api/kommo",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "kommo"
+          ]
+        },
+        "description": "Modifica la cantidad de items en el pedido actual"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "https://tu-vercel-url.vercel.app",
+      "type": "string"
+    },
+    {
+      "key": "telefono",
+      "value": "+51999888777",
+      "type": "string"
+    },
+    {
+      "key": "nombre",
+      "value": "Cliente Test",
+      "type": "string"
+    }
+  ]
+}
