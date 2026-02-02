@@ -1,1775 +1,3467 @@
 {
-  "meta": {
-    "version": "2026-02-02",
-    "store": "DYPSI Pizzería & Grill",
-    "currency": "PEN",
-    "notes": "Archivo de catálogo enriquecido: cada producto incluye variantes, SKU, stock estimado, tiempos de preparación, alérgenos y opciones/modificadores. Mantiene el orden original y amplía reglas y validaciones."
-  },
-  "categorias": [
-    {
-      "id": "entradas",
-      "nombre": "Entradas",
-      "descripcion": "Entradas para compartir: panes, tequeños y bocados para empezar.",
-      "productos": [
-        {
-          "id": "pan_ajo_cheese",
-          "sku": "ENT-PAC-001",
-          "nombre": "Pan al ajo cheese",
-          "precio": 5.00,
-          "descripcion": "5 unidades con mozzarella; ideal para acompañar pizzas.",
-          "variantes": null,
-          "modificadores": [
-            { "id": "extra_mozzarella", "nombre": "Extra mozzarella", "precio": 1.50 },
-            { "id": "salsa_aji", "nombre": "Salsa ají", "precio": 0.50 }
-          ],
-          "tags": ["sin_ensalada", "compartir"],
-          "stock": 50,
-          "disponible": true,
-          "prep_time_min": 6,
-          "calorias_kcal": 420,
-          "alergenos": ["lacteos", "gluten"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pan_ajo_chorizo",
-          "sku": "ENT-PAC-002",
-          "nombre": "Pan al ajo con chorizo",
-          "precio": 8.00,
-          "descripcion": "5 unidades con mozzarella y chorizo ahumado.",
-          "variantes": null,
-          "modificadores": [
-            { "id": "extra_chorizo", "nombre": "Extra chorizo", "precio": 2.00 }
-          ],
-          "tags": ["sin_ensalada"],
-          "stock": 30,
-          "disponible": true,
-          "prep_time_min": 7,
-          "calorias_kcal": 520,
-          "alergenos": ["lacteos", "gluten", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pan_ajo_jamon",
-          "sku": "ENT-PAC-003",
-          "nombre": "Pan al ajo con jamón",
-          "precio": 8.00,
-          "descripcion": "5 unidades con mozzarella y jamón.",
-          "variantes": null,
-          "modificadores": [
-            { "id": "extra_jamon", "nombre": "Extra jamón", "precio": 2.00 }
-          ],
-          "tags": ["sin_ensalada"],
-          "stock": 30,
-          "disponible": true,
-          "prep_time_min": 7,
-          "calorias_kcal": 500,
-          "alergenos": ["lacteos", "gluten", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pan_ajo_salchicha",
-          "sku": "ENT-PAC-004",
-          "nombre": "Pan al ajo con salchicha",
-          "precio": 8.00,
-          "descripcion": "5 unidades con mozzarella y salchicha ahumada.",
-          "variantes": null,
-          "modificadores": [
-            { "id": "extra_salchicha", "nombre": "Extra salchicha", "precio": 2.00 }
-          ],
-          "tags": ["sin_ensalada"],
-          "stock": 25,
-          "disponible": true,
-          "prep_time_min": 7,
-          "calorias_kcal": 510,
-          "alergenos": ["lacteos", "gluten"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "tequenos_mozzarella_6",
-          "sku": "ENT-TEQ-006",
-          "nombre": "Tequeños mozzarella 6und",
-          "precio": 8.00,
-          "descripcion": "6 unidades rellenas de mozzarella; fritos al punto.",
-          "variantes": null,
-          "modificadores": [
-            { "id": "salsa_aji_teq", "nombre": "Salsa ají para tequeños", "precio": 0.50 }
-          ],
-          "tags": ["sin_ensalada"],
-          "stock": 40,
-          "disponible": true,
-          "prep_time_min": 8,
-          "calorias_kcal": 450,
-          "alergenos": ["lacteos", "gluten"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "tequenos_jamon_6",
-          "sku": "ENT-TEQ-007",
-          "nombre": "Tequeños jamón 6und",
-          "precio": 10.00,
-          "descripcion": "6 unidades rellenas de jamón y queso.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 30,
-          "disponible": true,
-          "prep_time_min": 8,
-          "calorias_kcal": 480,
-          "alergenos": ["lacteos", "gluten", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "tequenos_pepperoni_6",
-          "sku": "ENT-TEQ-008",
-          "nombre": "Tequeños pepperoni 6und",
-          "precio": 10.00,
-          "descripcion": "6 unidades rellenas de pepperoni y queso.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 30,
-          "disponible": true,
-          "prep_time_min": 8,
-          "calorias_kcal": 490,
-          "alergenos": ["lacteos", "gluten", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "tequenos_mozzarella_12",
-          "sku": "ENT-TEQ-012",
-          "nombre": "Tequeños mozzarella 12und",
-          "precio": 15.00,
-          "descripcion": "12 unidades rellenas de mozzarella; para compartir.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "compartir"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 12,
-          "calorias_kcal": 900,
-          "alergenos": ["lacteos", "gluten"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "tequenos_jamon_12",
-          "sku": "ENT-TEQ-013",
-          "nombre": "Tequeños jamón 12und",
-          "precio": 18.00,
-          "descripcion": "12 unidades rellenas de jamón y queso.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "compartir"],
-          "stock": 15,
-          "disponible": true,
-          "prep_time_min": 12,
-          "calorias_kcal": 960,
-          "alergenos": ["lacteos", "gluten", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "tequenos_pepperoni_12",
-          "sku": "ENT-TEQ-014",
-          "nombre": "Tequeños pepperoni 12und",
-          "precio": 18.00,
-          "descripcion": "12 unidades rellenas de pepperoni y queso.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "compartir"],
-          "stock": 15,
-          "disponible": true,
-          "prep_time_min": 12,
-          "calorias_kcal": 980,
-          "alergenos": ["lacteos", "gluten", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        }
-      ]
-    },
-    {
-      "id": "pizzas",
-      "nombre": "Pizzas",
-      "descripcion": "Pizzas artesanales con masa madre opcional; variantes por tamaño con precios por variante.",
-      "productos": [
-        {
-          "id": "pizza_mozzarella",
-          "sku": "PIZ-MOZ-001",
-          "nombre": "Pizza Mozzarella",
-          "descripcion": "Base salsa de tomate y mozzarella.",
-          "variantes": { "pequena": 9.00, "mediana": 20.90, "familiar": 27.90 },
-          "modificadores": [
-            { "id": "extra_mozzarella_pizza", "nombre": "Extra mozzarella", "precio": 3.50 },
-            { "id": "masa_integral", "nombre": "Masa integral", "precio": 1.00 },
-            { "id": "masa_sin_gluten", "nombre": "Masa sin gluten (limitada)", "precio": 4.00 }
-          ],
-          "tags": ["sin_ensalada", "masa_opcional"],
-          "stock": 100,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": { "pequena": 650, "mediana": 1200, "familiar": 1800 },
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_americana",
-          "sku": "PIZ-AME-002",
-          "nombre": "Pizza Americana",
-          "descripcion": "Jamón y pimiento.",
-          "variantes": { "pequena": 9.00, "mediana": 20.90, "familiar": 27.90 },
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 80,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": { "pequena": 700, "mediana": 1250, "familiar": 1850 },
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_pepperoni",
-          "sku": "PIZ-PEP-003",
-          "nombre": "Pizza Pepperoni",
-          "descripcion": "Pepperoni y pimiento.",
-          "variantes": { "pequena": 9.00, "mediana": 20.90, "familiar": 27.90 },
-          "modificadores": [{ "id": "extra_pepperoni", "nombre": "Extra pepperoni", "precio": 4.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 90,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": { "pequena": 720, "mediana": 1300, "familiar": 1900 },
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_hawaiana",
-          "sku": "PIZ-HAW-004",
-          "nombre": "Pizza Hawaiana",
-          "descripcion": "Jamón y piña.",
-          "variantes": { "pequena": 9.00, "mediana": 20.90, "familiar": 27.90 },
-          "modificadores": [{ "id": "sin_pina", "nombre": "Sin piña", "precio": 0.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 70,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": { "pequena": 700, "mediana": 1250, "familiar": 1850 },
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_primavera",
-          "sku": "PIZ-PRI-005",
-          "nombre": "Pizza Primavera",
-          "descripcion": "Jamón, tomate, aceitunas verdes, maíz, pimiento.",
-          "variantes": { "pequena": 13.00, "mediana": 28.00, "familiar": 39.00 },
-          "modificadores": [{ "id": "extra_aceitunas", "nombre": "Extra aceitunas", "precio": 1.50 }],
-          "tags": ["sin_ensalada"],
-          "stock": 50,
-          "disponible": true,
-          "prep_time_min": 20,
-          "calorias_kcal": { "pequena": 750, "mediana": 1350, "familiar": 2000 },
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_fugazza",
-          "sku": "PIZ-FUG-006",
-          "nombre": "Pizza Fugazza",
-          "descripcion": "Fugazza con cebolla y salsa blanca.",
-          "variantes": { "pequena": 13.00, "mediana": 28.00, "familiar": 39.00 },
-          "modificadores": [{ "id": "sin_cebolla", "nombre": "Sin cebolla", "precio": 0.00 }],
-          "tags": ["sin_ensalada", "vegetariana_opcional"],
-          "stock": 40,
-          "disponible": true,
-          "prep_time_min": 20,
-          "calorias_kcal": { "pequena": 700, "mediana": 1300, "familiar": 1900 },
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_continental",
-          "sku": "PIZ-CON-007",
-          "nombre": "Pizza Continental",
-          "descripcion": "Jamón, cebolla, champiñones, salsa blanca.",
-          "variantes": { "pequena": 13.00, "mediana": 28.00, "familiar": 39.00 },
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 40,
-          "disponible": true,
-          "prep_time_min": 20,
-          "calorias_kcal": { "pequena": 760, "mediana": 1400, "familiar": 2050 },
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_salchipizzas",
-          "sku": "PIZ-SAL-008",
-          "nombre": "Pizza Salchipizzas",
-          "descripcion": "Salchicha ahumada y papas.",
-          "variantes": { "pequena": 13.00, "mediana": 28.00, "familiar": 39.00 },
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 35,
-          "disponible": true,
-          "prep_time_min": 20,
-          "calorias_kcal": { "pequena": 800, "mediana": 1450, "familiar": 2100 },
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_bacon",
-          "sku": "PIZ-BAC-009",
-          "nombre": "Pizza Bacon",
-          "descripcion": "Jamón, tocino y pimiento.",
-          "variantes": { "pequena": 13.00, "mediana": 33.00, "familiar": 40.00 },
-          "modificadores": [{ "id": "extra_tocino", "nombre": "Extra tocino", "precio": 3.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 30,
-          "disponible": true,
-          "prep_time_min": 22,
-          "calorias_kcal": { "pequena": 820, "mediana": 1500, "familiar": 2200 },
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_barbecue",
-          "sku": "PIZ-BBQ-010",
-          "nombre": "Pizza Barbecue",
-          "descripcion": "Pollo y salsa BBQ.",
-          "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 },
-          "modificadores": [{ "id": "extra_pollo", "nombre": "Extra pollo", "precio": 4.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 30,
-          "disponible": true,
-          "prep_time_min": 22,
-          "calorias_kcal": { "pequena": 780, "mediana": 1450, "familiar": 2100 },
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_pizzacue_hawaiana",
-          "sku": "PIZ-PZC-011",
-          "nombre": "Pizza Pizzacue Hawaiana",
-          "descripcion": "Pollo, piña y salsa BBQ.",
-          "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 },
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 25,
-          "disponible": true,
-          "prep_time_min": 22,
-          "calorias_kcal": { "pequena": 800, "mediana": 1500, "familiar": 2150 },
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_pollo_saltado",
-          "sku": "PIZ-PS-012",
-          "nombre": "Pizza Pollo Saltado",
-          "descripcion": "Pollo saltado estilo peruano sobre base de pizza.",
-          "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 },
-          "modificadores": [],
-          "tags": ["sin_ensalada", "fusion"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 25,
-          "calorias_kcal": { "pequena": 850, "mediana": 1550, "familiar": 2300 },
-          "alergenos": ["gluten", "lacteos", "soya"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_ratatouille",
-          "sku": "PIZ-RAT-013",
-          "nombre": "Pizza Ratatouille",
-          "descripcion": "Vegetales: zapallito, berenjena, tomate y pimiento.",
-          "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 },
-          "modificadores": [{ "id": "sin_queso", "nombre": "Sin queso (vegano)", "precio": 0.00 }],
-          "tags": ["vegetariana", "sin_ensalada"],
-          "stock": 18,
-          "disponible": true,
-          "prep_time_min": 22,
-          "calorias_kcal": { "pequena": 680, "mediana": 1250, "familiar": 1900 },
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_cordon_blue",
-          "sku": "PIZ-CB-014",
-          "nombre": "Pizza Cordon Blue",
-          "descripcion": "Jamón, pollo y salsa blanca.",
-          "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 },
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 15,
-          "disponible": true,
-          "prep_time_min": 24,
-          "calorias_kcal": { "pequena": 900, "mediana": 1650, "familiar": 2400 },
-          "alergenos": ["gluten", "lacteos", "pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_suprema",
-          "sku": "PIZ-SUP-015",
-          "nombre": "Pizza Suprema",
-          "descripcion": "Con todo: jamón, carne, chorizo, tocino, cebolla, aceitunas, champiñón, pimiento.",
-          "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 },
-          "modificadores": [{ "id": "sin_ingrediente", "nombre": "Quitar ingrediente", "precio": 0.00 }],
-          "tags": ["sin_ensalada", "todo"],
-          "stock": 12,
-          "disponible": true,
-          "prep_time_min": 25,
-          "calorias_kcal": { "pequena": 950, "mediana": 1750, "familiar": 2600 },
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_vegetariana",
-          "sku": "PIZ-VEG-016",
-          "nombre": "Pizza Vegetariana",
-          "descripcion": "Champiñón, tomate, cebolla, aceitunas verdes, pimiento.",
-          "variantes": { "pequena": 13.00, "mediana": 35.00, "familiar": 42.00 },
-          "modificadores": [{ "id": "sin_queso", "nombre": "Sin queso (vegano)", "precio": 0.00 }],
-          "tags": ["vegetariana", "sin_ensalada"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 20,
-          "calorias_kcal": { "pequena": 650, "mediana": 1200, "familiar": 1800 },
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_bolonesa_clasica",
-          "sku": "PIZ-BOL-017",
-          "nombre": "Pizza Boloñesa Clásica",
-          "descripcion": "Salsa boloñesa, albahaca y pimiento.",
-          "variantes": { "pequena": 13.00, "mediana": 33.00, "familiar": 40.00 },
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 18,
-          "disponible": true,
-          "prep_time_min": 22,
-          "calorias_kcal": { "pequena": 780, "mediana": 1450, "familiar": 2100 },
-          "alergenos": ["gluten", "lacteos", "carne"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_bolonesa_especial",
-          "sku": "PIZ-BOL-018",
-          "nombre": "Pizza Boloñesa Especial",
-          "descripcion": "Salsa boloñesa con jamón y albahaca.",
-          "variantes": { "pequena": 14.00, "mediana": 35.00, "familiar": 43.00 },
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 12,
-          "disponible": true,
-          "prep_time_min": 24,
-          "calorias_kcal": { "pequena": 820, "mediana": 1500, "familiar": 2200 },
-          "alergenos": ["gluten", "lacteos", "carne"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_super_meat",
-          "sku": "PIZ-SMT-019",
-          "nombre": "Pizza Super Meat",
-          "descripcion": "Mezcla de carnes: carne, chorizo, tocino y más.",
-          "variantes": { "pequena": 14.00, "mediana": 35.00, "familiar": 43.00 },
-          "modificadores": [{ "id": "extra_carne", "nombre": "Extra carne", "precio": 5.00 }],
-          "tags": ["sin_ensalada", "carnes"],
-          "stock": 10,
-          "disponible": true,
-          "prep_time_min": 26,
-          "calorias_kcal": { "pequena": 1000, "mediana": 1850, "familiar": 2700 },
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "pizza_bolonesa_premium",
-          "sku": "PIZ-BLP-020",
-          "nombre": "Pizza Boloñesa Premium",
-          "descripcion": "Boloñesa premium con tocino y albahaca.",
-          "variantes": { "pequena": 16.00, "mediana": 37.00, "familiar": 45.00 },
-          "modificadores": [],
-          "tags": ["sin_ensalada", "premium"],
-          "stock": 8,
-          "disponible": true,
-          "prep_time_min": 28,
-          "calorias_kcal": { "pequena": 1050, "mediana": 1950, "familiar": 2850 },
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        }
-      ]
-    },
-    {
-      "id": "pastas",
-      "nombre": "Pastas",
-      "descripcion": "Pastas caseras y fettuccine con salsas tradicionales.",
-      "productos": [
-        {
-          "id": "lasagna_mixta_450",
-          "sku": "PAS-LAS-001",
-          "nombre": "Lasaña Mixta 450gr",
-          "precio": 14.90,
-          "descripcion": "Boloñesa + bechamel + jamón; porción individual 450gr.",
-          "variantes": null,
-          "modificadores": [{ "id": "agregar_pan", "nombre": "Agregar 2 pan al ajo", "precio": 3.50 }],
-          "tags": ["sin_ensalada"],
-          "stock": 25,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": 850,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "lasagna_bolonesa_personal",
-          "sku": "PAS-LAS-002",
-          "nombre": "Lasaña Boloñesa Personal",
-          "precio": 14.90,
-          "descripcion": "Lasaña personal con salsa boloñesa y mozzarella.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 30,
-          "disponible": true,
-          "prep_time_min": 16,
-          "calorias_kcal": 800,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "lasagna_pollo_personal",
-          "sku": "PAS-LAS-003",
-          "nombre": "Lasaña de Pollo Personal",
-          "precio": 16.90,
-          "descripcion": "Bechamel con pollo y champiñón.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": 820,
-          "alergenos": ["gluten", "lacteos", "pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "lasagna_personal_2_pan",
-          "sku": "PAS-LAS-004",
-          "nombre": "Lasaña personal + 2 pan al ajo",
-          "precio": 16.90,
-          "descripcion": "Lasaña personal acompañada de 2 panes al ajo.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "combo"],
-          "stock": 18,
-          "disponible": true,
-          "prep_time_min": 20,
-          "calorias_kcal": 950,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "lasagna_1kg",
-          "sku": "PAS-LAS-005",
-          "nombre": "Lasaña 1kg",
-          "precio": 29.00,
-          "descripcion": "Lasaña grande 1kg (mixta/pollo/boloñesa).",
-          "variantes": null,
-          "modificadores": [{ "id": "agregar_5pan", "nombre": "Agregar 5 pan al ajo", "precio": 5.00 }],
-          "tags": ["sin_ensalada", "familia"],
-          "stock": 10,
-          "disponible": true,
-          "prep_time_min": 35,
-          "calorias_kcal": 3200,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "lasagna_1kg_5_pan",
-          "sku": "PAS-LAS-006",
-          "nombre": "Lasaña 1kg + 5 pan al ajo",
-          "precio": 31.90,
-          "descripcion": "Lasaña 1kg con 5 panes al ajo incluidos.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "familia", "combo"],
-          "stock": 8,
-          "disponible": true,
-          "prep_time_min": 38,
-          "calorias_kcal": 3300,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "lasagna_con_alitas",
-          "sku": "PAS-LAS-007",
-          "nombre": "Lasaña + 6 alitas",
-          "precio": 28.00,
-          "descripcion": "Lasaña personal acompañada de 6 alitas a elección.",
-          "variantes": null,
-          "modificadores": [{ "id": "salsa_alitas", "nombre": "Salsa para alitas", "precio": 0.00 }],
-          "tags": ["sin_ensalada", "combo"],
-          "stock": 12,
-          "disponible": true,
-          "prep_time_min": 30,
-          "calorias_kcal": 1400,
-          "alergenos": ["gluten", "lacteos", "pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "fettuccine_alfredo",
-          "sku": "PAS-FET-008",
-          "nombre": "Fettuccine Alfredo",
-          "precio": 17.00,
-          "descripcion": "Fettuccine con salsa Alfredo cremosa.",
-          "variantes": null,
-          "modificadores": [{ "id": "agregar_pollo", "nombre": "Agregar pollo", "precio": 4.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 25,
-          "disponible": true,
-          "prep_time_min": 16,
-          "calorias_kcal": 900,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "fettuccine_bolonesa",
-          "sku": "PAS-FET-009",
-          "nombre": "Fettuccine Boloñesa",
-          "precio": 17.00,
-          "descripcion": "Fettuccine con salsa boloñesa tradicional.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 16,
-          "calorias_kcal": 880,
-          "alergenos": ["gluten"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "fettuccine_pesto",
-          "sku": "PAS-FET-010",
-          "nombre": "Fettuccine Pesto",
-          "precio": 17.00,
-          "descripcion": "Fettuccine con salsa pesto de albahaca.",
-          "variantes": null,
-          "modificadores": [{ "id": "sin_piñones", "nombre": "Sin piñones", "precio": 0.00 }],
-          "tags": ["sin_ensalada", "vegetariano"],
-          "stock": 18,
-          "disponible": true,
-          "prep_time_min": 16,
-          "calorias_kcal": 820,
-          "alergenos": ["gluten", "frutos_secos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "fettuccine_stroganoff",
-          "sku": "PAS-FET-011",
-          "nombre": "Fettuccine Stroganoff",
-          "precio": 22.00,
-          "descripcion": "Pollo con champiñón en salsa stroganoff sobre fettuccine.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 15,
-          "disponible": true,
-          "prep_time_min": 20,
-          "calorias_kcal": 980,
-          "alergenos": ["gluten", "lacteos", "pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "fettuccine_alfredo_especial",
-          "sku": "PAS-FET-012",
-          "nombre": "Fettuccine Alfredo Especial",
-          "precio": 20.00,
-          "descripcion": "Fettuccine Alfredo con pollo y champiñón.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "especial"],
-          "stock": 12,
-          "disponible": true,
-          "prep_time_min": 22,
-          "calorias_kcal": 1050,
-          "alergenos": ["gluten", "lacteos", "pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        }
-      ]
-    },
-    {
-      "id": "alitas_crispy",
-      "nombre": "Alitas / Crispy / Chicharrón",
-      "descripcion": "Alitas broaster en varias presentaciones, crispy y chicharrón.",
-      "productos": [
-        {
-          "id": "alitas_broaster_3",
-          "sku": "ALI-003",
-          "nombre": "Alitas broaster 3und",
-          "precio": 11.00,
-          "descripcion": "3 unidades broaster; salsa a elección.",
-          "variantes": null,
-          "modificadores": [{ "id": "salsa_bbq", "nombre": "Salsa BBQ", "precio": 0.00 }, { "id": "salsa_picante", "nombre": "Salsa picante", "precio": 0.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 60,
-          "disponible": true,
-          "prep_time_min": 10,
-          "calorias_kcal": 350,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "alitas_broaster_4",
-          "sku": "ALI-004",
-          "nombre": "Alitas broaster 4und",
-          "precio": 14.00,
-          "descripcion": "4 unidades broaster; salsa a elección.",
-          "variantes": null,
-          "modificadores": [{ "id": "salsa_bbq", "nombre": "Salsa BBQ", "precio": 0.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 50,
-          "disponible": true,
-          "prep_time_min": 12,
-          "calorias_kcal": 460,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "alitas_6_variedades",
-          "sku": "ALI-006",
-          "nombre": "Alitas 6und (variedades)",
-          "precio": 18.00,
-          "descripcion": "6 unidades en la salsa a elección (BBQ, búfalo, picante, maracuyá, acevichada).",
-          "variantes": null,
-          "modificadores": [{ "id": "salsa_elegida", "nombre": "Elegir salsa", "precio": 0.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 40,
-          "disponible": true,
-          "prep_time_min": 14,
-          "calorias_kcal": 600,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "alitas_broaster_12",
-          "sku": "ALI-012",
-          "nombre": "Alitas broaster 12und",
-          "precio": 32.00,
-          "descripcion": "12 unidades broaster; para compartir.",
-          "variantes": null,
-          "modificadores": [{ "id": "pepsi_1lt_incluida", "nombre": "Pepsi 1lt incluida", "precio": 3.00 }],
-          "tags": ["sin_ensalada", "compartir"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 20,
-          "calorias_kcal": 1200,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "alitas_broaster_12_pepsi",
-          "sku": "ALI-012P",
-          "nombre": "Alitas broaster 12und + Pepsi 1lt",
-          "precio": 35.00,
-          "descripcion": "12 alitas + Pepsi 1lt (combo).",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "combo"],
-          "stock": 18,
-          "disponible": true,
-          "prep_time_min": 20,
-          "calorias_kcal": 1250,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "alitas_broaster_24_pepsi",
-          "sku": "ALI-024P",
-          "nombre": "Alitas broaster 24und + Pepsi 1.5lt",
-          "precio": 65.00,
-          "descripcion": "24 alitas + Pepsi 1.5lt (combo familiar).",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "familia", "combo"],
-          "stock": 8,
-          "disponible": true,
-          "prep_time_min": 35,
-          "calorias_kcal": 2400,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "crispy_2",
-          "sku": "CRP-002",
-          "nombre": "Crispy 2 piezas",
-          "precio": 19.90,
-          "descripcion": "2 piezas crispy; crujientes por fuera y jugosas por dentro.",
-          "variantes": null,
-          "modificadores": [{ "id": "salsa_crispy", "nombre": "Salsa a elección", "precio": 0.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 40,
-          "disponible": true,
-          "prep_time_min": 12,
-          "calorias_kcal": 420,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "crispy_3",
-          "sku": "CRP-003",
-          "nombre": "Crispy 3 piezas",
-          "precio": 22.90,
-          "descripcion": "3 piezas crispy con guarnición.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 35,
-          "disponible": true,
-          "prep_time_min": 14,
-          "calorias_kcal": 630,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "crispy_4",
-          "sku": "CRP-004",
-          "nombre": "Crispy 4 piezas",
-          "precio": 25.90,
-          "descripcion": "4 piezas crispy con papas.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "compartir"],
-          "stock": 30,
-          "disponible": true,
-          "prep_time_min": 16,
-          "calorias_kcal": 840,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "crispy_5",
-          "sku": "CRP-005",
-          "nombre": "Crispy 5 piezas",
-          "precio": 28.90,
-          "descripcion": "5 piezas crispy con papas y salsa.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "compartir"],
-          "stock": 25,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": 1050,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "crispy_4_pepsi",
-          "sku": "CRP-004P",
-          "nombre": "Crispy 4 piezas + Pepsi 1lt",
-          "precio": 28.90,
-          "descripcion": "4 piezas crispy + Pepsi 1lt (combo).",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["combo"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": 1100,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "crispy_5_pepsi",
-          "sku": "CRP-005P",
-          "nombre": "Crispy 5 piezas + Pepsi 1lt",
-          "precio": 31.90,
-          "descripcion": "5 piezas crispy + Pepsi 1lt (combo).",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["combo"],
-          "stock": 18,
-          "disponible": true,
-          "prep_time_min": 20,
-          "calorias_kcal": 1250,
-          "alergenos": ["pollo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "chicharron_personal",
-          "sku": "CHC-001",
-          "nombre": "Chicharrón personal",
-          "precio": 18.00,
-          "descripcion": "Porción personal de chicharrón crocante.",
-          "variantes": null,
-          "modificadores": [{ "id": "acevichado", "nombre": "Acevichado", "precio": 3.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 15,
-          "calorias_kcal": 900,
-          "alergenos": ["cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "chicharron_acevichado_personal",
-          "sku": "CHC-002",
-          "nombre": "Chicharrón acevichado personal",
-          "precio": 22.00,
-          "descripcion": "Chicharrón con salsa acevichada (personal).",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 15,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": 920,
-          "alergenos": ["cerdo", "pescado"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "chicharron_familiar",
-          "sku": "CHC-003",
-          "nombre": "Chicharrón familiar",
-          "precio": 31.00,
-          "descripcion": "Porción familiar de chicharrón para compartir.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["familia"],
-          "stock": 10,
-          "disponible": true,
-          "prep_time_min": 25,
-          "calorias_kcal": 2200,
-          "alergenos": ["cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "chicharron_acevichado_familiar",
-          "sku": "CHC-004",
-          "nombre": "Chicharrón acevichado familiar",
-          "precio": 35.00,
-          "descripcion": "Chicharrón acevichado porción familiar.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["familia"],
-          "stock": 8,
-          "disponible": true,
-          "prep_time_min": 28,
-          "calorias_kcal": 2400,
-          "alergenos": ["cerdo", "pescado"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        }
-      ]
-    },
-    {
-      "id": "hamburguesas",
-      "nombre": "Hamburguesas",
-      "descripcion": "Hamburguesas artesanales con opciones de toppings y combos.",
-      "productos": [
-        {
-          "id": "burger_clasica",
-          "sku": "BUR-CL-001",
-          "nombre": "Hamburguesa Clásica (carne artesanal)",
-          "precio": 10.00,
-          "descripcion": "Carne artesanal; se sirve con papas.",
-          "variantes": null,
-          "modificadores": [
-            { "id": "extra_papas", "nombre": "Extra papas", "precio": 2.50 },
-            { "id": "sin_pan", "nombre": "Sin pan (al plato)", "precio": 0.00 }
-          ],
-          "tags": ["sin_ensalada"],
-          "stock": 40,
-          "disponible": true,
-          "prep_time_min": 12,
-          "calorias_kcal": 850,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_cheese",
-          "sku": "BUR-CH-002",
-          "nombre": "Hamburguesa Cheese",
-          "precio": 12.00,
-          "descripcion": "Con queso; opción doble queso disponible.",
-          "variantes": null,
-          "modificadores": [{ "id": "doble_queso", "nombre": "Doble queso", "precio": 2.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 35,
-          "disponible": true,
-          "prep_time_min": 12,
-          "calorias_kcal": 920,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_jamon",
-          "sku": "BUR-JAM-003",
-          "nombre": "Hamburguesa Jamón",
-          "precio": 12.00,
-          "descripcion": "Con jamón; sabor clásico.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 30,
-          "disponible": true,
-          "prep_time_min": 12,
-          "calorias_kcal": 900,
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_huevo",
-          "sku": "BUR-HUE-004",
-          "nombre": "Hamburguesa Huevo",
-          "precio": 12.00,
-          "descripcion": "Con huevo frito; opción a lo pobre disponible.",
-          "variantes": null,
-          "modificadores": [{ "id": "a_lo_pobre", "nombre": "A lo pobre (plátano + huevo)", "precio": 2.50 }],
-          "tags": ["sin_ensalada"],
-          "stock": 28,
-          "disponible": true,
-          "prep_time_min": 14,
-          "calorias_kcal": 980,
-          "alergenos": ["gluten", "lacteos", "huevo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_especial_jamon_queso",
-          "sku": "BUR-ESP-005",
-          "nombre": "Especial jamón + queso",
-          "precio": 14.00,
-          "descripcion": "Jamón y queso; versión especial.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "especial"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 15,
-          "calorias_kcal": 1020,
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_especial_huevo_queso",
-          "sku": "BUR-ESP-006",
-          "nombre": "Especial huevo + queso",
-          "precio": 14.00,
-          "descripcion": "Huevo y queso; versión especial.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "especial"],
-          "stock": 18,
-          "disponible": true,
-          "prep_time_min": 15,
-          "calorias_kcal": 1040,
-          "alergenos": ["gluten", "lacteos", "huevo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_premium",
-          "sku": "BUR-PRM-007",
-          "nombre": "Premium (jamón + queso + huevo)",
-          "precio": 16.00,
-          "descripcion": "Versión premium con jamón, queso y huevo.",
-          "variantes": null,
-          "modificadores": [{ "id": "extra_tocino", "nombre": "Extra tocino", "precio": 3.00 }],
-          "tags": ["sin_ensalada", "premium"],
-          "stock": 12,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": 1200,
-          "alergenos": ["gluten", "lacteos", "huevo", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_acaramelizada",
-          "sku": "BUR-ACR-008",
-          "nombre": "Acaramelizada (cebolla)",
-          "precio": 15.00,
-          "descripcion": "Hamburguesa con cebolla acaramelizada.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 14,
-          "disponible": true,
-          "prep_time_min": 16,
-          "calorias_kcal": 980,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_bacon",
-          "sku": "BUR-BAC-009",
-          "nombre": "Bacon (tocino)",
-          "precio": 16.00,
-          "descripcion": "Hamburguesa con tocino crujiente.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 12,
-          "disponible": true,
-          "prep_time_min": 16,
-          "calorias_kcal": 1150,
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_salchiburger",
-          "sku": "BUR-SAL-010",
-          "nombre": "Salchiburger (salchicha ahumada)",
-          "precio": 15.00,
-          "descripcion": "Hamburguesa con salchicha ahumada.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 10,
-          "disponible": true,
-          "prep_time_min": 14,
-          "calorias_kcal": 980,
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_choriburger",
-          "sku": "BUR-CHR-011",
-          "nombre": "Choriburger (chorizo)",
-          "precio": 15.00,
-          "descripcion": "Hamburguesa con chorizo ahumado.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 10,
-          "disponible": true,
-          "prep_time_min": 14,
-          "calorias_kcal": 1000,
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_hawaiana",
-          "sku": "BUR-HAW-012",
-          "nombre": "Hawaiana (piña)",
-          "precio": 15.00,
-          "descripcion": "Hamburguesa con piña a la plancha.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 10,
-          "disponible": true,
-          "prep_time_min": 14,
-          "calorias_kcal": 980,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_doble",
-          "sku": "BUR-DBL-013",
-          "nombre": "Doble carne",
-          "precio": 17.00,
-          "descripcion": "Hamburguesa con doble porción de carne.",
-          "variantes": null,
-          "modificadores": [{ "id": "extra_queso", "nombre": "Extra queso", "precio": 1.50 }],
-          "tags": ["sin_ensalada"],
-          "stock": 8,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": 1300,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_a_lo_pobre",
-          "sku": "BUR-PLT-014",
-          "nombre": "A lo pobre (plátano)",
-          "precio": 18.00,
-          "descripcion": "Hamburguesa con plátano frito y huevo.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 6,
-          "disponible": true,
-          "prep_time_min": 20,
-          "calorias_kcal": 1400,
-          "alergenos": ["gluten", "lacteos", "huevo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "burger_al_plato",
-          "sku": "BUR-PLT-015",
-          "nombre": "Al plato (arroz chaufa + chorizo)",
-          "precio": 18.00,
-          "descripcion": "Hamburguesa servida al plato con arroz chaufa y chorizo.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "al_plato"],
-          "stock": 6,
-          "disponible": true,
-          "prep_time_min": 22,
-          "calorias_kcal": 1500,
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        }
-      ]
-    },
-    {
-      "id": "filete_choripan",
-      "nombre": "Filete & Choripán",
-      "descripcion": "Filetes y choripanes clásicos.",
-      "productos": [
-        {
-          "id": "filete_clasica",
-          "sku": "FIL-CL-001",
-          "nombre": "Filete hamburguesa Clásica",
-          "precio": 10.00,
-          "descripcion": "Filete estilo hamburguesa clásica; incluye papas.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 14,
-          "calorias_kcal": 900,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "filete_cheese",
-          "sku": "FIL-CH-002",
-          "nombre": "Filete hamburguesa Cheese",
-          "precio": 12.00,
-          "descripcion": "Filete con queso; opción doble queso.",
-          "variantes": null,
-          "modificadores": [{ "id": "doble_queso_filete", "nombre": "Doble queso", "precio": 2.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 18,
-          "disponible": true,
-          "prep_time_min": 15,
-          "calorias_kcal": 980,
-          "alergenos": ["gluten", "lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "filete_jamon",
-          "sku": "FIL-JAM-003",
-          "nombre": "Filete hamburguesa Jamón",
-          "precio": 12.00,
-          "descripcion": "Filete con jamón y papas.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 15,
-          "disponible": true,
-          "prep_time_min": 15,
-          "calorias_kcal": 980,
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "filete_huevo",
-          "sku": "FIL-HUE-004",
-          "nombre": "Filete hamburguesa Huevo",
-          "precio": 12.00,
-          "descripcion": "Filete con huevo frito.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 12,
-          "disponible": true,
-          "prep_time_min": 16,
-          "calorias_kcal": 1020,
-          "alergenos": ["gluten", "lacteos", "huevo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "filete_premium",
-          "sku": "FIL-PRM-005",
-          "nombre": "Filete hamburguesa Premium",
-          "precio": 16.00,
-          "descripcion": "Versión premium con jamón, queso y huevo.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "premium"],
-          "stock": 8,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": 1250,
-          "alergenos": ["gluten", "lacteos", "huevo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "choripan_clasico",
-          "sku": "CHR-001",
-          "nombre": "Choripán clásico",
-          "precio": 6.00,
-          "descripcion": "Chorizo en pan con papas nativas.",
-          "variantes": null,
-          "modificadores": [{ "id": "extra_papas", "nombre": "Extra papas", "precio": 2.00 }],
-          "tags": ["sin_ensalada"],
-          "stock": 40,
-          "disponible": true,
-          "prep_time_min": 8,
-          "calorias_kcal": 650,
-          "alergenos": ["gluten", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "choripan_cheese",
-          "sku": "CHR-002",
-          "nombre": "Choripán cheese",
-          "precio": 8.00,
-          "descripcion": "Chorizo con queso y papas nativas.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 30,
-          "disponible": true,
-          "prep_time_min": 9,
-          "calorias_kcal": 720,
-          "alergenos": ["gluten", "lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "choripan_premium",
-          "sku": "CHR-003",
-          "nombre": "Choripán premium",
-          "precio": 11.00,
-          "descripcion": "Chorizo con jamón, queso y huevo.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada", "premium"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 12,
-          "calorias_kcal": 900,
-          "alergenos": ["gluten", "lacteos", "cerdo", "huevo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        }
-      ]
-    },
-    {
-      "id": "salchipapas",
-      "nombre": "Salchipapas",
-      "descripcion": "Variantes de salchipapa con toppings y combos.",
-      "productos": [
-        {
-          "id": "salchipapa_clasica",
-          "sku": "SAL-001",
-          "nombre": "Salchipapa clásica",
-          "precio": 10.00,
-          "descripcion": "Salchicha ahumada + papas nativas.",
-          "variantes": null,
-          "modificadores": [{ "id": "agregar_huevo", "nombre": "Agregar huevo", "precio": 1.50 }],
-          "tags": ["sin_ensalada"],
-          "stock": 30,
-          "disponible": true,
-          "prep_time_min": 10,
-          "calorias_kcal": 900,
-          "alergenos": ["cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "salchimix",
-          "sku": "SAL-002",
-          "nombre": "Salchimix",
-          "precio": 11.00,
-          "descripcion": "Salchicha ahumada + chorizo + otros ingredientes.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 25,
-          "disponible": true,
-          "prep_time_min": 12,
-          "calorias_kcal": 980,
-          "alergenos": ["cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "salchichaufa",
-          "sku": "SAL-003",
-          "nombre": "Salchichaufa",
-          "precio": 11.00,
-          "descripcion": "Salchicha ahumada + chaufa (arroz frito).",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 20,
-          "disponible": true,
-          "prep_time_min": 14,
-          "calorias_kcal": 980,
-          "alergenos": ["cerdo", "soya"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "salchicheese",
-          "sku": "SAL-004",
-          "nombre": "Salchicheese",
-          "precio": 14.00,
-          "descripcion": "Salchipapa con mozzarella y crema casera.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 18,
-          "disponible": true,
-          "prep_time_min": 14,
-          "calorias_kcal": 1100,
-          "alergenos": ["lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "salchibacon",
-          "sku": "SAL-005",
-          "nombre": "Salchibacon",
-          "precio": 15.00,
-          "descripcion": "Salchipapa con tocino y mozzarella.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 15,
-          "disponible": true,
-          "prep_time_min": 15,
-          "calorias_kcal": 1200,
-          "alergenos": ["lacteos", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "salchibroaster",
-          "sku": "SAL-006",
-          "nombre": "Salchibroaster",
-          "precio": 18.00,
-          "descripcion": "Salchipapa con piezas broaster incluidas.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 12,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": 1400,
-          "alergenos": ["pollo", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "salchipapa_a_lo_pobre",
-          "sku": "SAL-007",
-          "nombre": "Salchipapa a lo pobre",
-          "precio": 20.00,
-          "descripcion": "Con huevo y plátano frito.",
-          "variantes": null,
-          "modificadores": [],
-          "tags": ["sin_ensalada"],
-          "stock": 10,
-          "disponible": true,
-          "prep_time_min": 18,
-          "calorias_kcal": 1500,
-          "alergenos": ["huevo", "cerdo"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        }
-      ]
-    },
-    {
-      "id": "helados",
-      "nombre": "Helados",
-      "descripcion": "Postres fríos y helados para terminar.",
-      "productos": [
-        {
-          "id": "cono",
-          "sku": "ICE-001",
-          "nombre": "Cono",
-          "precio": 3.00,
-          "descripcion": "Vainilla / Chocolate / Mitad y Mitad.",
-          "variantes": { "vainilla": 3.00, "chocolate": 3.00, "mitad_mitad": 3.00 },
-          "modificadores": [{ "id": "topping_fresa", "nombre": "Topping fresa", "precio": 0.50 }, { "id": "topping_chispas", "nombre": "Topping chispas", "precio": 0.50 }],
-          "tags": [],
-          "stock": 100,
-          "disponible": true,
-          "prep_time_min": 2,
-          "calorias_kcal": 220,
-          "alergenos": ["lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "super_cono_mega_dypsi",
-          "sku": "ICE-002",
-          "nombre": "Super Cono Mega Dypsi",
-          "precio": 4.00,
-          "descripcion": "Cono grande con toppings y salsas.",
-          "variantes": null,
-          "modificadores": [{ "id": "topping_manjar", "nombre": "Topping manjar", "precio": 0.50 }],
-          "tags": [],
-          "stock": 60,
-          "disponible": true,
-          "prep_time_min": 3,
-          "calorias_kcal": 380,
-          "alergenos": ["lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "sundae",
-          "sku": "ICE-003",
-          "nombre": "Sundae",
-          "precio": 4.00,
-          "descripcion": "Sundae con salsa y toppings.",
-          "variantes": null,
-          "modificadores": [{ "id": "extra_topping", "nombre": "Extra topping", "precio": 0.50 }],
-          "tags": [],
-          "stock": 60,
-          "disponible": true,
-          "prep_time_min": 3,
-          "calorias_kcal": 360,
-          "alergenos": ["lacteos"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        },
-        {
-          "id": "dypsi_flurry",
-          "sku": "ICE-004",
-          "nombre": "Dypsi Flurry",
-          "precio": 5.00,
-          "descripcion": "Flurry con Oreo u otras galletas.",
-          "variantes": null,
-          "modificadores": [{ "id": "sabor_oreo", "nombre": "Sabor Oreo", "precio": 0.00 }],
-          "tags": [],
-          "stock": 50,
-          "disponible": true,
-          "prep_time_min": 3,
-          "calorias_kcal": 420,
-          "alergenos": ["lacteos", "gluten"],
-          "imagenes": [],
-          "created_at": "2025-10-01T08:00:00Z"
-        }
-      ]
-    },
-    {
-      "id": "bebidas",
-      "nombre": "Bebidas",
-      "descripcion": "Gaseosas, jugos naturales y aguas.",
-      "productos": [
-        { "id": "chicha_1lt", "sku": "BEB-CH1-001", "nombre": "Chicha 1lt", "precio": 8.00, "descripcion": "Chicha 1 litro", "tags": ["solo_delivery"], "stock": 20, "disponible": true, "prep_time_min": 2, "calorias_kcal": 200, "alergenos": [], "imagenes": [] },
-        { "id": "maracuya_1lt", "sku": "BEB-MA1-002", "nombre": "Maracuyá 1lt", "precio": 8.00, "descripcion": "Maracuyá 1 litro", "tags": ["solo_delivery"], "stock": 20, "disponible": true, "prep_time_min": 2, "calorias_kcal": 180, "alergenos": [], "imagenes": [] },
-        { "id": "chicha_personal", "sku": "BEB-CHP-003", "nombre": "Chicha personal", "precio": 4.00, "descripcion": "Chicha personal", "tags": [], "stock": 50, "disponible": true, "prep_time_min": 1, "calorias_kcal": 120, "alergenos": [], "imagenes": [] },
-        { "id": "maracuya_personal", "sku": "BEB-MAP-004", "nombre": "Maracuyá personal", "precio": 4.00, "descripcion": "Maracuyá personal", "tags": [], "stock": 50, "disponible": true, "prep_time_min": 1, "calorias_kcal": 120, "alergenos": [], "imagenes": [] },
-        { "id": "inca_kola_500", "sku": "BEB-INK-005", "nombre": "Inca Kola 500ml", "precio": 4.00, "descripcion": "Inca Kola 500ml", "tags": [], "stock": 80, "disponible": true, "prep_time_min": 0, "calorias_kcal": 210, "alergenos": [], "imagenes": [] },
-        { "id": "coca_cola_500", "sku": "BEB-COC-006", "nombre": "Coca Cola 500ml", "precio": 4.00, "descripcion": "Coca Cola 500ml", "tags": [], "stock": 80, "disponible": true, "prep_time_min": 0, "calorias_kcal": 210, "alergenos": [], "imagenes": [] },
-        { "id": "fanta_naranja_500", "sku": "BEB-FAN-007", "nombre": "Fanta naranja 500ml", "precio": 3.50, "descripcion": "Fanta naranja 500ml", "tags": [], "stock": 60, "disponible": true, "prep_time_min": 0, "calorias_kcal": 200, "alergenos": [], "imagenes": [] },
-        { "id": "fanta_inglesa_500", "sku": "BEB-FAN-008", "nombre": "Fanta inglesa 500ml", "precio": 3.50, "descripcion": "Fanta inglesa 500ml", "tags": [], "stock": 40, "disponible": true, "prep_time_min": 0, "calorias_kcal": 200, "alergenos": [], "imagenes": [] },
-        { "id": "sprite_500", "sku": "BEB-SPR-009", "nombre": "Sprite 500ml", "precio": 3.50, "descripcion": "Sprite 500ml", "tags": [], "stock": 60, "disponible": true, "prep_time_min": 0, "calorias_kcal": 200, "alergenos": [], "imagenes": [] },
-        { "id": "pepsi_355", "sku": "BEB-PEP-010", "nombre": "Pepsi 355ml", "precio": 2.00, "descripcion": "Pepsi lata 355ml", "tags": [], "stock": 120, "disponible": true, "prep_time_min": 0, "calorias_kcal": 150, "alergenos": [], "imagenes": [] },
-        { "id": "concordia_355", "sku": "BEB-CON-011", "nombre": "Concordia 355ml", "precio": 2.00, "descripcion": "Concordia lata 355ml", "tags": [], "stock": 60, "disponible": true, "prep_time_min": 0, "calorias_kcal": 150, "alergenos": [], "imagenes": [] },
-        { "id": "guarana_450", "sku": "BEB-GUA-012", "nombre": "Guaraná 450ml", "precio": 3.00, "descripcion": "Guaraná 450ml", "tags": [], "stock": 40, "disponible": true, "prep_time_min": 0, "calorias_kcal": 170, "alergenos": [], "imagenes": [] },
-        { "id": "pepsi_1lt", "sku": "BEB-PEP-013", "nombre": "Pepsi 1lt", "precio": 5.00, "descripcion": "Pepsi 1 litro", "tags": [], "stock": 40, "disponible": true, "prep_time_min": 0, "calorias_kcal": 420, "alergenos": [], "imagenes": [] },
-        { "id": "pepsi_1_5lt", "sku": "BEB-PEP-014", "nombre": "Pepsi 1.5lt", "precio": 6.50, "descripcion": "Pepsi 1.5 litro", "tags": [], "stock": 30, "disponible": true, "prep_time_min": 0, "calorias_kcal": 630, "alergenos": [], "imagenes": [] },
-        { "id": "inca_kola_1_5lt", "sku": "BEB-INK-015", "nombre": "Inca Kola 1.5lt", "precio": 9.00, "descripcion": "Inca Kola 1.5 litro", "tags": [], "stock": 20, "disponible": true, "prep_time_min": 0, "calorias_kcal": 700, "alergenos": [], "imagenes": [] },
-        { "id": "coca_cola_1_5lt", "sku": "BEB-COC-016", "nombre": "Coca Cola 1.5lt", "precio": 9.00, "descripcion": "Coca Cola 1.5 litro", "tags": [], "stock": 20, "disponible": true, "prep_time_min": 0, "calorias_kcal": 700, "alergenos": [], "imagenes": [] },
-        { "id": "jugo_fresa", "sku": "BEB-JUG-017", "nombre": "Jugo Fresa", "precio": 7.50, "descripcion": "Jugo natural de fresa", "tags": [], "stock": 30, "disponible": true, "prep_time_min": 3, "calorias_kcal": 160, "alergenos": [], "imagenes": [] },
-        { "id": "jugo_papaya", "sku": "BEB-JUG-018", "nombre": "Jugo Papaya", "precio": 7.50, "descripcion": "Jugo natural de papaya", "tags": [], "stock": 30, "disponible": true, "prep_time_min": 3, "calorias_kcal": 160, "alergenos": [], "imagenes": [] },
-        { "id": "jugo_pina", "sku": "BEB-JUG-019", "nombre": "Jugo Piña", "precio": 7.50, "descripcion": "Jugo natural de piña", "tags": [], "stock": 30, "disponible": true, "prep_time_min": 3, "calorias_kcal": 160, "alergenos": [], "imagenes": [] },
-        { "id": "jugo_maracuya", "sku": "BEB-JUG-020", "nombre": "Jugo Maracuyá", "precio": 7.50, "descripcion": "Jugo natural de maracuyá", "tags": [], "stock": 30, "disponible": true, "prep_time_min": 3, "calorias_kcal": 160, "alergenos": [], "imagenes": [] },
-        { "id": "jugo_surtido", "sku": "BEB-JUG-021", "nombre": "Jugo Surtido", "precio": 7.50, "descripcion": "Jugo mixto de frutas", "tags": [], "stock": 30, "disponible": true, "prep_time_min": 3, "calorias_kcal": 170, "alergenos": [], "imagenes": [] },
-        { "id": "jugo_fresa_leche", "sku": "BEB-JUG-022", "nombre": "Fresa con leche", "precio": 11.00, "descripcion": "Jugo de fresa con leche", "tags": [], "stock": 20, "disponible": true, "prep_time_min": 4, "calorias_kcal": 260, "alergenos": ["lacteos"], "imagenes": [] },
-        { "id": "jugo_papaya_leche", "sku": "BEB-JUG-023", "nombre": "Papaya con leche", "precio": 11.00, "descripcion": "Jugo de papaya con leche", "tags": [], "stock": 20, "disponible": true, "prep_time_min": 4, "calorias_kcal": 260, "alergenos": ["lacteos"], "imagenes": [] },
-        { "id": "jugo_surtido_leche", "sku": "BEB-JUG-024", "nombre": "Surtido con leche", "precio": 13.00, "descripcion": "Jugo surtido con leche", "tags": [], "stock": 15, "disponible": true, "prep_time_min": 4, "calorias_kcal": 300, "alergenos": ["lacteos"], "imagenes": [] },
-        { "id": "cafe", "sku": "BEB-CAF-025", "nombre": "Café", "precio": 4.00, "descripcion": "Café caliente", "tags": [], "stock": 100, "disponible": true, "prep_time_min": 2, "calorias_kcal": 5, "alergenos": [], "imagenes": [] },
-        { "id": "cafe_con_leche", "sku": "BEB-CAF-026", "nombre": "Café con leche", "precio": 6.00, "descripcion": "Café con leche", "tags": [], "stock": 80, "disponible": true, "prep_time_min": 3, "calorias_kcal": 80, "alergenos": ["lacteos"], "imagenes": [] },
-        { "id": "infusiones", "sku": "BEB-INF-027", "nombre": "Infusiones", "precio": 3.00, "descripcion": "Té, manzanilla, anís y hierbaluisa", "tags": [], "stock": 100, "disponible": true, "prep_time_min": 2, "calorias_kcal": 0, "alergenos": [], "imagenes": [] },
-        { "id": "agua_500", "sku": "BEB-AGU-028", "nombre": "Agua San Carlos 500ml", "precio": 2.00, "descripcion": "Agua mineral 500ml", "tags": [], "stock": 120, "disponible": true, "prep_time_min": 0, "calorias_kcal": 0, "alergenos": [], "imagenes": [] },
-        { "id": "agua_3lt", "sku": "BEB-AGU-029", "nombre": "Agua San Carlos 3lt", "precio": 4.50, "descripcion": "Agua mineral 3 litros", "tags": ["solo_delivery"], "stock": 20, "disponible": true, "prep_time_min": 0, "calorias_kcal": 0, "alergenos": [], "imagenes": [] }
-      ]
-    },
-    {
-      "id": "promos",
-      "nombre": "Promociones",
-      "descripcion": "Promociones y combos con precio fijo; algunas válidas por día.",
-      "productos": [
-        { "id": "promo_personal_pepsi_355", "sku": "PRM-001", "nombre": "Pizza personal 4tj + Pepsi 355ml", "precio": 10.00, "descripcion": "Pizza personal (clásica) + Pepsi 355ml", "tags": ["promo"], "stock": 50, "disponible": true, "prep_time_min": 15, "alergenos": ["gluten", "lacteos"], "imagenes": [] },
-        { "id": "promo_personal_lasagna", "sku": "PRM-002", "nombre": "Pizza personal 4tj + lasaña personal", "precio": 24.00, "descripcion": "Pizza personal + lasaña personal", "tags": ["promo"], "stock": 30, "disponible": true, "prep_time_min": 25, "alergenos": ["gluten", "lacteos"], "imagenes": [] },
-        { "id": "promo_duo_clasicas_8", "sku": "PRM-003", "nombre": "Dúo pizzas clásicas 8tj", "precio": 35.90, "descripcion": "2 pizzas clásicas de 8 tajadas (sabores clásicos)", "tags": ["promo"], "stock": 20, "disponible": true, "prep_time_min": 30, "alergenos": ["gluten", "lacteos"], "imagenes": [] },
-        { "id": "promo_3_pizzas_8", "sku": "PRM-004", "nombre": "3 pizzas clásicas 8tj", "precio": 52.90, "descripcion": "3 pizzas clásicas de 8 tajadas", "tags": ["promo"], "stock": 10, "disponible": true, "prep_time_min": 40, "alergenos": ["gluten", "lacteos"], "imagenes": [] },
-        { "id": "promo_clasica_8_lasagna_pepsi_1lt", "sku": "PRM-005", "nombre": "Clásica 8tj + lasaña + Pepsi 1lt", "precio": 36.00, "descripcion": "Pizza clásica 8 tajadas + lasaña + Pepsi 1lt", "tags": ["promo"], "stock": 12, "disponible": true, "prep_time_min": 40, "alergenos": ["gluten", "lacteos"], "imagenes": [] },
-        { "id": "promo_familiar_12_pan_pepsi", "sku": "PRM-006", "nombre": "Familiar 12tj + pan + Pepsi 1.5lt", "precio": 30.90, "descripcion": "Pizza familiar 12 tajadas + pan al ajo + Pepsi 1.5lt", "tags": ["promo"], "stock": 8, "disponible": true, "prep_time_min": 45, "alergenos": ["gluten", "lacteos"], "imagenes": [] },
-        { "id": "promo_personal_6_alitas", "sku": "PRM-007", "nombre": "Pizza personal 4tj + 6 alitas", "precio": 24.00, "descripcion": "Pizza personal + 6 alitas", "tags": ["promo"], "stock": 20, "disponible": true, "prep_time_min": 25, "alergenos": ["gluten", "lacteos", "pollo"], "imagenes": [] },
-        { "id": "promo_pizza_8_pan_pepsi_1lt", "sku": "PRM-008", "nombre": "Pizza 8tj + pan + Pepsi 1lt", "precio": 22.90, "descripcion": "Pizza mediana + pan al ajo + Pepsi 1lt", "tags": ["promo"], "stock": 18, "disponible": true, "prep_time_min": 30, "alergenos": ["gluten", "lacteos"], "imagenes": [] },
-        { "id": "promo_duo_clasicas_pepsi_1_5", "sku": "PRM-009", "nombre": "Dúo clásicas + Pepsi 1.5lt", "precio": 41.90, "descripcion": "2 pizzas clásicas 8 tajadas + Pepsi 1.5lt", "tags": ["promo"], "stock": 12, "disponible": true, "prep_time_min": 35, "alergenos": ["gluten", "lacteos"], "imagenes": [] },
-        { "id": "promo_clasica_8_6_alitas_pepsi_1lt", "sku": "PRM-010", "nombre": "Clásica 8 + 6 alitas + Pepsi 1lt", "precio": 37.00, "descripcion": "Pizza clásica 8 tajadas + 6 alitas + Pepsi 1lt", "tags": ["promo"], "stock": 10, "disponible": true, "prep_time_min": 40, "alergenos": ["gluten", "lacteos", "pollo"], "imagenes": [] },
-        { "id": "promo_especial_8_pan_pepsi_1lt", "sku": "PRM-011", "nombre": "Especial 8 + pan + Pepsi 1lt", "precio": 38.00, "descripcion": "Pizza especial 8 tajadas + pan al ajo + Pepsi 1lt", "tags": ["promo"], "stock": 8, "disponible": true, "prep_time_min": 40, "alergenos": ["gluten", "lacteos"], "imagenes": [] },
-        { "id": "promo_familiar_especial_12_pan_pepsi_1_5", "sku": "PRM-012", "nombre": "Familiar especial 12 + pan + Pepsi 1.5lt", "precio": 48.00, "descripcion": "Pizza familiar especial 12 tajadas + pan al ajo + Pepsi 1.5lt", "tags": ["promo"], "stock": 6, "disponible": true, "prep_time_min": 50, "alergenos": ["gluten", "lacteos"], "imagenes": [] }
-      ]
-    },
-    {
-      "id": "menu_especial",
-      "nombre": "Menú Especial",
-      "descripcion": "Combos y ofertas especiales; algunos requieren validación de stock o intervención humana.",
-      "productos": [
-        { "id": "choripapa", "sku": "ESP-001", "nombre": "Choripapa", "precio": 12.90, "descripcion": "Chorizo + papas nativas", "tags": ["promo"], "stock": 20, "disponible": true, "prep_time_min": 12, "alergenos": ["cerdo"], "imagenes": [] },
-        { "id": "combo_burger_pepsi", "sku": "ESP-002", "nombre": "Burger Clásica + Pepsi 355ml", "precio": 11.00, "descripcion": "Combo: hamburguesa clásica + Pepsi 355ml (precio combo aplicado)", "tags": ["promo", "combo"], "stock": 30, "disponible": true, "prep_time_min": 15, "alergenos": ["gluten", "lacteos"], "imagenes": [] },
-        { "id": "mostro", "sku": "ESP-003", "nombre": "Mostro", "precio": 11.00, "descripcion": "3 alitas + chaufa + papas + Pepsi/Concordia 355ml", "tags": ["promo"], "stock": 25, "disponible": true, "prep_time_min": 20, "alergenos": ["pollo"], "imagenes": [] },
-        { "id": "mostrito", "sku": "ESP-004", "nombre": "Mostrito", "precio": 11.00, "descripcion": "Versión pequeña del Mostro", "tags": ["promo"], "stock": 25, "disponible": true, "prep_time_min": 18, "alergenos": ["pollo"], "imagenes": [] },
-        { "id": "martes_barra_libre", "sku": "ESP-005", "nombre": "Martes de Barra Libre", "precio": null, "descripcion": "Promoción especial solo los martes; gestión por agente humano", "tags": ["promo_dia", "requiere_agente"], "stock": 0, "disponible": false, "prep_time_min": null, "alergenos": [], "imagenes": [] },
-        { "id": "combo_6alitas_fettuccine", "sku": "ESP-006", "nombre": "6 Alitas + Fettuccine Alfredo", "precio": 24.00, "descripcion": "Combo: 6 alitas + fettuccine Alfredo", "tags": ["promo"], "stock": 20, "disponible": true, "prep_time_min": 25, "alergenos": ["pollo", "gluten", "lacteos"], "imagenes": [] },
-        { "id": "promo_2_pizzas_clasicas_jueves", "sku": "ESP-007", "nombre": "2 Pizzas Clásicas 8tj (jueves)", "precio": 29.90, "descripcion": "Promo válida solo los jueves en sabores clásicos", "tags": ["promo_dia"], "stock": 10, "disponible": true, "prep_time_min": 35, "alergenos": ["gluten", "lacteos"], "imagenes": [] },
-        { "id": "combo_fettuccine_lasagna", "sku": "ESP-008", "nombre": "Fettuccine + Lasaña Mixta", "precio": 24.00, "descripcion": "Combo de fettuccine al gusto + lasaña mixta", "tags": ["promo"], "stock": 15, "disponible": true, "prep_time_min": 30, "alergenos": ["gluten", "lacteos"], "imagenes": [] }
-      ]
-    }
-  ],
-  "reglas": [
-    {
-      "id": "regla_combo_burger_pepsi",
-      "descripcion": "Aplicar precio combo para 'combo_burger_pepsi': precio fijo S/11.00 (sobrescribe suma individual).",
-      "productos_afectados": ["combo_burger_pepsi", "burger_clasica", "pepsi_355"],
-      "tipo": "precio_combo",
-      "condiciones": { "aplicable": "si se solicita exactamente Burger Clásica + Pepsi 355ml" }
-    },
-    {
-      "id": "regla_mostro_mostrito",
-      "descripcion": "Mostro y Mostrito: precio fijo S/11.00 por combo (3 alitas + chaufa + papas + Pepsi/Concordia 355ml).",
-      "productos_afectados": ["mostro", "mostrito"],
-      "tipo": "precio_combo",
-      "condiciones": { "aplicable": "si incluye bebida Pepsi 355ml o Concordia 355ml" }
-    },
-    {
-      "id": "regla_choripapa",
-      "descripcion": "Choripapa: precio S/12.90 (producto individual).",
-      "productos_afectados": ["choripapa"],
-      "tipo": "precio_fijo"
-    },
-    {
-      "id": "regla_combo_6alitas_fettuccine",
-      "descripcion": "Combo 6 alitas + Fettuccine Alfredo: precio fijo S/24.00.",
-      "productos_afectados": ["combo_6alitas_fettuccine"],
-      "tipo": "precio_combo"
-    },
-    {
-      "id": "regla_2_pizzas_jueves",
-      "descripcion": "Promo válida solo los jueves; aplicar precio S/29.90 para 2 pizzas clásicas 8 tajadas (sabores clásicos únicamente).",
-      "productos_afectados": ["promo_2_pizzas_clasicas_jueves"],
-      "tipo": "promo_dia",
-      "condiciones": { "dia_semana": "jueves", "sabores_permitidos": ["pizza_americana", "pizza_pepperoni", "pizza_hawaiana", "pizza_mozzarella"] }
-    },
-    {
-      "id": "regla_martes_barra_libre",
-      "descripcion": "Martes de Barra Libre: promoción gestionada por agente humano; no automatizar condiciones ni cobros desde la IA.",
-      "productos_afectados": ["martes_barra_libre"],
-      "tipo": "requiere_agente",
-      "condiciones": { "dia_semana": "martes", "accion": "derivar_a_agente" }
-    },
-    {
-      "id": "regla_promos_general",
-      "descripcion": "Todas las entradas en 'promos' con tag 'promo' deben validar disponibilidad de sabores y stock antes de confirmar pedido.",
-      "productos_afectados": [],
-      "tipo": "validacion_stock",
-      "condiciones": { "aplicable_a_tags": ["promo"] }
-    },
-    {
-      "id": "regla_sin_ensalada",
-      "descripcion": "Tag 'sin_ensalada' indica que el producto no incluye ensalada en su preparación ni en la descripción final mostrada por la IA.",
-      "productos_afectados": [],
-      "tipo": "presentacion",
-      "condiciones": { "aplicable_a_tags": ["sin_ensalada"] }
-    },
-    {
-      "id": "regla_solo_delivery",
-      "descripcion": "Tag 'solo_delivery' indica que el producto está disponible únicamente para delivery; la IA debe informar si el usuario solicita consumo en local.",
-      "productos_afectados": [],
-      "tipo": "canal_venta",
-      "condiciones": { "aplicable_a_tags": ["solo_delivery"] }
-    },
-    {
-      "id": "regla_stock_minimo",
-      "descripcion": "Si stock < 3, marcar producto como 'disponible': false y notificar al agente.",
-      "productos_afectados": [],
-      "tipo": "stock_control",
-      "condiciones": { "threshold": 3 }
-    },
-    {
-      "id": "regla_precio_redondeo",
-      "descripcion": "Redondear totales a 0.01 y mostrar impuestos por separado (IGV incluido si aplica).",
-      "productos_afectados": [],
-      "tipo": "precio",
-      "condiciones": { "rounding": 0.01, "tax_included": false }
-    }
-  ]
+	"categorias": [
+		{
+			"descripcion": "Entradas para compartir: panes, tequeños y bocados para empezar.",
+			"id": "entradas",
+			"nombre": "Entradas",
+			"productos": [
+				{
+					"alergenos": [
+						"lacteos",
+						"gluten"
+					],
+					"calorias_kcal": 420,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "5 unidades con mozzarella; ideal para acompañar pizzas.",
+					"disponible": true,
+					"id": "pan_ajo_cheese",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_mozzarella",
+							"nombre": "Extra mozzarella",
+							"precio": 1.5
+						},
+						{
+							"id": "salsa_aji",
+							"nombre": "Salsa ají",
+							"precio": 0.5
+						}
+					],
+					"nombre": "Pan al ajo cheese",
+					"precio": 5,
+					"prep_time_min": 6,
+					"sku": "ENT-PAC-001",
+					"stock": 50,
+					"tags": [
+						"sin_ensalada",
+						"compartir"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"gluten",
+						"cerdo"
+					],
+					"calorias_kcal": 520,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "5 unidades con mozzarella y chorizo ahumado.",
+					"disponible": true,
+					"id": "pan_ajo_chorizo",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_chorizo",
+							"nombre": "Extra chorizo",
+							"precio": 2
+						}
+					],
+					"nombre": "Pan al ajo con chorizo",
+					"precio": 8,
+					"prep_time_min": 7,
+					"sku": "ENT-PAC-002",
+					"stock": 30,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"gluten",
+						"cerdo"
+					],
+					"calorias_kcal": 500,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "5 unidades con mozzarella y jamón.",
+					"disponible": true,
+					"id": "pan_ajo_jamon",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_jamon",
+							"nombre": "Extra jamón",
+							"precio": 2
+						}
+					],
+					"nombre": "Pan al ajo con jamón",
+					"precio": 8,
+					"prep_time_min": 7,
+					"sku": "ENT-PAC-003",
+					"stock": 30,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"gluten"
+					],
+					"calorias_kcal": 510,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "5 unidades con mozzarella y salchicha ahumada.",
+					"disponible": true,
+					"id": "pan_ajo_salchicha",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_salchicha",
+							"nombre": "Extra salchicha",
+							"precio": 2
+						}
+					],
+					"nombre": "Pan al ajo con salchicha",
+					"precio": 8,
+					"prep_time_min": 7,
+					"sku": "ENT-PAC-004",
+					"stock": 25,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"gluten"
+					],
+					"calorias_kcal": 450,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "6 unidades rellenas de mozzarella; fritos al punto.",
+					"disponible": true,
+					"id": "tequenos_mozzarella_6",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "salsa_aji_teq",
+							"nombre": "Salsa ají para tequeños",
+							"precio": 0.5
+						}
+					],
+					"nombre": "Tequeños mozzarella 6und",
+					"precio": 8,
+					"prep_time_min": 8,
+					"sku": "ENT-TEQ-006",
+					"stock": 40,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"gluten",
+						"cerdo"
+					],
+					"calorias_kcal": 480,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "6 unidades rellenas de jamón y queso.",
+					"disponible": true,
+					"id": "tequenos_jamon_6",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Tequeños jamón 6und",
+					"precio": 10,
+					"prep_time_min": 8,
+					"sku": "ENT-TEQ-007",
+					"stock": 30,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"gluten",
+						"cerdo"
+					],
+					"calorias_kcal": 490,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "6 unidades rellenas de pepperoni y queso.",
+					"disponible": true,
+					"id": "tequenos_pepperoni_6",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Tequeños pepperoni 6und",
+					"precio": 10,
+					"prep_time_min": 8,
+					"sku": "ENT-TEQ-008",
+					"stock": 30,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"gluten"
+					],
+					"calorias_kcal": 900,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "12 unidades rellenas de mozzarella; para compartir.",
+					"disponible": true,
+					"id": "tequenos_mozzarella_12",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Tequeños mozzarella 12und",
+					"precio": 15,
+					"prep_time_min": 12,
+					"sku": "ENT-TEQ-012",
+					"stock": 20,
+					"tags": [
+						"sin_ensalada",
+						"compartir"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"gluten",
+						"cerdo"
+					],
+					"calorias_kcal": 960,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "12 unidades rellenas de jamón y queso.",
+					"disponible": true,
+					"id": "tequenos_jamon_12",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Tequeños jamón 12und",
+					"precio": 18,
+					"prep_time_min": 12,
+					"sku": "ENT-TEQ-013",
+					"stock": 15,
+					"tags": [
+						"sin_ensalada",
+						"compartir"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"gluten",
+						"cerdo"
+					],
+					"calorias_kcal": 980,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "12 unidades rellenas de pepperoni y queso.",
+					"disponible": true,
+					"id": "tequenos_pepperoni_12",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Tequeños pepperoni 12und",
+					"precio": 18,
+					"prep_time_min": 12,
+					"sku": "ENT-TEQ-014",
+					"stock": 15,
+					"tags": [
+						"sin_ensalada",
+						"compartir"
+					],
+					"variantes": null
+				}
+			]
+		},
+		{
+			"descripcion": "Pizzas artesanales con masa madre opcional; variantes por tamaño con precios por variante.",
+			"id": "pizzas",
+			"nombre": "Pizzas",
+			"productos": [
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": {
+						"familiar": 1800,
+						"mediana": 1200,
+						"pequena": 650
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Base salsa de tomate y mozzarella.",
+					"disponible": true,
+					"id": "pizza_mozzarella",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_mozzarella_pizza",
+							"nombre": "Extra mozzarella",
+							"precio": 3.5
+						},
+						{
+							"id": "masa_integral",
+							"nombre": "Masa integral",
+							"precio": 1
+						},
+						{
+							"id": "masa_sin_gluten",
+							"nombre": "Masa sin gluten (limitada)",
+							"precio": 4
+						}
+					],
+					"nombre": "Pizza Mozzarella",
+					"prep_time_min": 18,
+					"sku": "PIZ-MOZ-001",
+					"stock": 100,
+					"tags": [
+						"sin_ensalada",
+						"masa_opcional"
+					],
+					"variantes": {
+						"familiar": 27.9,
+						"mediana": 20.9,
+						"pequena": 9
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": {
+						"familiar": 1850,
+						"mediana": 1250,
+						"pequena": 700
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Jamón y pimiento.",
+					"disponible": true,
+					"id": "pizza_americana",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Pizza Americana",
+					"prep_time_min": 18,
+					"sku": "PIZ-AME-002",
+					"stock": 80,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 27.9,
+						"mediana": 20.9,
+						"pequena": 9
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": {
+						"familiar": 1900,
+						"mediana": 1300,
+						"pequena": 720
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Pepperoni y pimiento.",
+					"disponible": true,
+					"id": "pizza_pepperoni",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_pepperoni",
+							"nombre": "Extra pepperoni",
+							"precio": 4
+						}
+					],
+					"nombre": "Pizza Pepperoni",
+					"prep_time_min": 18,
+					"sku": "PIZ-PEP-003",
+					"stock": 90,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 27.9,
+						"mediana": 20.9,
+						"pequena": 9
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": {
+						"familiar": 1850,
+						"mediana": 1250,
+						"pequena": 700
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Jamón y piña.",
+					"disponible": true,
+					"id": "pizza_hawaiana",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "sin_pina",
+							"nombre": "Sin piña",
+							"precio": 0
+						}
+					],
+					"nombre": "Pizza Hawaiana",
+					"prep_time_min": 18,
+					"sku": "PIZ-HAW-004",
+					"stock": 70,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 27.9,
+						"mediana": 20.9,
+						"pequena": 9
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": {
+						"familiar": 2000,
+						"mediana": 1350,
+						"pequena": 750
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Jamón, tomate, aceitunas verdes, maíz, pimiento.",
+					"disponible": true,
+					"id": "pizza_primavera",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_aceitunas",
+							"nombre": "Extra aceitunas",
+							"precio": 1.5
+						}
+					],
+					"nombre": "Pizza Primavera",
+					"prep_time_min": 20,
+					"sku": "PIZ-PRI-005",
+					"stock": 50,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 39,
+						"mediana": 28,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": {
+						"familiar": 1900,
+						"mediana": 1300,
+						"pequena": 700
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Fugazza con cebolla y salsa blanca.",
+					"disponible": true,
+					"id": "pizza_fugazza",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "sin_cebolla",
+							"nombre": "Sin cebolla",
+							"precio": 0
+						}
+					],
+					"nombre": "Pizza Fugazza",
+					"prep_time_min": 20,
+					"sku": "PIZ-FUG-006",
+					"stock": 40,
+					"tags": [
+						"sin_ensalada",
+						"vegetariana_opcional"
+					],
+					"variantes": {
+						"familiar": 39,
+						"mediana": 28,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": {
+						"familiar": 2050,
+						"mediana": 1400,
+						"pequena": 760
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Jamón, cebolla, champiñones, salsa blanca.",
+					"disponible": true,
+					"id": "pizza_continental",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Pizza Continental",
+					"prep_time_min": 20,
+					"sku": "PIZ-CON-007",
+					"stock": 40,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 39,
+						"mediana": 28,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": {
+						"familiar": 2100,
+						"mediana": 1450,
+						"pequena": 800
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Salchicha ahumada y papas.",
+					"disponible": true,
+					"id": "pizza_salchipizzas",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Pizza Salchipizzas",
+					"prep_time_min": 20,
+					"sku": "PIZ-SAL-008",
+					"stock": 35,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 39,
+						"mediana": 28,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": {
+						"familiar": 2200,
+						"mediana": 1500,
+						"pequena": 820
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Jamón, tocino y pimiento.",
+					"disponible": true,
+					"id": "pizza_bacon",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_tocino",
+							"nombre": "Extra tocino",
+							"precio": 3
+						}
+					],
+					"nombre": "Pizza Bacon",
+					"prep_time_min": 22,
+					"sku": "PIZ-BAC-009",
+					"stock": 30,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 40,
+						"mediana": 33,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": {
+						"familiar": 2100,
+						"mediana": 1450,
+						"pequena": 780
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Pollo y salsa BBQ.",
+					"disponible": true,
+					"id": "pizza_barbecue",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_pollo",
+							"nombre": "Extra pollo",
+							"precio": 4
+						}
+					],
+					"nombre": "Pizza Barbecue",
+					"prep_time_min": 22,
+					"sku": "PIZ-BBQ-010",
+					"stock": 30,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 42,
+						"mediana": 35,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": {
+						"familiar": 2150,
+						"mediana": 1500,
+						"pequena": 800
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Pollo, piña y salsa BBQ.",
+					"disponible": true,
+					"id": "pizza_pizzacue_hawaiana",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Pizza Pizzacue Hawaiana",
+					"prep_time_min": 22,
+					"sku": "PIZ-PZC-011",
+					"stock": 25,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 42,
+						"mediana": 35,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"soya"
+					],
+					"calorias_kcal": {
+						"familiar": 2300,
+						"mediana": 1550,
+						"pequena": 850
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Pollo saltado estilo peruano sobre base de pizza.",
+					"disponible": true,
+					"id": "pizza_pollo_saltado",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Pizza Pollo Saltado",
+					"prep_time_min": 25,
+					"sku": "PIZ-PS-012",
+					"stock": 20,
+					"tags": [
+						"sin_ensalada",
+						"fusion"
+					],
+					"variantes": {
+						"familiar": 42,
+						"mediana": 35,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": {
+						"familiar": 1900,
+						"mediana": 1250,
+						"pequena": 680
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Vegetales: zapallito, berenjena, tomate y pimiento.",
+					"disponible": true,
+					"id": "pizza_ratatouille",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "sin_queso",
+							"nombre": "Sin queso (vegano)",
+							"precio": 0
+						}
+					],
+					"nombre": "Pizza Ratatouille",
+					"prep_time_min": 22,
+					"sku": "PIZ-RAT-013",
+					"stock": 18,
+					"tags": [
+						"vegetariana",
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 42,
+						"mediana": 35,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"pollo"
+					],
+					"calorias_kcal": {
+						"familiar": 2400,
+						"mediana": 1650,
+						"pequena": 900
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Jamón, pollo y salsa blanca.",
+					"disponible": true,
+					"id": "pizza_cordon_blue",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Pizza Cordon Blue",
+					"prep_time_min": 24,
+					"sku": "PIZ-CB-014",
+					"stock": 15,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 42,
+						"mediana": 35,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": {
+						"familiar": 2600,
+						"mediana": 1750,
+						"pequena": 950
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Con todo: jamón, carne, chorizo, tocino, cebolla, aceitunas, champiñón, pimiento.",
+					"disponible": true,
+					"id": "pizza_suprema",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "sin_ingrediente",
+							"nombre": "Quitar ingrediente",
+							"precio": 0
+						}
+					],
+					"nombre": "Pizza Suprema",
+					"prep_time_min": 25,
+					"sku": "PIZ-SUP-015",
+					"stock": 12,
+					"tags": [
+						"sin_ensalada",
+						"todo"
+					],
+					"variantes": {
+						"familiar": 42,
+						"mediana": 35,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": {
+						"familiar": 1800,
+						"mediana": 1200,
+						"pequena": 650
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Champiñón, tomate, cebolla, aceitunas verdes, pimiento.",
+					"disponible": true,
+					"id": "pizza_vegetariana",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "sin_queso",
+							"nombre": "Sin queso (vegano)",
+							"precio": 0
+						}
+					],
+					"nombre": "Pizza Vegetariana",
+					"prep_time_min": 20,
+					"sku": "PIZ-VEG-016",
+					"stock": 20,
+					"tags": [
+						"vegetariana",
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 42,
+						"mediana": 35,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"carne"
+					],
+					"calorias_kcal": {
+						"familiar": 2100,
+						"mediana": 1450,
+						"pequena": 780
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Salsa boloñesa, albahaca y pimiento.",
+					"disponible": true,
+					"id": "pizza_bolonesa_clasica",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Pizza Boloñesa Clásica",
+					"prep_time_min": 22,
+					"sku": "PIZ-BOL-017",
+					"stock": 18,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 40,
+						"mediana": 33,
+						"pequena": 13
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"carne"
+					],
+					"calorias_kcal": {
+						"familiar": 2200,
+						"mediana": 1500,
+						"pequena": 820
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Salsa boloñesa con jamón y albahaca.",
+					"disponible": true,
+					"id": "pizza_bolonesa_especial",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Pizza Boloñesa Especial",
+					"prep_time_min": 24,
+					"sku": "PIZ-BOL-018",
+					"stock": 12,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": {
+						"familiar": 43,
+						"mediana": 35,
+						"pequena": 14
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": {
+						"familiar": 2700,
+						"mediana": 1850,
+						"pequena": 1000
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Mezcla de carnes: carne, chorizo, tocino y más.",
+					"disponible": true,
+					"id": "pizza_super_meat",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_carne",
+							"nombre": "Extra carne",
+							"precio": 5
+						}
+					],
+					"nombre": "Pizza Super Meat",
+					"prep_time_min": 26,
+					"sku": "PIZ-SMT-019",
+					"stock": 10,
+					"tags": [
+						"sin_ensalada",
+						"carnes"
+					],
+					"variantes": {
+						"familiar": 43,
+						"mediana": 35,
+						"pequena": 14
+					}
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": {
+						"familiar": 2850,
+						"mediana": 1950,
+						"pequena": 1050
+					},
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Boloñesa premium con tocino y albahaca.",
+					"disponible": true,
+					"id": "pizza_bolonesa_premium",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Pizza Boloñesa Premium",
+					"prep_time_min": 28,
+					"sku": "PIZ-BLP-020",
+					"stock": 8,
+					"tags": [
+						"sin_ensalada",
+						"premium"
+					],
+					"variantes": {
+						"familiar": 45,
+						"mediana": 37,
+						"pequena": 16
+					}
+				}
+			]
+		},
+		{
+			"descripcion": "Pastas caseras y fettuccine con salsas tradicionales.",
+			"id": "pastas",
+			"nombre": "Pastas",
+			"productos": [
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 850,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Boloñesa + bechamel + jamón; porción individual 450gr.",
+					"disponible": true,
+					"id": "lasagna_mixta_450",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "agregar_pan",
+							"nombre": "Agregar 2 pan al ajo",
+							"precio": 3.5
+						}
+					],
+					"nombre": "Lasaña Mixta 450gr",
+					"precio": 14.9,
+					"prep_time_min": 18,
+					"sku": "PAS-LAS-001",
+					"stock": 25,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 800,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Lasaña personal con salsa boloñesa y mozzarella.",
+					"disponible": true,
+					"id": "lasagna_bolonesa_personal",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Lasaña Boloñesa Personal",
+					"precio": 14.9,
+					"prep_time_min": 16,
+					"sku": "PAS-LAS-002",
+					"stock": 30,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"pollo"
+					],
+					"calorias_kcal": 820,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Bechamel con pollo y champiñón.",
+					"disponible": true,
+					"id": "lasagna_pollo_personal",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Lasaña de Pollo Personal",
+					"precio": 16.9,
+					"prep_time_min": 18,
+					"sku": "PAS-LAS-003",
+					"stock": 20,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 950,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Lasaña personal acompañada de 2 panes al ajo.",
+					"disponible": true,
+					"id": "lasagna_personal_2_pan",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Lasaña personal + 2 pan al ajo",
+					"precio": 16.9,
+					"prep_time_min": 20,
+					"sku": "PAS-LAS-004",
+					"stock": 18,
+					"tags": [
+						"sin_ensalada",
+						"combo"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 3200,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Lasaña grande 1kg (mixta/pollo/boloñesa).",
+					"disponible": true,
+					"id": "lasagna_1kg",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "agregar_5pan",
+							"nombre": "Agregar 5 pan al ajo",
+							"precio": 5
+						}
+					],
+					"nombre": "Lasaña 1kg",
+					"precio": 29,
+					"prep_time_min": 35,
+					"sku": "PAS-LAS-005",
+					"stock": 10,
+					"tags": [
+						"sin_ensalada",
+						"familia"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 3300,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Lasaña 1kg con 5 panes al ajo incluidos.",
+					"disponible": true,
+					"id": "lasagna_1kg_5_pan",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Lasaña 1kg + 5 pan al ajo",
+					"precio": 31.9,
+					"prep_time_min": 38,
+					"sku": "PAS-LAS-006",
+					"stock": 8,
+					"tags": [
+						"sin_ensalada",
+						"familia",
+						"combo"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"pollo"
+					],
+					"calorias_kcal": 1400,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Lasaña personal acompañada de 6 alitas a elección.",
+					"disponible": true,
+					"id": "lasagna_con_alitas",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "salsa_alitas",
+							"nombre": "Salsa para alitas",
+							"precio": 0
+						}
+					],
+					"nombre": "Lasaña + 6 alitas",
+					"precio": 28,
+					"prep_time_min": 30,
+					"sku": "PAS-LAS-007",
+					"stock": 12,
+					"tags": [
+						"sin_ensalada",
+						"combo"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 900,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Fettuccine con salsa Alfredo cremosa.",
+					"disponible": true,
+					"id": "fettuccine_alfredo",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "agregar_pollo",
+							"nombre": "Agregar pollo",
+							"precio": 4
+						}
+					],
+					"nombre": "Fettuccine Alfredo",
+					"precio": 17,
+					"prep_time_min": 16,
+					"sku": "PAS-FET-008",
+					"stock": 25,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten"
+					],
+					"calorias_kcal": 880,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Fettuccine con salsa boloñesa tradicional.",
+					"disponible": true,
+					"id": "fettuccine_bolonesa",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Fettuccine Boloñesa",
+					"precio": 17,
+					"prep_time_min": 16,
+					"sku": "PAS-FET-009",
+					"stock": 20,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"frutos_secos"
+					],
+					"calorias_kcal": 820,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Fettuccine con salsa pesto de albahaca.",
+					"disponible": true,
+					"id": "fettuccine_pesto",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "sin_piñones",
+							"nombre": "Sin piñones",
+							"precio": 0
+						}
+					],
+					"nombre": "Fettuccine Pesto",
+					"precio": 17,
+					"prep_time_min": 16,
+					"sku": "PAS-FET-010",
+					"stock": 18,
+					"tags": [
+						"sin_ensalada",
+						"vegetariano"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"pollo"
+					],
+					"calorias_kcal": 980,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Pollo con champiñón en salsa stroganoff sobre fettuccine.",
+					"disponible": true,
+					"id": "fettuccine_stroganoff",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Fettuccine Stroganoff",
+					"precio": 22,
+					"prep_time_min": 20,
+					"sku": "PAS-FET-011",
+					"stock": 15,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"pollo"
+					],
+					"calorias_kcal": 1050,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Fettuccine Alfredo con pollo y champiñón.",
+					"disponible": true,
+					"id": "fettuccine_alfredo_especial",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Fettuccine Alfredo Especial",
+					"precio": 20,
+					"prep_time_min": 22,
+					"sku": "PAS-FET-012",
+					"stock": 12,
+					"tags": [
+						"sin_ensalada",
+						"especial"
+					],
+					"variantes": null
+				}
+			]
+		},
+		{
+			"descripcion": "Alitas broaster en varias presentaciones, crispy y chicharrón.",
+			"id": "alitas_crispy",
+			"nombre": "Alitas / Crispy / Chicharrón",
+			"productos": [
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 350,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "3 unidades broaster; salsa a elección.",
+					"disponible": true,
+					"id": "alitas_broaster_3",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "salsa_bbq",
+							"nombre": "Salsa BBQ",
+							"precio": 0
+						},
+						{
+							"id": "salsa_picante",
+							"nombre": "Salsa picante",
+							"precio": 0
+						}
+					],
+					"nombre": "Alitas broaster 3und",
+					"precio": 11,
+					"prep_time_min": 10,
+					"sku": "ALI-003",
+					"stock": 60,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 450,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "4 unidades broaster; salsa a elección.",
+					"disponible": true,
+					"id": "alitas_broaster_4",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "salsa_bbq",
+							"nombre": "Salsa BBQ",
+							"precio": 0
+						},
+						{
+							"id": "salsa_picante",
+							"nombre": "Salsa picante",
+							"precio": 0
+						}
+					],
+					"nombre": "Alitas broaster 4und",
+					"precio": 14,
+					"prep_time_min": 12,
+					"sku": "ALI-004",
+					"stock": 50,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 600,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "6 unidades en la salsa a elección (BBQ, búfalo, picante, maracuyá, acevichada).",
+					"disponible": true,
+					"id": "alitas_6_variedades",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "salsa_elegida",
+							"nombre": "Elegir salsa",
+							"precio": 0
+						}
+					],
+					"nombre": "Alitas 6und (variedades)",
+					"precio": 18,
+					"prep_time_min": 14,
+					"sku": "ALI-006",
+					"stock": 40,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 1200,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "12 unidades broaster; para compartir.",
+					"disponible": true,
+					"id": "alitas_broaster_12",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "pepsi_1lt_incluida",
+							"nombre": "Pepsi 1lt incluida",
+							"precio": 3
+						}
+					],
+					"nombre": "Alitas broaster 12und",
+					"precio": 32,
+					"prep_time_min": 20,
+					"sku": "ALI-012",
+					"stock": 20,
+					"tags": [
+						"sin_ensalada",
+						"compartir"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 1250,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "12 alitas + Pepsi 1lt (combo).",
+					"disponible": true,
+					"id": "alitas_broaster_12_pepsi",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Alitas broaster 12und + Pepsi 1lt",
+					"precio": 35,
+					"prep_time_min": 20,
+					"sku": "ALI-012P",
+					"stock": 18,
+					"tags": [
+						"sin_ensalada",
+						"combo"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 2400,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "24 alitas + Pepsi 1.5lt (combo familiar).",
+					"disponible": true,
+					"id": "alitas_broaster_24_pepsi",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Alitas broaster 24und + Pepsi 1.5lt",
+					"precio": 65,
+					"prep_time_min": 35,
+					"sku": "ALI-024P",
+					"stock": 8,
+					"tags": [
+						"sin_ensalada",
+						"familia",
+						"combo"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 420,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "2 piezas crispy; crujientes por fuera y jugosas por dentro.",
+					"disponible": true,
+					"id": "crispy_2",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "salsa_crispy",
+							"nombre": "Salsa a elección",
+							"precio": 0
+						}
+					],
+					"nombre": "Crispy 2 piezas",
+					"precio": 19.9,
+					"prep_time_min": 12,
+					"sku": "CRP-002",
+					"stock": 40,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 630,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "3 piezas crispy con guarnición.",
+					"disponible": true,
+					"id": "crispy_3",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Crispy 3 piezas",
+					"precio": 22.9,
+					"prep_time_min": 14,
+					"sku": "CRP-003",
+					"stock": 35,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 840,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "4 piezas crispy con papas.",
+					"disponible": true,
+					"id": "crispy_4",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Crispy 4 piezas",
+					"precio": 25.9,
+					"prep_time_min": 16,
+					"sku": "CRP-004",
+					"stock": 30,
+					"tags": [
+						"sin_ensalada",
+						"compartir"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 1050,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "5 piezas crispy con papas y salsa.",
+					"disponible": true,
+					"id": "crispy_5",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Crispy 5 piezas",
+					"precio": 28.9,
+					"prep_time_min": 18,
+					"sku": "CRP-005",
+					"stock": 25,
+					"tags": [
+						"sin_ensalada",
+						"compartir"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 1100,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "4 piezas crispy + Pepsi 1lt (combo).",
+					"disponible": true,
+					"id": "crispy_4_pepsi",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Crispy 4 piezas + Pepsi 1lt",
+					"precio": 28.9,
+					"prep_time_min": 18,
+					"sku": "CRP-004P",
+					"stock": 20,
+					"tags": [
+						"combo"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"calorias_kcal": 1250,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "5 piezas crispy + Pepsi 1lt (combo).",
+					"disponible": true,
+					"id": "crispy_5_pepsi",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Crispy 5 piezas + Pepsi 1lt",
+					"precio": 31.9,
+					"prep_time_min": 20,
+					"sku": "CRP-005P",
+					"stock": 18,
+					"tags": [
+						"combo"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"cerdo"
+					],
+					"calorias_kcal": 900,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Porción personal de chicharrón crocante.",
+					"disponible": true,
+					"id": "chicharron_personal",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "acevichado",
+							"nombre": "Acevichado",
+							"precio": 3
+						}
+					],
+					"nombre": "Chicharrón personal",
+					"precio": 18,
+					"prep_time_min": 15,
+					"sku": "CHC-001",
+					"stock": 20,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"cerdo",
+						"pescado"
+					],
+					"calorias_kcal": 920,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Chicharrón con salsa acevichada (personal).",
+					"disponible": true,
+					"id": "chicharron_acevichado_personal",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Chicharrón acevichado personal",
+					"precio": 22,
+					"prep_time_min": 18,
+					"sku": "CHC-002",
+					"stock": 15,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"cerdo"
+					],
+					"calorias_kcal": 2200,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Porción familiar de chicharrón para compartir.",
+					"disponible": true,
+					"id": "chicharron_familiar",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Chicharrón familiar",
+					"precio": 31,
+					"prep_time_min": 25,
+					"sku": "CHC-003",
+					"stock": 10,
+					"tags": [
+						"familia"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"cerdo",
+						"pescado"
+					],
+					"calorias_kcal": 2400,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Chicharrón acevichado porción familiar.",
+					"disponible": true,
+					"id": "chicharron_acevichado_familiar",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Chicharrón acevichado familiar",
+					"precio": 35,
+					"prep_time_min": 28,
+					"sku": "CHC-004",
+					"stock": 8,
+					"tags": [
+						"familia"
+					],
+					"variantes": null
+				}
+			]
+		},
+		{
+			"descripcion": "Hamburguesas artesanales con opciones de toppings y combos.",
+			"id": "hamburguesas",
+			"nombre": "Hamburguesas",
+			"productos": [
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 850,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Carne artesanal; se sirve con papas.",
+					"disponible": true,
+					"id": "burger_clasica",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_papas",
+							"nombre": "Extra papas",
+							"precio": 2.5
+						},
+						{
+							"id": "sin_pan",
+							"nombre": "Sin pan (al plato)",
+							"precio": 0
+						}
+					],
+					"nombre": "Hamburguesa Clásica (carne artesanal)",
+					"precio": 10,
+					"prep_time_min": 12,
+					"sku": "BUR-CL-001",
+					"stock": 40,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 920,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Con queso; opción doble queso disponible.",
+					"disponible": true,
+					"id": "burger_cheese",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "doble_queso",
+							"nombre": "Doble queso",
+							"precio": 2
+						}
+					],
+					"nombre": "Hamburguesa Cheese",
+					"precio": 12,
+					"prep_time_min": 12,
+					"sku": "BUR-CH-002",
+					"stock": 35,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": 900,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Con jamón; sabor clásico.",
+					"disponible": true,
+					"id": "burger_jamon",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Hamburguesa Jamón",
+					"precio": 12,
+					"prep_time_min": 12,
+					"sku": "BUR-JAM-003",
+					"stock": 30,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"huevo"
+					],
+					"calorias_kcal": 980,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Con huevo frito; opción a lo pobre disponible.",
+					"disponible": true,
+					"id": "burger_huevo",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "a_lo_pobre",
+							"nombre": "A lo pobre (plátano + huevo)",
+							"precio": 2.5
+						}
+					],
+					"nombre": "Hamburguesa Huevo",
+					"precio": 12,
+					"prep_time_min": 14,
+					"sku": "BUR-HUE-004",
+					"stock": 28,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": 1020,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Jamón y queso; versión especial.",
+					"disponible": true,
+					"id": "burger_especial_jamon_queso",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Especial jamón + queso",
+					"precio": 14,
+					"prep_time_min": 15,
+					"sku": "BUR-ESP-005",
+					"stock": 20,
+					"tags": [
+						"sin_ensalada",
+						"especial"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"huevo"
+					],
+					"calorias_kcal": 1040,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Huevo y queso; versión especial.",
+					"disponible": true,
+					"id": "burger_especial_huevo_queso",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Especial huevo + queso",
+					"precio": 14,
+					"prep_time_min": 15,
+					"sku": "BUR-ESP-006",
+					"stock": 18,
+					"tags": [
+						"sin_ensalada",
+						"especial"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"huevo",
+						"cerdo"
+					],
+					"calorias_kcal": 1200,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Versión premium con jamón, queso y huevo.",
+					"disponible": true,
+					"id": "burger_premium",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_tocino",
+							"nombre": "Extra tocino",
+							"precio": 3
+						}
+					],
+					"nombre": "Premium (jamón + queso + huevo)",
+					"precio": 16,
+					"prep_time_min": 18,
+					"sku": "BUR-PRM-007",
+					"stock": 12,
+					"tags": [
+						"sin_ensalada",
+						"premium"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 980,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Hamburguesa con cebolla acaramelizada.",
+					"disponible": true,
+					"id": "burger_acaramelizada",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Acaramelizada (cebolla)",
+					"precio": 15,
+					"prep_time_min": 16,
+					"sku": "BUR-ACR-008",
+					"stock": 14,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": 1150,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Hamburguesa con tocino crujiente.",
+					"disponible": true,
+					"id": "burger_bacon",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Bacon (tocino)",
+					"precio": 16,
+					"prep_time_min": 16,
+					"sku": "BUR-BAC-009",
+					"stock": 12,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": 980,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Hamburguesa con salchicha ahumada.",
+					"disponible": true,
+					"id": "burger_salchiburger",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Salchiburger (salchicha ahumada)",
+					"precio": 15,
+					"prep_time_min": 14,
+					"sku": "BUR-SAL-010",
+					"stock": 10,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": 1000,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Hamburguesa con chorizo ahumado.",
+					"disponible": true,
+					"id": "burger_choriburger",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Choriburger (chorizo)",
+					"precio": 15,
+					"prep_time_min": 14,
+					"sku": "BUR-CHR-011",
+					"stock": 10,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 980,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Hamburguesa con piña a la plancha.",
+					"disponible": true,
+					"id": "burger_hawaiana",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Hawaiana (piña)",
+					"precio": 15,
+					"prep_time_min": 14,
+					"sku": "BUR-HAW-012",
+					"stock": 10,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 1300,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Hamburguesa con doble porción de carne.",
+					"disponible": true,
+					"id": "burger_doble",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_queso",
+							"nombre": "Extra queso",
+							"precio": 1.5
+						}
+					],
+					"nombre": "Doble carne",
+					"precio": 17,
+					"prep_time_min": 18,
+					"sku": "BUR-DBL-013",
+					"stock": 8,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"huevo"
+					],
+					"calorias_kcal": 1400,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Hamburguesa con plátano frito y huevo.",
+					"disponible": true,
+					"id": "burger_a_lo_pobre",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "A lo pobre (plátano)",
+					"precio": 18,
+					"prep_time_min": 20,
+					"sku": "BUR-PLT-014",
+					"stock": 6,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": 1500,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Hamburguesa servida al plato con arroz chaufa y chorizo.",
+					"disponible": true,
+					"id": "burger_al_plato",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Al plato (arroz chaufa + chorizo)",
+					"precio": 18,
+					"prep_time_min": 22,
+					"sku": "BUR-PLT-015",
+					"stock": 6,
+					"tags": [
+						"sin_ensalada",
+						"al_plato"
+					],
+					"variantes": null
+				}
+			]
+		},
+		{
+			"descripcion": "Filetes y choripanes clásicos.",
+			"id": "filete_choripan",
+			"nombre": "Filete & Choripán",
+			"productos": [
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 900,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Filete estilo hamburguesa clásica; incluye papas.",
+					"disponible": true,
+					"id": "filete_clasica",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Filete hamburguesa Clásica",
+					"precio": 10,
+					"prep_time_min": 14,
+					"sku": "FIL-CL-001",
+					"stock": 20,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"calorias_kcal": 980,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Filete con queso; opción doble queso.",
+					"disponible": true,
+					"id": "filete_cheese",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "doble_queso_filete",
+							"nombre": "Doble queso",
+							"precio": 2
+						}
+					],
+					"nombre": "Filete hamburguesa Cheese",
+					"precio": 12,
+					"prep_time_min": 15,
+					"sku": "FIL-CH-002",
+					"stock": 18,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": 980,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Filete con jamón y papas.",
+					"disponible": true,
+					"id": "filete_jamon",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Filete hamburguesa Jamón",
+					"precio": 12,
+					"prep_time_min": 15,
+					"sku": "FIL-JAM-003",
+					"stock": 15,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"huevo"
+					],
+					"calorias_kcal": 1020,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Filete con huevo frito.",
+					"disponible": true,
+					"id": "filete_huevo",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Filete hamburguesa Huevo",
+					"precio": 12,
+					"prep_time_min": 16,
+					"sku": "FIL-HUE-004",
+					"stock": 12,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"huevo"
+					],
+					"calorias_kcal": 1250,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Versión premium con jamón, queso y huevo.",
+					"disponible": true,
+					"id": "filete_premium",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Filete hamburguesa Premium",
+					"precio": 16,
+					"prep_time_min": 18,
+					"sku": "FIL-PRM-005",
+					"stock": 8,
+					"tags": [
+						"sin_ensalada",
+						"premium"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"cerdo"
+					],
+					"calorias_kcal": 650,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Chorizo en pan con papas nativas.",
+					"disponible": true,
+					"id": "choripan_clasico",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_papas",
+							"nombre": "Extra papas",
+							"precio": 2
+						}
+					],
+					"nombre": "Choripán clásico",
+					"precio": 6,
+					"prep_time_min": 8,
+					"sku": "CHR-001",
+					"stock": 40,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": 720,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Chorizo con queso y papas nativas.",
+					"disponible": true,
+					"id": "choripan_cheese",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Choripán cheese",
+					"precio": 8,
+					"prep_time_min": 9,
+					"sku": "CHR-002",
+					"stock": 30,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"cerdo",
+						"huevo"
+					],
+					"calorias_kcal": 900,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Chorizo con jamón, queso y huevo.",
+					"disponible": true,
+					"id": "choripan_premium",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Choripán premium",
+					"precio": 11,
+					"prep_time_min": 12,
+					"sku": "CHR-003",
+					"stock": 20,
+					"tags": [
+						"sin_ensalada",
+						"premium"
+					],
+					"variantes": null
+				}
+			]
+		},
+		{
+			"descripcion": "Variantes de salchipapa con toppings y combos.",
+			"id": "salchipapas",
+			"nombre": "Salchipapas",
+			"productos": [
+				{
+					"alergenos": [
+						"cerdo"
+					],
+					"calorias_kcal": 900,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Salchicha ahumada + papas nativas.",
+					"disponible": true,
+					"id": "salchipapa_clasica",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "agregar_huevo",
+							"nombre": "Agregar huevo",
+							"precio": 1.5
+						}
+					],
+					"nombre": "Salchipapa clásica",
+					"precio": 10,
+					"prep_time_min": 10,
+					"sku": "SAL-001",
+					"stock": 30,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"cerdo"
+					],
+					"calorias_kcal": 980,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Salchicha ahumada + chorizo + otros ingredientes.",
+					"disponible": true,
+					"id": "salchimix",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Salchimix",
+					"precio": 11,
+					"prep_time_min": 12,
+					"sku": "SAL-002",
+					"stock": 25,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"cerdo",
+						"soya"
+					],
+					"calorias_kcal": 980,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Salchicha ahumada + chaufa (arroz frito).",
+					"disponible": true,
+					"id": "salchichaufa",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Salchichaufa",
+					"precio": 11,
+					"prep_time_min": 14,
+					"sku": "SAL-003",
+					"stock": 20,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": 1100,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Salchipapa con mozzarella y crema casera.",
+					"disponible": true,
+					"id": "salchicheese",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Salchicheese",
+					"precio": 14,
+					"prep_time_min": 14,
+					"sku": "SAL-004",
+					"stock": 18,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"cerdo"
+					],
+					"calorias_kcal": 1200,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Salchipapa con tocino y mozzarella.",
+					"disponible": true,
+					"id": "salchibacon",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Salchibacon",
+					"precio": 15,
+					"prep_time_min": 15,
+					"sku": "SAL-005",
+					"stock": 15,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"pollo",
+						"cerdo"
+					],
+					"calorias_kcal": 1400,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Salchipapa con piezas broaster incluidas.",
+					"disponible": true,
+					"id": "salchibroaster",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Salchibroaster",
+					"precio": 18,
+					"prep_time_min": 18,
+					"sku": "SAL-006",
+					"stock": 12,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"huevo",
+						"cerdo"
+					],
+					"calorias_kcal": 1500,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Con huevo y plátano frito.",
+					"disponible": true,
+					"id": "salchipapa_a_lo_pobre",
+					"imagenes": [],
+					"modificadores": [],
+					"nombre": "Salchipapa a lo pobre",
+					"precio": 20,
+					"prep_time_min": 18,
+					"sku": "SAL-007",
+					"stock": 10,
+					"tags": [
+						"sin_ensalada"
+					],
+					"variantes": null
+				}
+			]
+		},
+		{
+			"descripcion": "Postres fríos y helados para terminar.",
+			"id": "helados",
+			"nombre": "Helados",
+			"productos": [
+				{
+					"alergenos": [
+						"lacteos"
+					],
+					"calorias_kcal": 220,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Vainilla / Chocolate / Mitad y Mitad.",
+					"disponible": true,
+					"id": "cono",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "topping_fresa",
+							"nombre": "Topping fresa",
+							"precio": 0.5
+						},
+						{
+							"id": "topping_chispas",
+							"nombre": "Topping chispas",
+							"precio": 0.5
+						}
+					],
+					"nombre": "Cono",
+					"precio": 3,
+					"prep_time_min": 2,
+					"sku": "ICE-001",
+					"stock": 100,
+					"tags": [],
+					"variantes": {
+						"chocolate": 3,
+						"mitad_mitad": 3,
+						"vainilla": 3
+					}
+				},
+				{
+					"alergenos": [
+						"lacteos"
+					],
+					"calorias_kcal": 380,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Cono grande con toppings y salsas.",
+					"disponible": true,
+					"id": "super_cono_mega_dypsi",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "topping_manjar",
+							"nombre": "Topping manjar",
+							"precio": 0.5
+						}
+					],
+					"nombre": "Super Cono Mega Dypsi",
+					"precio": 4,
+					"prep_time_min": 3,
+					"sku": "ICE-002",
+					"stock": 60,
+					"tags": [],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos"
+					],
+					"calorias_kcal": 360,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Sundae con salsa y toppings.",
+					"disponible": true,
+					"id": "sundae",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "extra_topping",
+							"nombre": "Extra topping",
+							"precio": 0.5
+						}
+					],
+					"nombre": "Sundae",
+					"precio": 4,
+					"prep_time_min": 3,
+					"sku": "ICE-003",
+					"stock": 60,
+					"tags": [],
+					"variantes": null
+				},
+				{
+					"alergenos": [
+						"lacteos",
+						"gluten"
+					],
+					"calorias_kcal": 420,
+					"created_at": "2025-10-01T08:00:00Z",
+					"descripcion": "Flurry con Oreo u otras galletas.",
+					"disponible": true,
+					"id": "dypsi_flurry",
+					"imagenes": [],
+					"modificadores": [
+						{
+							"id": "sabor_oreo",
+							"nombre": "Sabor Oreo",
+							"precio": 0
+						}
+					],
+					"nombre": "Dypsi Flurry",
+					"precio": 5,
+					"prep_time_min": 3,
+					"sku": "ICE-004",
+					"stock": 50,
+					"tags": [],
+					"variantes": null
+				}
+			]
+		},
+		{
+			"descripcion": "Gaseosas, jugos naturales y aguas.",
+			"id": "bebidas",
+			"nombre": "Bebidas",
+			"productos": [
+				{
+					"alergenos": [],
+					"calorias_kcal": 200,
+					"descripcion": "Chicha 1 litro",
+					"disponible": true,
+					"id": "chicha_1lt",
+					"imagenes": [],
+					"nombre": "Chicha 1lt",
+					"precio": 8,
+					"prep_time_min": 2,
+					"sku": "BEB-CH1-001",
+					"stock": 20,
+					"tags": [
+						"solo_delivery"
+					]
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 180,
+					"descripcion": "Maracuyá 1 litro",
+					"disponible": true,
+					"id": "maracuya_1lt",
+					"imagenes": [],
+					"nombre": "Maracuyá 1lt",
+					"precio": 8,
+					"prep_time_min": 2,
+					"sku": "BEB-MA1-002",
+					"stock": 20,
+					"tags": [
+						"solo_delivery"
+					]
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 120,
+					"descripcion": "Chicha personal",
+					"disponible": true,
+					"id": "chicha_personal",
+					"imagenes": [],
+					"nombre": "Chicha personal",
+					"precio": 4,
+					"prep_time_min": 1,
+					"sku": "BEB-CHP-003",
+					"stock": 50,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 120,
+					"descripcion": "Maracuyá personal",
+					"disponible": true,
+					"id": "maracuya_personal",
+					"imagenes": [],
+					"nombre": "Maracuyá personal",
+					"precio": 4,
+					"prep_time_min": 1,
+					"sku": "BEB-MAP-004",
+					"stock": 50,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 210,
+					"descripcion": "Inca Kola 500ml",
+					"disponible": true,
+					"id": "inca_kola_500",
+					"imagenes": [],
+					"nombre": "Inca Kola 500ml",
+					"precio": 4,
+					"prep_time_min": 0,
+					"sku": "BEB-INK-005",
+					"stock": 80,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 210,
+					"descripcion": "Coca Cola 500ml",
+					"disponible": true,
+					"id": "coca_cola_500",
+					"imagenes": [],
+					"nombre": "Coca Cola 500ml",
+					"precio": 4,
+					"prep_time_min": 0,
+					"sku": "BEB-COC-006",
+					"stock": 80,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 200,
+					"descripcion": "Fanta naranja 500ml",
+					"disponible": true,
+					"id": "fanta_naranja_500",
+					"imagenes": [],
+					"nombre": "Fanta naranja 500ml",
+					"precio": 3.5,
+					"prep_time_min": 0,
+					"sku": "BEB-FAN-007",
+					"stock": 60,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 200,
+					"descripcion": "Fanta inglesa 500ml",
+					"disponible": true,
+					"id": "fanta_inglesa_500",
+					"imagenes": [],
+					"nombre": "Fanta inglesa 500ml",
+					"precio": 3.5,
+					"prep_time_min": 0,
+					"sku": "BEB-FAN-008",
+					"stock": 40,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 200,
+					"descripcion": "Sprite 500ml",
+					"disponible": true,
+					"id": "sprite_500",
+					"imagenes": [],
+					"nombre": "Sprite 500ml",
+					"precio": 3.5,
+					"prep_time_min": 0,
+					"sku": "BEB-SPR-009",
+					"stock": 60,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 150,
+					"descripcion": "Pepsi lata 355ml",
+					"disponible": true,
+					"id": "pepsi_355",
+					"imagenes": [],
+					"nombre": "Pepsi 355ml",
+					"precio": 2,
+					"prep_time_min": 0,
+					"sku": "BEB-PEP-010",
+					"stock": 120,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 150,
+					"descripcion": "Concordia lata 355ml",
+					"disponible": true,
+					"id": "concordia_355",
+					"imagenes": [],
+					"nombre": "Concordia 355ml",
+					"precio": 2,
+					"prep_time_min": 0,
+					"sku": "BEB-CON-011",
+					"stock": 60,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 170,
+					"descripcion": "Guaraná 450ml",
+					"disponible": true,
+					"id": "guarana_450",
+					"imagenes": [],
+					"nombre": "Guaraná 450ml",
+					"precio": 3,
+					"prep_time_min": 0,
+					"sku": "BEB-GUA-012",
+					"stock": 40,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 420,
+					"descripcion": "Pepsi 1 litro",
+					"disponible": true,
+					"id": "pepsi_1lt",
+					"imagenes": [],
+					"nombre": "Pepsi 1lt",
+					"precio": 5,
+					"prep_time_min": 0,
+					"sku": "BEB-PEP-013",
+					"stock": 40,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 630,
+					"descripcion": "Pepsi 1.5 litro",
+					"disponible": true,
+					"id": "pepsi_1_5lt",
+					"imagenes": [],
+					"nombre": "Pepsi 1.5lt",
+					"precio": 6.5,
+					"prep_time_min": 0,
+					"sku": "BEB-PEP-014",
+					"stock": 30,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 700,
+					"descripcion": "Inca Kola 1.5 litro",
+					"disponible": true,
+					"id": "inca_kola_1_5lt",
+					"imagenes": [],
+					"nombre": "Inca Kola 1.5lt",
+					"precio": 9,
+					"prep_time_min": 0,
+					"sku": "BEB-INK-015",
+					"stock": 20,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 700,
+					"descripcion": "Coca Cola 1.5 litro",
+					"disponible": true,
+					"id": "coca_cola_1_5lt",
+					"imagenes": [],
+					"nombre": "Coca Cola 1.5lt",
+					"precio": 9,
+					"prep_time_min": 0,
+					"sku": "BEB-COC-016",
+					"stock": 20,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 160,
+					"descripcion": "Jugo natural de fresa",
+					"disponible": true,
+					"id": "jugo_fresa",
+					"imagenes": [],
+					"nombre": "Jugo Fresa",
+					"precio": 7.5,
+					"prep_time_min": 3,
+					"sku": "BEB-JUG-017",
+					"stock": 30,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 160,
+					"descripcion": "Jugo natural de papaya",
+					"disponible": true,
+					"id": "jugo_papaya",
+					"imagenes": [],
+					"nombre": "Jugo Papaya",
+					"precio": 7.5,
+					"prep_time_min": 3,
+					"sku": "BEB-JUG-018",
+					"stock": 30,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 160,
+					"descripcion": "Jugo natural de piña",
+					"disponible": true,
+					"id": "jugo_pina",
+					"imagenes": [],
+					"nombre": "Jugo Piña",
+					"precio": 7.5,
+					"prep_time_min": 3,
+					"sku": "BEB-JUG-019",
+					"stock": 30,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 160,
+					"descripcion": "Jugo natural de maracuyá",
+					"disponible": true,
+					"id": "jugo_maracuya",
+					"imagenes": [],
+					"nombre": "Jugo Maracuyá",
+					"precio": 7.5,
+					"prep_time_min": 3,
+					"sku": "BEB-JUG-020",
+					"stock": 30,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 170,
+					"descripcion": "Jugo mixto de frutas",
+					"disponible": true,
+					"id": "jugo_surtido",
+					"imagenes": [],
+					"nombre": "Jugo Surtido",
+					"precio": 7.5,
+					"prep_time_min": 3,
+					"sku": "BEB-JUG-021",
+					"stock": 30,
+					"tags": []
+				},
+				{
+					"alergenos": [
+						"lacteos"
+					],
+					"calorias_kcal": 260,
+					"descripcion": "Jugo de fresa con leche",
+					"disponible": true,
+					"id": "jugo_fresa_leche",
+					"imagenes": [],
+					"nombre": "Fresa con leche",
+					"precio": 11,
+					"prep_time_min": 4,
+					"sku": "BEB-JUG-022",
+					"stock": 20,
+					"tags": []
+				},
+				{
+					"alergenos": [
+						"lacteos"
+					],
+					"calorias_kcal": 260,
+					"descripcion": "Jugo de papaya con leche",
+					"disponible": true,
+					"id": "jugo_papaya_leche",
+					"imagenes": [],
+					"nombre": "Papaya con leche",
+					"precio": 11,
+					"prep_time_min": 4,
+					"sku": "BEB-JUG-023",
+					"stock": 20,
+					"tags": []
+				},
+				{
+					"alergenos": [
+						"lacteos"
+					],
+					"calorias_kcal": 300,
+					"descripcion": "Jugo surtido con leche",
+					"disponible": true,
+					"id": "jugo_surtido_leche",
+					"imagenes": [],
+					"nombre": "Surtido con leche",
+					"precio": 13,
+					"prep_time_min": 4,
+					"sku": "BEB-JUG-024",
+					"stock": 15,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 5,
+					"descripcion": "Café caliente",
+					"disponible": true,
+					"id": "cafe",
+					"imagenes": [],
+					"nombre": "Café",
+					"precio": 4,
+					"prep_time_min": 2,
+					"sku": "BEB-CAF-025",
+					"stock": 100,
+					"tags": []
+				},
+				{
+					"alergenos": [
+						"lacteos"
+					],
+					"calorias_kcal": 80,
+					"descripcion": "Café con leche",
+					"disponible": true,
+					"id": "cafe_con_leche",
+					"imagenes": [],
+					"nombre": "Café con leche",
+					"precio": 6,
+					"prep_time_min": 3,
+					"sku": "BEB-CAF-026",
+					"stock": 80,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 0,
+					"descripcion": "Té, manzanilla, anís y hierbaluisa",
+					"disponible": true,
+					"id": "infusiones",
+					"imagenes": [],
+					"nombre": "Infusiones",
+					"precio": 3,
+					"prep_time_min": 2,
+					"sku": "BEB-INF-027",
+					"stock": 100,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 0,
+					"descripcion": "Agua mineral 500ml",
+					"disponible": true,
+					"id": "agua_500",
+					"imagenes": [],
+					"nombre": "Agua San Carlos 500ml",
+					"precio": 2,
+					"prep_time_min": 0,
+					"sku": "BEB-AGU-028",
+					"stock": 120,
+					"tags": []
+				},
+				{
+					"alergenos": [],
+					"calorias_kcal": 0,
+					"descripcion": "Agua mineral 3 litros",
+					"disponible": true,
+					"id": "agua_3lt",
+					"imagenes": [],
+					"nombre": "Agua San Carlos 3lt",
+					"precio": 4.5,
+					"prep_time_min": 0,
+					"sku": "BEB-AGU-029",
+					"stock": 20,
+					"tags": [
+						"solo_delivery"
+					]
+				}
+			]
+		},
+		{
+			"descripcion": "Promociones y combos con precio fijo; algunas válidas por día.",
+			"id": "promos",
+			"nombre": "Promociones",
+			"productos": [
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "Pizza personal (clásica) + Pepsi 355ml",
+					"disponible": true,
+					"id": "promo_personal_pepsi_355",
+					"imagenes": [],
+					"nombre": "Pizza personal 4tj + Pepsi 355ml",
+					"precio": 10,
+					"prep_time_min": 15,
+					"sku": "PRM-001",
+					"stock": 50,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "Pizza personal + lasaña personal",
+					"disponible": true,
+					"id": "promo_personal_lasagna",
+					"imagenes": [],
+					"nombre": "Pizza personal 4tj + lasaña personal",
+					"precio": 24,
+					"prep_time_min": 25,
+					"sku": "PRM-002",
+					"stock": 30,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "2 pizzas clásicas de 8 tajadas (sabores clásicos)",
+					"disponible": true,
+					"id": "promo_duo_clasicas_8",
+					"imagenes": [],
+					"nombre": "Dúo pizzas clásicas 8tj",
+					"precio": 35.9,
+					"prep_time_min": 30,
+					"sku": "PRM-003",
+					"stock": 20,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "3 pizzas clásicas de 8 tajadas",
+					"disponible": true,
+					"id": "promo_3_pizzas_8",
+					"imagenes": [],
+					"nombre": "3 pizzas clásicas 8tj",
+					"precio": 52.9,
+					"prep_time_min": 40,
+					"sku": "PRM-004",
+					"stock": 10,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "Pizza clásica 8 tajadas + lasaña + Pepsi 1lt",
+					"disponible": true,
+					"id": "promo_clasica_8_lasagna_pepsi_1lt",
+					"imagenes": [],
+					"nombre": "Clásica 8tj + lasaña + Pepsi 1lt",
+					"precio": 36,
+					"prep_time_min": 40,
+					"sku": "PRM-005",
+					"stock": 12,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "Pizza familiar 12 tajadas + pan al ajo + Pepsi 1.5lt",
+					"disponible": true,
+					"id": "promo_familiar_12_pan_pepsi",
+					"imagenes": [],
+					"nombre": "Familiar 12tj + pan + Pepsi 1.5lt",
+					"precio": 30.9,
+					"prep_time_min": 45,
+					"sku": "PRM-006",
+					"stock": 8,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"pollo"
+					],
+					"descripcion": "Pizza personal + 6 alitas",
+					"disponible": true,
+					"id": "promo_personal_6_alitas",
+					"imagenes": [],
+					"nombre": "Pizza personal 4tj + 6 alitas",
+					"precio": 24,
+					"prep_time_min": 25,
+					"sku": "PRM-007",
+					"stock": 20,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "Pizza mediana + pan al ajo + Pepsi 1lt",
+					"disponible": true,
+					"id": "promo_pizza_8_pan_pepsi_1lt",
+					"imagenes": [],
+					"nombre": "Pizza 8tj + pan + Pepsi 1lt",
+					"precio": 22.9,
+					"prep_time_min": 30,
+					"sku": "PRM-008",
+					"stock": 18,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "2 pizzas clásicas 8 tajadas + Pepsi 1.5lt",
+					"disponible": true,
+					"id": "promo_duo_clasicas_pepsi_1_5",
+					"imagenes": [],
+					"nombre": "Dúo clásicas + Pepsi 1.5lt",
+					"precio": 41.9,
+					"prep_time_min": 35,
+					"sku": "PRM-009",
+					"stock": 12,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos",
+						"pollo"
+					],
+					"descripcion": "Pizza clásica 8 tajadas + 6 alitas + Pepsi 1lt",
+					"disponible": true,
+					"id": "promo_clasica_8_6_alitas_pepsi_1lt",
+					"imagenes": [],
+					"nombre": "Clásica 8 + 6 alitas + Pepsi 1lt",
+					"precio": 37,
+					"prep_time_min": 40,
+					"sku": "PRM-010",
+					"stock": 10,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "Pizza especial 8 tajadas + pan al ajo + Pepsi 1lt",
+					"disponible": true,
+					"id": "promo_especial_8_pan_pepsi_1lt",
+					"imagenes": [],
+					"nombre": "Especial 8 + pan + Pepsi 1lt",
+					"precio": 38,
+					"prep_time_min": 40,
+					"sku": "PRM-011",
+					"stock": 8,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "Pizza familiar especial 12 tajadas + pan al ajo + Pepsi 1.5lt",
+					"disponible": true,
+					"id": "promo_familiar_especial_12_pan_pepsi_1_5",
+					"imagenes": [],
+					"nombre": "Familiar especial 12 + pan + Pepsi 1.5lt",
+					"precio": 48,
+					"prep_time_min": 50,
+					"sku": "PRM-012",
+					"stock": 6,
+					"tags": [
+						"promo"
+					]
+				}
+			]
+		},
+		{
+			"descripcion": "Combos y ofertas especiales; algunos requieren validación de stock o intervención humana.",
+			"id": "menu_especial",
+			"nombre": "Menú Especial",
+			"productos": [
+				{
+					"alergenos": [
+						"cerdo"
+					],
+					"descripcion": "Chorizo + papas nativas",
+					"disponible": true,
+					"id": "choripapa",
+					"imagenes": [],
+					"nombre": "Choripapa",
+					"precio": 12.9,
+					"prep_time_min": 12,
+					"sku": "ESP-001",
+					"stock": 20,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "Combo: hamburguesa clásica + Pepsi 355ml (precio combo aplicado)",
+					"disponible": true,
+					"id": "combo_burger_pepsi",
+					"imagenes": [],
+					"nombre": "Burger Clásica + Pepsi 355ml",
+					"precio": 11,
+					"prep_time_min": 15,
+					"sku": "ESP-002",
+					"stock": 30,
+					"tags": [
+						"promo",
+						"combo"
+					]
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"descripcion": "3 alitas + chaufa + papas + Pepsi/Concordia 355ml",
+					"disponible": true,
+					"id": "mostro",
+					"imagenes": [],
+					"nombre": "Mostro",
+					"precio": 11,
+					"prep_time_min": 20,
+					"sku": "ESP-003",
+					"stock": 25,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"pollo"
+					],
+					"descripcion": "Versión pequeña del Mostro",
+					"disponible": true,
+					"id": "mostrito",
+					"imagenes": [],
+					"nombre": "Mostrito",
+					"precio": 11,
+					"prep_time_min": 18,
+					"sku": "ESP-004",
+					"stock": 25,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [],
+					"descripcion": "Promoción especial solo los martes; gestión por agente humano",
+					"disponible": false,
+					"id": "martes_barra_libre",
+					"imagenes": [],
+					"nombre": "Martes de Barra Libre",
+					"precio": null,
+					"prep_time_min": null,
+					"sku": "ESP-005",
+					"stock": 0,
+					"tags": [
+						"promo_dia",
+						"requiere_agente"
+					]
+				},
+				{
+					"alergenos": [
+						"pollo",
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "Combo: 6 alitas + fettuccine Alfredo",
+					"disponible": true,
+					"id": "combo_6alitas_fettuccine",
+					"imagenes": [],
+					"nombre": "6 Alitas + Fettuccine Alfredo",
+					"precio": 24,
+					"prep_time_min": 25,
+					"sku": "ESP-006",
+					"stock": 20,
+					"tags": [
+						"promo"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "Promo válida solo los jueves en sabores clásicos",
+					"disponible": true,
+					"id": "promo_2_pizzas_clasicas_jueves",
+					"imagenes": [],
+					"nombre": "2 Pizzas Clásicas 8tj (jueves)",
+					"precio": 29.9,
+					"prep_time_min": 35,
+					"sku": "ESP-007",
+					"stock": 10,
+					"tags": [
+						"promo_dia"
+					]
+				},
+				{
+					"alergenos": [
+						"gluten",
+						"lacteos"
+					],
+					"descripcion": "Combo de fettuccine al gusto + lasaña mixta",
+					"disponible": true,
+					"id": "combo_fettuccine_lasagna",
+					"imagenes": [],
+					"nombre": "Fettuccine + Lasaña Mixta",
+					"precio": 24,
+					"prep_time_min": 30,
+					"sku": "ESP-008",
+					"stock": 15,
+					"tags": [
+						"promo"
+					]
+				}
+			]
+		}
+	],
+	"meta": {
+		"currency": "PEN",
+		"notes": "Archivo de catálogo enriquecido: cada producto incluye variantes, SKU, stock estimado, tiempos de preparación, alérgenos y opciones/modificadores. Mantiene el orden original y amplía reglas y validaciones.",
+		"store": "DYPSI Pizzería & Grill",
+		"version": "2026-02-02"
+	},
+	"reglas": [
+		{
+			"condiciones": {
+				"aplicable": "si se solicita exactamente Burger Clásica + Pepsi 355ml"
+			},
+			"descripcion": "Aplicar precio combo para 'combo_burger_pepsi': precio fijo S/11.00 (sobrescribe suma individual).",
+			"id": "regla_combo_burger_pepsi",
+			"productos_afectados": [
+				"combo_burger_pepsi",
+				"burger_clasica",
+				"pepsi_355"
+			],
+			"tipo": "precio_combo"
+		},
+		{
+			"condiciones": {
+				"aplicable": "si incluye bebida Pepsi 355ml o Concordia 355ml"
+			},
+			"descripcion": "Mostro y Mostrito: precio fijo S/11.00 por combo (3 alitas + chaufa + papas + Pepsi/Concordia 355ml).",
+			"id": "regla_mostro_mostrito",
+			"productos_afectados": [
+				"mostro",
+				"mostrito"
+			],
+			"tipo": "precio_combo"
+		},
+		{
+			"descripcion": "Choripapa: precio S/12.90 (producto individual).",
+			"id": "regla_choripapa",
+			"productos_afectados": [
+				"choripapa"
+			],
+			"tipo": "precio_fijo"
+		},
+		{
+			"descripcion": "Combo 6 alitas + Fettuccine Alfredo: precio fijo S/24.00.",
+			"id": "regla_combo_6alitas_fettuccine",
+			"productos_afectados": [
+				"combo_6alitas_fettuccine"
+			],
+			"tipo": "precio_combo"
+		},
+		{
+			"condiciones": {
+				"dia_semana": "jueves",
+				"sabores_permitidos": [
+					"pizza_americana",
+					"pizza_pepperoni",
+					"pizza_hawaiana",
+					"pizza_mozzarella"
+				]
+			},
+			"descripcion": "Promo válida solo los jueves; aplicar precio S/29.90 para 2 pizzas clásicas 8 tajadas (sabores clásicos únicamente).",
+			"id": "regla_2_pizzas_jueves",
+			"productos_afectados": [
+				"promo_2_pizzas_clasicas_jueves"
+			],
+			"tipo": "promo_dia"
+		},
+		{
+			"condiciones": {
+				"accion": "derivar_a_agente",
+				"dia_semana": "martes"
+			},
+			"descripcion": "Martes de Barra Libre: promoción gestionada por agente humano; no automatizar condiciones ni cobros desde la IA.",
+			"id": "regla_martes_barra_libre",
+			"productos_afectados": [
+				"martes_barra_libre"
+			],
+			"tipo": "requiere_agente"
+		},
+		{
+			"condiciones": {
+				"aplicable_a_tags": [
+					"promo"
+				]
+			},
+			"descripcion": "Todas las entradas en 'promos' con tag 'promo' deben validar disponibilidad de sabores y stock antes de confirmar pedido.",
+			"id": "regla_promos_general",
+			"productos_afectados": [],
+			"tipo": "validacion_stock"
+		},
+		{
+			"condiciones": {
+				"aplicable_a_tags": [
+					"sin_ensalada"
+				]
+			},
+			"descripcion": "Tag 'sin_ensalada' indica que el producto no incluye ensalada en su preparación ni en la descripción final mostrada por la IA.",
+			"id": "regla_sin_ensalada",
+			"productos_afectados": [],
+			"tipo": "presentacion"
+		},
+		{
+			"condiciones": {
+				"aplicable_a_tags": [
+					"solo_delivery"
+				]
+			},
+			"descripcion": "Tag 'solo_delivery' indica que el producto está disponible únicamente para delivery; la IA debe informar si el usuario solicita consumo en local.",
+			"id": "regla_solo_delivery",
+			"productos_afectados": [],
+			"tipo": "canal_venta"
+		},
+		{
+			"condiciones": {
+				"threshold": 3
+			},
+			"descripcion": "Si stock < 3, marcar producto como 'disponible': false y notificar al agente.",
+			"id": "regla_stock_minimo",
+			"productos_afectados": [],
+			"tipo": "stock_control"
+		},
+		{
+			"condiciones": {
+				"rounding": 0.01,
+				"tax_included": false
+			},
+			"descripcion": "Redondear totales a 0.01 y mostrar impuestos por separado (IGV incluido si aplica).",
+			"id": "regla_precio_redondeo",
+			"productos_afectados": [],
+			"tipo": "precio"
+		}
+	]
 }
