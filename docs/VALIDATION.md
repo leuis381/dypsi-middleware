@@ -25,5 +25,22 @@ Reglas principales:
 - `created_at` en formato ISO8601 (UTC).
 
 CI:
-- El workflow `.github/workflows/validate-menu.yml` ejecuta `npm ci`, `npm run validate-menu` y `npm run lint`.
+- El workflow `.github/workflows/validate-menu.yml` ejecuta `npm ci` y luego `npm run validate-menu` y `npm run lint` por defecto (en ese orden).
 - Si la validación falla o hay duplicados, CI fallará y el PR no podrá ser mergeado hasta correcciones.
+
+CI - comportamiento respecto a lockfile (package-lock.json / npm-shrinkwrap.json)
+- El workflow ahora detecta si existe un lockfile (`package-lock.json` o `npm-shrinkwrap.json`).
+  - Si existe lockfile, el workflow ejecuta `npm ci` (recomendado: instalación determinista en CI).
+  - Si NO existe lockfile, el workflow hace fallback a `npm install` para evitar fallos de CI.
+- Recomendación: genera y commitea `package-lock.json` para instalaciones reproducibles en CI:
+  - Generar lockfile sin instalar node_modules:
+    npm install --package-lock-only
+  - Luego:
+    git add package-lock.json
+    git commit -m "chore: add package-lock.json for deterministic CI"
+    git push
+- Alternativa: si no deseas commitear el lockfile, el workflow seguirá funcionando gracias al fallback; sin embargo, `npm install` puede producir resultados no deterministas entre entornos.
+
+Notas adicionales:
+- Si tu proyecto usa workspaces o tiene estructura monorepo, adapta la lógica del workflow para comprobar lockfiles en las rutas correspondientes.
+- Para producción y despliegues, mantener el lockfile en el repositorio suele ser la práctica recomendada (garantiza instalaciones reproducibles).
