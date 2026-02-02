@@ -1,0 +1,41 @@
+name: Menu Validation & Lint
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+      - 'fix/**'
+      - 'feature/**'
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  validate-and-lint:
+    name: Validate Menu and Lint Code
+    runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Validate menu.json
+        run: npm run validate-menu
+
+      - name: Run ESLint
+        run: npm run lint
+        continue-on-error: false
