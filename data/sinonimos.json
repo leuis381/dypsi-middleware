@@ -162,8 +162,8 @@
   "bebidas": ["coca cola", "coca", "coke", "pepsi", "inka kola", "inca kola", "fanta", "sprite", "guaraná", "agua", "jugo", "chicha", "maracuyá", "soda", "gaseosa"],
   "postres": ["helado", "cono", "super cono", "sundae", "flurry", "dypsi flurry", "oreo", "postre"], 
   "extras": ["extra queso", "extra jamón", "extra huevo", "extra carne", "extra pollo", "extra tocino", "extra cebolla", "extra maíz", "extra arroz chaufa", "extra papas"],
-  "promos": ["promo", "combo", "oferta", "duo", "pack", "especial", "martes barra libre", "mostro", "mostrito", "combo burger pepsi", "combo alitas", "combo pizza"]
-"pan_ajo_cheese": ["pan al ajo cheese", "pan ajo cheese", "pan al ajo con queso", "pan ajo con mozzarella", "pan al ajo queso"],
+  "promos": ["promo", "combo", "oferta", "duo", "pack", "especial", "martes barra libre", "mostro", "mostrito", "combo burger pepsi", "combo alitas", "combo pizza"],
+  "pan_ajo_cheese": ["pan al ajo cheese", "pan ajo cheese", "pan al ajo con queso", "pan ajo con mozzarella", "pan al ajo queso"],
   "pan_ajo_chorizo": ["pan al ajo con chorizo", "pan ajo chorizo", "pan con chorizo", "pan al ajo chori"],
   "pan_ajo_jamon": ["pan al ajo con jamón", "pan ajo jamón", "pan con jamon", "pan al ajo jamon"],
   "pan_ajo_salchicha": ["pan al ajo con salchicha", "pan ajo salchicha", "pan con salchicha"],
