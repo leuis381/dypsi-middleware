@@ -10,6 +10,9 @@ jobs:
   validate-and-lint:
     name: Validate Menu & Lint JS
     runs-on: ubuntu-latest
+    
+    permissions:
+      contents: read
 
     steps:
       - name: Checkout repository
