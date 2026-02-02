@@ -1,7 +1,9 @@
 /**
  * api/kommo.js
  *
- * Supercerebro Kommo handler (ultrarrobusto)
+ * Supercerebro Kommo handler con Motor de IA Ultra-Mejorado
+ * Detección inteligente de intenciones, análisis semántico, perfiles de usuario,
+ * contexto multi-turno, y respuestas humanizadas
  */
 import axios from "axios";
 import admin from "firebase-admin";
@@ -10,6 +12,9 @@ import { readImage, readImageBuffer, extractMostLikelyTotal, validateReceiptAgai
 import { detectAddress, normalizeAddress } from "../lib/detect-address.js";
 import pricing from "../lib/zona-precios.js";
 import sessionStore from "../lib/session-store.js";
+import { detectIntention, ConversationContext, generateSmartResponse, generateSuggestions, validateOrder } from "../lib/ai-engine.js";
+import { smartOCRAnalysis } from "../lib/smart-ocr.js";
+import { UserProfile } from "../lib/user-profile.js";
 import fs from "fs";
 import path from "path";
 
@@ -60,6 +65,68 @@ sessionStore.saveOrderDraft = sessionStore.saveOrderDraft || (async (phone, draf
   await sessionStore.saveSession(phone, data);
   return data;
 });
+
+/* ---------- AI Context Management ---------- */
+
+/**
+ * Cargar o crear contexto conversacional del usuario
+ */
+const getOrCreateContext = async (telefono, nombre) => {
+  const session = await sessionStore.getSession(telefono);
+  let context = session?.context;
+  
+  if (!context) {
+    context = new ConversationContext(telefono, nombre);
+  } else {
+    // Restaurar contexto desde sesión
+    context = Object.assign(new ConversationContext(telefono, nombre), context);
+  }
+  
+  return context;
+};
+
+/**
+ * Cargar o crear perfil del usuario
+ */
+const getOrCreateUserProfile = async (telefono, nombre) => {
+  const session = await sessionStore.getSession(telefono);
+  let profileData = session?.userProfile;
+  
+  let profile = new UserProfile(telefono, nombre);
+  
+  if (profileData) {
+    // Restaurar perfil desde sesión
+    profile.orders = profileData.orders || [];
+    profile.preferences = profileData.preferences || {};
+    profile.stats = profileData.stats || {};
+    if (profileData.name) profile.name = profileData.name;
+  }
+  
+  return profile;
+};
+
+/**
+ * Guardar contexto en sesión
+ */
+const saveContextToSession = async (telefono, context, profile) => {
+  const session = await sessionStore.getSession(telefono) || {};
+  session.context = {
+    userId: context.userId,
+    userName: context.userName,
+    recentMessages: context.recentMessages,
+    currentIntention: context.currentIntention,
+    previousIntentions: context.previousIntentions,
+    preferences: context.preferences,
+  };
+  session.userProfile = {
+    name: profile.name,
+    phone: profile.phone,
+    orders: profile.orders,
+    preferences: profile.preferences,
+    stats: profile.stats,
+  };
+  await sessionStore.saveSession(telefono, session);
+};
 
 /* ---------- Internal Helpers ---------- */
 
@@ -163,7 +230,14 @@ const calculateRouteAndFee = (storeCoords, destCoords, options = {}) => {
 
 export default async function handler(req, res) {
   if (req.method === "GET") {
-    return res.status(200).json({ ok: true, service: "KOMMO IA", status: "running", env: { firebase: !!process.env.FIREBASE_PROJECT_ID } });
+    return res.status(200).json({ 
+      ok: true, 
+      service: "KOMMO IA", 
+      status: "running", 
+      version: "2.0-ultra-inteligente",
+      features: ["ai-engine", "smart-ocr", "user-profiles", "semantic-analysis", "context-awareness"],
+      env: { firebase: !!process.env.FIREBASE_PROJECT_ID } 
+    });
   }
   if (req.method !== "POST") {
     return res.status(405).json({ ok: false, error: "Method Not Allowed" });
@@ -187,47 +261,95 @@ export default async function handler(req, res) {
 
     // Load session
     const session = await sessionStore.getSession(telefono);
+    
+    // Load AI context y user profile
+    const context = await getOrCreateContext(telefono, nombre);
+    const userProfile = await getOrCreateUserProfile(telefono, nombre);
 
     // Helper to persist and return reply
     const persistAndReply = async (newSessionData, replyObj) => {
+      // Guardar contexto y perfil actualizado
+      await saveContextToSession(telefono, context, userProfile);
+      // Guardar sesión con datos adicionales
+      newSessionData = newSessionData || {};
+      newSessionData.context = context;
+      newSessionData.userProfile = { name: userProfile.name, orders: userProfile.orders, preferences: userProfile.preferences, stats: userProfile.stats };
       await sessionStore.saveSession(telefono, newSessionData);
       return res.json(replyObj);
     };
 
-    /* ---------- IMAGE (URL) ---------- */
+    /* ---------- IMAGE (URL) - Smart OCR ---------- */
     if (tipo === "image" && imagen) {
       try {
         const ocrResult = await readImage(imagen, { debug });
-        const detected = extractMostLikelyTotal(ocrResult);
-        // Save raw OCR in session for later validation
-        await sessionStore.saveSession(telefono, { lastOCR: ocrResult, estado: "pago_verificacion" });
-        if (!detected) {
-          return res.json({ reply: "📸 Imagen recibida, pero no pude leer el monto. ¿Puedes enviarla más clara o escribir el monto?" });
-        }
-        // If we have a draft order in session, attempt auto-validate
-        const { pedido, pedido_borrador } = await sessionStore.getSession(telefono) || {};
-        const draft = pedido || pedido_borrador || null;
-
-        if (draft?.items?.length) {
-          const itemsForCalc = draft.items.map(it => ({ id: it.id, quantity: it.quantity, variant: it.variant, extras: it.extras }));
-          const calc = pricing.calculateOrderTotal(itemsForCalc, menu, menu.reglas || [], { taxRate: 0, rounding: 0.01 });
-          const validation = validateReceiptAgainstOrder(ocrResult, { items: draft.items, expectedTotal: calc.total }, menu, { tolerance: Number(process.env.PAYMENT_TOLERANCE || 0.06), debug });
-
-          if (validation.ok) {
-            await sessionStore.saveSession(telefono, { estado: "pagado", pedido: { items: draft.items, pricing: calc }, pago: { method: "comprobante", amount: validation.detectedTotal, ocr: ocrResult } });
-            await notifyAgent({ event: "order_paid", telefono, pedido: draft, amount: validation.detectedTotal });
-            return res.json({ reply: `✅ Pago validado por ${formatMoney(validation.detectedTotal)}. Tu pedido está confirmado y en preparación.` });
-          } else {
-            await sessionStore.saveSession(telefono, { estado: "pago_verificacion", comprobante: { detected: detected, ocr: ocrResult, validation } });
-            return res.json({ reply: `⚠️ Detecté S/${detected} en el comprobante. No coincide exactamente con el total del pedido. ¿Deseas que lo revise un agente o prefieres enviar el monto manualmente?` });
+        const smartAnalysis = await smartOCRAnalysis(ocrResult, { userProfile, menu, debug });
+        
+        log("Smart OCR analysis:", { imageType: smartAnalysis.imageType, confidence: smartAnalysis.confidence });
+        
+        // Actualizar contexto
+        context.addMessage(mensaje, "user");
+        context.currentIntention = "PAYMENT"; // Por defecto, imágenes son comprobantes
+        
+        if (smartAnalysis.imageType === "RECEIPT" || smartAnalysis.imageType === "SCREENSHOT") {
+          const detected = smartAnalysis.data?.amount;
+          if (!detected) {
+            const reply = generateSmartResponse(context, "help_image_quality", userProfile);
+            return persistAndReply({ estado: "pago_verificacion" }, { reply });
           }
-        } else {
-          await sessionStore.saveSession(telefono, { estado: "pago_verificacion", comprobante: { detected: detected, ocr: ocrResult } });
-          return res.json({ reply: `✅ Comprobante detectado por ${formatMoney(detected)}. ¿A qué pedido corresponde? Si ya enviaste tu pedido, responde "es mi pedido" o envía el número de pedido.` });
+          
+          const { pedido, pedido_borrador } = await sessionStore.getSession(telefono) || {};
+          const draft = pedido || pedido_borrador || null;
+
+          if (draft?.items?.length) {
+            const itemsForCalc = draft.items.map(it => ({ id: it.id, quantity: it.quantity, variant: it.variant, extras: it.extras }));
+            const calc = pricing.calculateOrderTotal(itemsForCalc, menu, menu.reglas || [], { taxRate: 0, rounding: 0.01 });
+            const validation = validateReceiptAgainstOrder(ocrResult, { items: draft.items, expectedTotal: calc.total }, menu, { tolerance: Number(process.env.PAYMENT_TOLERANCE || 0.06), debug });
+
+            if (validation.ok) {
+              // Actualizar perfil con orden pagada
+              userProfile.addOrder({
+                items: draft.items,
+                total: validation.detectedTotal,
+                date: new Date(),
+                method: "receipt",
+                verified: true
+              });
+              
+              context.currentIntention = "ORDER_REPEAT";
+              const reply = generateSmartResponse(context, "payment_confirmed", userProfile, { amount: validation.detectedTotal });
+              
+              await sessionStore.saveSession(telefono, { estado: "pagado", pedido: { items: draft.items, pricing: calc }, pago: { method: "comprobante", amount: validation.detectedTotal, ocr: ocrResult } });
+              await notifyAgent({ event: "order_paid", telefono, pedido: draft, amount: validation.detectedTotal });
+              
+              return persistAndReply({}, { reply });
+            } else {
+              const reply = generateSmartResponse(context, "payment_mismatch", userProfile, { detected: detected, expected: calc.total });
+              return persistAndReply({ estado: "pago_verificacion", comprobante: { detected: detected, ocr: ocrResult, validation } }, { reply });
+            }
+          } else {
+            const reply = generateSmartResponse(context, "receipt_no_order", userProfile, { amount: detected });
+            return persistAndReply({ estado: "pago_verificacion", comprobante: { detected: detected, ocr: ocrResult } }, { reply });
+          }
+        } else if (smartAnalysis.imageType === "MENU" || smartAnalysis.imageType === "CATALOG_ITEM") {
+          const extractedItems = smartAnalysis.data?.items || [];
+          if (extractedItems.length > 0) {
+            const reply = `📸 Detecté un ${smartAnalysis.imageType === "MENU" ? "menú" : "producto"} en la imagen.\n` +
+                         extractedItems.slice(0, 3).map(it => `• ${it.name} - ${it.price ? `S/${it.price}` : "precio no especificado"}`).join("\n") +
+                         "\n¿Quieres agregar alguno al pedido?";
+            return persistAndReply({}, { reply });
+          }
         }
+        
+        // Fallback
+        const detected = extractMostLikelyTotal(ocrResult);
+        await sessionStore.saveSession(telefono, { lastOCR: ocrResult, estado: "pago_verificacion" });
+        const reply = generateSmartResponse(context, "image_received", userProfile, { amount: detected });
+        return persistAndReply({}, { reply });
+        
       } catch (err) {
         log("OCR image error:", err?.message || err);
-        return res.json({ reply: "📸 No pude procesar la imagen. Intenta enviar una foto más clara o escribe el monto manualmente." });
+        const reply = generateSmartResponse(context, "help_image_quality", userProfile);
+        return persistAndReply({}, { reply });
       }
     }
 
@@ -273,9 +395,33 @@ export default async function handler(req, res) {
       }
     }
 
-    /* ---------- TEXT: detect address ---------- */
+    /* ---------- TEXT: Intelligent Processing with AI Engine ---------- */
+    
+    // Agregar mensaje al contexto
+    context.addMessage(mensaje, "user");
+    
+    // Detectar intención con el motor de IA
+    const intention = detectIntention(mensaje, context);
+    context.currentIntention = intention.type;
+    
+    log("Detected intention:", { type: intention.type, confidence: intention.confidence, context: context.userId });
+
+    // Manejar diferentes intenciones
+    if (intention.type === "GREETING" || intention.type === "SMALLTALK") {
+      const reply = generateSmartResponse(context, "greeting", userProfile);
+      return persistAndReply({}, { reply });
+    }
+
+    if (intention.type === "HELP" || intention.type === "MENU_REQUEST") {
+      const topCats = (menu.categorias || []).slice(0, 4).map(c => `• ${c.nombre} (${(c.productos||[]).length} items)`).join("\n");
+      const reply = generateSmartResponse(context, "menu_available", userProfile, { categories: topCats });
+      return persistAndReply({}, { reply });
+    }
+
+    // Detectar dirección en el mensaje
     const addrDetection = detectAddress(mensaje);
-    if (addrDetection && addrDetection.address) {
+    if (addrDetection && addrDetection.address && (intention.type === "LOCATION_PROVIDED" || intention.type === "ADDRESS" || session?.estado === "direccion")) {
+      context.currentIntention = "ADDRESS";
       await sessionStore.saveAddressForPhone(telefono, addrDetection.address, addrDetection.components);
 
       const { pedido, pedido_borrador } = await sessionStore.getSession(telefono) || {};
@@ -285,45 +431,89 @@ export default async function handler(req, res) {
         const itemsForCalc = draft.items.map(it => ({ id: it.id, quantity: it.quantity, variant: it.variant, extras: it.extras }));
         const calc = pricing.calculateOrderTotal(itemsForCalc, menu, menu.reglas || [], { taxRate: 0, rounding: 0.01, delivery: { addressComponents: addrDetection.components } });
         await sessionStore.saveSession(telefono, { estado: "pedido_confirmado", pedido: { items: draft.items, pricing: calc }, address: { address: addrDetection.address, components: addrDetection.components } });
-        return res.json({ reply: `📍 Dirección detectada: ${addrDetection.address}\nTotal a cobrar: ${formatMoney(calc.total)}\n${buildOrderSummaryText(draft, calc)}\n¿Confirmas y deseas pagar ahora?` });
+        
+        const suggestions = generateSuggestions(draft.items, userProfile, menu);
+        const reply = `📍 Dirección detectada: ${addrDetection.address}\n` +
+                     `Total a cobrar: ${formatMoney(calc.total)}\n` +
+                     `${buildOrderSummaryText(draft, calc)}\n` +
+                     (suggestions.length > 0 ? `\n💡 Te sugiero: ${suggestions.slice(0, 2).map(s => s.name).join(", ")}\n` : "") +
+                     `¿Confirmas y deseas pagar ahora?`;
+        return persistAndReply({ estado: "pedido_confirmado" }, { reply });
       }
-      return res.json({ reply: `📍 Dirección detectada: ${addrDetection.address}\n¿Deseas que calcule el costo total ahora o prefieres enviar tu pedido primero?` });
+      const reply = generateSmartResponse(context, "address_received", userProfile, { address: addrDetection.address });
+      return persistAndReply({ address: { address: addrDetection.address, components: addrDetection.components } }, { reply });
     }
 
-    /* ---------- TEXT: user asks for menu or catalog ---------- */
-    if (["menu", "carta", "catalogo"].some(keyword => mensaje.toLowerCase().includes(keyword))) {
-      const topCats = (menu.categorias || []).slice(0, 4).map(c => `• ${c.nombre} (${(c.productos||[]).length} items)`).join("\n");
-      return res.json({ reply: `📋 Nuestro menú:\n${topCats}\nEscribe el nombre del plato o envía tu pedido. Si quieres, puedo enviarte el catálogo completo.` });
-    }
-
-    /* ---------- TEXT: parse order from message ---------- */
-    try {
-      const parsed = parseOrderText(mensaje, menu, { synonyms, debug });
-      if (parsed?.items?.length) {
-        await sessionStore.saveOrderDraft(telefono, parsed);
-
-        const { address } = await sessionStore.getSession(telefono) || {};
-        const itemsForCalc = parsed.items.map(it => {
-          const prod = pricing.findProductInMenu(menu, it.id);
-          const unitPrice = prod ? pricing.applyVariantPrice(prod, it.variant) ?? prod.precio ?? null : it.price ?? it.priceHint ?? null;
-          return { id: it.id, name: it.name, quantity: it.quantity, variant: it.variant, unitPrice, extras: it.extras || [] };
-        });
-
-        if (address?.components) {
-          const calc = calculateDeliveryAndTotal(itemsForCalc, address.components, { taxRate: 0 });
-          await sessionStore.saveSession(telefono, { estado: "pedido_confirmado", pedido: { items: itemsForCalc, pricing: calc }, address });
-          return res.json({ reply: `✅ Pedido recibido y total calculado.\n${buildOrderSummaryText({ items: itemsForCalc }, calc)}\n¿Confirmas y deseas pagar ahora?` });
-        } else {
-          return res.json({ reply: `✅ Pedido recibido: ${parsed.items.map(i => `${i.quantity}x ${i.name}`).join(", ")}.\n¿Delivery o recojo? Si es delivery, por favor envía tu dirección o ubicación.` });
+    // Intentar parsear orden del mensaje
+    if (intention.type === "ORDER_NEW" || intention.type === "ORDER_REPEAT") {
+      try {
+        let parsed;
+        
+        // Si es ORDER_REPEAT y hay orden previa, usar esa
+        if (intention.type === "ORDER_REPEAT" && userProfile.orders.length > 0) {
+          const lastOrder = userProfile.getLastOrder();
+          if (lastOrder?.items) {
+            parsed = { items: lastOrder.items };
+            log("Using last order for repeat");
+          }
         }
+        
+        // Si no, intentar parsear el mensaje
+        if (!parsed) {
+          parsed = parseOrderText(mensaje, menu, { synonyms, debug });
+        }
+
+        if (parsed?.items?.length) {
+          // Aplicar preferencias del usuario
+          userProfile.applyPreferences(parsed.items);
+          
+          await sessionStore.saveOrderDraft(telefono, parsed);
+
+          const { address } = await sessionStore.getSession(telefono) || {};
+          const itemsForCalc = parsed.items.map(it => {
+            const prod = pricing.findProductInMenu(menu, it.id);
+            const unitPrice = prod ? pricing.applyVariantPrice(prod, it.variant) ?? prod.precio ?? null : it.price ?? it.priceHint ?? null;
+            return { id: it.id, name: it.name, quantity: it.quantity, variant: it.variant, unitPrice, extras: it.extras || [] };
+          });
+
+          // Validar orden
+          const validation = validateOrder(parsed);
+          if (validation.errors.length > 0) {
+            const reply = generateSmartResponse(context, "order_incomplete", userProfile, { errors: validation.errors });
+            return persistAndReply({ pedido_borrador: parsed }, { reply });
+          }
+
+          if (address?.components) {
+            const calc = calculateDeliveryAndTotal(itemsForCalc, address.components, { taxRate: 0 });
+            
+            const suggestions = generateSuggestions(itemsForCalc, userProfile, menu);
+            let reply = `✅ Pedido recibido y total calculado.\n${buildOrderSummaryText({ items: itemsForCalc }, calc)}`;
+            if (suggestions.length > 0) {
+              reply += `\n\n💡 Para completar: ${suggestions.slice(0, 2).map(s => s.name).join(", ")}?`;
+            }
+            reply += `\n¿Confirmas y deseas pagar ahora?`;
+            
+            await sessionStore.saveSession(telefono, { estado: "pedido_confirmado", pedido: { items: itemsForCalc, pricing: calc }, address });
+            return persistAndReply({ estado: "pedido_confirmado" }, { reply });
+          } else {
+            let reply = `✅ Pedido recibido: ${parsed.items.map(i => `${i.quantity}x ${i.name}`).join(", ")}.\n📍 ¿Delivery o recojo? Si es delivery, envía tu dirección o ubicación.`;
+            
+            const suggestions = generateSuggestions(itemsForCalc, userProfile, menu);
+            if (suggestions.length > 0) {
+              reply += `\n\n💡 También pedimos: ${suggestions.slice(0, 2).map(s => s.name).join(", ")}?`;
+            }
+            
+            return persistAndReply({ pedido_borrador: parsed }, { reply });
+          }
+        }
+      } catch (err) {
+        log("parseOrderText error:", err?.message || err);
       }
-    } catch (err) {
-      log("parseOrderText error:", err?.message || err);
     }
 
-    /* ---------- TEXT: user confirms payment manually ---------- */
-    const lower = mensaje.toLowerCase();
-    if (/(yape|plin|transferencia|transfer|pago|pagado|pague|pagu[eé])/i.test(lower) && /\d/.test(lower)) {
+    // Manejo de pagos
+    if (intention.type === "PAYMENT") {
+      const lower = mensaje.toLowerCase();
       const amountMatch = mensaje.match(/([0-9]+(?:[.,][0-9]{1,2})?)/);
       const amount = amountMatch ? Number(String(amountMatch[1]).replace(",", ".")) : null;
 
@@ -338,51 +528,79 @@ export default async function handler(req, res) {
           const diff = Math.abs(calc.total - amount);
           const tol = Number(process.env.PAYMENT_TOLERANCE || 0.06);
           if (diff <= calc.total * tol) {
+            // Actualizar perfil con orden pagada
+            userProfile.addOrder({
+              items: draft.items,
+              total: amount,
+              date: new Date(),
+              method: "manual",
+              verified: true
+            });
+            
+            const reply = generateSmartResponse(context, "payment_confirmed", userProfile, { amount });
             await sessionStore.saveSession(telefono, { estado: "pagado", pedido: { items: draft.items, pricing: calc }, pago: { method: "manual", amount } });
             await notifyAgent({ event: "order_paid_manual", telefono, amount, pedido: draft });
-            return res.json({ reply: `✅ Pago registrado por ${formatMoney(amount)}. Tu pedido está confirmado y en preparación.` });
+            
+            return persistAndReply({ estado: "pagado" }, { reply });
           } else {
-            await sessionStore.saveSession(telefono, { estado: "pago_verificacion", comprobante: { method: "manual", amount, note: "monto no coincide" } });
-            return res.json({ reply: `⚠️ El monto que indicas (${formatMoney(amount)}) no coincide con el total calculado (${formatMoney(calc.total)}). ¿Deseas que lo revise un agente?` });
+            const reply = generateSmartResponse(context, "payment_mismatch", userProfile, { detected: amount, expected: calc.total });
+            return persistAndReply({ estado: "pago_verificacion" }, { reply });
           }
-        } else {
-          return res.json({ reply: "¿Puedes indicar el monto que pagaste (ej.: S/24.00) y el método (Yape/Plin)?" });
         }
       } else {
-        return res.json({ reply: "No encuentro un pedido asociado a tu número. Por favor envía tu pedido primero." });
+        const reply = generateSmartResponse(context, "no_order_found", userProfile);
+        return persistAndReply({}, { reply });
       }
     }
 
-    /* ---------- TEXT: user asks status ---------- */
-    if (/\b(estado|mi pedido|seguimiento|track|enviado|salio)\b/i.test(lower)) {
+    // Status de pedido
+    if (intention.type === "STATUS") {
       const current = await sessionStore.getSession(telefono);
-      if (!current?.pedido) return res.json({ reply: "No tengo un pedido asociado a tu número. ¿Deseas hacer un pedido ahora?" });
+      if (!current?.pedido) {
+        const reply = generateSmartResponse(context, "no_order_found", userProfile);
+        return persistAndReply({}, { reply });
+      }
+      
       const st = current.estado || "inicio";
       const replyMap = {
-        inicio: "No hay pedido activo.",
-        pedido_borrador: "¿Tienes un pedido en borrador. ¿Deseas confirmarlo?",
-        pedido_confirmado: `Tu pedido está confirmado. Total: ${formatMoney(current.pedido.pricing?.total ?? 0)}.`,
-        pagado: "Tu pago fue recibido. El pedido está en preparación.",
-        preparacion: "Tu pedido está en preparación.",
-        en_reparto: `Tu pedido está en reparto. Repartidor: ${current.repartidor?.nombre || "—"} Tel: ${current.repartidor?.telefono || "—"}`,
-        entregado: "Tu pedido fue entregado. ¡Gracias!",
-        cancelado: "Tu pedido fue cancelado."
+        inicio: { key: "no_active_order", data: {} },
+        pedido_borrador: { key: "order_draft", data: {} },
+        pedido_confirmado: { key: "order_confirmed", data: { total: current.pedido.pricing?.total } },
+        pagado: { key: "payment_received", data: {} },
+        preparacion: { key: "order_preparing", data: {} },
+        en_reparto: { key: "order_dispatched", data: { driver: current.repartidor?.nombre, phone: current.repartidor?.telefono } },
+        entregado: { key: "order_delivered", data: {} },
+        cancelado: { key: "order_cancelled", data: {} }
       };
-      return res.json({ reply: replyMap[st] || `Estado actual: ${st}` });
+      
+      const replyConfig = replyMap[st] || { key: "unknown_status", data: { status: st } };
+      const reply = generateSmartResponse(context, replyConfig.key, userProfile, replyConfig.data);
+      return persistAndReply({}, { reply });
     }
 
-    /* ---------- TEXT: small talk or fallback ---------- */
-    try {
-      const catalogMatches = parseWhatsAppCatalogSnippet(mensaje, menu);
-      if (catalogMatches?.length) {
-        const top = catalogMatches.slice(0, 3).map(c => `• ${c.name} — ${c.price ? formatMoney(c.price) : "precio no disponible"} (score ${c.matchScore})`).join("\n");
-        return res.json({ reply: `Parece que compartiste un fragmento del catálogo. Coincidencias:\n${top}\n¿Quieres agregar alguno al pedido? Responde con el id o nombre.` });
+    // Cancelación
+    if (intention.type === "CANCEL") {
+      const current = await sessionStore.getSession(telefono);
+      if (current?.pedido && current.estado !== "entregado" && current.estado !== "cancelado") {
+        const reply = generateSmartResponse(context, "order_cancelled", userProfile);
+        await sessionStore.saveSession(telefono, { estado: "cancelado", cancelado: new Date() });
+        return persistAndReply({ estado: "cancelado" }, { reply });
+      } else {
+        const reply = generateSmartResponse(context, "cannot_cancel", userProfile);
+        return persistAndReply({}, { reply });
       }
-    } catch (err) {
-      // ignore
     }
 
-    return res.json({ reply: "Hola 👋 Escríbenos tu pedido o escribe *menu*. Si necesitas ayuda, escribe 'ayuda'." });
+    // Queja o feedback
+    if (intention.type === "COMPLAINT" || intention.type === "FEEDBACK") {
+      const reply = generateSmartResponse(context, intention.type === "COMPLAINT" ? "complaint_received" : "feedback_received", userProfile);
+      await notifyAgent({ event: "user_feedback", telefono, type: intention.type, message: mensaje, userProfile: { name: userProfile.name, vipStatus: userProfile.isVIP() } });
+      return persistAndReply({}, { reply });
+    }
+
+    // Fallback amigable
+    const reply = generateSmartResponse(context, "fallback", userProfile);
+    return persistAndReply({}, { reply });
 
   } catch (err) {
     log("KOMMO handler error:", err?.message || err, err?.stack || "");
