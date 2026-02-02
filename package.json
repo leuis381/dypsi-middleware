@@ -2,10 +2,16 @@
   "name": "dypsi-middleware",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "validate-menu": "node ./scripts/check_menu.js",
     "lint": "eslint . --ext .js",
     "lint:fix": "eslint . --ext .js --fix"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "firebase-admin": "^12.0.0",
+    "form-data": "^4.0.0"
   },
   "devDependencies": {
     "ajv": "^8.12.0",
