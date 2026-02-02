@@ -22,14 +22,22 @@
  *
  * Nota: este archivo es intencionalmente detallado y extensible.
  */
+import axios from "axios";
 import admin from "firebase-admin";
 import parseOrderText from "../lib/parse-order.js";
 import { readImage, readImageBuffer, extractMostLikelyTotal, validateReceiptAgainstOrder, parseWhatsAppCatalogSnippet } from "../lib/ocr.js";
 import { detectAddress, normalizeAddress } from "../lib/detect-address.js";
 import pricing from "../lib/zoma-precios.js";
 import sessionStore from "../lib/session-store.js";
-import menu from "../data/menu.json" assert { type: "json" };
-import synonyms from "../data/sinonimos.json" assert { type: "json" };
+import fs from "fs";
+import path from "path";
+
+const menuPath = new URL("../data/menu.json", import.meta.url);
+const synonymsPath = new URL("../data/sinonimos.json", import.meta.url);
+
+const menu = JSON.parse(fs.readFileSync(menuPath, "utf8"));
+const synonyms = JSON.parse(fs.readFileSync(synonymsPath, "utf8"));
+
 // Optional: a simple logger wrapper
 function log(...args) {
   if (process.env.NODE_ENV === "production") {
@@ -57,6 +65,23 @@ if (!admin.apps.length && process.env.FIREBASE_PROJECT_ID) {
 } else {
   // ensure sessionStore uses fallback if firebase not configured
   sessionStore.initFirebase(admin);
+}
+// Wrappers para compatibilidad si session-store no implementa estas funciones
+if (!sessionStore.saveAddressForPhone) {
+  sessionStore.saveAddressForPhone = async (phone, address, components) => {
+    const data = { address: { address, components } };
+    await sessionStore.saveSession(phone, data);
+    return data;
+  };
+}
+
+if (!sessionStore.saveOrderDraft) {
+  sessionStore.saveOrderDraft = async (phone, draft) => {
+    // draft: objeto parseado del pedido
+    const data = { pedido_borrador: draft, estado: "pedido_borrador" };
+    await sessionStore.saveSession(phone, data);
+    return data;
+  };
 }
 
 /* ---------- Helpers internos ---------- */
@@ -112,11 +137,7 @@ async function notifyAgent(payload) {
   const url = process.env.AGENT_WEBHOOK;
   if (!url) return;
   try {
-    await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
+    await axios.post(url, payload, { headers: { "Content-Type": "application/json" } });
   } catch (err) {
     log("notifyAgent failed:", err?.message || err);
   }
