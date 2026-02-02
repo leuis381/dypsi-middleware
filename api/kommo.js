@@ -12,9 +12,13 @@ import { readImage, readImageBuffer, extractMostLikelyTotal, validateReceiptAgai
 import { detectAddress, normalizeAddress } from "../lib/detect-address.js";
 import pricing from "../lib/zona-precios.js";
 import sessionStore from "../lib/session-store.js";
-import { detectIntention, ConversationContext, generateSmartResponse, generateSuggestions, validateOrder } from "../lib/ai-engine.js";
-import { smartOCRAnalysis } from "../lib/smart-ocr.js";
-import { UserProfile } from "../lib/user-profile.js";
+import aiEngineModule from "../lib/ai-engine.js";
+import smartOcrModule from "../lib/smart-ocr.js";
+import userProfileModule from "../lib/user-profile.js";
+
+const { detectIntention, ConversationContext, generateSmartResponse, generateSuggestions, validateOrder, INTENTIONS } = aiEngineModule;
+const { smartOCRAnalysis } = smartOcrModule;
+const { UserProfile } = userProfileModule;
 import fs from "fs";
 import path from "path";
 
@@ -287,7 +291,7 @@ export default async function handler(req, res) {
         log("Smart OCR analysis:", { imageType: smartAnalysis.imageType, confidence: smartAnalysis.confidence });
         
         // Actualizar contexto
-        context.addMessage(mensaje, "user");
+        context.addMessage("user", "[imagen]", { type: smartAnalysis.imageType });
         context.currentIntention = "PAYMENT"; // Por defecto, imágenes son comprobantes
         
         if (smartAnalysis.imageType === "RECEIPT" || smartAnalysis.imageType === "SCREENSHOT") {
@@ -398,21 +402,22 @@ export default async function handler(req, res) {
     /* ---------- TEXT: Intelligent Processing with AI Engine ---------- */
     
     // Agregar mensaje al contexto
-    context.addMessage(mensaje, "user");
+    context.addMessage("user", mensaje);
     
     // Detectar intención con el motor de IA
-    const intention = detectIntention(mensaje, context);
-    context.currentIntention = intention.type;
+    const intentionResult = detectIntention(mensaje, context);
+    const intention = intentionResult.intention;
+    context.currentIntention = intention;
     
-    log("Detected intention:", { type: intention.type, confidence: intention.confidence, context: context.userId });
+    log("Detected intention:", { type: intention, confidence: intentionResult.confidence, context: context.userId });
 
     // Manejar diferentes intenciones
-    if (intention.type === "GREETING" || intention.type === "SMALLTALK") {
+    if (intention === INTENTIONS.GREETING || intention === INTENTIONS.SMALLTALK) {
       const reply = generateSmartResponse(context, "greeting", userProfile);
       return persistAndReply({}, { reply });
     }
 
-    if (intention.type === "HELP" || intention.type === "MENU_REQUEST") {
+    if (intention === INTENTIONS.HELP) {
       const topCats = (menu.categorias || []).slice(0, 4).map(c => `• ${c.nombre} (${(c.productos||[]).length} items)`).join("\n");
       const reply = generateSmartResponse(context, "menu_available", userProfile, { categories: topCats });
       return persistAndReply({}, { reply });
@@ -420,8 +425,8 @@ export default async function handler(req, res) {
 
     // Detectar dirección en el mensaje
     const addrDetection = detectAddress(mensaje);
-    if (addrDetection && addrDetection.address && (intention.type === "LOCATION_PROVIDED" || intention.type === "ADDRESS" || session?.estado === "direccion")) {
-      context.currentIntention = "ADDRESS";
+    if (addrDetection && addrDetection.address && (intention === INTENTIONS.HELP || session?.estado === "direccion")) {
+      context.currentIntention = INTENTIONS.HELP;
       await sessionStore.saveAddressForPhone(telefono, addrDetection.address, addrDetection.components);
 
       const { pedido, pedido_borrador } = await sessionStore.getSession(telefono) || {};
@@ -445,12 +450,12 @@ export default async function handler(req, res) {
     }
 
     // Intentar parsear orden del mensaje
-    if (intention.type === "ORDER_NEW" || intention.type === "ORDER_REPEAT") {
+    if (intention === INTENTIONS.ORDER_NEW || intention === INTENTIONS.ORDER_REPEAT) {
       try {
         let parsed;
         
         // Si es ORDER_REPEAT y hay orden previa, usar esa
-        if (intention.type === "ORDER_REPEAT" && userProfile.orders.length > 0) {
+        if (intention === INTENTIONS.ORDER_REPEAT && userProfile.orders.length > 0) {
           const lastOrder = userProfile.getLastOrder();
           if (lastOrder?.items) {
             parsed = { items: lastOrder.items };
@@ -512,7 +517,7 @@ export default async function handler(req, res) {
     }
 
     // Manejo de pagos
-    if (intention.type === "PAYMENT") {
+    if (intention === INTENTIONS.PAYMENT) {
       const lower = mensaje.toLowerCase();
       const amountMatch = mensaje.match(/([0-9]+(?:[.,][0-9]{1,2})?)/);
       const amount = amountMatch ? Number(String(amountMatch[1]).replace(",", ".")) : null;
@@ -554,7 +559,7 @@ export default async function handler(req, res) {
     }
 
     // Status de pedido
-    if (intention.type === "STATUS") {
+    if (intention === INTENTIONS.STATUS) {
       const current = await sessionStore.getSession(telefono);
       if (!current?.pedido) {
         const reply = generateSmartResponse(context, "no_order_found", userProfile);
@@ -579,7 +584,7 @@ export default async function handler(req, res) {
     }
 
     // Cancelación
-    if (intention.type === "CANCEL") {
+    if (intention === INTENTIONS.CANCEL) {
       const current = await sessionStore.getSession(telefono);
       if (current?.pedido && current.estado !== "entregado" && current.estado !== "cancelado") {
         const reply = generateSmartResponse(context, "order_cancelled", userProfile);
@@ -592,9 +597,9 @@ export default async function handler(req, res) {
     }
 
     // Queja o feedback
-    if (intention.type === "COMPLAINT" || intention.type === "FEEDBACK") {
-      const reply = generateSmartResponse(context, intention.type === "COMPLAINT" ? "complaint_received" : "feedback_received", userProfile);
-      await notifyAgent({ event: "user_feedback", telefono, type: intention.type, message: mensaje, userProfile: { name: userProfile.name, vipStatus: userProfile.isVIP() } });
+    if (intention === INTENTIONS.COMPLAINT || intention === INTENTIONS.FEEDBACK) {
+      const reply = generateSmartResponse(context, intention === INTENTIONS.COMPLAINT ? "complaint_received" : "feedback_received", userProfile);
+      await notifyAgent({ event: "user_feedback", telefono, type: intention, message: mensaje, userProfile: { name: userProfile.name, vipStatus: userProfile.isVIP() } });
       return persistAndReply({}, { reply });
     }
 
