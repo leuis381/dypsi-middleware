@@ -1,9 +1,9 @@
 {
   "name": "dypsi-middleware",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "private": true,
   "type": "module",
-  "description": "DYPSI Restaurant Order Processing Middleware - AI-Powered Bot with Extreme Common Sense",
+  "description": "DYPSI Restaurant AI - La Mejor IA de Restaurantes del Mundo - Ultra Humanizada",
   "keywords": [
     "whatsapp",
     "chatbot",
@@ -12,7 +12,9 @@
     "order-processing",
     "ai",
     "ocr",
-    "firebase"
+    "firebase",
+    "kommo",
+    "ultra-humanized"
   ],
   "author": "DYPSI Team",
   "license": "MIT",
@@ -23,15 +25,14 @@
   "scripts": {
     "start": "NODE_ENV=production node ./api/kommo.js",
     "dev": "NODE_ENV=development nodemon --watch . --ext js,json --exec \"node ./api/kommo.js\"",
-    "test": "echo \"Run tests with: npm run test:unit\"",
-    "test:unit": "node --test lib/**/*.test.js",
+    "test": "node ./test-ultra-bot.js",
+    "test:integration": "node ./scripts/test-ai-integration.js",
     "validate-menu": "node ./scripts/check_menu.js",
     "lint": "eslint . --ext .js --report-unused-disable-directives",
     "lint:fix": "eslint . --ext .js --fix",
     "format": "prettier --write \"**/*.{js,json,md}\"",
     "security-audit": "npm audit --production --audit-level=moderate",
-    "health-check": "curl -s http://localhost:3000/api/health | jq .",
-    "postinstall": "echo 'DYPSI Middleware installed successfully!'"
+    "postinstall": "echo 'DYPSI Ultra Bot installed successfully! 🚀'"
   },
   "dependencies": {
     "axios": "^1.7.7",

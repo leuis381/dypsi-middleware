@@ -1,37 +1,38 @@
 /**
  * api/kommo.js
  *
- * Supercerebro Kommo handler con Motor de IA Ultra-Mejorado
- * Detección inteligente de intenciones, análisis semántico, perfiles de usuario,
- * contexto multi-turno, y respuestas humanizadas
+ * 🚀 LA MEJOR IA DE RESTAURANTES DEL MUNDO v4.0 ULTRA+ 🚀
  * 
- * PRODUCTION-READY ENHANCED VERSION
- * - Comprehensive error handling with AppError classes
- * - Input validation and sanitization
- * - Rate limiting (30 req/min per phone)
- * - Metrics collection (20+ metric types)
- * - Security headers
- * - Audit trail for critical operations
- * - Full JSDoc documentation
- * - Timeout handling
+ * Sistema Ultra Inteligente para WhatsApp via Kommo
+ * - IA con sentido común extremo + NLP avanzado
+ * - Respuestas humanizadas infinitas + Corrección de errores
+ * - Sin dependencia de APIs externas (excepto OCR)
+ * - Envío automático de pedidos al agente
+ * - Escalación inteligente a agentes humanos
+ * - 100% optimizado para Vercel
+ * 
+ * VERSION: 4.0 ULTRA+
+ * Compatible con: Firebase, OCR.Space, Kommo, NLP Avanzado
  */
+
 import axios from "axios";
 import admin from "firebase-admin";
 import parseOrderText from "../lib/parse-order.js";
-import { readImage, readImageBuffer, extractMostLikelyTotal, validateReceiptAgainstOrder, parseWhatsAppCatalogSnippet } from "../lib/ocr.js";
-import detectAddressModule from "../lib/detect-address.js";
-const { isAddress, normalizeAddress, extractAddressComponents } = detectAddressModule;
-const detectAddress = isAddress;
-import pricing from "../lib/zona-precios.js";
+import { readImage, readImageBuffer, extractMostLikelyTotal, validateReceiptAgainstOrder } from "../lib/ocr.js";
 import sessionStore from "../lib/session-store.js";
 import aiEngineModule from "../lib/ai-engine.js";
 import smartOcrModule from "../lib/smart-ocr.js";
 import userProfileModule from "../lib/user-profile.js";
+import ultraHumanizer from "../lib/ultra-humanizer.js";
+import smartDelivery from "../lib/smart-delivery.js";
+import kommoSender from "../lib/kommo-sender.js";
+import smartInterpreter from "../lib/smart-interpreter.js";
+import advancedNLP from "../lib/advanced-nlp.js";
+import fuzzyMatcher from "../lib/fuzzy-matcher.js";
 import { 
   logger,
   AppError,
   ValidationError,
-  NotFoundError,
   RateLimitError,
   validatePhone,
   sanitizeInput,
@@ -40,16 +41,32 @@ import {
   sendSuccess,
   sendError,
   sendReply,
-  parseJSON,
   formatMoney as utilFormatMoney
 } from "../lib/utils.js";
 import { CONFIG } from "../lib/config.js";
 
-const { detectIntention, ConversationContext, generateSmartResponse, generateSuggestions, validateOrder, INTENTIONS, findProductInMenu } = aiEngineModule;
+const { detectIntention, ConversationContext, validateOrder, INTENTIONS } = aiEngineModule;
 const { smartOCRAnalysis } = smartOcrModule;
 const { UserProfile } = userProfileModule;
+const { 
+  generateHumanizedResponse, 
+  getDayTimeGreeting, 
+  detectSpecialOccasion,
+  generateContextAwareResponse,
+  generateTypoCorrectionResponse,
+  generateProximityResponse,
+  generateNotUnderstoodResponse
+} = ultraHumanizer;
+const { 
+  calculateDeliveryFromLocation, 
+  validateDeliveryHours, 
+  geocodeAddressSimple,
+  isCustomerVeryClose,
+  getProximityZone
+} = smartDelivery;
+const { sendOrderToAgent, formatOrderForAgent } = kommoSender;
+const { smartProcess, generateContextAwareResponse: neoResponse } = smartInterpreter;
 import fs from "fs";
-import path from "path";
 
 const menuPath = new URL("../data/menu.json", import.meta.url);
 const synonymsPath = new URL("../data/sinonimos.json", import.meta.url);
@@ -58,46 +75,32 @@ const menu = JSON.parse(fs.readFileSync(menuPath, "utf8"));
 const synonyms = JSON.parse(fs.readFileSync(synonymsPath, "utf8"));
 
 /* ---------- RATE LIMITING & METRICS ---------- */
-const rateLimiter = new RateLimiter(30, 60 * 1000); // 30 requests per minute per phone
+const rateLimiter = new RateLimiter(CONFIG.RATE_LIMIT_MAX_REQUESTS || 60, 60 * 1000);
 const metrics = new MetricsCollector();
 
-// Cleanup interval for rate limiter (every 5 minutes)
+// Cleanup interval for rate limiter
 setInterval(() => {
   rateLimiter.cleanup();
-  logger.debug('Rate limiter cleanup completed');
+  logger.debug('RATE_LIMITER_CLEANUP');
 }, 5 * 60 * 1000);
 
 /* ---------- ENVIRONMENT VALIDATION ---------- */
-/**
- * Validate required and optional environment variables at startup
- * Logs warnings for missing variables and throws fatal error in production
- * @throws {AppError} If required environment variables are missing in production
- */
 const validateEnvironment = () => {
   const requiredVars = ['FIREBASE_PROJECT_ID', 'FIREBASE_CLIENT_EMAIL', 'FIREBASE_PRIVATE_KEY'];
   const missing = requiredVars.filter(v => !process.env[v]);
   
   if (missing.length > 0) {
-    logger.warn('Missing required environment variables:', missing);
+    logger.warn('MISSING_ENV_VARS', { missing });
     if (CONFIG.ENV === 'production') {
       throw new AppError(`Missing environment variables: ${missing.join(', ')}`, 500, 'ENV_INCOMPLETE');
     }
   }
   
-  const optionalVars = ['AGENT_WEBHOOK', 'GOOGLE_MAPS_API_KEY', 'KOMMO_API_KEY'];
-  const missingOptional = optionalVars.filter(v => !process.env[v]);
-  if (missingOptional.length > 0) {
-    logger.info('Optional environment variables not set:', missingOptional);
-  }
-  
-  logger.info('Environment validation completed', { 
+  logger.info('ENV_VALIDATED', { 
     env: CONFIG.ENV, 
     firebase: !!CONFIG.FIREBASE_PROJECT_ID,
-    features: {
-      aiEngine: CONFIG.FEATURE_AI_ENGINE,
-      smartOcr: CONFIG.FEATURE_SMART_OCR,
-      userProfiles: CONFIG.FEATURE_USER_PROFILES
-    }
+    ocr: !!CONFIG.OCR_API_KEY,
+    ia: CONFIG.IA_ENABLED
   });
 };
 
