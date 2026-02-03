@@ -638,10 +638,14 @@ export default async function handler(req, res) {
     
     // Load menu data if not already loaded
     try {
-      loadMenuData();
-      logger.debug('Menu data loaded successfully');
+      const menuData = loadMenuData();
+      logger.info('Menu data loaded', { 
+        hasMenu: !!menuData.menu, 
+        hasSynonyms: !!menuData.synonyms,
+        categoriesCount: menuData.menu?.categorias?.length || 0 
+      });
     } catch (menuError) {
-      logger.error('Failed to load menu data', { error: menuError.message });
+      logger.error('Failed to load menu data', { error: menuError.message, stack: menuError.stack });
       throw new AppError('Failed to initialize menu data', 500, 'MENU_LOAD_ERROR');
     }
     
@@ -696,18 +700,29 @@ export default async function handler(req, res) {
     
     let session;
     try {
+      logger.info('Loading session', { telefono });
       session = await Promise.race([
         sessionStore.getSession(telefono),
         sessionTimeout
       ]);
+      logger.info('Session loaded', { telefono, hasSession: !!session });
+    } catch (sessionError) {
+      logger.error('Session load failed', { telefono, error: sessionError.message });
+      // Continue without session
+      session = null;
     } finally {
       // Clear timeout to prevent memory leak
       if (sessionTimeoutId) clearTimeout(sessionTimeoutId);
     }
     
     // Load AI context y user profile
+    logger.info('Loading AI context', { telefono, nombre });
     const context = await getOrCreateContext(telefono, nombre);
+    logger.info('Context loaded', { telefono, messagesCount: context.recentMessages?.length || 0 });
+    
+    logger.info('Loading user profile', { telefono, nombre });
     const userProfile = await getOrCreateUserProfile(telefono, nombre);
+    logger.info('Profile loaded', { telefono, isVIP: userProfile.isVIP() });
 
     /**
      * Helper to persist and return reply
