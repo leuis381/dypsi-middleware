@@ -954,7 +954,13 @@ export default async function handler(req, res) {
     
     // Detectar intención con el motor de IA
     const intentionResult = detectIntention(mensaje, context);
-    const intention = intentionResult.intention;
+    let intention = intentionResult.intention;
+    if (!intention) {
+      const helpHint = /(menu|menú|carta|precio|cuánto cuesta|cuanto cuesta|promoc|promo|catálogo|catalogo|lista)/i;
+      const orderHint = /(quiero|pedido|orden|ordenar|dame|env[ií]a|manda|trae|ponme)/i;
+      if (orderHint.test(mensaje)) intention = INTENTIONS.ORDER_NEW;
+      else if (helpHint.test(mensaje)) intention = INTENTIONS.HELP;
+    }
     context.currentIntention = intention;
     
     logger.info('Detected intention', { 
@@ -1084,6 +1090,10 @@ export default async function handler(req, res) {
             
             return persistAndReply({ pedido_borrador: parsed }, { reply });
           }
+        } else {
+          metrics.record('order_parse_empty', 1);
+          const reply = generateSmartResponse("order_incomplete", context, { errors: ["No detecté items en tu pedido"] });
+          return persistAndReply({}, { reply });
         }
       } catch (err) {
         logger.error('parseOrderText error:', { telefono, error: err?.message || err });
