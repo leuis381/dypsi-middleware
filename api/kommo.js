@@ -604,7 +604,11 @@ export default async function handler(req, res) {
   }
 
   let telefono;
+  let debugMode = false;
   try {
+    // Check for debug mode
+    debugMode = req.query?.debug === 'true' || req.query?.debug === '1';
+    
     // Validate request body
     const validatedData = validateRequestBody(req.body);
     telefono = validatedData.telefono;
@@ -1177,12 +1181,13 @@ export default async function handler(req, res) {
       'INTERNAL_ERROR'
     );
     
-    // In development/staging, include error details
-    if (CONFIG.ENV !== 'production') {
+    // In debug mode or non-production, include error details
+    if (debugMode || CONFIG.ENV !== 'production') {
       genericError.details = {
         message: err?.message,
         name: err?.name,
-        code: err?.code
+        code: err?.code,
+        stack: debugMode ? err?.stack : undefined
       };
     }
     
