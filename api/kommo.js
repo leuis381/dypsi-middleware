@@ -633,15 +633,31 @@ export default async function handler(req, res) {
   let telefono;
   let debugMode = false;
   try {
+    logger.info('KOMMO_REQUEST_START', { method: req.method, hasBody: !!req.body });
+    
     // Load menu data if not already loaded
-    loadMenuData();
+    try {
+      loadMenuData();
+      logger.debug('Menu data loaded successfully');
+    } catch (menuError) {
+      logger.error('Failed to load menu data', { error: menuError.message });
+      throw new AppError('Failed to initialize menu data', 500, 'MENU_LOAD_ERROR');
+    }
     
     // Check for debug mode
     debugMode = req.query?.debug === 'true' || req.query?.debug === '1';
     
     // Validate request body
-    const validatedData = validateRequestBody(req.body);
-    telefono = validatedData.telefono;
+    let validatedData;
+    try {
+      validatedData = validateRequestBody(req.body);
+      telefono = validatedData.telefono;
+      logger.debug('Request validated', { telefono, tipo: validatedData.tipo });
+    } catch (validationError) {
+      logger.error('Validation failed', { error: validationError.message });
+      throw validationError;
+    }
+    
     const { nombre, mensaje, tipo, imagen, imageBase64, ubicacion, debug } = validatedData;
     
     metrics.record('api_request', 1, { method: 'POST', tipo });
