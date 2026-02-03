@@ -1,0 +1,276 @@
+╔════════════════════════════════════════════════════════════════════╗
+║                                                                    ║
+║     🔧 GUÍA DEFINITIVA DE VARIABLES DE ENTORNO v4.0 ULTRA+         ║
+║                                                                    ║
+║              ✅ OCR + BOT CONTROL + FIREBASE FIX                   ║
+║                                                                    ║
+╚════════════════════════════════════════════════════════════════════╝
+
+═══════════════════════════════════════════════════════════════════
+
+📋 VARIABLES REQUERIDAS (5 ESENCIALES)
+
+1️⃣ FIREBASE_PROJECT_ID
+   - Dónde: Firebase Console → Project Settings
+   - Ejemplo: "dypsi-proyecto-xxxxx"
+   - Descripción: ID único de tu proyecto Firebase
+
+2️⃣ FIREBASE_CLIENT_EMAIL
+   - Dónde: JSON descargado de Service Account
+   - Ejemplo: "firebase-adminsdk-xxxxx@dypsi-proyecto.iam.gserviceaccount.com"
+   - Descripción: Email de la cuenta de servicio
+
+3️⃣ FIREBASE_PRIVATE_KEY ⭐ ARREGLADO
+   - Dónde: JSON descargado de Service Account
+   - Ejemplo: "-----BEGIN PRIVATE KEY-----\nMIIEvQI...\n-----END PRIVATE KEY-----\n"
+   - ✅ AHORA ACEPTA:
+     • Saltos de línea reales
+     • Escapados simples (\n)
+     • Escapados dobles (\\n)
+     • Formato Windows (\r\n)
+   - NO NECESITAS HACER NADA ESPECIAL - Solo pégalo como está
+
+4️⃣ KOMMO_API_KEY
+   - Dónde: Kommo → Configuración → API
+   - Ejemplo: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+   - Descripción: Token para integración WhatsApp
+
+5️⃣ OCR_API_KEY ⭐ NUEVO
+   - Opciones:
+     A) OCR.Space (GRATIS - 25 req/día)
+        URL: https://ocr.space/ocrapi
+        Copia el "Free OCR API Key"
+     
+     B) Google Cloud Vision (PAGO - Ilimitado)
+        URL: https://console.cloud.google.com/
+        Habilita Cloud Vision API
+        Crea API Key
+   - Descripción: Procesar imágenes de comprobantes
+
+═══════════════════════════════════════════════════════════════════
+
+📋 VARIABLES OPCIONALES (6 EXTRAS)
+
+6️⃣ GOOGLE_MAPS_API_KEY
+   - Para: Geocoding y búsqueda de ubicaciones
+   - Dónde: Google Cloud Console
+   - Habilita: Maps JavaScript API + Geocoding API
+   - Opcional: Sí
+
+7️⃣ STORE_LAT
+   - Valor: -12.046374
+   - Descripción: Latitud de la tienda
+   - Opcional: Sí
+
+8️⃣ STORE_LON
+   - Valor: -77.042793
+   - Descripción: Longitud de la tienda
+   - Opcional: Sí
+
+9️⃣ STORE_NAME
+   - Valor: "DYPSI Pizzería & Grill"
+   - Descripción: Nombre de la tienda
+   - Opcional: Sí
+
+🔟 STORE_PHONE
+   - Valor: "+51923883240"
+   - Descripción: Teléfono de la tienda
+   - Opcional: Sí
+
+1️⃣1️⃣ BOT_ENABLED ⭐ NUEVO - ENCENDIDO/APAGADO
+   - Valores: "true" o "false"
+   - Descripción: Activa/desactiva el bot completamente
+   - Default: true
+   - Opcional: Sí
+
+1️⃣2️⃣ BOT_MAINTENANCE_MODE ⭐ NUEVO - MANTENIMIENTO
+   - Valores: "true" o "false"
+   - Descripción: Activa modo mantenimiento
+   - Default: false
+   - Opcional: Sí
+
+═══════════════════════════════════════════════════════════════════
+
+🚀 PASOS PARA CONFIGURAR EN VERCEL
+
+Paso 1: Login en Vercel
+→ https://vercel.com/dashboard
+
+Paso 2: Seleccionar Proyecto
+→ Click en "dypsi-middleware"
+
+Paso 3: Settings
+→ Click en Settings (arriba del proyecto)
+
+Paso 4: Environment Variables
+→ En el menú izquierdo: "Environment Variables"
+
+Paso 5: Agregar Variables
+Para cada variable:
+  1. Click en "Add Environment Variable"
+  2. Name: (nombre exacto)
+  3. Value: (tu valor)
+  4. Click "Add"
+
+Paso 6: Redeploy
+→ Vuelve a "Deployments"
+→ Click en "Redeploy" del último deployment
+
+═══════════════════════════════════════════════════════════════════
+
+📝 TEMPLATE PARA COPIAR/PEGAR
+
+Copia estas líneas en Vercel (sin las líneas vacías):
+
+FIREBASE_PROJECT_ID
+[VALOR AQUÍ]
+
+FIREBASE_CLIENT_EMAIL
+[VALOR AQUÍ]
+
+FIREBASE_PRIVATE_KEY
+[VALOR AQUÍ - Pégalo exactamente como está]
+
+KOMMO_API_KEY
+[VALOR AQUÍ]
+
+OCR_API_KEY
+[VALOR AQUÍ]
+
+GOOGLE_MAPS_API_KEY
+[VALOR AQUÍ - OPCIONAL]
+
+STORE_LAT
+-12.046374
+
+STORE_LON
+-77.042793
+
+STORE_NAME
+DYPSI Pizzería & Grill
+
+STORE_PHONE
++51923883240
+
+BOT_ENABLED
+true
+
+BOT_MAINTENANCE_MODE
+false
+
+═══════════════════════════════════════════════════════════════════
+
+⭐ PROBLEMA RESUELTO: FIREBASE_PRIVATE_KEY
+
+ANTES: "Error: private_key should be a string"
+DESPUÉS: ✅ Acepta cualquier formato
+
+El código ahora maneja:
+✅ Saltos de línea reales (Ctrl+Enter en editor)
+✅ \n escapado simple
+✅ \\n escapado doble
+✅ \r\n (Windows)
+
+SOLUCIÓN: Solo pégalo exactamente como lo copias de Firebase.
+No necesitas hacer nada especial.
+
+═══════════════════════════════════════════════════════════════════
+
+🎛️ NUEVO: CONTROL DEL BOT (Encendido/Apagado)
+
+Endpoints disponibles:
+
+✅ GET /api/bot/status
+   Retorna: Estado actual del bot
+
+✅ GET /api/bot/health
+   Retorna: Health check completo
+
+✅ POST /api/bot/enable
+   Acción: Enciende el bot
+   Respuesta: {"success": true, "message": "Bot encendido"}
+
+✅ POST /api/bot/disable
+   Acción: Apaga el bot
+   Respuesta: {"success": true, "message": "Bot apagado"}
+
+✅ POST /api/bot/maintenance/on
+   Acción: Activa modo mantenimiento
+   Respuesta: {"success": true, "message": "Modo mantenimiento activado"}
+
+✅ POST /api/bot/maintenance/off
+   Acción: Desactiva modo mantenimiento
+   Respuesta: {"success": true, "message": "Modo mantenimiento desactivado"}
+
+✅ POST /api/bot/reset
+   Acción: Resetea contadores
+   Respuesta: {"success": true, "message": "Contadores reseteados"}
+
+═══════════════════════════════════════════════════════════════════
+
+🧪 VERIFICAR QUE FUNCIONA
+
+Comando 1: Health Check
+curl https://tu-proyecto.vercel.app/api/health
+
+Debe retornar status "ok" con todas las variables en "✅"
+
+Comando 2: Bot Status
+curl https://tu-proyecto.vercel.app/api/bot/status
+
+Debe retornar:
+{
+  "enabled": true,
+  "maintenanceMode": false,
+  "available": true,
+  "version": "v4.0 ULTRA+"
+}
+
+Comando 3: Bot Health
+curl https://tu-proyecto.vercel.app/api/bot/health
+
+Debe retornar status "healthy"
+
+═══════════════════════════════════════════════════════════════════
+
+✅ CHECKLIST FINAL
+
+REQUERIDAS:
+  □ FIREBASE_PROJECT_ID - Configurada
+  □ FIREBASE_CLIENT_EMAIL - Configurada
+  □ FIREBASE_PRIVATE_KEY - Configurada (cualquier formato)
+  □ KOMMO_API_KEY - Configurada
+  □ OCR_API_KEY - Configurada
+
+OPCIONALES (recomendadas):
+  □ GOOGLE_MAPS_API_KEY - Configurada
+  □ BOT_ENABLED = true
+  □ BOT_MAINTENANCE_MODE = false
+  □ STORE_LAT y STORE_LON - Configuradas
+
+FINALIZADO:
+  □ Redeploy ejecutado en Vercel
+  □ /api/health retorna ✅ para todas
+  □ /api/bot/status retorna estado correcto
+  □ OCR funciona (si tienes imágenes)
+
+═══════════════════════════════════════════════════════════════════
+
+🎉 ¡LISTO!
+
+Tu bot v4.0 ULTRA+ ahora tiene:
+✅ OCR para procesar imágenes
+✅ Bot control (encendido/apagado)
+✅ Mejor manejo de Firebase keys
+✅ Modo mantenimiento
+✅ Health check
+
+Próximo paso: Configura las variables en Vercel y redeploy.
+
+═══════════════════════════════════════════════════════════════════
+
+📚 Más información: Leer ENV_VARIABLES_COMPLETE.md
+
+Versión: v4.0 ULTRA+
+Fecha: Febrero 3, 2026
+Status: ✅ READY TO DEPLOY
