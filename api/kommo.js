@@ -29,6 +29,7 @@ import kommoSender from "../lib/kommo-sender.js";
 import smartInterpreter from "../lib/smart-interpreter.js";
 import advancedNLP from "../lib/advanced-nlp.js";
 import fuzzyMatcher from "../lib/fuzzy-matcher.js";
+import pricing from "../lib/zona-precios.js";
 import { 
   logger,
   AppError,
@@ -390,10 +391,11 @@ const auditLog = (operation, telefono, data = {}) => {
  */
 const calculateDeliveryAndTotal = (items, addressComponents = {}, options = {}) => {
   try {
-    const rules = menu.reglas || [];
+    const { menu: menuData } = loadMenuData(); // Load menu data here
+    const rules = menuData?.reglas || [];
     const calc = pricing.calculateOrderTotal(
       items, 
-      menu, 
+      menuData, 
       rules, 
       { 
         taxRate: options.taxRate || 0, 
