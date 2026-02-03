@@ -693,36 +693,37 @@ export default async function handler(req, res) {
     });
 
     // Load session with timeout
-    let sessionTimeoutId;
-    const sessionTimeout = new Promise((_, reject) => {
-      sessionTimeoutId = setTimeout(() => reject(new AppError('Session load timeout', 504, 'TIMEOUT')), CONFIG.API_TIMEOUT_MS);
-    });
-    
     let session;
     try {
       logger.info('Loading session', { telefono });
-      session = await Promise.race([
-        sessionStore.getSession(telefono),
-        sessionTimeout
-      ]);
+      session = await sessionStore.getSession(telefono);
       logger.info('Session loaded', { telefono, hasSession: !!session });
     } catch (sessionError) {
       logger.error('Session load failed', { telefono, error: sessionError.message });
       // Continue without session
       session = null;
-    } finally {
-      // Clear timeout to prevent memory leak
-      if (sessionTimeoutId) clearTimeout(sessionTimeoutId);
     }
     
     // Load AI context y user profile
     logger.info('Loading AI context', { telefono, nombre });
-    const context = await getOrCreateContext(telefono, nombre);
-    logger.info('Context loaded', { telefono, messagesCount: context.recentMessages?.length || 0 });
+    let context;
+    try {
+      context = await getOrCreateContext(telefono, nombre);
+      logger.info('Context loaded', { telefono, messagesCount: context.recentMessages?.length || 0 });
+    } catch (contextError) {
+      logger.error('Context load failed', { telefono, error: contextError.message, stack: contextError.stack });
+      throw new AppError('Failed to load context', 500, 'CONTEXT_ERROR');
+    }
     
     logger.info('Loading user profile', { telefono, nombre });
-    const userProfile = await getOrCreateUserProfile(telefono, nombre);
-    logger.info('Profile loaded', { telefono, isVIP: userProfile.isVIP() });
+    let userProfile;
+    try {
+      userProfile = await getOrCreateUserProfile(telefono, nombre);
+      logger.info('Profile loaded', { telefono, ordersCount: userProfile.orders?.length || 0 });
+    } catch (profileError) {
+      logger.error('Profile load failed', { telefono, error: profileError.message, stack: profileError.stack });
+      throw new AppError('Failed to load profile', 500, 'PROFILE_ERROR');
+    }
 
     /**
      * Helper to persist and return reply
