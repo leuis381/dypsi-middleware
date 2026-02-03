@@ -17,22 +17,5 @@
       "memory": 1024,
       "maxDuration": 30
     }
-  },
-  "builds": [
-    {
-      "src": "api/kommo.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/kommo",
-      "dest": "api/kommo.js"
-    },
-    {
-      "src": "/(.*)",
-      "status": 404,
-      "dest": "/api/kommo"
-    }
-  ]
+  }
 }
