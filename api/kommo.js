@@ -42,7 +42,8 @@ import {
   sendSuccess,
   sendError,
   sendReply,
-  formatMoney as utilFormatMoney
+  formatMoney as utilFormatMoney,
+  parseJSON
 } from "../lib/utils.js";
 import { CONFIG } from "../lib/config.js";
 
