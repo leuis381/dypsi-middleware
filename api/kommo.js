@@ -965,6 +965,7 @@ export default async function handler(req, res) {
     
     if (debugMode) {
       res.setHeader('X-Detected-Intention', intention || 'none');
+      res.setHeader('X-Intent-Order-New', INTENTIONS?.ORDER_NEW || 'none');
     }
     logger.info('Detected intention', { 
       telefono,
