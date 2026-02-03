@@ -982,6 +982,9 @@ export default async function handler(req, res) {
     }
 
     if (intention === INTENTIONS.HELP) {
+      if (debugMode) {
+        res.setHeader('X-Help-Block', '1');
+      }
       metrics.record('interaction', 1, { type: 'help' });
       const topCats = (menu.categorias || []).slice(0, 4).map(c => `• ${c.nombre} (${(c.productos||[]).length} items)`).join("\n");
       const reply = generateSmartResponse("menu_available", context, { categories: topCats });
@@ -1023,6 +1026,9 @@ export default async function handler(req, res) {
 
     // Intentar parsear orden del mensaje
     if (intention === INTENTIONS.ORDER_NEW || intention === INTENTIONS.ORDER_REPEAT) {
+      if (debugMode) {
+        res.setHeader('X-Order-Block', '1');
+      }
       try {
         metrics.record('interaction', 1, { type: 'order' });
         let parsed;
