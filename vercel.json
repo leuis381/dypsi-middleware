@@ -1,17 +1,5 @@
 {
   "version": 2,
-  "env": {
-    "FIREBASE_PROJECT_ID": "@firebase_project_id",
-    "FIREBASE_CLIENT_EMAIL": "@firebase_client_email",
-    "FIREBASE_PRIVATE_KEY": "@firebase_private_key",
-    "OCR_API_KEY": "@ocr_api_key",
-    "IA_ENABLED": "true",
-    "STORE_LAT": "@store_lat",
-    "STORE_LON": "@store_lon",
-    "KOMMO_PHONE_NUMBER": "@kommo_phone_number",
-    "KOMMO_AGENT_WEBHOOK": "@kommo_agent_webhook",
-    "NODE_ENV": "production"
-  },
   "functions": {
     "api/kommo.js": {
       "memory": 1024,
