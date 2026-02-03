@@ -25,6 +25,7 @@ import smartOcrModule from "../lib/smart-ocr.js";
 import userProfileModule from "../lib/user-profile.js";
 import ultraHumanizer from "../lib/ultra-humanizer.js";
 import smartDelivery from "../lib/smart-delivery.js";
+import detectAddress from "../lib/detect-address.js";
 import kommoSender from "../lib/kommo-sender.js";
 import smartInterpreter from "../lib/smart-interpreter.js";
 import advancedNLP from "../lib/advanced-nlp.js";
