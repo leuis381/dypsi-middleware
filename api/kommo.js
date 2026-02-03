@@ -1101,6 +1101,8 @@ export default async function handler(req, res) {
       } catch (err) {
         logger.error('parseOrderText error:', { telefono, error: err?.message || err });
         metrics.record('order_parse_error', 1);
+        const reply = generateSmartResponse("order_incomplete", context, { errors: [err?.message || 'No se pudo interpretar el pedido'] });
+        return persistAndReply({}, { reply });
       }
     }
 
