@@ -600,6 +600,16 @@ const addSecurityHeaders = (res) => {
  */
 export default async function handler(req, res) {
   const startTime = Date.now();
+  const getDebugMode = () => {
+    try {
+      const url = new URL(req.url, `https://${req.headers?.host || 'localhost'}`);
+      const queryDebug = url.searchParams.get('debug');
+      const headerDebug = req.headers?.['x-debug'] || req.headers?.['x-debug-mode'];
+      return queryDebug === 'true' || queryDebug === '1' || headerDebug === '1' || headerDebug === 'true';
+    } catch {
+      return false;
+    }
+  };
   
   // Add security headers
   addSecurityHeaders(res);
@@ -650,7 +660,7 @@ export default async function handler(req, res) {
     }
     
     // Check for debug mode
-    debugMode = req.query?.debug === 'true' || req.query?.debug === '1';
+    debugMode = getDebugMode() || !!req.body?.debug;
     
     // Validate request body
     let validatedData;
