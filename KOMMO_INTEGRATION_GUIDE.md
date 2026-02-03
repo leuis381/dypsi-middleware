@@ -32,11 +32,10 @@ https://dypsi-middleware.vercel.app/api/kommo
 
 ```json
 {
-  "userId": "user_12345",
-  "phone": "+56912345678",
-  "message": "Hola, quiero una pizza grande hawaiana con extra queso",
-  "userName": "Juan García",
-  "timestamp": "2024-01-15T10:30:00Z"
+  "telefono": "+56912345678",
+  "nombre": "Juan García",
+  "mensaje": "Hola, quiero una pizza grande hawaiana con extra queso",
+  "tipo": "text"
 }
 ```
 
@@ -44,7 +43,7 @@ https://dypsi-middleware.vercel.app/api/kommo
 ```json
 {
   "ok": true,
-  "userId": "user_12345",
+  "telefono": "+56912345678",
   "message": "Hola, quiero una pizza grande hawaiana con extra queso",
   "analysis": {
     "intention": "ORDER",
@@ -77,11 +76,10 @@ https://dypsi-middleware.vercel.app/api/kommo
 
 ```json
 {
-  "userId": "user_67890",
-  "phone": "+56987654321",
-  "message": "¿Qué pizzas tienen?",
-  "userName": "María López",
-  "timestamp": "2024-01-15T10:35:00Z"
+  "telefono": "+56987654321",
+  "nombre": "María López",
+  "mensaje": "¿Qué pizzas tienen?",
+  "tipo": "text"
 }
 ```
 
@@ -89,7 +87,7 @@ https://dypsi-middleware.vercel.app/api/kommo
 ```json
 {
   "ok": true,
-  "userId": "user_67890",
+  "telefono": "+56987654321",
   "message": "¿Qué pizzas tienen?",
   "analysis": {
     "intention": "MENU_QUERY",
@@ -109,12 +107,11 @@ https://dypsi-middleware.vercel.app/api/kommo
 
 ```json
 {
-  "userId": "user_54321",
-  "phone": "+56988776655",
-  "message": "Una pizza mediana vegetariana, enviar a Av. Principal 456",
-  "location": "-33.8688,-51.2093",
-  "userName": "Carlos Ruiz",
-  "timestamp": "2024-01-15T10:40:00Z"
+  "telefono": "+56988776655",
+  "nombre": "Carlos Ruiz",
+  "mensaje": "Una pizza mediana vegetariana, enviar a Av. Principal 456",
+  "tipo": "location",
+  "ubicacion": "-33.8688,-51.2093"
 }
 ```
 
@@ -160,11 +157,10 @@ https://dypsi-middleware.vercel.app/api/kommo
 
 ```json
 {
-  "userId": "user_99999",
-  "phone": "+56911223344",
-  "message": "kiero dos pizzas peperoni, la mitad sin cebolla y con mucho ajo",
-  "userName": "Cliente Test",
-  "timestamp": "2024-01-15T10:45:00Z"
+  "telefono": "+56911223344",
+  "nombre": "Cliente Test",
+  "mensaje": "kiero dos pizzas peperoni, la mitad sin cebolla y con mucho ajo",
+  "tipo": "text"
 }
 ```
 
@@ -202,11 +198,10 @@ https://dypsi-middleware.vercel.app/api/kommo
 
 ```json
 {
-  "userId": "user_escalate",
-  "phone": "+56922334455",
-  "message": "Necesito hablar con un gerente, tengo una queja sobre mi pedido anterior",
-  "userName": "Cliente Enojado",
-  "timestamp": "2024-01-15T10:50:00Z"
+  "telefono": "+56922334455",
+  "nombre": "Cliente Enojado",
+  "mensaje": "Necesito hablar con un gerente, tengo una queja sobre mi pedido anterior",
+  "tipo": "text"
 }
 ```
 
@@ -307,11 +302,10 @@ pm.test("Response has analysis", function () {
 5. **Payload que Kommo enviará:**
    ```json
    {
-     "userId": "kommo_user_id",
-     "phone": "+56912345678",
-     "message": "Mensaje del cliente",
-     "userName": "Nombre Cliente",
-     "timestamp": "ISO_STRING"
+     "telefono": "+56912345678",
+     "nombre": "Nombre Cliente",
+     "mensaje": "Mensaje del cliente",
+     "tipo": "text"
    }
    ```
 
@@ -319,16 +313,16 @@ pm.test("Response has analysis", function () {
 
 ## 📊 Campos Disponibles en Request
 
-| Campo | Tipo | Requerido | Ejemplo |
-|-------|------|-----------|---------|
-| `userId` | String | ✅ | `"user_123"` |
-| `phone` | String | ✅ | `"+56912345678"` |
-| `message` | String | ✅ | `"Quiero una pizza"` |
-| `userName` | String | ❌ | `"Juan García"` |
-| `location` | String | ❌ | `"-33.8688,-51.2093"` |
-| `timestamp` | String | ❌ | ISO 8601 |
-| `imageUrl` | String | ❌ | URL de imagen |
-| `imageBase64` | String | ❌ | Base64 de imagen |
+| Campo | Tipo | Requerido | Ejemplo | Descripción |
+|-------|------|-----------|---------|-------------|
+| `telefono` | String | ✅ | `"+56912345678"` | Número de teléfono del cliente (validado) |
+| `nombre` | String | ❌ | `"Juan García"` | Nombre del cliente (max 100 chars) |
+| `mensaje` | String | ✅ | `"Quiero una pizza"` | Mensaje del cliente (max 500 chars) |
+| `tipo` | String | ❌ | `"text"` | Tipo: `text`, `image`, `image_buffer`, `location` |
+| `imagen` | String | ❌ | URL válida | URL de imagen (cuando tipo="image") |
+| `imageBase64` | String | ❌ | Base64 string | Imagen en base64 (cuando tipo="image_buffer") |
+| `ubicacion` | String/Object | ❌ | `"-33.8688,-51.2093"` | Ubicación como "lat,lon" o objeto {lat, lon} |
+| `debug` | Boolean | ❌ | `true` | Activar modo debug (más logs) |
 
 ---
 
@@ -354,11 +348,10 @@ pm.test("Response has analysis", function () {
 curl -X POST https://dypsi-middleware.vercel.app/api/kommo \
   -H "Content-Type: application/json" \
   -d '{
-    "userId": "user_12345",
-    "phone": "+56912345678",
-    "message": "Hola, quiero una pizza grande hawaiana con extra queso",
-    "userName": "Juan García",
-    "timestamp": "2024-01-15T10:30:00Z"
+    "telefono": "+56912345678",
+    "nombre": "Juan García",
+    "mensaje": "Hola, quiero una pizza grande hawaiana con extra queso",
+    "tipo": "text"
   }'
 ```
 
