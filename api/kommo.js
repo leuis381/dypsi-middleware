@@ -955,11 +955,11 @@ export default async function handler(req, res) {
     // Detectar intención con el motor de IA
     const intentionResult = detectIntention(mensaje, context);
     let intention = intentionResult.intention;
-    if (!intention) {
-      const helpHint = /(menu|menú|carta|precio|cuánto cuesta|cuanto cuesta|promoc|promo|catálogo|catalogo|lista)/i;
-      const orderHint = /(quiero|pedido|orden|ordenar|dame|env[ií]a|manda|trae|ponme)/i;
-      if (orderHint.test(mensaje)) intention = INTENTIONS.ORDER_NEW;
-      else if (helpHint.test(mensaje)) intention = INTENTIONS.HELP;
+    const helpHint = /(menu|menú|carta|precio|cuánto cuesta|cuanto cuesta|promoc|promo|catálogo|catalogo|lista)/i;
+    const orderHint = /(quiero|pedido|orden|ordenar|dame|env[ií]a|manda|trae|ponme)/i;
+    if (orderHint.test(mensaje)) intention = INTENTIONS.ORDER_NEW;
+    else if (helpHint.test(mensaje) && intention !== INTENTIONS.ORDER_NEW && intention !== INTENTIONS.ORDER_REPEAT) {
+      intention = INTENTIONS.HELP;
     }
     context.currentIntention = intention;
     
