@@ -1192,14 +1192,24 @@ export default async function handler(req, res) {
     
     // Send error response
     if (err instanceof ValidationError) {
+      if (debugMode) {
+        err.exposeDetails = true;
+      }
       return sendError(res, err);
     }
     
     if (err instanceof RateLimitError) {
+      if (debugMode) {
+        err.exposeDetails = true;
+      }
       return sendError(res, err);
     }
     
     if (err instanceof AppError) {
+      if (debugMode) {
+        err.exposeDetails = true;
+        err.details = err.details || { message: err.message, code: err.code, name: err.name };
+      }
       return sendError(res, err);
     }
     
@@ -1218,6 +1228,7 @@ export default async function handler(req, res) {
         code: err?.code,
         stack: debugMode ? err?.stack : undefined
       };
+      genericError.exposeDetails = true;
     }
     
     return sendError(res, genericError);
