@@ -91,9 +91,8 @@ const validateEnvironment = () => {
   
   if (missing.length > 0) {
     logger.warn('MISSING_ENV_VARS', { missing });
-    if (CONFIG.ENV === 'production') {
-      throw new AppError(`Missing environment variables: ${missing.join(', ')}`, 500, 'ENV_INCOMPLETE');
-    }
+    // Don't throw in production - allow endpoint to work with limited functionality
+    return false;
   }
   
   logger.info('ENV_VALIDATED', { 
@@ -102,18 +101,27 @@ const validateEnvironment = () => {
     ocr: !!CONFIG.OCR_API_KEY,
     ia: CONFIG.IA_ENABLED
   });
+  return true;
 };
 
 // Validate environment on startup
+let envValid = false;
 try {
-  validateEnvironment();
+  envValid = validateEnvironment();
 } catch (error) {
-  logger.fatal('Environment validation failed:', error);
+  logger.error('Environment validation failed:', error);
 }
 
 /* ---------- FIREBASE INIT ---------- */
-if (!admin.apps.length && CONFIG.FIREBASE_PROJECT_ID) {
+let firebaseInitialized = false;
+if (!admin.apps.length && CONFIG.FIREBASE_PROJECT_ID && envValid) {
   try {
+    logger.info('Initializing Firebase with credentials...', {
+      projectId: CONFIG.FIREBASE_PROJECT_ID,
+      clientEmail: CONFIG.FIREBASE_CLIENT_EMAIL?.substring(0, 20) + '...',
+      hasPrivateKey: !!CONFIG.FIREBASE_PRIVATE_KEY
+    });
+    
     admin.initializeApp({
       credential: admin.credential.cert({
         projectId: CONFIG.FIREBASE_PROJECT_ID,
@@ -121,16 +129,24 @@ if (!admin.apps.length && CONFIG.FIREBASE_PROJECT_ID) {
         privateKey: CONFIG.FIREBASE_PRIVATE_KEY,
       }),
     });
-      // sessionStore.initFirebase(admin);  // Not needed - session-store handles this
+    
+    firebaseInitialized = true;
     logger.info('Firebase initialized successfully');
     metrics.record('firebase_init', 1, { status: 'success' });
   } catch (err) {
-    logger.warn('Firebase init failed, falling back to in-memory sessions:', err?.message || err);
-    metrics.record('firebase_init', 1, { status: 'failed' });
+    logger.error('Firebase init failed, falling back to in-memory sessions:', {
+      error: err?.message || String(err),
+      stack: err?.stack
+    });
+    metrics.record('firebase_init', 1, { status: 'failed', error: err?.message });
+    // Continue without Firebase - will use in-memory sessions
   }
 } else {
-    // sessionStore.initFirebase(admin);  // Not needed in development
-  logger.debug('Firebase already initialized or credentials missing');
+  logger.info('Firebase not initialized', {
+    hasApps: admin.apps.length > 0,
+    hasProjectId: !!CONFIG.FIREBASE_PROJECT_ID,
+    envValid
+  });
 }
 
 // Session store compatibility wrappers
@@ -1126,15 +1142,19 @@ export default async function handler(req, res) {
     return persistAndReply({}, { reply });
 
   } catch (err) {
-    logger.error('KOMMO handler error', { 
+    const errorInfo = { 
       telefono, 
-      error: err?.message || err, 
+      error: err?.message || String(err), 
       stack: err?.stack,
-      code: err?.code 
-    });
+      code: err?.code,
+      name: err?.name
+    };
+    
+    logger.error('KOMMO handler error', errorInfo);
     metrics.record('api_error', 1, { 
       code: err?.code || 'UNKNOWN',
-      statusCode: err?.statusCode || 500
+      statusCode: err?.statusCode || 500,
+      name: err?.name
     });
     
     // Send error response
@@ -1150,8 +1170,23 @@ export default async function handler(req, res) {
       return sendError(res, err);
     }
     
-    // Generic error
-    return sendError(res, new AppError('Internal server error', 500, 'INTERNAL_ERROR'));
+    // Generic error with debug info
+    const genericError = new AppError(
+      'Internal server error',
+      500,
+      'INTERNAL_ERROR'
+    );
+    
+    // In development/staging, include error details
+    if (CONFIG.ENV !== 'production') {
+      genericError.details = {
+        message: err?.message,
+        name: err?.name,
+        code: err?.code
+      };
+    }
+    
+    return sendError(res, genericError);
   }
 }
 
