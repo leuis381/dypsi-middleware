@@ -19,7 +19,8 @@ import {
 import aiEngineModule from "../lib/ai-engine.js";
 import sessionStore from "../lib/session-store.js";
 
-const { detectIntention, ConversationContext } = aiEngineModule;
+const { detectIntention } = aiEngineModule;
+const ConversationContext = aiEngineModule.ConversationContext;
 
 // Initialize Firebase
 let firebaseInitialized = false;
@@ -80,7 +81,16 @@ export default async function handler(req, res) {
     const cleanName = sanitizeInput(nombre || 'Cliente', 100);
     const messageType = tipo || 'text';
     
-    logger.info('Processing message', { telefono, tipo: messageType });
+    // Ensure cleanMessage is not empty
+    if (!cleanMessage || cleanMessage.trim().length === 0) {
+      throw new ValidationError('Message cannot be empty');
+    }
+    
+    logger.info('Processing message', { 
+      telefono, 
+      tipo: messageType,
+      messageLength: cleanMessage.length
+    });
     
     // Get or create context
     let context;
