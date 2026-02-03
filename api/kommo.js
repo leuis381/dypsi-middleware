@@ -104,11 +104,11 @@ const loadMenuData = () => {
 const rateLimiter = new RateLimiter(CONFIG.RATE_LIMIT_MAX_REQUESTS || 60, 60 * 1000);
 const metrics = new MetricsCollector();
 
-// Cleanup interval for rate limiter
-setInterval(() => {
-  rateLimiter.cleanup();
-  logger.debug('RATE_LIMITER_CLEANUP');
-}, 5 * 60 * 1000);
+// Cleanup interval for rate limiter - DISABLED in serverless
+// setInterval(() => {
+//   rateLimiter.cleanup();
+//   logger.debug('RATE_LIMITER_CLEANUP');
+// }, 5 * 60 * 1000);
 
 /* ---------- ENVIRONMENT VALIDATION ---------- */
 const validateEnvironment = () => {
