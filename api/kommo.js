@@ -47,7 +47,7 @@ import {
 } from "../lib/utils.js";
 import { CONFIG } from "../lib/config.js";
 
-const { detectIntention, validateOrder, INTENTIONS } = aiEngineModule;
+const { detectIntention, validateOrder, INTENTIONS, generateSmartResponse } = aiEngineModule;
 const ConversationContext = aiEngineModule.ConversationContext;
 const { smartOCRAnalysis } = smartOcrModule;
 const UserProfile = userProfileModule.UserProfile;
