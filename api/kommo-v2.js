@@ -97,10 +97,9 @@ export default async function handler(req, res) {
     }
     
     // Add message to context
-    context.addMessage({
-      role: 'user',
-      content: cleanMessage,
-      timestamp: Date.now()
+    context.addMessage('user', cleanMessage, {
+      intent: null,
+      confidence: 0
     });
     
     // Detect intention
@@ -140,10 +139,9 @@ export default async function handler(req, res) {
     }
     
     // Add bot response to context
-    context.addMessage({
-      role: 'assistant',
-      content: reply,
-      timestamp: Date.now()
+    context.addMessage('assistant', reply, {
+      intent: intentionResult.intention,
+      confidence: intentionResult.confidence
     });
     
     // Save session
