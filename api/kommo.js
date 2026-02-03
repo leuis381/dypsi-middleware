@@ -68,11 +68,35 @@ const { sendOrderToAgent, formatOrderForAgent } = kommoSender;
 const { smartProcess, generateContextAwareResponse: neoResponse } = smartInterpreter;
 import fs from "fs";
 
-const menuPath = new URL("../data/menu.json", import.meta.url);
-const synonymsPath = new URL("../data/sinonimos.json", import.meta.url);
+// Lazy load menu and synonyms (don't load during module init in serverless)
+let menu = null;
+let synonyms = null;
 
-const menu = JSON.parse(fs.readFileSync(menuPath, "utf8"));
-const synonyms = JSON.parse(fs.readFileSync(synonymsPath, "utf8"));
+const loadMenuData = () => {
+  if (!menu) {
+    try {
+      const menuPath = new URL("../data/menu.json", import.meta.url);
+      menu = JSON.parse(fs.readFileSync(menuPath, "utf8"));
+      logger.debug('Menu loaded', { itemsCount: menu?.categorias?.length || 0 });
+    } catch (error) {
+      logger.warn('Failed to load menu', { error: error.message });
+      menu = { categorias: [] };
+    }
+  }
+  
+  if (!synonyms) {
+    try {
+      const synonymsPath = new URL("../data/sinonimos.json", import.meta.url);
+      synonyms = JSON.parse(fs.readFileSync(synonymsPath, "utf8"));
+      logger.debug('Synonyms loaded', { count: Object.keys(synonyms || {}).length });
+    } catch (error) {
+      logger.warn('Failed to load synonyms', { error: error.message });
+      synonyms = {};
+    }
+  }
+  
+  return { menu, synonyms };
+};
 
 /* ---------- RATE LIMITING & METRICS ---------- */
 const rateLimiter = new RateLimiter(CONFIG.RATE_LIMIT_MAX_REQUESTS || 60, 60 * 1000);
@@ -606,6 +630,9 @@ export default async function handler(req, res) {
   let telefono;
   let debugMode = false;
   try {
+    // Load menu data if not already loaded
+    loadMenuData();
+    
     // Check for debug mode
     debugMode = req.query?.debug === 'true' || req.query?.debug === '1';
     
