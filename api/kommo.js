@@ -26,6 +26,7 @@ import userProfileModule from "../lib/user-profile.js";
 import ultraHumanizer from "../lib/ultra-humanizer.js";
 import smartDelivery from "../lib/smart-delivery.js";
 import detectAddressModule from "../lib/detect-address.js";
+import { calculateRoute } from "../lib/route-price.js";
 import kommoSender from "../lib/kommo-sender.js";
 import smartInterpreter from "../lib/smart-interpreter.js";
 import advancedNLP from "../lib/advanced-nlp.js";
@@ -510,10 +511,13 @@ const validateRequestBody = (body) => {
         errors.push({ field: 'mensaje', message: 'Message cannot be empty or only whitespace for text type' });
       }
       // Check length límite
-      if (mensaje.length > 500) {
-        errors.push({ field: 'mensaje', message: 'Message cannot exceed 500 characters' });
+      if (mensaje.length > 2000) {
+        errors.push({ field: 'mensaje', message: 'Message cannot exceed 2000 characters' });
       }
     }
+  } else if (tipo === 'text') {
+    // mensaje is required for text type
+    errors.push({ field: 'mensaje', message: 'Message is required for text type' });
   }
   
   // Validate imagen URL if provided
@@ -994,10 +998,71 @@ export default async function handler(req, res) {
 
     // Detectar dirección en el mensaje
     const addrDetection = detectAddress(mensaje);
-    if (addrDetection && addrDetection.address && (intention === INTENTIONS.HELP || session?.estado === "direccion")) {
+    logger.debug('Address detection result', { 
+      hasResult: !!addrDetection, 
+      isAddress: addrDetection?.isAddress,
+      hasAddress: !!addrDetection?.address,
+      address: addrDetection?.address?.substring(0, 30)
+    });
+    
+    if (addrDetection && addrDetection.isAddress && addrDetection.address) {
+      // Si detectamos dirección, procesarla independiente de la intención
       context.currentIntention = INTENTIONS.HELP;
       metrics.record('address_detected', 1);
       logger.info('Address detected in message', { telefono, address: addrDetection.address });
+      
+      // Geocodificar dirección y calcular delivery usando calculateRoute
+      let deliveryFee = 0;
+      let distanceKm = 0;
+      let routeInfo = null;
+      
+      try {
+        const storeAddress = `${CONFIG.STORE_LAT},${CONFIG.STORE_LON}`;
+        logger.debug('Calculating route for address', { from: storeAddress, to: addrDetection.address });
+        
+        const routeResult = await calculateRoute(
+          { lat: CONFIG.STORE_LAT, lon: CONFIG.STORE_LON },
+          addrDetection.address
+        );
+        
+        if (routeResult.ok) {
+          deliveryFee = routeResult.price || 0;
+          distanceKm = routeResult.distance_km || 0;
+          routeInfo = {
+            distance_km: distanceKm,
+            duration_min: routeResult.duration_min,
+            provider: routeResult.provider
+          };
+          
+          // Actualizar componentes con coordenadas geocodificadas
+          if (routeResult.destination_coords) {
+            addrDetection.components = {
+              ...addrDetection.components,
+              lat: routeResult.destination_coords.lat,
+              lon: routeResult.destination_coords.lon
+            };
+          }
+          
+          logger.info('Route calculated successfully', { 
+            telefono, 
+            deliveryFee, 
+            distanceKm,
+            provider: routeResult.provider 
+          });
+        } else {
+          logger.warn('Route calculation failed, using default delivery fee', { 
+            telefono, 
+            error: routeResult.error 
+          });
+          deliveryFee = CONFIG.DELIVERY_BASE_FEE || 5;
+        }
+      } catch (routeError) {
+        logger.error('Route calculation error', { 
+          telefono, 
+          error: routeError.message 
+        });
+        deliveryFee = CONFIG.DELIVERY_BASE_FEE || 5;
+      }
       
       await sessionStore.saveAddressForPhone(telefono, addrDetection.address, addrDetection.components);
 
@@ -1006,23 +1071,46 @@ export default async function handler(req, res) {
 
       if (draft?.items?.length) {
         const itemsForCalc = draft.items.map(it => ({ id: it.id, quantity: it.quantity, variant: it.variant, extras: it.extras }));
-        const calc = pricing.calculateOrderTotal(itemsForCalc, menu, menu.reglas || [], { taxRate: 0, rounding: 0.01, delivery: { addressComponents: addrDetection.components } });
-        await sessionStore.saveSession(telefono, { estado: "pedido_confirmado", pedido: { items: draft.items, pricing: calc }, address: { address: addrDetection.address, components: addrDetection.components } });
+        const calc = pricing.calculateOrderTotal(itemsForCalc, menu, menu.reglas || [], { 
+          taxRate: 0, 
+          rounding: 0.01, 
+          delivery: { base: deliveryFee, addressComponents: addrDetection.components } 
+        });
         
-        logger.info('Order confirmed with address', { telefono, total: calc.total, itemsCount: draft.items.length });
+        await sessionStore.saveSession(telefono, { 
+          estado: "pedido_confirmado", 
+          pedido: { items: draft.items, pricing: calc }, 
+          address: { address: addrDetection.address, components: addrDetection.components },
+          route: routeInfo
+        });
+        
+        logger.info('Order confirmed with address and delivery', { 
+          telefono, 
+          total: calc.total, 
+          deliveryFee,
+          itemsCount: draft.items.length 
+        });
         metrics.record('order_confirmed', 1);
-        auditLog('order_confirmed', telefono, { total: calc.total, itemsCount: draft.items.length });
+        auditLog('order_confirmed', telefono, { total: calc.total, deliveryFee, itemsCount: draft.items.length });
         
         const suggestions = generateSuggestions(draft.items, userProfile, menu);
         const reply = `📍 Dirección detectada: ${addrDetection.address}\n` +
-                     `Total a cobrar: ${formatMoney(calc.total)}\n` +
+                     `🚚 Delivery: ${formatMoney(deliveryFee)}${distanceKm > 0 ? ` (${distanceKm.toFixed(1)} km)` : ''}\n` +
+                     `💰 Total a cobrar: ${formatMoney(calc.total)}\n\n` +
                      `${buildOrderSummaryText(draft, calc)}\n` +
                      (suggestions.length > 0 ? `\n💡 Te sugiero: ${suggestions.slice(0, 2).map(s => s.name).join(", ")}\n` : "") +
                      `¿Confirmas y deseas pagar ahora?`;
         return persistAndReply({ estado: "pedido_confirmado" }, { reply });
       }
-      const reply = generateSmartResponse("address_received", context, { address: addrDetection.address });
-      return persistAndReply({ address: { address: addrDetection.address, components: addrDetection.components } }, { reply });
+      
+      const reply = `📍 Dirección detectada: ${addrDetection.address}\n` +
+                   `🚚 Delivery estimado: ${formatMoney(deliveryFee)}${distanceKm > 0 ? ` (${distanceKm.toFixed(1)} km)` : ''}\n` +
+                   `¿En qué puedo ayudarte?`;
+      return persistAndReply({ 
+        address: { address: addrDetection.address, components: addrDetection.components },
+        delivery: deliveryFee,
+        route: routeInfo
+      }, { reply });
     }
 
     // Intentar parsear orden del mensaje
