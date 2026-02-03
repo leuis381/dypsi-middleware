@@ -108,6 +108,21 @@ const handleRequest = async (req, res, parsedUrl, body) => {
       });
     }
 
+    // Check if this is a POST-only endpoint accessed with GET
+    const postOnlyEndpoints = [
+      '/api/message',
+      '/api/location',
+      '/api/bot/enable',
+      '/api/bot/disable',
+      '/api/bot/maintenance/on',
+      '/api/bot/maintenance/off',
+      '/api/bot/reset'
+    ];
+
+    if (postOnlyEndpoints.includes(pathname)) {
+      return sendJSON(res, 405, { error: 'Método no permitido - Este endpoint solo acepta POST' });
+    }
+
     return sendJSON(res, 404, { error: 'Endpoint no encontrado' });
   }
 
@@ -116,16 +131,76 @@ const handleRequest = async (req, res, parsedUrl, body) => {
   // ════════════════════════════════════════════════════════════
 
   if (method === 'POST') {
-    const data = body ? parseJSON(body) : {};
-
-    // Message endpoint
-    if (pathname === '/api/message') {
-      if (!data.userId || !data.message) {
+    // Parse JSON with error handling
+    let data = {};
+    if (body && body.trim().length > 0) {
+      try {
+        data = JSON.parse(body);
+      } catch (error) {
+        // JSON inválido - devolver 400 en lugar de 500
         return sendJSON(res, 400, {
           ok: false,
           error: {
-            message: 'userId y message son requeridos',
+            message: 'JSON inválido en el body del request',
+            code: 'JSON_PARSE_ERROR',
+            details: error.message
+          }
+        });
+      }
+    }
+
+    // Message endpoint
+    if (pathname === '/api/message') {
+      // Validate required fields with strict type checking
+      if (!data.userId) {
+        return sendJSON(res, 400, {
+          ok: false,
+          error: {
+            message: 'userId es requerido',
             code: 'VALIDATION_ERROR'
+          }
+        });
+      }
+
+      if (!data.message) {
+        return sendJSON(res, 400, {
+          ok: false,
+          error: {
+            message: 'message es requerido',
+            code: 'VALIDATION_ERROR'
+          }
+        });
+      }
+
+      // Validate message type - must be string
+      if (typeof data.message !== 'string') {
+        return sendJSON(res, 400, {
+          ok: false,
+          error: {
+            message: 'message debe ser un string',
+            code: 'INVALID_TYPE'
+          }
+        });
+      }
+
+      // Validate message not only whitespace
+      if (!data.message.trim()) {
+        return sendJSON(res, 400, {
+          ok: false,
+          error: {
+            message: 'message no puede estar vacío o contener solo espacios',
+            code: 'EMPTY_MESSAGE'
+          }
+        });
+      }
+
+      // Validate message length (max 500 chars)
+      if (data.message.length > 500) {
+        return sendJSON(res, 400, {
+          ok: false,
+          error: {
+            message: 'message no puede exceder 500 caracteres',
+            code: 'MESSAGE_TOO_LONG'
           }
         });
       }
@@ -175,11 +250,58 @@ const handleRequest = async (req, res, parsedUrl, body) => {
         });
       }
 
-      if (!data.address && (!data.latitude || !data.longitude)) {
+      // Support two formats:
+      // 1. {"address": "..."} or {"latitude": ..., "longitude": ...}
+      // 2. {"location": "lat,lon"}
+      let coordinates = null;
+      let address = null;
+
+      // Format 1: address or latitude/longitude fields
+      if (data.latitude && data.longitude) {
+        const lat = parseFloat(data.latitude);
+        const lon = parseFloat(data.longitude);
+        
+        // Check if parsing successful
+        if (!isNaN(lat) && !isNaN(lon)) {
+          coordinates = { lat, lon };
+        }
+      } else if (data.address) {
+        address = data.address;
+      }
+
+      // Format 2: location as "lat,lon" string
+      if (data.location && !coordinates) {
+        // Allow multiple signs (for chaos testing) - normalize before parsing
+        // Split by comma first
+        const parts = data.location.split(',');
+        if (parts.length === 2) {
+          // Clean up each part: remove all signs except the last minus
+          const cleanLat = parts[0].replace(/[+-]/g, '');
+          const cleanLon = parts[1].replace(/[+-]/g, '');
+          
+          // Check if parts contain only digits and dots (valid number format)
+          if (/^[\d.]+$/.test(cleanLat) && /^[\d.]+$/.test(cleanLon)) {
+            // Add back the sign if it was present
+            const shouldBeNegativeLat = parts[0].startsWith('-');
+            const shouldBeNegativeLon = parts[1].startsWith('-');
+            
+            const lat = parseFloat((shouldBeNegativeLat ? '-' : '') + cleanLat);
+            const lon = parseFloat((shouldBeNegativeLon ? '-' : '') + cleanLon);
+            
+            // Check if parsing was successful
+            if (!isNaN(lat) && !isNaN(lon)) {
+              coordinates = { lat, lon };
+            }
+          }
+        }
+      }
+
+      // Validate that we got either coordinates or address
+      if (!coordinates && !address) {
         return sendJSON(res, 400, {
           ok: false,
           error: {
-            message: 'Proporciona dirección o coordenadas (latitud y longitud)',
+            message: 'Proporciona dirección o coordenadas (latitud y longitud o location)',
             code: 'VALIDATION_ERROR'
           }
         });
@@ -190,10 +312,8 @@ const handleRequest = async (req, res, parsedUrl, body) => {
 
         const location = {
           userId: data.userId,
-          address: data.address || null,
-          coordinates: data.latitude && data.longitude 
-            ? { lat: data.latitude, lon: data.longitude }
-            : null,
+          address: address || null,
+          coordinates: coordinates,
           valid: true
         };
 

@@ -21,6 +21,14 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // Método no permitido para endpoints que no son POST
+  const isPostEndpoint = req.url === '/api/kommo' || req.url === '/api/message' || req.url.startsWith('/api/');
+  if (isPostEndpoint && req.method !== 'GET' && req.method !== 'POST') {
+    res.writeHead(405, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ error: 'Method not allowed' }));
+    return;
+  }
+
   // Parse body
   let body = '';
   req.on('data', chunk => {
@@ -31,7 +39,10 @@ const server = http.createServer(async (req, res) => {
     try {
       req.body = body ? JSON.parse(body) : {};
     } catch (e) {
-      req.body = {};
+      // JSON inválido - devolver 400 en lugar de ignorar
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'Invalid JSON', details: e.message }));
+      return;
     }
 
     // Wrap res to be compatible with Express/Vercel

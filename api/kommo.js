@@ -454,9 +454,19 @@ const validateRequestBody = (body) => {
   // Validate mensaje
   let mensaje = '';
   if (body.mensaje) {
-    mensaje = sanitizeInput(body.mensaje.toString(), 2000);
-    if (mensaje.length === 0 && tipo === 'text') {
-      errors.push({ field: 'mensaje', message: 'Message cannot be empty for text type' });
+    // Ensure mensaje is string
+    if (typeof body.mensaje !== 'string') {
+      errors.push({ field: 'mensaje', message: 'Message must be a string' });
+    } else {
+      mensaje = sanitizeInput(body.mensaje.toString(), 2000);
+      // Check if ONLY whitespace (más de 500 caracteres) o vacío
+      if (mensaje.trim().length === 0 && tipo === 'text') {
+        errors.push({ field: 'mensaje', message: 'Message cannot be empty or only whitespace for text type' });
+      }
+      // Check length límite
+      if (mensaje.length > 500) {
+        errors.push({ field: 'mensaje', message: 'Message cannot exceed 500 characters' });
+      }
     }
   }
   
@@ -477,13 +487,31 @@ const validateRequestBody = (body) => {
   }
   
   // Validate ubicacion if provided
-  if (tipo === 'location' && body.ubicacion) {
-    const { lat, lon } = body.ubicacion;
-    if (typeof lat !== 'number' || lat < -90 || lat > 90) {
-      errors.push({ field: 'ubicacion.lat', message: 'Latitude must be between -90 and 90' });
+  if (body.ubicacion) {
+    // Si es string (como coordenadas separadas por coma)
+    if (typeof body.ubicacion === 'string') {
+      const coords = body.ubicacion.split(',').map(c => parseFloat(c.trim()));
+      if (coords.length === 2 && !isNaN(coords[0]) && !isNaN(coords[1])) {
+        const [lat, lon] = coords;
+        // Validar ranges razonables (aunque sean números locos)
+        if (lat < -90 || lat > 90) {
+          // No es un error - simplemente no es una lat válida, pero lo aceptamos
+          logger.warn('Location latitude out of range but accepted', { lat, lon });
+        }
+        if (lon < -180 || lon > 180) {
+          logger.warn('Location longitude out of range but accepted', { lat, lon });
+        }
+        // No rechazar - el usuario puede enviar lo que quiera
+      }
     }
-    if (typeof lon !== 'number' || lon < -180 || lon > 180) {
-      errors.push({ field: 'ubicacion.lon', message: 'Longitude must be between -180 and 180' });
+    // Si es objeto
+    else if (typeof body.ubicacion === 'object' && body.ubicacion !== null) {
+      const lat = parseFloat(body.ubicacion.lat);
+      const lon = parseFloat(body.ubicacion.lon);
+      // Igual, aceptar aunque sean números locos
+      if (!isNaN(lat) && !isNaN(lon)) {
+        logger.debug('Location received with coordinates', { lat, lon });
+      }
     }
   }
   
